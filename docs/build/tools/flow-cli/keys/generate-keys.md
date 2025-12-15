@@ -4,16 +4,19 @@ description: How to generate key pair from the command line
 sidebar_position: 1
 ---
 
-The Flow CLI provides a command to generate ECDSA key pairs
-that can be [attached to new or existing Flow accounts](../../../cadence/basics/accounts.md).
+The Flow CLI provides a command to generate ECDSA key pairs that can be [attached to new or existing Flow accounts].
 
 ```shell
 flow keys generate
 ```
 
+:::danger
+
 ⚠️ Store private key safely and don't share with anyone!
 
-## Example Usage
+:::
+
+## Example usage
 
 ```shell
 flow keys generate
@@ -36,17 +39,15 @@ Public Key 	 584245c57e5316d6606c53b1ce46dae29f5c9bd26e9e8...aaa5091b2eebcb2ac71
 - Flag: `--seed`
 - Valid inputs: any string with length >= 32
 
-Specify a UTF-8 seed string that will be used to generate the key pair.
-Key generation is deterministic, so the same seed will always
-result in the same key.
+Specify a UTF-8 seed string to use to generate the key pair. Key generation is deterministic, so the same seed will always result in the same key.
 
-If no seed is specified, the key pair will be generated using
-a random 32 byte seed.
+If no seed is specified, a random 32-byte seed will generate the key pair.
 
-⚠️ Using seed with production keys can be dangerous if seed was not generated
-by using safe random generators.
+:::danger 
 
-### Signature Algorithm
+⚠️ It's dangerous to use seed with production keys if seed wasn't generated with safe random generators.
+
+### Signature algorithm
 
 - Flag: `--sig-algo`
 - Valid inputs: `"ECDSA_P256", "ECDSA_secp256k1"`
@@ -95,13 +96,15 @@ Specify the log level. Control how much output you want to see during command ex
 - Valid inputs: a path in the current filesystem.
 - Default: `flow.json`
 
-Specify the path to the `flow.json` configuration file.
-You can use the `-f` flag multiple times to merge
-several configuration files.
+Specify the path to the `flow.json` configuration file. You can use the `-f` flag multiple times to merge several configuration files.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
+
+<!-- Reference-style links, will not render on page. -->
+
+[attached to new or existing Flow accounts]: ../../../cadence/basics/accounts.md

@@ -4,11 +4,11 @@ description: How to get access node status from the command line
 sidebar_position: 4
 ---
 
-The Flow CLI provides a command to get network status of specified Flow Access Node
+The Flow CLI provides a command to get network status of specified Flow Access Node.
 
 `flow status`
 
-## Example Usage
+## Example usage
 
 ```shell
 > flow status --network testnet
@@ -34,17 +34,14 @@ Specify which network you want the command to use for execution.
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the hostname of the Access API to use to execute the command. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
-- Valid inputs: A valid network public key of the host in hex string format
+- Valid inputs: A valid network public key of the host in hex string format.
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API to use to create a secure GRPC client when you execute the command.
 
 ### Filter
 
@@ -68,7 +65,7 @@ Specify the format of the command results.
 - Short Flag: `-s`
 - Valid inputs: a path in the current filesystem.
 
-Specify the filename where you want the result to be saved
+Specify the filename where you want the result to be saved.
 
 ### Log
 
@@ -86,11 +83,9 @@ Specify the log level. Control how much output you want to see during command ex
 - Valid inputs: a path in the current filesystem.
 - Default: `flow.json`
 
-Specify the path to the `flow.json` configuration file.
-You can use the `-f` flag multiple times to merge
-several configuration files.
+Specify the path to the `flow.json` configuration file. You can use the `-f` flag multiple times to merge several configuration files.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`

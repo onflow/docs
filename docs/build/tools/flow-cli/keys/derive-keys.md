@@ -10,7 +10,7 @@ The Flow CLI provides a command to derive Public Key from a Private Key.
 flow keys derive <private key>
 ```
 
-## Example Usage
+## Example usage
 
 ### Derive Public Key from a Private Key
 ```shell
@@ -35,7 +35,7 @@ Public Key 	    584245c57e5316d6606c53b1ce46dae29f5c9bd26e9e8...aaa5091b2eebcb2a
 
 ## Flags
 
-### Signature Algorithm
+### Signature algorithm
 
 - Flag: `--sig-algo`
 - Valid inputs: `"ECDSA_P256", "ECDSA_secp256k1"`
@@ -67,4 +67,4 @@ Specify the format of the command results.
 - Short Flag: `-s`
 - Valid inputs: a path in the current filesystem.
 
-Specify the filename where you want the result to be saved
+Specify the filename where you want the result to be saved.
