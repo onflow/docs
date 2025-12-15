@@ -249,16 +249,18 @@ The most common use case: deploy your NEW contracts to the forked emulator so th
 **1. Create your contract:**
 
 ```bash
-flow generate contract PriceOracle
+flow generate contract MyDeFiProtocol
 ```
 
-Edit `cadence/contracts/PriceOracle.cdc`:
+Edit `cadence/contracts/MyDeFiProtocol.cdc`:
 
 ```cadence
-access(all) contract PriceOracle {
-    // Mock price oracle for testing
-    access(all) fun getPrice(): UFix64 {
-        return 123.45  // Fixed test price
+import "FlowToken"
+
+access(all) contract MyDeFiProtocol {
+    // Your DeFi logic that reads real mainnet FlowToken data
+    access(all) fun getTotalSupply(): UFix64 {
+        return FlowToken.totalSupply
     }
 }
 ```
@@ -309,40 +311,111 @@ Since signature validation is disabled in fork mode, the key value doesn't matte
 flow config add deployment \
   --network mainnet-fork \
   --account mainnet-fork-service \
-  --contract PriceOracle
+  --contract MyDeFiProtocol
 ```
 
 **5. Deploy your contract:**
 
 ```bash
-flow project deploy --network mainnet-fork
+flow project deploy --network mainnet-fork --update
 ```
+
+:::tip
+
+Use `--update` if you're working on an existing project that's already deployed to mainnet. The forked emulator mirrors mainnet state, so if your contract already exists at that address on mainnet, it will exist in the fork too. The `--update` flag replaces the mainnet version with your local changes.
+
+:::
 
 **6. Test your contract:**
 
 Your contract can now interact with real mainnet contracts! Create a script to test it:
 
 ```bash
-flow generate script getPrice
+flow generate script getTotalSupply
 ```
 
-Add the following to `cadence/scripts/getPrice.cdc`:
+Add the following to `cadence/scripts/getTotalSupply.cdc`:
 
 ```cadence
-import "PriceOracle"
+import "MyDeFiProtocol"
 
 access(all) fun main(): UFix64 {
-    return PriceOracle.getPrice()
+    return MyDeFiProtocol.getTotalSupply()
 }
 ```
 
 Run the script:
 
 ```bash
-flow scripts execute cadence/scripts/getPrice.cdc --network mainnet-fork
+flow scripts execute cadence/scripts/getTotalSupply.cdc --network mainnet-fork
 ```
 
-You'll see `Result: 123.45` - the mocked oracle price. Perfect for testing DeFi protocols with controlled price data before mainnet deployment.
+You'll see `Result: 1628083999.54686045` - the real mainnet FlowToken supply! Your contract runs locally but reads production data. Perfect for testing integrations before mainnet deployment.
+
+## Mock Existing Mainnet Contracts
+
+You can override existing mainnet contracts with your own versions for testing. This is useful for testing contract upgrades, fixing bugs, or adding test functionality to mainnet contracts.
+
+### Example: Mock a Mainnet Contract
+
+Let's say you want to test how your DeFi protocol behaves with a modified version of an existing mainnet contract.
+
+**1. Create your mock oracle contract:**
+
+```bash
+flow generate contract PriceOracle
+```
+
+Edit `cadence/contracts/PriceOracle.cdc` to match the interface of the mainnet oracle you want to mock:
+
+```cadence
+// Mock implementation of mainnet PriceOracle with fixed test prices
+access(all) contract PriceOracle {
+    access(all) fun getPrice(): UFix64 {
+        return 123.45  // Fixed test price for predictable testing
+    }
+}
+```
+
+**2. Deploy to the SAME address as the mainnet oracle:**
+
+In your `flow.json`, configure deployment to use the mainnet oracle's address:
+
+```json
+{
+  "contracts": {
+    "PriceOracle": "cadence/contracts/PriceOracle.cdc"
+  },
+  "deployments": {
+    "mainnet-fork": {
+      "mainnet-oracle-account": ["PriceOracle"]
+    }
+  },
+  "accounts": {
+    "mainnet-oracle-account": {
+      "address": "0x1654653399040a61",
+      "key": {
+        "type": "file",
+        "location": "blank-key.pkey"
+      }
+    }
+  }
+}
+```
+
+**3. Deploy with `--update` flag:**
+
+```bash
+flow project deploy --network mainnet-fork --update
+```
+
+Now your mock oracle replaces the mainnet oracle at that address. All imports and references to the original oracle will use your mocked version with fixed test prices instead!
+
+:::tip
+
+This is how you test contract upgrades or modifications against real mainnet state without affecting the live network.
+
+:::
 
 ## Install Dependencies
 
