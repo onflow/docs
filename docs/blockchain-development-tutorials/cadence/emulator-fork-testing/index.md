@@ -277,13 +277,28 @@ When the emulator starts, note the service account address in the logs:
 
 **3. Configure the service account:**
 
-Add the forked emulator's service account (use the address from the startup logs and a dummy key):
+Add the forked emulator's service account (use the address from the startup logs and a dummy key).
+
+First, create a dummy key file:
 
 ```bash
-flow config add account \
-  --name mainnet-fork-service \
-  --address 0xe467b9dd11fa00df \
-  --private-key 0000000000000000000000000000000000000000000000000000000000000000
+echo "0000000000000000000000000000000000000000000000000000000000000000" > blank-key.pkey
+```
+
+Then manually add to your `flow.json`:
+
+```json
+{
+  "accounts": {
+    "mainnet-fork-service": {
+      "address": "0xe467b9dd11fa00df",
+      "key": {
+        "type": "file",
+        "location": "blank-key.pkey"
+      }
+    }
+  }
+}
 ```
 
 Since signature validation is disabled in fork mode, the key value doesn't matter.
@@ -692,13 +707,20 @@ Now let's test transferring tokens from a mainnet account using impersonation.
 
 To use impersonation with the CLI, you need to add the mainnet account to your `flow.json` (signature validation is disabled, so the key value doesn't matter).
 
-Using the CLI:
+Manually add to your `flow.json` (using the same `blank-key.pkey` file):
 
-```bash
-flow config add account \
-  --name mainnet-service \
-  --address 0x1654653399040a61 \
-  --private-key 0000000000000000000000000000000000000000000000000000000000000000
+```json
+{
+  "accounts": {
+    "mainnet-service": {
+      "address": "0x1654653399040a61",
+      "key": {
+        "type": "file",
+        "location": "blank-key.pkey"
+      }
+    }
+  }
+}
 ```
 
 Transfer tokens from the mainnet service account to another mainnet account:
