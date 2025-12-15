@@ -5,7 +5,7 @@ description: Generate template files for common Cadence code using the Flow CLI
 sidebar_position: 12
 ---
 
-The `flow generate` command provides a convenient way to create boilerplate template files for common Cadence code components. This command streamlines the development process by automatically generating properly structured files with the correct syntax and organization.
+The `flow generate` command provides a convenient way to create boilerplate template files for common Cadence code components. TO streamline the development process, this command automatically generates properly structured files with the correct syntax and organization.
 
 ## Overview
 
@@ -15,14 +15,14 @@ flow generate [command]
 
 **Aliases:** `generate`, `g`
 
-The generate command supports four main subcommands for creating different types of Cadence files:
+The generate command supports four main subcommands to create different types of Cadence files:
 
-- **contract** - Generate Cadence smart contract templates
-- **script** - Generate Cadence script templates  
-- **test** - Generate Cadence test templates
-- **transaction** - Generate Cadence transaction templates
+- **contract** - Generate Cadence smart contract templates.
+- **script** - Generate Cadence script templates.
+- **test** - Generate Cadence test templates.
+- **transaction** - Generate Cadence transaction templates.
 
-## Generate Contract
+## Generate contract
 
 Creates a new Cadence smart contract with a basic template structure.
 
@@ -47,20 +47,22 @@ access(all) contract HelloWorld {
 ```
 
 :::info
-When generating a contract, a corresponding test file will also be created automatically (unless `--skip-tests` is used). For example, generating `HelloWorld` contract will also create `cadence/tests/HelloWorld.test.cdc`.
+
+When you generate a contract, a test file that corresponds to that contracts is also created automatically (unless `--skip-tests` is used). For example, when you generate `HelloWorld`, the contract will also create `cadence/tests/HelloWorld.test.cdc`.
+
 :::
 
 ### Flags
 
-- `--dir string` - Directory to generate files in (defaults to `cadence/contracts/`)
-- `--skip-tests` - Skip generating test files
-- `-h, --help` - Help for contract command
+- `--dir string` - Directory to generate files in (defaults to `cadence/contracts/`).
+- `--skip-tests` - Skip test file generation.
+- `-h, --help` - Help for contract command.
 
-## Generate Transaction
+## Generate transaction
 
 Creates a new Cadence transaction with a basic template structure.
 
-### Usage
+### Use
 
 ```bash
 flow generate transaction <name> [flags]
@@ -84,15 +86,15 @@ transaction() {
 
 ### Flags
 
-- `--dir string` - Directory to generate files in (defaults to `cadence/transactions/`)
-- `--skip-tests` - Skip generating test files
-- `-h, --help` - Help for transaction command
+- `--dir string` - Directory to generate files in (defaults to `cadence/transactions/`).
+- `--skip-tests` - Skip test file generation.
+- `-h, --help` - Help for transaction command.
 
-## Generate Script
+## Generate script
 
 Creates a new Cadence script with a basic template structure.
 
-### Usage
+### Use
 
 ```bash
 flow generate script <name> [flags]
@@ -112,15 +114,15 @@ access(all) fun main() {}
 
 ### Flags
 
-- `--dir string` - Directory to generate files in (defaults to `cadence/scripts/`)
-- `--skip-tests` - Skip generating test files
-- `-h, --help` - Help for script command
+- `--dir string` - Directory to generate files in (defaults to `cadence/scripts/`).
+- `--skip-tests` - Skip test file generation.
+- `-h, --help` - Help for script command.
 
-## Generate Test
+## Generate test
 
 Creates a new Cadence test file with a basic template structure.
 
-### Usage
+### Use
 
 ```bash
 flow generate test <name> [flags]
@@ -134,15 +136,15 @@ flow generate test MyToken
 
 This command creates a file `cadence/tests/MyToken.test.cdc` with a basic test structure.
 
-After generating a test, you can run it using `flow test`. For more information about writing and running Cadence tests, see the [Cadence Tests documentation](./tests.md).
+After you generate a test, you can run it using `flow test`. For more information about how to write and run Cadence tests, see the [Cadence Tests documentation].
 
 ### Flags
 
-- `--dir string` - Directory to generate files in (defaults to `cadence/tests/`)
-- `--skip-tests` - Skip generating test files
-- `-h, --help` - Help for test command
+- `--dir string` - Directory to generate files in (defaults to `cadence/tests/`).
+- `--skip-tests` - Skip test file generation.
+- `-h, --help` - Help for test command.
 
-## Custom Directory Usage
+## Custom directory use
 
 All generate commands support the `--dir` flag to specify a custom directory for the generated files. This is useful when your project requires a different organizational structure than the default.
 
@@ -162,9 +164,9 @@ flow generate script GetData --dir=src/scripts
 flow generate test MyToken --dir=src/tests
 ```
 
-## Project Structure
+## Project structure
 
-When using the default directories, the generate command creates the following structure:
+When you use the default directories, the generate command creates the following structure:
 
 ```
 cadence/
@@ -178,4 +180,8 @@ cadence/
     └── MyToken.test.cdc
 ```
 
-The generate command is an essential tool for accelerating Flow development by providing standardized, well-structured boilerplate code for all common Cadence components.
+The generate command is an essential tool to accelerate Flow development with standardized, well-structured boilerplate code for all common Cadence components.
+
+<!-- Reference-style links, will not render on page. -->
+
+[Cadence Tests documentation]: ./tests.md

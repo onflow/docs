@@ -30,12 +30,12 @@ Querying with a system transaction ID (`[tx_id]`) is part of the Forte network u
 
 ::::
 
-## Use Cases
+## Use cases
 
 - System chunk transaction for protocol operations: see [Epoch Scripts and Events] and [Staking rewards via system chunk].
 - Transactions related to scheduled transactions: see [Introduction to Scheduled Transactions]. Consider `--include fee-events` for scheduled transaction fee details.
 
-## Example Usage
+## Example use
 
 ```shell
 > flow transactions get-system latest --network mainnet
@@ -71,7 +71,7 @@ Select a specific system transaction within the block by ID:
 
 ## Arguments
 
-### Block Reference
+### Block reference
 
 - Name: `<block_id|latest|block_height>`
 - Valid Input: a block ID (hex), the keyword `latest`, or a block height (number).
@@ -87,14 +87,14 @@ Optionally narrow the result to a specific system transaction within the referen
 
 ## Flags
 
-### Include Fields
+### Include fields
 
 - Flag: `--include`
 - Valid inputs: `code`, `payload`, `signatures`, `fee-events`
 
 Specify fields to include in the result output. Applies only to the text output.
 
-### Exclude Fields
+### Exclude fields
 
 - Flag: `--exclude`
 - Valid inputs: `events`
@@ -107,17 +107,14 @@ Specify fields to exclude from the result output. Applies only to the text outpu
 - Valid inputs: an IP address or host address.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the host address of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the host address of the Access API that will be used to execute the command. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create secure client connections when executing the command.
+Specify the network public key of the Access API that will be used to create secure client connections when you execute the command.
 
 ### Network
 
@@ -150,7 +147,7 @@ Specify the format of the command results.
 - Short Flag: `-s`
 - Valid inputs: a path in the current file system.
 
-Specify the filename where you want the result to be saved
+Specify the filename where you want to save the result.
 
 ### Log
 
@@ -168,11 +165,9 @@ Specify the log level. Control how much output you want to see during command ex
 - Valid inputs: a path in the current file system.
 - Default: `flow.json`
 
-Specify the path to the `flow.json` configuration file.
-You can use the `-f` flag multiple times to merge
-several configuration files.
+Specify the path to the `flow.json` configuration file. You can use the `-f` flag multiple times to merge several configuration files.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`
@@ -183,8 +178,10 @@ Skip version check during start up to speed up process for slow connections.
 
 System transactions currently cover:
 
-- System chunk transactions used by protocol operations. See an overview of system chunks and service events: [Epoch Scripts and Events].
-- Scheduled transaction execution. Learn more: [Introduction to Scheduled Transaction].
+- System chunk transactions used by protocol operations. See an overview of system chunks and service events: 
+  - [Epoch Scripts and Events]
+- Scheduled transaction execution. Learn more: 
+  - [Introduction to Scheduled Transactions]
 
 More resources:
 

@@ -9,20 +9,22 @@ The FLOW CLI provides a command to save the latest finalized protocol state snap
 flow snapshot save <output path>
 ```
 
-## Example Usage
+## Example use
 
 ```shell
 flow snapshot save  /tmp/snapshot.json --network testnet
 ```
 
 ### Example response
+
 ```shell
 snapshot saved: /tmp/snapshot.json
 ```
 
 ## Arguments
 
-### Output Path
+### Output path
+
 - Name: `output path`
 - Valid Input: any valid string path
 
@@ -30,22 +32,19 @@ Output path where the protocol snapshot JSON file will be saved.
 
 ## Flags
 
-
 ### Host
 - Flag: `--host`
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the commands.
+Specify the hostname of the Access API that will be used to execute the commands.
 
 ### Network Key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API that will be used to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -78,7 +77,3 @@ Specify in which format you want to display the result.
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
-
-
-
-

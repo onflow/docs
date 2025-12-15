@@ -4,11 +4,9 @@ description: How to build a Flow transaction from the command line
 sidebar_position: 3
 ---
 
-The Flow CLI provides a command to build a transactions with options to specify
-authorizer accounts, payer account and proposer account.
+The Flow CLI provides a command to build a transactions with options to specify authorizer accounts, payer account and proposer account.
 
-The `build` command doesn't produce any signatures and instead
-is designed to be used with the `sign` and `send-signed` commands.
+The `build` command doesn't produce any signatures. Instead, use it with the `sign` and `send-signed` commands.
 
 Use this functionality in the following order:
 
@@ -20,7 +18,7 @@ Use this functionality in the following order:
 flow transactions build <code filename> [<argument> <argument>...] [flags]
 ```
 
-## Example Usage
+## Example use
 
 ```shell
 > flow transactions build ./transaction.cdc "Meow" \
@@ -74,22 +72,21 @@ JSON arguments from a file example:
 
 ## Arguments
 
-### Code Filename
+### Code filename
 
 - Name: `filename`
 - Valid inputs: Any filename and path valid on the system.
 
-The first argument is a path to a Cadence file containing the
-transaction to be executed.
+The first argument is a path to a Cadence file that contains the transaction to be executed.
 
 ### Arguments
 
 - Name: `argument`
-- Valid inputs: valid [cadence values](https://cadencelang.dev/docs/1.0/json-cadence-spec)
-  matching argument type in transaction code.
+- Valid inputs: valid [cadence values] that match argument type in transaction code.
 
-Input arguments values matching corresponding types in the source code and passed in the same order.
-For passing complex argument values see [send transaction](./send-transactions.md#example-usage) document.
+Input arguments values that match the types that correspond in the source code and passed in the same order.
+
+To pass complex argument values, see the [send transaction] document.
 
 ## Flags
 
@@ -99,8 +96,7 @@ For passing complex argument values see [send transaction](./send-transactions.m
 - Valid Inputs: Flow address or account name from configuration.
 - Default: service account
 
-Specify account address that will be paying for the transaction.
-Read more about payers [here](../../../cadence/basics/transactions.md).
+Specify account address that will pay for the transaction. Read more about payers [here].
 
 ### Proposer
 
@@ -125,8 +121,7 @@ Specify key index for the proposer account.
 - Valid Inputs: Flow address or account name from configuration.
 - Default: service account
 
-Additional authorizer addresses to add to the transaction.
-Read more about authorizers [here](../../../cadence/basics/transactions.md).
+Additional authorizer addresses to add to the transaction. Read more about authorizers [here].
 
 ### Arguments JSON
 
@@ -134,11 +129,10 @@ Read more about authorizers [here](../../../cadence/basics/transactions.md).
 - Valid inputs: arguments in JSON-Cadence form.
 - Example: `flow transactions build ./tx.cdc '[{"type": "String", "value": "Hello World"}]'`
 
-Arguments passed to the Cadence transaction in Cadence JSON format.
-Cadence JSON format contains `type` and `value` keys and is
-[documented here](https://cadencelang.dev/docs/1.0/json-cadence-spec).
+Arguments passed to the Cadence transaction in Cadence JSON format. Cadence JSON format contains `type` and `value` keys and is
+[documented here].
 
-### Gas Limit
+### Gas limit
 
 - Flag: `--compute-limit`
 - Valid inputs: an integer greater than zero.
@@ -152,16 +146,14 @@ Specify the compute unit (gas) limit for this transaction.
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the commands.
+Specify the hostname of the Access API that will be used to execute the commands.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API that will be used to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -172,7 +164,7 @@ used to create a secure GRPC client when executing the command.
 
 Specify which network you want the command to use for execution.
 
-### Include Fields
+### Include fields
 
 - Flag: `--include`
 - Valid inputs: `code`, `payload`, `signatures`
@@ -218,12 +210,18 @@ Specify the log level. Control how much output you want to see while command exe
 - Short Flag: `-f`
 - Valid inputs: valid filename
 
-Specify a filename for the configuration files, you can provide multiple configuration
-files by using `-f` flag multiple times.
+Specify a filename for the configuration files. To provide multiple configuration files, pass the `-f` flag multiple times.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
+
+<!-- Reference-style links, will not render on page. -->
+
+[cadence values]: https://cadencelang.dev/docs/1.0/json-cadence-spec
+[send transaction]: ./send-transactions.md#example-usage
+[here]: ../../../cadence/basics/transactions.md
+[documented here]: https://cadencelang.dev/docs/1.0/json-cadence-spec

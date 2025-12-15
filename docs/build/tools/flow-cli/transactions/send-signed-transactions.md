@@ -4,8 +4,7 @@ description: How to send a signed Flow transaction from the command line
 sidebar_position: 6
 ---
 
-The Flow CLI provides a command to send signed transactions to
-any Flow Access API.
+The Flow CLI provides a command to send signed transactions to any Flow Access API.
 
 Use this functionality in the following order:
 1. Use the `build` command to build the transaction.
@@ -16,7 +15,7 @@ Use this functionality in the following order:
 flow transactions send-signed <signed transaction filename>
 ```
 
-## Example Usage
+## Example use
 
 ```shell
 > flow transactions send-signed ./signed.rlp
@@ -47,23 +46,23 @@ Payload (hidden, use --include payload)
 
 ## Arguments
 
-### Signed Code Filename
+### Signed code filename
+
 - Name: `signed transaction filename`
 - Valid inputs: Any filename and path valid on the system.
 
-The first argument is a path to a Cadence file containing the
-transaction to be executed.
+The first argument is a path to a Cadence file that contains the transaction to be executed.
 
 ## Flags
 
-### Include Fields
+### Include fields
 
 - Flag: `--include`
 - Valid inputs: `code`, `payload`
 
 Specify fields to include in the result output. Applies only to the text output.
 
-### Exclude Fields
+### Exclude fields
 
 - Flag: `--exclude`
 - Valid inputs: `events`
@@ -88,13 +87,12 @@ Specify the hostname of the Access API that will be
 used to execute the command. This flag overrides
 any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API that will be used to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -119,7 +117,7 @@ Specify the format of the command results.
 - Short Flag: `-s`
 - Valid inputs: a path in the current filesystem.
 
-Specify the filename where you want the result to be saved
+Specify the filename where you want to save the result.
 
 ### Log
 
@@ -137,11 +135,9 @@ Specify the log level. Control how much output you want to see during command ex
 - Valid inputs: a path in the current filesystem.
 - Default: `flow.json`
 
-Specify the path to the `flow.json` configuration file.
-You can use the `-f` flag multiple times to merge
-several configuration files.
+Specify the path to the `flow.json` configuration file. You can use the `-f` flag multiple times to merge several configuration files.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`

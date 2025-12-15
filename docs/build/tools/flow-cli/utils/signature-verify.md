@@ -9,7 +9,7 @@ Verify validity of a signature based on provided message and public key of the s
 flow signatures verify <message> <signature> <public key>
 ```
 
-## Example Usage
+## Example use
 
 ```shell
 > flow signatures verify 
@@ -30,21 +30,23 @@ Signature Algorithm 	 ECDSA_P256
 ### Message
 - Name: `message`
 
-Message data used for creating the signature.
+Message data used to create the signature.
 
 ### Signature
+
 - Name: `signature`
 
 Message signature that will be verified.
 
 ### Public Key
+
 - Name: `public key`
 
-Public key of the private key used for creating the signature. 
+Public key of the private key used to create the signature. 
 
 ## Flags
 
-### Public Key Signature Algorithm
+### Public key signature algorithm
 
 - Flag: `--sig-algo`
 - Valid inputs: `"ECDSA_P256", "ECDSA_secp256k1"`
@@ -53,7 +55,7 @@ Specify the ECDSA signature algorithm of the key pair used for signing.
 
 Flow supports the secp256k1 and P-256 curves.
 
-### Public Key Hash Algorithm
+### Public key hash algorithm
 
 - Flag: `--hash-algo`
 - Valid inputs: `"SHA2_256", "SHA3_256"`
@@ -92,7 +94,7 @@ Specify the filename where you want the result to be saved.
 - Valid inputs: `none`, `error`, `debug`
 - Default: `info`
 
-Specify the log level. Control how much output you want to see while command execution.
+Specify the log level. Control how much output you want to see while the command executes.
 
 ### Version Check
 
