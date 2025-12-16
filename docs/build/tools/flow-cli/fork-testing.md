@@ -55,7 +55,7 @@ flow emulator --fork mainnet
 - Testing contract logic with real mainnet state
 
 **How it works:**
-Runs your `*_test.cdc` files against a forked network using the Cadence Testing Framework. Add the `#test_fork` pragma to your test file, then run:
+Runs your `*_test.cdc` files against a forked network using the [Cadence Testing Framework](../../../build/cadence/smart-contracts/testing.md). Add the `#test_fork` pragma to your test file, then run:
 
 ```bash
 flow test

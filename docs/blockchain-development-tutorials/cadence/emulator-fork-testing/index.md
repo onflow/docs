@@ -30,7 +30,7 @@ keywords:
 
 # Interactive Testing with Forked Emulator
 
-Fork testing gives you a local copy of mainnet state that you can freely modify and reset instantly. Test your DeFi app against real DEX liquidity pools and lending protocols without risking funds. Verify integrations with existing mainnet contracts before deploying. Debug production issues at specific block heights with exact mainnet state.
+Fork testing gives you a local copy of mainnet state that you can freely modify and reset instantly. Test your DeFi app against real DEX liquidity pools and lending protocols without risking funds, verify integrations with existing mainnet contracts before deploying, and debug production issues at specific block heights with exact mainnet state.
 
 This tutorial teaches you how to run your app and E2E tests against Flow mainnet using `flow emulator --fork`. You'll connect your frontend to production-like state, impersonate any mainnet account, and test with real balances and assets—all running locally.
 
