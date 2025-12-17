@@ -6,7 +6,11 @@ sidebar_position: 1
 
 # Flow React Native SDK
 
-**The easiest way to build React Native apps on Flow.** A lightweight, TypeScript-first library that makes Flow blockchain interactions feel native to React Native development.
+**The easiest way to build React Native apps on Flow.** A lightweight, TypeScript-first library for seamless Flow blockchain integration in your React Native apps.
+
+:::note
+This SDK shares the same hooks as the [Flow React SDK](../react-sdk/index.mdx), so if you're familiar with the web version, you'll feel right at home. The main differences are the React Native-specific components (`Connect`, `Profile`) and mobile wallet integrations.
+:::
 
 ## Quick Start
 
@@ -21,27 +25,32 @@ npm install @onflow/react-native-sdk
 Create a provider wrapper component:
 
 ```tsx title="components/flow-provider-wrapper.tsx"
-import { FlowProvider } from "@onflow/react-native-sdk";
-import flowJSON from "../flow.json";
+import { FlowProvider } from '@onflow/react-native-sdk';
+import flowJSON from '../flow.json';
 
-export function FlowProviderWrapper({ children }: { children: React.ReactNode }) {
+export function FlowProviderWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <FlowProvider
       config={{
         // Network configuration
-        accessNodeUrl: "https://rest-testnet.onflow.org",
-        discoveryWallet: "https://fcl-discovery.onflow.org/testnet/authn",
-        discoveryAuthnEndpoint: "https://fcl-discovery.onflow.org/api/testnet/authn",
-        flowNetwork: "testnet",
+        accessNodeUrl: 'https://rest-testnet.onflow.org',
+        discoveryWallet: 'https://fcl-discovery.onflow.org/testnet/authn',
+        discoveryAuthnEndpoint:
+          'https://fcl-discovery.onflow.org/api/testnet/authn',
+        flowNetwork: 'testnet',
 
         // App metadata (displayed in wallet)
-        appDetailTitle: "My Flow App",
-        appDetailUrl: "https://myapp.com",
-        appDetailIcon: "https://myapp.com/icon.png",
-        appDetailDescription: "A Flow blockchain app built with Expo",
+        appDetailTitle: 'My Flow App',
+        appDetailUrl: 'https://myapp.com',
+        appDetailIcon: 'https://myapp.com/icon.png',
+        appDetailDescription: 'A Flow blockchain app built with Expo',
 
         // WalletConnect project ID (get one at https://cloud.walletconnect.com)
-        walletconnectProjectId: "YOUR_PROJECT_ID",
+        walletconnectProjectId: 'YOUR_PROJECT_ID',
       }}
       flowJson={flowJSON}
     >
@@ -54,15 +63,15 @@ export function FlowProviderWrapper({ children }: { children: React.ReactNode })
 Then wrap your app in the root layout:
 
 ```tsx title="app/_layout.tsx"
-import { FlowProviderWrapper } from "@/components/flow-provider-wrapper";
-import { Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
-import { View } from "react-native";
+import { FlowProviderWrapper } from '@/components/flow-provider-wrapper';
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import { View } from 'react-native';
 
 export default function RootLayout() {
   return (
     <FlowProviderWrapper>
-      <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <Stack screenOptions={{ headerShown: false }} />
       </View>
       <StatusBar style="dark" />
@@ -74,13 +83,21 @@ export default function RootLayout() {
 ### 3. Start Building
 
 ```tsx
-import { View, Text, Pressable } from "react-native";
-import { Connect, useFlowCurrentUser, useFlowQuery } from "@onflow/react-native-sdk";
+import { View, Text, Pressable } from 'react-native';
+import {
+  Connect,
+  useFlowCurrentUser,
+  useFlowQuery,
+} from '@onflow/react-native-sdk';
 
 function MyApp() {
   const { user } = useFlowCurrentUser();
 
-  const { data: balance, isLoading, refetch } = useFlowQuery({
+  const {
+    data: balance,
+    isLoading,
+    refetch,
+  } = useFlowQuery({
     cadence: `
       import FlowToken from 0x7e60df042a9c0868
 
@@ -106,7 +123,7 @@ function MyApp() {
           {isLoading ? (
             <Text>Loading balance...</Text>
           ) : (
-            <Text>Balance: {balance ? String(balance) : "0.00"} FLOW</Text>
+            <Text>Balance: {balance ? String(balance) : '0.00'} FLOW</Text>
           )}
           <Pressable onPress={() => refetch()}>
             <Text>Refresh</Text>
@@ -128,17 +145,17 @@ Get started quickly with the [flow-react-native-sdk-starter](https://github.com/
 
 The `FlowProvider` accepts the following configuration:
 
-| Property | Description |
-|----------|-------------|
-| `accessNodeUrl` | REST endpoint for blockchain access (e.g., `https://rest-testnet.onflow.org`) |
-| `discoveryWallet` | URL for wallet discovery/selection UI |
-| `discoveryAuthnEndpoint` | API endpoint for authentication |
-| `flowNetwork` | Network selection: `"testnet"` or `"mainnet"` |
-| `appDetailTitle` | App name displayed in wallet |
-| `appDetailUrl` | App URL displayed in wallet |
-| `appDetailIcon` | App icon URL displayed in wallet |
-| `appDetailDescription` | App description displayed in wallet |
-| `walletconnectProjectId` | WalletConnect Cloud project ID |
+| Property                 | Description                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| `accessNodeUrl`          | REST endpoint for blockchain access (e.g., `https://rest-testnet.onflow.org`) |
+| `discoveryWallet`        | URL for wallet discovery/selection UI                                         |
+| `discoveryAuthnEndpoint` | API endpoint for authentication                                               |
+| `flowNetwork`            | Network selection: `"testnet"` or `"mainnet"`                                 |
+| `appDetailTitle`         | App name displayed in wallet                                                  |
+| `appDetailUrl`           | App URL displayed in wallet                                                   |
+| `appDetailIcon`          | App icon URL displayed in wallet                                              |
+| `appDetailDescription`   | App description displayed in wallet                                           |
+| `walletconnectProjectId` | WalletConnect Cloud project ID                                                |
 
 **Mainnet Configuration:**
 
