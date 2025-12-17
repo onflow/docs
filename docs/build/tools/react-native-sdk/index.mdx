@@ -1,0 +1,231 @@
+---
+title: 'Flow React Native SDK'
+description: React Native hooks and components for interacting with the Flow blockchain.
+sidebar_position: 1
+---
+
+# Flow React Native SDK
+
+**The easiest way to build React Native apps on Flow.** A lightweight, TypeScript-first library for seamless Flow blockchain integration in your React Native apps.
+
+:::note
+This SDK shares the same hooks as the [Flow React SDK](../react-sdk/index.mdx), so if you're familiar with the web version, you'll feel right at home. The main differences are the React Native-specific components (`Connect`, `Profile`) and mobile wallet integrations.
+:::
+
+## Quick Start
+
+### 1. Install
+
+```bash
+npm install @onflow/react-native-sdk
+```
+
+### 2. Wrap Your App
+
+Create a provider wrapper component:
+
+```tsx title="components/flow-provider-wrapper.tsx"
+import { FlowProvider } from '@onflow/react-native-sdk';
+import flowJSON from '../flow.json';
+
+export function FlowProviderWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <FlowProvider
+      config={{
+        // Network configuration
+        accessNodeUrl: 'https://rest-testnet.onflow.org',
+        discoveryWallet: 'https://fcl-discovery.onflow.org/testnet/authn',
+        discoveryAuthnEndpoint:
+          'https://fcl-discovery.onflow.org/api/testnet/authn',
+        flowNetwork: 'testnet',
+
+        // App metadata (displayed in wallet)
+        appDetailTitle: 'My Flow App',
+        appDetailUrl: 'https://myapp.com',
+        appDetailIcon: 'https://myapp.com/icon.png',
+        appDetailDescription: 'A Flow blockchain app built with Expo',
+
+        // WalletConnect project ID (get one at https://cloud.walletconnect.com)
+        walletconnectProjectId: 'YOUR_PROJECT_ID',
+      }}
+      flowJson={flowJSON}
+    >
+      {children}
+    </FlowProvider>
+  );
+}
+```
+
+Then wrap your app in the root layout:
+
+```tsx title="app/_layout.tsx"
+import { FlowProviderWrapper } from '@/components/flow-provider-wrapper';
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import { View } from 'react-native';
+
+export default function RootLayout() {
+  return (
+    <FlowProviderWrapper>
+      <View style={{ flex: 1, backgroundColor: '#fff' }}>
+        <Stack screenOptions={{ headerShown: false }} />
+      </View>
+      <StatusBar style="dark" />
+    </FlowProviderWrapper>
+  );
+}
+```
+
+### 3. Start Building
+
+```tsx
+import { View, Text, Pressable } from 'react-native';
+import {
+  Connect,
+  useFlowCurrentUser,
+  useFlowQuery,
+} from '@onflow/react-native-sdk';
+
+function MyApp() {
+  const { user } = useFlowCurrentUser();
+
+  const {
+    data: balance,
+    isLoading,
+    refetch,
+  } = useFlowQuery({
+    cadence: `
+      import FlowToken from 0x7e60df042a9c0868
+
+      access(all) fun main(address: Address): UFix64 {
+        let account = getAccount(address)
+        let vaultRef = account.capabilities
+          .get<&FlowToken.Vault>(/public/flowTokenBalance)
+          .borrow()
+          ?? panic("Could not borrow Balance reference")
+        return vaultRef.balance
+      }
+    `,
+    args: (arg, t) => [arg(user?.addr, t.Address)],
+    query: { enabled: !!user?.addr },
+  });
+
+  return (
+    <View>
+      <Connect />
+      {user?.loggedIn && (
+        <View>
+          <Text>Welcome, {user.addr}!</Text>
+          {isLoading ? (
+            <Text>Loading balance...</Text>
+          ) : (
+            <Text>Balance: {balance ? String(balance) : '0.00'} FLOW</Text>
+          )}
+          <Pressable onPress={() => refetch()}>
+            <Text>Refresh</Text>
+          </Pressable>
+        </View>
+      )}
+    </View>
+  );
+}
+```
+
+:::info Starter Template
+Get started quickly with the [flow-react-native-sdk-starter](https://github.com/onflow/flow-react-native-sdk-starter) template which includes a pre-configured Expo project with wallet connection, balance queries, and transaction examples.
+:::
+
+---
+
+## Configuration Options
+
+The `FlowProvider` accepts the following configuration:
+
+| Property                 | Description                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| `accessNodeUrl`          | REST endpoint for blockchain access (e.g., `https://rest-testnet.onflow.org`) |
+| `discoveryWallet`        | URL for wallet discovery/selection UI                                         |
+| `discoveryAuthnEndpoint` | API endpoint for authentication                                               |
+| `flowNetwork`            | Network selection: `"testnet"` or `"mainnet"`                                 |
+| `appDetailTitle`         | App name displayed in wallet                                                  |
+| `appDetailUrl`           | App URL displayed in wallet                                                   |
+| `appDetailIcon`          | App icon URL displayed in wallet                                              |
+| `appDetailDescription`   | App description displayed in wallet                                           |
+| `walletconnectProjectId` | WalletConnect Cloud project ID                                                |
+
+**Mainnet Configuration:**
+
+```tsx
+config={{
+  accessNodeUrl: "https://rest-mainnet.onflow.org",
+  discoveryWallet: "https://fcl-discovery.onflow.org/authn",
+  discoveryAuthnEndpoint: "https://fcl-discovery.onflow.org/api/authn",
+  flowNetwork: "mainnet",
+  // ... other options
+}}
+```
+
+---
+
+## [Hooks](./hooks.md)
+
+**Cadence Hooks** for native Flow interactions:
+
+- Authentication & user management
+- Account details & balances
+- Block & transaction queries
+- Real-time event subscriptions
+- Script execution & mutations
+
+**Cross-VM Hooks** for bridging Cadence ↔ Flow EVM:
+
+- Atomic batch transactions
+- Token & NFT bridging
+- Cross-chain balance queries
+
+[→ View all hooks](./hooks.md)
+
+---
+
+## [Components](./components.md)
+
+Native UI components for React Native:
+
+- `<Connect />` – Wallet authentication with balance display
+- `<Profile />` – Standalone wallet information display
+
+[→ View all components](./components.md)
+
+---
+
+## Why Choose React Native SDK?
+
+**Developer Experience First**
+
+- TypeScript-native with full type safety
+- Familiar React Native patterns and conventions
+- Comprehensive error handling and loading states
+
+**Production Ready**
+
+- Built on battle-tested libraries (TanStack Query)
+- Automatic retries, caching, and background updates
+- Cross-VM support for hybrid Cadence/EVM applications
+
+**Mobile Native**
+
+- Native mobile wallet integrations via WalletConnect
+- React Native components that feel native
+- Expo and bare React Native support
+
+---
+
+## Need Help?
+
+- **[Hooks Documentation](./hooks.md)** – Detailed API reference for all hooks
+- **[Components Documentation](./components.md)** – UI components guide
+- **[Configuration Guide](../flow-cli/flow.json/configuration.md)** – Learn about configuring `flow.json`
