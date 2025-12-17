@@ -2,17 +2,17 @@
 
 A Wallet Provider handles Authentications and Authorizations. They play a very important role of being the place the users control their information and approve transactions.
 
-One of FCLs core ideals is for the user to be in control of their data, a wallet provider is where many users will do just that.
+One of Flow CLient Library's (FCL) core ideals is for the user to be in control of their data, a wallet provider is where many users will do just that.
 
-FCL has been built in a way that it doesn't need to know any intimate details about a wallet provider up front, they can be discovered when the users wishes to let the dapp know about them. This gives us a concept we have been calling Bring Your Own Identity.
+FCL has been built in a way that it doesn't need to know any intimate details about a Wallet Provider up front; they can be discovered when the users wishes to let the dApp know about them. This gives us a concept we call Bring Your Own Identity.
 
 # Identity
 
 Conceptually, FCL thinks of identity in two ways: Public and Private.
 
-Public identity will be stored on chain as a resource, it will be publicly available to anyone that knows the Flow Address for the account.
+Public identity will be stored on chain as a resource and publicly available to anyone that knows the Flow Address for the account.
 
-In FCL getting a users public identity will be as easy as:
+In FCL, you can easily retrieve a user's public identity:
 
 ```javascript
 import { user } from '@onflow/fcl';
@@ -26,14 +26,13 @@ const unsub = user(flowAddress).subscribe((identity) => console.log(identity));
 //                                           `------- The public identity for `flowAddress`
 ```
 
-Private identity will be stored by the Wallet Provider, it will only be available to the currentUser.
+Private identity will be stored by the Wallet Provider and only be available to the currentUser.
 
-In FCL getting the currentUsers identity will fetch both the public and the private identities, merging the private into the public.
+In FCL, when you retrieve the currentUsers identity, it fetches both the public and the private identities, which merges the private into the public. Private info needs to be requested via scopes before the challenge step, more on that later.
 
-Private info needs to be requested via scopes before the challenge step, more on that later.
-We highly recommend Wallet Providers let the user see what scopes are being requested, and decide what scopes to share with the dapp.
+We highly recommend Wallet Providers let the user see what scopes are being requested, and decide what scopes to share with the dApp.
 
-Consumers of identities in FCL should always assume all data is optional, and should store as little as possible, FCL will make sure the users always see the latest.
+Consumers of identities in FCL should always assume all data is optional, and should store as little as possible. FCL will make sure the users always see the latest.
 
 ```javascript
 import { config, currentUser, authenticate } from '@onflow/fcl';
@@ -47,35 +46,35 @@ const unsub = currentUser().subscribe((identity) => console.log(identity));
 authenticate(); // trigger the challenge step (authenticate the user via a wallet provider)
 ```
 
-# Identity Data
+# Identity data
 
 - All information in Identities are optional and may not be there.
 - All values can be stored on chain, but most probably shouldn't be.
 
-We would love to see Wallet Providers enable the user to control the following info publicly, sort of a public profile starter kit if you will.
+We would love to see Wallet Providers allow the user to control the following info publicly, sort of a public profile starter kit if you will.
 
-FCL will always publicly try to fetch these fields when asked for a users information and it will be up to the Wallet provider to make sure they are there and keep them up to date if the user wants to change them.
+FCL will always publicly try to fetch these fields when asked for a user's information, and it will be up to the Wallet provider to make sure they are there and keep them up to date if the user wants to change them.
 
-- **`name`** -- A human readable name/alias/nym for a dapp users display name
-- **`avatar`** -- A fully qualified url to a smaller image used to visually represent the dapp user
-- **`cover`** -- A fully qualified url to a bigger image, could be used by the dapp for personalization
-- **`color`** -- A 6 character hex color, could be used by the dapp for personalization
-- **`bio`** -- A small amount of text that a user can use to express themselves
+- **`name`** -- A human readable name, alias, or nym for a dApp user's display name.
+- **`avatar`** -- A fully qualified url to a smaller image used to visually represent the dApp user.
+- **`cover`** -- A fully qualified url to a bigger image, could be used by the dApp for personalization.
+- **`color`** -- A six character hex color, could be used by the dApp for personalization.
+- **`bio`** -- A small amount of text that a user can use to express themselves.
 
-If we can give dapp developers a solid foundation of usable information that is in the direct control of the users from the very start, which we belive the above fields would do, our hopes are they can rely more on the chain and will need to store less in their own database.
+If we can give dApp developers a solid foundation of usable information that is in the direct control of the users from the very start, which we belive the above fields would do, our hopes are they can rely more on the chain and will need to store less in their own database.
 
-Private data on the other hand has more use cases than general data. It is pretty easy to imagine ordering something and needing information like contact details and where to ship something.
+Private data on the other hand has more use cases than general data. It is pretty easy to imagine that you'd order something and need information like contact details and where to ship something.
 
-Eventually we would love to see that sort of thing handled completely onchain, securely, privately and safely, but in the interm it probably means storing a copy of data in a database when its needed, and allowed by a user.
+Eventually, we would love to see that sort of thing handled completely onchain, securely, privately and safely. In the interm ,it probably means that you'll store a copy of data in a database when it's needed, and a user allows it.
 
-The process of a dapp receiving private data is as follows:
+The process for a dApp to receive private data is as follows:
 
-1. The dapp requests the scopes they want up front `fcl.config().put("challenge.scope", "email+shippingAddress")`.
-2. The User authenticates `fcl.authenticate()` and inside the Wallet Providers authentication process decides its okay for the dapp to know both the `email` and the `shippingAddress`. The User should be able to decide which information to share, if any at all.
-3. When the dapp needs the information they can request it from FCLs current cache of data, if it isnt there the dapp needs to be okay with that and adjust accodingly.
+1. The dApp requests the scopes they want up front `fcl.config().put("challenge.scope", "email+shippingAddress")`.
+2. The user authenticates `fcl.authenticate()` and inside the Wallet Providers authentication process decides its okay for the dapp to know both the `email` and the `shippingAddress`. The user should be able to decide which information to share, if any at all.
+3. When the dApp needs the information they can request it from FCLs current cache of data, if it isn't there, the dApp needs to be okay with that and adjust accodingly.
 
-Below are the scopes we are thinking of supporting privately:
-FCL will only publicly and privately try to fetch these when specified up front by a dapp.
+Below are the scopes we want to support privately:
+FCL will only publicly and privately try to fetch these when specified up front by a dApp.
 
 - **`email`**
 - **`fullName`**
@@ -86,25 +85,25 @@ FCL will only publicly and privately try to fetch these when specified up front 
 - **`location`**
 - **`publicKey`**
 
-All of the above are still subject to change as it is still early days, we would like to work closely with Wallet Providers to produce a robust, detailed and consitent spec regarding scopes. Feedback and thoughts are always welcome.
+All of the above are still subject to change as it is still early days.  We would like to work closely with Wallet Providers to produce a robust, detailed and consistent spec for scopes. Feedback and thoughts are always welcome.
 
-# Authentication Challenge
+# Authentication challenge
 
 Authentication can happen one of two ways:
 
 - Iframe Flow
 - Redirection Flow
 
-As a Wallet Provider you will be expected to register a URL endpoint (and some other information) with a handshake service (FCL will be launching with one in which registration happens on chain and is completely open source (Apache-2.0 lincense)).
+As a Wallet Provider, you will be expected to register a URL endpoint (and some other information) with a handshake service (FCL launches with one in which registration happens on chain and is completely open source (Apache-2.0 lincense)).
 This registered URL will be what is shown inside the iFrame or where the dapp users will be redirected.
-For the remainder of this documentation we will refere to it as the _Authentication Endpoint_ and pair it with the `GET https://provider.com/flow/authentication` route.
+For the remainder of this documentation, we will refere to it as the _Authentication Endpoint_ and pair it with the `GET https://provider.com/flow/authentication` route.
 
 The Authentication Endpoint will receive the following data as query params:
 
-- `l6n` _(required)_ -- location (origin) of dapp
-- `nonce` _(required)_ -- a random string supplied by the FCL
-- `scope` _(optional)_ -- the scopes requested by the dapp
-- `redirect` _(optional)_ -- where to redirect once the authentication challenge is complete
+- `l6n` _(required)_ -- location (origin) of dApp.
+- `nonce` _(required)_ -- a random string supplied by the FCL.
+- `scope` _(optional)_ -- the scopes requested by the dApp.
+- `redirect` _(optional)_ -- where to redirect after the authentication challenge is complete.
 
 ```
 GET https://provider.com/flow/authenticate
@@ -116,12 +115,11 @@ GET https://provider.com/flow/authenticate
 The values will use javascripts `encodeURIComponent` function and scopes will be `+` deliminated.
 ```
 
-We can tell that this challenge is using the Redirect Flow because of the inclusion of the redirect query param.
-The Iframe Flow will still need to be supported as it will be the default flow for dapps.
+We can tell that this challenge uses the Redirect Flow because of the inclusion of the redirect query param. The Iframe Flow will still need to be supported, as it will be the default flow for dapps.
 
-At this point its on the Wallet Provider to do their magic and be confident enough that the user is who they say they are.
-The user should then be shown in some form what the dapp is requesting via the scopes and allow them to opt in or out of anything they want.
-Once the Wallet Provider is ready to hand back control to the dapp and FCL it needs to complete the challenge by redirecting or emiting a javascript `postMessage` event.
+At this point, it's on the Wallet Provider to do their magic and be confident enough that the user is who they say they are. The user should then be shown in some form what the dApp wants via the scopes and allow them to opt in or out of anything they want.
+
+After the Wallet Provider is ready to hand back control to the dapp and FCL, it needs to redirect or emit a javascript `postMessage` event to complete the challenge.
 
 Redirecting will look like this:
 
@@ -154,11 +152,9 @@ parent.postMessage(
 );
 ```
 
-FCL should now have everything it needs to collect the Public, Private and Wallet Provider Info.
-The Wallet Provider info will be on chain so its not something that needs to be worried about here by the Wallet Provider.
-What does need to be worried about handling the hooks request which was supplied to FCL via the `hks` value in the challenge response `https://provider.hooks`.
+FCL should now have everything it needs to collect the Public, Private and Wallet Provider Info. The Wallet Provider info will be on chain so its not something that needs to be worried about here by the Wallet Provider.
 
-The hooks request will be to the `hks` value supplied in the challenge response. The request will also include the code as a query param
+You should be aware of how to handle the hooks request, which was supplied to FCL via the `hks` value in the challenge response `https://provider.hooks`. The hooks request will be to the `hks` value supplied in the challenge response. The request will also include the code as a query param.
 
 ```
 GET https://povider.com/hooks
@@ -167,13 +163,13 @@ GET https://povider.com/hooks
 
 This request needs to happen for a number of reasons.
 
-- If it fails FCL knows something is wrong and will attempt to re-authenticate.
-- If is succeeds FCL knows that the code it has is valid.
+- If it fails, FCL knows something is wrong and will attempt to re-authenticate.
+- If is succeeds, FCL knows that the code it has is valid.
 - It creates a direct way for FCL to "verify" the user against the Wallet Provider.
 - It gives FCL a direct way to get Private Identity Information and Hooks.
 - The code can be passed to the backend to create a back-channel between the backend and the Wallet Provider.
 
-When users return to a dapp, if the code FCL stored hasnt expired, FCL will make this request again in order to stay up to date with the latest informtaion. FCL may also intermitently request this information before some critial actions.
+When users return to a dApp, if the code FCL stored hasnt expired, FCL will make this request again to stay up to date with the latest informtaion. FCL may also intermitently request this information before some critial actions.
 
 The hooks request should respond with the following JSON
 
@@ -202,8 +198,7 @@ const privateHooks = {
 }
 ```
 
-When FCL requested the Public info from the chain it is expecting something like this.
-It will be on the Wallet Provider to keep this information up to date.
+When FCL requested the Public info from the chain, it expects something like this. It will be on the Wallet Provider to keep this information up to date.
 
 ```javascript
 const publicHooks = {
@@ -230,7 +225,7 @@ const publicHooks = {
 }
 ```
 
-At this point FCL can be fairly confident who the currentUser is and is ready to initiate transactions the user can authorize.
+At this point, FCL can be fairly confident who the currentUser is and is ready to initiate transactions the user can authorize.
 
 # Authorization
 
@@ -240,10 +235,10 @@ The core concepts to this idea are:
 
 - Hooks tell FCL where to send authorization requests (Wallet Provider)
 - Wallet Provider responds imediately with:
-  - a back-channel where FCL can request the results of the authorization
-  - some optional local hooks ways the currentUser can authorize
-- FCL will trigger the local hooks if they are for the currentUser
-- FCL will poll the back-channel requesting updates until an approval or denial is given
+  - a back-channel where FCL can request the results of the authorization.
+  - some optional local hooks ways the currentUser can authorize.
+- FCL will trigger the local hooks if they are for the currentUser.
+- FCL will poll the back-channel requesting updates until an approval or denial is given.
 
 Below is the public authorization hook we received during the challenge above.
 
@@ -278,7 +273,7 @@ POST https://provider.com/flow/authorize
 }
 ```
 
-FCL ise expecting something like this in response:
+FCL expects something like this in response:
 
 ```javascript
 {
@@ -301,15 +296,15 @@ FCL ise expecting something like this in response:
 }
 ```
 
-That local hook will be consumed by FCL, rendering an iframe with the endpoint as the src. If the user is already authenticated this screen could show them the Wallet Providers transaction approval process directly.
-Because FCL isnt relying on any communication to or from the Iframe it can lock it down as much as possible, and remove it once the authorization is complete.
-While displaying the local hook, it will request the status of the authorization from the `authorizationUpdates` hook.
+That local hook will be consumed by FCL, which renders an iframe with the endpoint as the SRC. If the user is already authenticated, this screen could show them the Wallet Providers transaction approval process directly.
+
+Because FCL isnt relying on any communication to or from the Iframe, it can lock it down as much as possible, and remove it once the authorization is complete. While it displays the local hook, it will request the status of the authorization from the `authorizationUpdates` hook.
 
 ```
 POST https://provider.com/flow/authorizations/4323
 ```
 
-Expecting a response that has the same structure as the origin but without the local hooks:
+We expect a response that has the same structure as the origin, but without the local hooks:
 
 ```javascript
 {
@@ -323,8 +318,7 @@ Expecting a response that has the same structure as the origin but without the l
 }
 ```
 
-FCL will then follow the new `authorizationUpdates` hooks until the status changes to `"APPROVED"` or `"DECLINED"`.
-If the authorization is declined it should include a reason if possible.
+FCL will then follow the new `authorizationUpdates` hooks until the status changes to `"APPROVED"` or `"DECLINED"`. If the authorization is declined, it should include a reason if possible.
 
 ```javascript
 {
@@ -333,7 +327,7 @@ If the authorization is declined it should include a reason if possible.
 }
 ```
 
-If the authorization is approved it should include a composite signature:
+If the authorization is approved, it should include a composite signature:
 
 ```javascript
 {
@@ -346,11 +340,11 @@ If the authorization is approved it should include a composite signature:
 }
 ```
 
-FCl can now submit the transaction to the Flow blockchain.
+FCL can now submit the transaction to the Flow blockchain.
 
 # TL;DR Wallet Provider
 
-Register Provider with FCL Handshake and implement 5 Endpoints.
+Register Provider with FCL Handshake and implement five Endpoints.
 
 - `GET flow/authenticate` -> `parent.postMessage(..., l6n)`
 - `GET flow/hooks?code=___` -> `{ ...identityAndHooks }`
