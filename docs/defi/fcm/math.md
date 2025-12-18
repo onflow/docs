@@ -44,9 +44,9 @@ This document explains the mathematical models and formulas that power Flow Cred
 
 The effective collateral is the sum of all collateral assets multiplied by their prices and collateral factors:
 
-$$
-EC = \sum_{t \in Collateral} A_t \times P_t \times CF_t
-$$
+```math
+EC = ∑(A_t × P_t × CF_t) for all t in Collateral
+```
 
 **Example**:
 ```
@@ -63,9 +63,9 @@ EC = (1000 × 1 × 0.8) + (500 × 1 × 0.9)
 
 The effective debt is the sum of all borrowed assets multiplied by their prices and borrow factors:
 
-$$
+```math
 ED = \sum_{t \in Debt} A_t \times P_t \times BF_t
-$$
+```
 
 **Example**:
 ```
@@ -80,9 +80,9 @@ ED = 800 × 1 × 1.0
 
 The health factor is the ratio of effective collateral to effective debt:
 
-$$
+```math
 HF = \frac{EC}{ED}
-$$
+```
 
 **Critical thresholds**:
 - $HF < 1.0$: Position is liquidatable
@@ -100,9 +100,9 @@ HF = 1250 / 800 = 1.5625
 
 The maximum amount that can be borrowed to reach target health:
 
-$$
+```math
 MaxBorrow = \frac{EC}{HF_{target}}
-$$
+```
 
 **Derivation**:
 ```
@@ -124,26 +124,26 @@ Max Borrow = 1250 / 1.3 = $961.54 MOET
 
 When a user deposits collateral with `pushToDrawDownSink=true`, the system calculates the initial borrow amount:
 
-$$
+```math
 BorrowAmount = \frac{EC}{HF_{target}}
-$$
+```
 
 **Step-by-step calculation**:
 
 1. **Calculate effective collateral**:
-   $$
+   ```math
    EC = A_{collateral} \times P_{collateral} \times CF_{collateral}
-   $$
+```math
 
 2. **Calculate target debt**:
-   $$
+```
    ED_{target} = \frac{EC}{HF_{target}}
-   $$
+```math
 
 3. **Borrow to reach target**:
-   $$
+```
    Borrow = ED_{target} = \frac{EC}{HF_{target}}
-   $$
+```math
 
 **Complete example**:
 ```
@@ -170,9 +170,9 @@ Result:
 
 When health exceeds maximum, calculate additional borrowing capacity:
 
-$$
+```
 AdditionalBorrow = \frac{EC}{HF_{target}} - ED_{current}
-$$
+```math
 
 **Proof**:
 ```
@@ -205,9 +205,9 @@ After borrowing $215.38:
 
 When health falls below minimum, calculate required repayment:
 
-$$
+```
 RequiredRepayment = ED_{current} - \frac{EC}{HF_{target}}
-$$
+```math
 
 **Proof**:
 ```
@@ -244,9 +244,9 @@ After repaying $123.07:
 
 FCM uses **scaled balances** to efficiently track interest:
 
-$$
+```
 B_{scaled} = \frac{B_{true}}{I_t}
-$$
+```math
 
 Where:
 - $B_{scaled}$: Stored scaled balance
@@ -259,18 +259,18 @@ Where:
 
 The interest index grows continuously based on the interest rate:
 
-$$
+```
 I_t(n+1) = I_t(n) \times (1 + r \times \Delta t)
-$$
+```math
 
 Where:
 - $r$: Annual interest rate (e.g., 0.10 for 10%)
 - $\Delta t$: Time elapsed (in years)
 
 **For compound interest**:
-$$
+```
 I_t(n) = I_0 \times e^{r \times t}
-$$
+```math
 
 Where $e$ is Euler's number (≈2.718).
 
@@ -278,9 +278,9 @@ Where $e$ is Euler's number (≈2.718).
 
 To get the current true balance from scaled balance:
 
-$$
+```
 B_{true}(t) = B_{scaled} \times I_t
-$$
+```math
 
 **Example**:
 ```
@@ -325,30 +325,30 @@ When position is touched:
 
 A position becomes liquidatable when:
 
-$$
+```
 HF < 1.0
-$$
+```math
 
 Equivalently:
-$$
+```
 EC < ED
-$$
+```math
 
 ### Liquidation Target
 
 Liquidations aim to restore health to a target (typically 1.05):
 
-$$
+```
 HF_{liquidation} = 1.05
-$$
+```math
 
 ### Collateral Seized Calculation
 
 Amount of collateral to seize:
 
-$$
+```
 CollateralSeized = \frac{ED_{repaid} \times (1 + bonus)}{P_{collateral} \times CF_{collateral}}
-$$
+```math
 
 Where:
 - $ED_{repaid}$: Amount of debt repaid by liquidator
@@ -380,9 +380,9 @@ After liquidation:
 
 To restore position to target health factor:
 
-$$
+```
 ED_{repay} = ED_{current} - \frac{EC}{HF_{liquidation}}
-$$
+```math
 
 **Example**:
 ```
@@ -400,9 +400,9 @@ ED_repay = 650 - 457.14 = $192.86 MOET must be repaid
 
 Given a percentage change in collateral price:
 
-$$
+```
 HF_{new} = HF_{old} \times \frac{P_{new}}{P_{old}}
-$$
+```math
 
 **Derivation**:
 ```
@@ -433,9 +433,9 @@ HF_new = 1.5 × (0.65 / 1.00) = 1.5 × 0.65 = 0.975 < 1.0 (liquidatable!)
 
 What's the maximum price drop before liquidation?
 
-$$
+```
 MaxDropPercent = 1 - \frac{1.0}{HF_{current}}
-$$
+```math
 
 **Derivation**:
 ```
@@ -465,9 +465,9 @@ HF = 1.1: Max drop = 1 - 1/1.1 = 9.09% (very risky!)
 
 With multiple collateral types:
 
-$$
+```
 EC = \sum_{i=1}^{n} A_i \times P_i \times CF_i
-$$
+```math
 
 Where $i$ iterates over all collateral token types.
 
@@ -476,14 +476,14 @@ Where $i$ iterates over all collateral token types.
 When collateral types are correlated (e.g., FLOW and stFLOW):
 
 **Simplified (no correlation)**:
-$$
+```
 Risk = \sum_{i} Risk_i
-$$
+```math
 
 **With correlation** (advanced):
-$$
+```
 Risk = \sqrt{\sum_{i}\sum_{j} w_i w_j \sigma_i \sigma_j \rho_{ij}}
-$$
+```math
 
 Where:
 - $w_i$: Weight of asset $i$
@@ -510,17 +510,17 @@ Scenario 2: Correlated collateral
 
 Annual Percentage Yield without compounding:
 
-$$
+```
 APY_{simple} = \frac{FinalValue - InitialValue}{InitialValue} \times \frac{365}{Days}
-$$
+```math
 
 ### Compound APY
 
 With continuous compounding:
 
-$$
+```
 APY_{compound} = e^r - 1
-$$
+```math
 
 Where $r$ is the continuous annual rate.
 
@@ -528,9 +528,9 @@ Where $r$ is the continuous annual rate.
 
 When borrowing to increase yield exposure:
 
-$$
+```
 Yield_{leveraged} = Yield_{strategy} - Interest_{borrowed}
-$$
+```math
 
 **Example**:
 ```
@@ -555,9 +555,9 @@ Total return: Base yield + leveraged yield
 
 A simplified risk score:
 
-$$
+```
 \text{Risk Score} = \frac{1}{HF - 1.0} \times Volatility_{collateral}
-$$
+```math
 
 Higher score = higher risk.
 
@@ -565,9 +565,9 @@ Higher score = higher risk.
 
 Maximum expected loss over time period at confidence level:
 
-$$
+```
 VaR_{95\%} = EC \times \sigma \times z_{0.95}
-$$
+```math
 
 Where:
 - $\sigma$: Daily volatility of collateral
@@ -590,9 +590,9 @@ Interpretation: 95% confident that daily loss won't exceed $82.25
 
 All operations must satisfy:
 
-$$
+```
 1.0 \leq HF_{min} < HF_{target} < HF_{max}
-$$
+```math
 
 Typical values: $HF_{min} = 1.1$, $HF_{target} = 1.3$, $HF_{max} = 1.5$
 
@@ -600,9 +600,9 @@ Typical values: $HF_{min} = 1.1$, $HF_{target} = 1.3$, $HF_{max} = 1.5$
 
 For safety:
 
-$$
+```
 0 < CF_t \leq 1.0
-$$
+```math
 
 Typically:
 - Volatile assets (FLOW): $CF = 0.75 - 0.85$
@@ -613,9 +613,9 @@ Typically:
 
 Maximum theoretical leverage:
 
-$$
+```
 MaxLeverage = \frac{1}{1 - CF}
-$$
+```math
 
 **Examples**:
 ```
@@ -626,9 +626,9 @@ CF = 0.9: Max leverage = 1 / (1 - 0.9) = 10x (risky!)
 
 But actual safe leverage is constrained by target health:
 
-$$
+```
 SafeLeverage = \frac{CF}{HF_{target}}
-$$
+```
 
 **Examples**:
 ```

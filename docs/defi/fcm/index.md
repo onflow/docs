@@ -129,9 +129,9 @@ FCM offers composable primitives allowing you to build on ALP, FYV, or both, sta
 - **[MOET Documentation](#)** - The synthetic stablecoin
 
 ### Advanced Topics
-- **[Capital Flows](./capital-flows.md)** - How value moves through the system
-- **[Risk Management](./risk-management.md)** - Understanding and managing risks
-- **[Integration Guide](./integration.md)** - Building on top of FCM
+- **[Capital Flows](#)** - How value moves through the system
+- **[Risk Management](#)** - Understanding and managing risks
+- **[Integration Guide](#)** - Building on top of FCM
 
 ## Quick Start
 
@@ -175,7 +175,7 @@ FCM implements multiple security layers including smart contract audits for all 
 - **New to FCM?** Start with [Understanding FCM Basics](./basics.md)
 - **Want technical details?** Read the [Architecture Overview](./architecture.md)
 - **Ready to use it?** Explore [ALP](../alp/index.md) or [FYV](#)
-- **Building an integration?** Check the [Integration Guide](./integration.md)
+- **Building an integration?** Check the [Integration Guide](#)
 
 ---
 
