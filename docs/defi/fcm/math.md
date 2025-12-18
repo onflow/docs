@@ -25,17 +25,17 @@ This document explains the mathematical models and formulas that power Flow Cred
 | **Effective Collateral** | $EC$ | Total usable collateral value in MOET |
 | **Effective Debt** | $ED$ | Total debt value in MOET |
 | **Health Factor** | $HF$ | Ratio of collateral to debt |
-| **Target Health** | $HF_{target}$ | Desired health ratio (typically 1.3) |
-| **Min Health** | $HF_{min}$ | Minimum before rebalancing (typically 1.1) |
-| **Max Health** | $HF_{max}$ | Maximum before rebalancing (typically 1.5) |
+| **Target Health** | $HF_target$ | Desired health ratio (typically 1.3) |
+| **Min Health** | $HF_min$ | Minimum before rebalancing (typically 1.1) |
+| **Max Health** | $HF_max$ | Maximum before rebalancing (typically 1.5) |
 
 ### Interest Variables
 
 | Variable | Symbol | Description |
 |----------|--------|-------------|
 | **Interest Index** | $I_t(n)$ | Interest index for token $t$ at time $n$ |
-| **Scaled Balance** | $B_{scaled}$ | Balance divided by interest index |
-| **True Balance** | $B_{true}$ | Actual balance including accrued interest |
+| **Scaled Balance** | $B_scaled$ | Balance divided by interest index |
+| **True Balance** | $B_true$ | Actual balance including accrued interest |
 | **Interest Rate** | $r$ | Annual interest rate |
 
 ## Fundamental Formulas
@@ -64,7 +64,7 @@ EC = (1000 × 1 × 0.8) + (500 × 1 × 0.9)
 The effective debt is the sum of all borrowed assets multiplied by their prices and borrow factors:
 
 ```math
-ED = \sum_{t \in Debt} A_t \times P_t \times BF_t
+ED = \sum_t \in Debt A_t × P_t × BF_t
 ```
 
 **Example**:
@@ -81,7 +81,7 @@ ED = 800 × 1 × 1.0
 The health factor is the ratio of effective collateral to effective debt:
 
 ```math
-HF = \frac{EC}{ED}
+HF = (EC / ED)
 ```
 
 **Critical thresholds**:
@@ -101,7 +101,7 @@ HF = 1250 / 800 = 1.5625
 The maximum amount that can be borrowed to reach target health:
 
 ```math
-MaxBorrow = \frac{EC}{HF_{target}}
+MaxBorrow = (EC / HF_target)
 ```
 
 **Derivation**:
@@ -125,25 +125,25 @@ Max Borrow = 1250 / 1.3 = $961.54 MOET
 When a user deposits collateral with `pushToDrawDownSink=true`, the system calculates the initial borrow amount:
 
 ```math
-BorrowAmount = \frac{EC}{HF_{target}}
+BorrowAmount = (EC / HF_target)
 ```
 
 **Step-by-step calculation**:
 
 1. **Calculate effective collateral**:
-   ```math
-   EC = A_{collateral} \times P_{collateral} \times CF_{collateral}
-```math
+```
+   EC = A_collateral × P_collateral × CF_collateral
+```
 
 2. **Calculate target debt**:
 ```
-   ED_{target} = \frac{EC}{HF_{target}}
-```math
+   ED_target = (EC / HF_target)
+```
 
 3. **Borrow to reach target**:
 ```
-   Borrow = ED_{target} = \frac{EC}{HF_{target}}
-```math
+   Borrow = ED_target = (EC / HF_target)
+```
 
 **Complete example**:
 ```
@@ -171,8 +171,8 @@ Result:
 When health exceeds maximum, calculate additional borrowing capacity:
 
 ```
-AdditionalBorrow = \frac{EC}{HF_{target}} - ED_{current}
-```math
+AdditionalBorrow = (EC / HF_target) - ED_current
+```
 
 **Proof**:
 ```
@@ -206,8 +206,8 @@ After borrowing $215.38:
 When health falls below minimum, calculate required repayment:
 
 ```
-RequiredRepayment = ED_{current} - \frac{EC}{HF_{target}}
-```math
+RequiredRepayment = ED_current - (EC / HF_target)
+```
 
 **Proof**:
 ```
@@ -245,12 +245,12 @@ After repaying $123.07:
 FCM uses **scaled balances** to efficiently track interest:
 
 ```
-B_{scaled} = \frac{B_{true}}{I_t}
-```math
+B_scaled = \frac{B_true}{I_t}
+```
 
 Where:
-- $B_{scaled}$: Stored scaled balance
-- $B_{true}$: Actual balance including interest
+- $B_scaled$: Stored scaled balance
+- $B_true$: Actual balance including interest
 - $I_t$: Current interest index
 
 **Key insight**: Scaled balance stays constant while interest index grows.
@@ -260,8 +260,8 @@ Where:
 The interest index grows continuously based on the interest rate:
 
 ```
-I_t(n+1) = I_t(n) \times (1 + r \times \Delta t)
-```math
+I_t(n+1) = I_t(n) × (1 + r × \Delta t)
+```
 
 Where:
 - $r$: Annual interest rate (e.g., 0.10 for 10%)
@@ -269,8 +269,8 @@ Where:
 
 **For compound interest**:
 ```
-I_t(n) = I_0 \times e^{r \times t}
-```math
+I_t(n) = I_0 × e^{r × t}
+```
 
 Where $e$ is Euler's number (≈2.718).
 
@@ -279,8 +279,8 @@ Where $e$ is Euler's number (≈2.718).
 To get the current true balance from scaled balance:
 
 ```
-B_{true}(t) = B_{scaled} \times I_t
-```math
+B_true(t) = B_scaled × I_t
+```
 
 **Example**:
 ```
@@ -327,34 +327,34 @@ A position becomes liquidatable when:
 
 ```
 HF < 1.0
-```math
+```
 
 Equivalently:
 ```
 EC < ED
-```math
+```
 
 ### Liquidation Target
 
 Liquidations aim to restore health to a target (typically 1.05):
 
 ```
-HF_{liquidation} = 1.05
-```math
+HF_liquidation = 1.05
+```
 
 ### Collateral Seized Calculation
 
 Amount of collateral to seize:
 
 ```
-CollateralSeized = \frac{ED_{repaid} \times (1 + bonus)}{P_{collateral} \times CF_{collateral}}
-```math
+CollateralSeized = \frac{ED_repaid × (1 + bonus)}{P_collateral × CF_collateral}
+```
 
 Where:
-- $ED_{repaid}$: Amount of debt repaid by liquidator
+- $ED_repaid$: Amount of debt repaid by liquidator
 - $bonus$: Liquidation bonus (e.g., 0.05 for 5%)
-- $P_{collateral}$: Price of collateral token
-- $CF_{collateral}$: Collateral factor
+- $P_collateral$: Price of collateral token
+- $CF_collateral$: Collateral factor
 
 **Example**:
 ```
@@ -381,8 +381,8 @@ After liquidation:
 To restore position to target health factor:
 
 ```
-ED_{repay} = ED_{current} - \frac{EC}{HF_{liquidation}}
-```math
+ED_repay = ED_current - (EC / HF_liquidation)
+```
 
 **Example**:
 ```
@@ -401,8 +401,8 @@ ED_repay = 650 - 457.14 = $192.86 MOET must be repaid
 Given a percentage change in collateral price:
 
 ```
-HF_{new} = HF_{old} \times \frac{P_{new}}{P_{old}}
-```math
+HF_new = HF_old × \frac{P_new}{P_old}
+```
 
 **Derivation**:
 ```
@@ -434,8 +434,8 @@ HF_new = 1.5 × (0.65 / 1.00) = 1.5 × 0.65 = 0.975 < 1.0 (liquidatable!)
 What's the maximum price drop before liquidation?
 
 ```
-MaxDropPercent = 1 - \frac{1.0}{HF_{current}}
-```math
+MaxDropPercent = 1 - (1.0 / HF_current)
+```
 
 **Derivation**:
 ```
@@ -466,8 +466,8 @@ HF = 1.1: Max drop = 1 - 1/1.1 = 9.09% (very risky!)
 With multiple collateral types:
 
 ```
-EC = \sum_{i=1}^{n} A_i \times P_i \times CF_i
-```math
+EC = \sum_i=1^{n} A_i × P_i × CF_i
+```
 
 Where $i$ iterates over all collateral token types.
 
@@ -477,18 +477,18 @@ When collateral types are correlated (e.g., FLOW and stFLOW):
 
 **Simplified (no correlation)**:
 ```
-Risk = \sum_{i} Risk_i
-```math
+Risk = \sum_i Risk_i
+```
 
 **With correlation** (advanced):
 ```
-Risk = \sqrt{\sum_{i}\sum_{j} w_i w_j \sigma_i \sigma_j \rho_{ij}}
-```math
+Risk = \sqrt{\sum_i\sum_j w_i w_j \sigma_i \sigma_j \rho_ij}
+```
 
 Where:
 - $w_i$: Weight of asset $i$
 - $\sigma_i$: Volatility of asset $i$
-- $\rho_{ij}$: Correlation between assets $i$ and $j$
+- $\rho_ij$: Correlation between assets $i$ and $j$
 
 **Practical impact**:
 ```
@@ -511,16 +511,16 @@ Scenario 2: Correlated collateral
 Annual Percentage Yield without compounding:
 
 ```
-APY_{simple} = \frac{FinalValue - InitialValue}{InitialValue} \times \frac{365}{Days}
-```math
+APY_simple = (FinalValue - InitialValue / InitialValue) × (365 / Days)
+```
 
 ### Compound APY
 
 With continuous compounding:
 
 ```
-APY_{compound} = e^r - 1
-```math
+APY_compound = e^r - 1
+```
 
 Where $r$ is the continuous annual rate.
 
@@ -529,8 +529,8 @@ Where $r$ is the continuous annual rate.
 When borrowing to increase yield exposure:
 
 ```
-Yield_{leveraged} = Yield_{strategy} - Interest_{borrowed}
-```math
+Yield_leveraged = Yield_strategy - Interest_borrowed
+```
 
 **Example**:
 ```
@@ -556,8 +556,8 @@ Total return: Base yield + leveraged yield
 A simplified risk score:
 
 ```
-\text{Risk Score} = \frac{1}{HF - 1.0} \times Volatility_{collateral}
-```math
+\text{Risk Score} = (1 / HF - 1.0) × Volatility_collateral
+```
 
 Higher score = higher risk.
 
@@ -566,12 +566,12 @@ Higher score = higher risk.
 Maximum expected loss over time period at confidence level:
 
 ```
-VaR_{95\%} = EC \times \sigma \times z_{0.95}
-```math
+VaR_95% = EC × \sigma × z_0.95
+```
 
 Where:
 - $\sigma$: Daily volatility of collateral
-- $z_{0.95}$: Z-score for 95% confidence (≈1.645)
+- $z_0.95$: Z-score for 95% confidence (≈1.645)
 
 **Example**:
 ```
@@ -591,18 +591,18 @@ Interpretation: 95% confident that daily loss won't exceed $82.25
 All operations must satisfy:
 
 ```
-1.0 \leq HF_{min} < HF_{target} < HF_{max}
-```math
+1.0 ≤ HF_min < HF_target < HF_max
+```
 
-Typical values: $HF_{min} = 1.1$, $HF_{target} = 1.3$, $HF_{max} = 1.5$
+Typical values: $HF_min = 1.1$, $HF_target = 1.3$, $HF_max = 1.5$
 
 ### Collateral Factor Bounds
 
 For safety:
 
 ```
-0 < CF_t \leq 1.0
-```math
+0 < CF_t ≤ 1.0
+```
 
 Typically:
 - Volatile assets (FLOW): $CF = 0.75 - 0.85$
@@ -614,8 +614,8 @@ Typically:
 Maximum theoretical leverage:
 
 ```
-MaxLeverage = \frac{1}{1 - CF}
-```math
+MaxLeverage = (1 / 1 - CF)
+```
 
 **Examples**:
 ```
@@ -627,7 +627,7 @@ CF = 0.9: Max leverage = 1 / (1 - 0.9) = 10x (risky!)
 But actual safe leverage is constrained by target health:
 
 ```
-SafeLeverage = \frac{CF}{HF_{target}}
+SafeLeverage = (CF / HF_target)
 ```
 
 **Examples**:
@@ -683,13 +683,13 @@ Position back to optimal state!
 
 | Formula | Expression | Use |
 |---------|------------|-----|
-| **Effective Collateral** | $EC = \sum A_t \times P_t \times CF_t$ | Calculate total collateral value |
+| **Effective Collateral** | $EC = \sum A_t × P_t × CF_t$ | Calculate total collateral value |
 | **Health Factor** | $HF = EC / ED$ | Monitor position safety |
-| **Max Borrow** | $Max = EC / HF_{target}$ | Auto-borrowing amount |
-| **Rebalance Up** | $Repay = ED - (EC / HF_{target})$ | Required debt reduction |
-| **Rebalance Down** | $Borrow = (EC / HF_{target}) - ED$ | Additional borrowing capacity |
-| **Scaled Balance** | $B_{scaled} = B_{true} / I_t$ | Interest-efficient tracking |
-| **True Balance** | $B_{true} = B_{scaled} \times I_t$ | Current balance with interest |
+| **Max Borrow** | $Max = EC / HF_target$ | Auto-borrowing amount |
+| **Rebalance Up** | $Repay = ED - (EC / HF_target)$ | Required debt reduction |
+| **Rebalance Down** | $Borrow = (EC / HF_target) - ED$ | Additional borrowing capacity |
+| **Scaled Balance** | $B_scaled = B_true / I_t$ | Interest-efficient tracking |
+| **True Balance** | $B_true = B_scaled × I_t$ | Current balance with interest |
 | **Max Price Drop** | $DropPercent = 1 - (1 / HF)$ | Liquidation safety margin |
 
 ## Next Steps
