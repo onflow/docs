@@ -15,7 +15,7 @@ MOET plays a central role in ALP as the default token and primary unit of accoun
 - 🔄 **The rebalancing medium** - Used for all automated operations
 - 🌉 **The value bridge** - Flows between ALP and FYV
 
-For more about MOET tokenomics, see the [MOET documentation](../moet/index.md).
+For more about MOET tokenomics, see the [MOET documentation](#).
 
 ## MOET as Unit of Account
 
@@ -427,7 +427,7 @@ MOET is central to all FCM calculations:
 
 - **Understand automation**: [Rebalancing Mechanics](./rebalancing.md)
 - **See the big picture**: [FCM Architecture](../fcm/architecture.md)
-- **Deep dive on MOET**: [MOET Documentation](../moet/index.md)
+- **Deep dive on MOET**: [MOET Documentation](#)
 - **Explore position management**: [Position Lifecycle](./position-lifecycle.md)
 
 ---

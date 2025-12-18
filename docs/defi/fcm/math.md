@@ -45,7 +45,7 @@ This document explains the mathematical models and formulas that power Flow Cred
 The effective collateral is the sum of all collateral assets multiplied by their prices and collateral factors:
 
 $$
-EC = \sum_{t \in \text{Collateral}} A_t \times P_t \times CF_t
+EC = \sum_{t \in Collateral} A_t \times P_t \times CF_t
 $$
 
 **Example**:
@@ -64,7 +64,7 @@ EC = (1000 × 1 × 0.8) + (500 × 1 × 0.9)
 The effective debt is the sum of all borrowed assets multiplied by their prices and borrow factors:
 
 $$
-ED = \sum_{t \in \text{Debt}} A_t \times P_t \times BF_t
+ED = \sum_{t \in Debt} A_t \times P_t \times BF_t
 $$
 
 **Example**:
@@ -101,7 +101,7 @@ HF = 1250 / 800 = 1.5625
 The maximum amount that can be borrowed to reach target health:
 
 $$
-\text{Max Borrow} = \frac{EC}{HF_{target}}
+MaxBorrow = \frac{EC}{HF_{target}}
 $$
 
 **Derivation**:
@@ -125,7 +125,7 @@ Max Borrow = 1250 / 1.3 = $961.54 MOET
 When a user deposits collateral with `pushToDrawDownSink=true`, the system calculates the initial borrow amount:
 
 $$
-\text{Borrow Amount} = \frac{EC}{HF_{target}}
+BorrowAmount = \frac{EC}{HF_{target}}
 $$
 
 **Step-by-step calculation**:
@@ -142,7 +142,7 @@ $$
 
 3. **Borrow to reach target**:
    $$
-   \text{Borrow} = ED_{target} = \frac{EC}{HF_{target}}
+   Borrow = ED_{target} = \frac{EC}{HF_{target}}
    $$
 
 **Complete example**:
@@ -171,7 +171,7 @@ Result:
 When health exceeds maximum, calculate additional borrowing capacity:
 
 $$
-\text{Additional Borrow} = \frac{EC}{HF_{target}} - ED_{current}
+AdditionalBorrow = \frac{EC}{HF_{target}} - ED_{current}
 $$
 
 **Proof**:
@@ -206,7 +206,7 @@ After borrowing $215.38:
 When health falls below minimum, calculate required repayment:
 
 $$
-\text{Required Repayment} = ED_{current} - \frac{EC}{HF_{target}}
+RequiredRepayment = ED_{current} - \frac{EC}{HF_{target}}
 $$
 
 **Proof**:
@@ -347,12 +347,12 @@ $$
 Amount of collateral to seize:
 
 $$
-\text{Collateral Seized} = \frac{ED_{repaid} \times (1 + \text{bonus})}{P_{collateral} \times CF_{collateral}}
+CollateralSeized = \frac{ED_{repaid} \times (1 + bonus)}{P_{collateral} \times CF_{collateral}}
 $$
 
 Where:
 - $ED_{repaid}$: Amount of debt repaid by liquidator
-- $\text{bonus}$: Liquidation bonus (e.g., 0.05 for 5%)
+- $bonus$: Liquidation bonus (e.g., 0.05 for 5%)
 - $P_{collateral}$: Price of collateral token
 - $CF_{collateral}$: Collateral factor
 
@@ -434,7 +434,7 @@ HF_new = 1.5 × (0.65 / 1.00) = 1.5 × 0.65 = 0.975 < 1.0 (liquidatable!)
 What's the maximum price drop before liquidation?
 
 $$
-\text{Max Drop %} = 1 - \frac{1.0}{HF_{current}}
+MaxDropPercent = 1 - \frac{1.0}{HF_{current}}
 $$
 
 **Derivation**:
@@ -477,12 +477,12 @@ When collateral types are correlated (e.g., FLOW and stFLOW):
 
 **Simplified (no correlation)**:
 $$
-\text{Risk} = \sum_{i} \text{Risk}_i
+Risk = \sum_{i} Risk_i
 $$
 
 **With correlation** (advanced):
 $$
-\text{Risk} = \sqrt{\sum_{i}\sum_{j} w_i w_j \sigma_i \sigma_j \rho_{ij}}
+Risk = \sqrt{\sum_{i}\sum_{j} w_i w_j \sigma_i \sigma_j \rho_{ij}}
 $$
 
 Where:
@@ -511,7 +511,7 @@ Scenario 2: Correlated collateral
 Annual Percentage Yield without compounding:
 
 $$
-\text{APY}_{simple} = \frac{\text{Final Value} - \text{Initial Value}}{\text{Initial Value}} \times \frac{365}{\text{Days}}
+APY_{simple} = \frac{FinalValue - InitialValue}{InitialValue} \times \frac{365}{Days}
 $$
 
 ### Compound APY
@@ -519,7 +519,7 @@ $$
 With continuous compounding:
 
 $$
-\text{APY}_{compound} = e^r - 1
+APY_{compound} = e^r - 1
 $$
 
 Where $r$ is the continuous annual rate.
@@ -529,7 +529,7 @@ Where $r$ is the continuous annual rate.
 When borrowing to increase yield exposure:
 
 $$
-\text{Yield}_{leveraged} = \text{Yield}_{strategy} - \text{Interest}_{borrowed}
+Yield_{leveraged} = Yield_{strategy} - Interest_{borrowed}
 $$
 
 **Example**:
@@ -556,7 +556,7 @@ Total return: Base yield + leveraged yield
 A simplified risk score:
 
 $$
-\text{Risk Score} = \frac{1}{HF - 1.0} \times \text{Volatility}_{collateral}
+\text{Risk Score} = \frac{1}{HF - 1.0} \times Volatility_{collateral}
 $$
 
 Higher score = higher risk.
@@ -566,7 +566,7 @@ Higher score = higher risk.
 Maximum expected loss over time period at confidence level:
 
 $$
-\text{VaR}_{95\%} = EC \times \sigma \times z_{0.95}
+VaR_{95\%} = EC \times \sigma \times z_{0.95}
 $$
 
 Where:
@@ -614,7 +614,7 @@ Typically:
 Maximum theoretical leverage:
 
 $$
-\text{Max Leverage} = \frac{1}{1 - CF}
+MaxLeverage = \frac{1}{1 - CF}
 $$
 
 **Examples**:
@@ -627,7 +627,7 @@ CF = 0.9: Max leverage = 1 / (1 - 0.9) = 10x (risky!)
 But actual safe leverage is constrained by target health:
 
 $$
-\text{Safe Leverage} = \frac{CF}{HF_{target}}
+SafeLeverage = \frac{CF}{HF_{target}}
 $$
 
 **Examples**:
@@ -685,12 +685,12 @@ Position back to optimal state!
 |---------|------------|-----|
 | **Effective Collateral** | $EC = \sum A_t \times P_t \times CF_t$ | Calculate total collateral value |
 | **Health Factor** | $HF = EC / ED$ | Monitor position safety |
-| **Max Borrow** | $\text{Max} = EC / HF_{target}$ | Auto-borrowing amount |
-| **Rebalance Up** | $\text{Repay} = ED - (EC / HF_{target})$ | Required debt reduction |
-| **Rebalance Down** | $\text{Borrow} = (EC / HF_{target}) - ED$ | Additional borrowing capacity |
+| **Max Borrow** | $Max = EC / HF_{target}$ | Auto-borrowing amount |
+| **Rebalance Up** | $Repay = ED - (EC / HF_{target})$ | Required debt reduction |
+| **Rebalance Down** | $Borrow = (EC / HF_{target}) - ED$ | Additional borrowing capacity |
 | **Scaled Balance** | $B_{scaled} = B_{true} / I_t$ | Interest-efficient tracking |
 | **True Balance** | $B_{true} = B_{scaled} \times I_t$ | Current balance with interest |
-| **Max Price Drop** | $\text{Drop%} = 1 - (1 / HF)$ | Liquidation safety margin |
+| **Max Price Drop** | $DropPercent = 1 - (1 / HF)$ | Liquidation safety margin |
 
 ## Next Steps
 

@@ -32,13 +32,13 @@ graph LR
    - Uses DeFi Actions for composability
    - Implements liquidation prevention mechanisms
 
-2. **[FYV (Flow Yield Vaults)](../flow-yield-vaults/index.md)**: The yield aggregation layer
+2. **[FYV (Flow Yield Vaults)](#)**: The yield aggregation layer
    - Deploys borrowed capital into optimal yield strategies
    - Automatically compounds returns
    - Provides liquidity for ALP liquidation prevention
    - Manages risk through auto-balancing
 
-3. **[MOET](../moet/index.md)**: The synthetic stablecoin
+3. **[MOET](#)**: The synthetic stablecoin
    - Serves as the unit of account for all pricing
    - Primary borrowed asset in ALP
    - Medium of exchange between components
@@ -125,8 +125,8 @@ FCM offers composable primitives allowing you to build on ALP, FYV, or both, sta
 
 ### Component Documentation
 - **[ALP Documentation](../alp/index.md)** - Deep dive into the lending platform
-- **[FYV Documentation](../flow-yield-vaults/index.md)** - Yield strategies and vaults
-- **[MOET Documentation](../moet/index.md)** - The synthetic stablecoin
+- **[FYV Documentation](#)** - Yield strategies and vaults
+- **[MOET Documentation](#)** - The synthetic stablecoin
 
 ### Advanced Topics
 - **[Capital Flows](./capital-flows.md)** - How value moves through the system
@@ -174,7 +174,7 @@ FCM implements multiple security layers including smart contract audits for all 
 
 - **New to FCM?** Start with [Understanding FCM Basics](./basics.md)
 - **Want technical details?** Read the [Architecture Overview](./architecture.md)
-- **Ready to use it?** Explore [ALP](../alp/index.md) or [FYV](../flow-yield-vaults/index.md)
+- **Ready to use it?** Explore [ALP](../alp/index.md) or [FYV](#)
 - **Building an integration?** Check the [Integration Guide](./integration.md)
 
 ---

@@ -9,7 +9,7 @@ sidebar_position: 1
 The Automated Lending Platform (ALP) is the core lending protocol component of [Flow Credit Market (FCM)](../fcm/index.md). ALP provides the foundational lending and borrowing infrastructure with automated position management and liquidation protection.
 
 :::info
-ALP is one of three core components that make up FCM: ALP (Automated Lending Platform) provides the lending/borrowing engine, [Flow Yield Vaults (FYV)](../flow-yield-vaults/index.md) handles yield aggregation strategies, and [MOET](../moet/index.md) serves as the synthetic stablecoin and unit of account.
+ALP is one of three core components that make up FCM: ALP (Automated Lending Platform) provides the lending/borrowing engine, [Flow Yield Vaults (FYV)](#) handles yield aggregation strategies, and [MOET](#) serves as the synthetic stablecoin and unit of account.
 :::
 
 ## What is ALP?
@@ -87,7 +87,7 @@ For most users, we recommend using **[Flow Credit Market (FCM)](../fcm/index.md)
 
 - [ALP GitHub Repository](https://github.com/onflow/FlowCreditMarket) (FlowCreditMarket contract)
 - [Flow Credit Market (FCM)](../fcm/index.md) - The complete product
-- [MOET Token Documentation](../moet/index.md)
+- [MOET Token Documentation](#)
 - [Flow Documentation](https://developers.flow.com)
 
 ## Security Considerations

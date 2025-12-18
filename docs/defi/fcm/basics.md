@@ -139,7 +139,7 @@ Learn more: [ALP Documentation](../alp/index.md)
    - ALP repays debt
 ```
 
-Learn more: [FYV Documentation](../flow-yield-vaults/index.md)
+Learn more: [FYV Documentation](#)
 
 ### Component 3: MOET (The Unit of Account)
 
@@ -153,7 +153,7 @@ Learn more: [FYV Documentation](../flow-yield-vaults/index.md)
 
 **Why MOET?**: MOET standardizes all valuations, simplifies multi-collateral calculations, is designed specifically for DeFi operations, and provides deep integration with the Flow ecosystem.
 
-Learn more: [MOET Documentation](../moet/index.md)
+Learn more: [MOET Documentation](#)
 
 ## The Capital Flow Cycle
 
@@ -432,7 +432,7 @@ Now that you understand the basics:
 
 1. **Learn the architecture**: [Architecture Overview](./architecture.md)
 2. **Understand the math**: [Mathematical Foundations](./math.md)
-3. **Explore components**: [ALP](../alp/index.md), [FYV](../flow-yield-vaults/index.md), [MOET](../moet/index.md)
+3. **Explore components**: [ALP](../alp/index.md), [FYV](#), [MOET](#)
 4. **Start using FCM**: Follow the quick start guide
 
 ---

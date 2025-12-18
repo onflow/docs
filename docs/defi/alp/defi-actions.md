@@ -5,7 +5,7 @@ sidebar_position: 7
 
 # DeFi Actions Integration
 
-DeFi Actions is a composability framework that enables ALP to integrate seamlessly with other DeFi protocols like [Flow Yield Vaults (FYV)](../flow-yield-vaults/index.md). This powerful abstraction allows for automated value flows and complex strategy compositions.
+DeFi Actions is a composability framework that enables ALP to integrate seamlessly with other DeFi protocols like [Flow Yield Vaults (FYV)](#). This powerful abstraction allows for automated value flows and complex strategy compositions.
 
 ## Understanding DeFi Actions
 

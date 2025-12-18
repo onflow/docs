@@ -497,8 +497,8 @@ Actions:
 
 - **Understand the math**: [Mathematical Foundations](./math.md)
 - **Explore ALP details**: [ALP Architecture](../alp/architecture.md)
-- **Learn about FYV**: [FYV Documentation](../flow-yield-vaults/index.md)
-- **Deep dive into MOET**: [MOET Documentation](../moet/index.md)
+- **Learn about FYV**: [FYV Documentation](#)
+- **Deep dive into MOET**: [MOET Documentation](#)
 
 ---
 
