@@ -6,11 +6,13 @@ sidebar_position: 6
 
 :::info
 
-Are you a Cadence developer looking for information about Fees on Cadence? If so, check out the Cadence specific documentation [here](../cadence/basics/fees.md)
+Are you a Cadence developer who wants information about Fees on Cadence? If so, check out the Cadence specific documentation [here](../cadence/basics/fees.md)
 
 :::
 
-EVM transactions are ultra low-cost and use the native FLOW token as gas. [Externally Owned Accounts (EOAs)](./accounts.md) function the same on Flow as other EVM networks like Ethereum.
+# Fees
+
+EVM transactions are ultra low-cost and use the native FLOW token as gas. [Externally Owned Accounts (EOAs)] function the same on Flow as other EVM networks like Ethereum.
 
 <details>
 <summary><h2>How Transaction Fees are Computed on EVM</h2></summary>
@@ -22,9 +24,9 @@ Transaction fee on EVM = surge x [inclusion fee + (execution effort * unit cost)
 ```
 
 - `Surge' factor` dynamically accounts for network pressure and market conditions.
-- `Inclusion fee` accounts for the resources required to process a transaction due to its core properties (byte size, signatures). This is currently constant at 1E-4 FLOW, but subject to change with community approval.
-- `Execution fee` The fee that accounts for the operational cost of running the transaction script, processing the results, sending results for verification, generating verification receipts, etc. and is calculated as a product of `computation units` and the `cost per unit`.
-  - `Execution Effort (measured in computation units)` is based on transaction type and operations that are called during the execution of a transaction. The weights determine how costly (time-consuming) each operation is.
+- `Inclusion fee` accounts for the resources required to process a transaction due to its core properties (byte size, signatures). This is currently constant at 1E-6 FLOW, but subject to change with community approval.
+- `Execution fee` The fee that accounts for the operational cost of running the transaction script, processing the results, sending results for verification, generating verification receipts, and so on, and is calculated as a product of `execution effort units` and the `cost per unit`.
+  - `Execution Effort (computation)` is based on transaction type and operations that are called during the execution of a transaction. The weights determine how costly (time consuming) each operation is.
   - `Execution Effort Unit Cost` = `4E-05 FLOW` (currently constant, but subject to change with community approval)
 
 <h3>Calculation of Execution Effort</h3>
@@ -198,12 +200,22 @@ Thus
 Transaction fee = [1E-4 FLOW + (47.8 * 4E-05 FLOW)] x 1 = 2.012E-03 FLOW
 ```
 
-**Note**: Please be aware that this example serves solely for illustrative purposes to elucidate the calculations. Actual transaction fees may differ due to various factors, including the byte size of the transaction.
+:::info
+
+Be aware that this example serves solely for illustrative purposes to elucidate the calculations. Actual transaction fees may differ due to various factors, such as the byte size of the transaction.
+
+:::
 
 </details>
 
 ## Gasless Transactions
 
-Fees needed to execute transactions on a Web3 app are often a major challenge for new users and can be a barrier to adoption. Builders can easily extend their apps with Cadence to create ‘gasless’ experiences by specifying their app as the [sponsor](../cadence/advanced-concepts/account-abstraction.md#sponsored-transactions) instead of the user.
+Fees needed to execute transactions on a Web3 app are often a major challenge for new users and can be a barrier to adoption. To easily extend their apps with Cadence to create ‘gasless’ experiences, builders can specify their app as the [sponsor] instead of the user.
 
-To learn more about storage fee and transaction fee, visit [Flow Tokenomics page](https://flow.com/flow-tokenomics/technical-overview).
+To learn more about storage fee and transaction fee, visit [Flow Tokenomics page].
+
+<!-- Reference-style links, will not render on page. -->
+
+[Externally Owned Accounts (EOAs)]: ./accounts.md
+[sponsor]: ../cadence/advanced-concepts/account-abstraction.md#sponsored-transactions
+[Flow Tokenomics page]: https://flow.com/flow-tokenomics/technical-overview).
