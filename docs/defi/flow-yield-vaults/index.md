@@ -56,9 +56,7 @@ Learn more in [Architecture Overview](./architecture.md).
 - [Scheduling System](./scheduling.md) - Automated execution and recovery
 
 ### Integration
-- [FCM Integration](./fcm-integration.md) - Working with ALP and MOET
 - [DeFi Actions](./defi-actions.md) - Composable DeFi primitives
-- [Swap Connectors](./swap-connectors.md) - Token conversion infrastructure
 
 ## Getting Started
 
@@ -72,7 +70,7 @@ If you want to integrate FYV or create custom strategies, start with the [Archit
 
 ### For DeFi Builders
 
-If you want to understand how FYV achieves automated leverage and liquidation protection, start with [Leveraged Farming](./leveraged-farming.md) and [FCM Integration](./fcm-integration.md).
+If you want to understand how FYV achieves automated leverage and liquidation protection, start with [Leveraged Farming](./leveraged-farming.md) and explore how FYV integrates with [ALP](../alp/index.md) for borrowing.
 
 ## Key Features
 
@@ -113,7 +111,7 @@ See [DeFi Contracts](../defi-contracts-mainnet.md) for complete contract address
 - **Understand the basics**: Read [Architecture Overview](./architecture.md)
 - **Learn strategies**: Explore [TracerStrategy](./strategies.md#tracerstrategy)
 - **Create your first vault**: Follow [Vault Lifecycle](./vault-lifecycle.md)
-- **Integrate with FCM**: See [FCM Integration](./fcm-integration.md)
+- **Integrate with FCM**: See [FCM Overview](../fcm/index.md) and [ALP Documentation](../alp/index.md)
 
 ---
 
