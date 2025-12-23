@@ -930,6 +930,19 @@ function QuickStartShowcaseContent() {
           </div>
         </div>
       </div>
+
+      {/* Made with React SDK attribution */}
+      <div className="mt-4 text-center">
+        <span className="text-sm text-gray-500 dark:text-gray-400">
+          Made with{' '}
+          <a
+            href="/build/tools/react-sdk"
+            className="text-[#00EF8B] hover:text-[#00D67D] font-medium no-underline hover:underline"
+          >
+            React SDK
+          </a>
+        </span>
+      </div>
       
       {/* Transaction Dialog */}
       <TransactionDialog
