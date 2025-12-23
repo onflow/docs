@@ -572,7 +572,7 @@ function QuickStartShowcaseContent() {
                         onChange={(e) => handleInputChange(key, e.target.value)}
                         placeholder={currentScript.defaultArgs[key] || ''}
                         className={clsx(
-                          "text-xs px-2 py-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono",
+                          "text-xs px-2 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#00EF8B] font-mono",
                           key === 'amount' ? 'w-16' : 'w-[140px]'
                         )}
                       />
@@ -585,7 +585,7 @@ function QuickStartShowcaseContent() {
                           await refetch();
                         }}
                         disabled={isLoading}
-                        className="text-xs px-4 py-1.5 bg-[#00EF8B] hover:bg-[#00D67D] text-black rounded-full font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+                        className="text-xs px-4 py-1.5 bg-[#00EF8B] hover:bg-[#00D67D] text-black rounded-md font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
                       >
                         {isLoading ? 'Running...' : 'Run Script'}
                       </button>
@@ -595,7 +595,7 @@ function QuickStartShowcaseContent() {
                         <button
                           onClick={handleExecuteTransaction}
                           disabled={txPending}
-                          className="text-xs px-4 py-1.5 bg-[#00EF8B] hover:bg-[#00D67D] text-black rounded-full font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+                          className="text-xs px-4 py-1.5 bg-[#00EF8B] hover:bg-[#00D67D] text-black rounded-md font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
                         >
                           {txPending ? 'Executing...' : 'Execute'}
                         </button>
@@ -604,7 +604,7 @@ function QuickStartShowcaseContent() {
                           onClick={async () => {
                             await fcl.authenticate();
                           }}
-                          className="text-xs px-4 py-1.5 bg-[#00EF8B] hover:bg-[#00D67D] text-black rounded-full font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+                          className="text-xs px-4 py-1.5 bg-[#00EF8B] hover:bg-[#00D67D] text-black rounded-md font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
                         >
                           Sign In
                         </button>
@@ -613,7 +613,7 @@ function QuickStartShowcaseContent() {
                     {(currentScript as any).editLink && (
                       <button
                         onClick={() => window.open((currentScript as any).editLink, '_blank', 'noopener,noreferrer')}
-                        className="text-xs px-4 py-1.5 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full border border-gray-300 dark:border-gray-600 font-medium whitespace-nowrap transition-colors cursor-pointer"
+                        className="text-xs px-4 py-1.5 bg-gray-800 dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 text-white rounded-md font-medium whitespace-nowrap transition-colors cursor-pointer border-none"
                       >
                         Edit
                       </button>
