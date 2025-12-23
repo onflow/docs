@@ -1,6 +1,6 @@
 ---
 title: Liquidation System
-sidebar_position: 4
+sidebar_position: 9
 ---
 
 # Liquidation System

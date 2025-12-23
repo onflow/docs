@@ -1,14 +1,14 @@
 ---
 title: Flow Credit Market (FCM)
-sidebar_label: Overview
-sidebar_position: 1
+sidebar_label: Flow Credit Market (FCM)
+sidebar_position: 9
 ---
 
 # Flow Credit Market (FCM)
 
-Flow Credit Market (FCM) is a comprehensive DeFi yield platform on Flow that combines automated lending, yield farming strategies, and a synthetic stablecoin to create a capital-efficient system for generating returns on crypto assets.
+Flow Credit Market (FCM) is a comprehensive DeFi yield platform on Flow that offers a capital-efficient system for generating returns on crypto assets.
 
-## What is FCM?
+## How FCM Works
 
 FCM is **not a single protocol** - it's an integrated system composed of three core components working together:
 
@@ -44,7 +44,7 @@ graph LR
    - Medium of exchange between components
    - Maintains stability through over-collateralization
 
-## How the Components Work Together
+## Interaction Between Components
 
 FCM creates a **yield-generating flywheel** by connecting these three components:
 
@@ -87,7 +87,7 @@ sequenceDiagram
 
 ### 1. Yield-Powered Liquidation Prevention
 
-Unlike traditional lending protocols where you must manually add collateral or repay debt when prices drop, FCM **uses your yield to maintain position health**. Yield from FYV strategies flows back to ALP automatically, ALP pulls from FYV to repay debt when needed, your position stays healthy without manual intervention, and **you earn yield while protecting yourself from liquidation**.
+Unlike traditional lending protocols where you must manually add collateral or repay debt when prices drop, FCM **uses your yield to maintain position health**. Yield from FYV strategies flows back to ALP automatically via [scheduled transactions](../../blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction.md), ALP pulls from FYV to repay debt when needed, your position stays healthy without manual intervention, and **you earn yield while protecting yourself from liquidation**.
 
 ### 2. Automated Capital Efficiency
 
@@ -110,11 +110,7 @@ FCM allows you to maximize returns by borrowing against collateral and deploying
 
 ### For Conservative Users
 
-FCM provides liquidation protection through yield maintaining position health, flexible health targets allowing you to choose your risk tolerance (1.1-1.5), support for multiple collateral types including FLOW, stFLOW, USDC and more, and complete transparency with all logic on-chain and auditable.
-
-### For DeFi Builders
-
-FCM offers composable primitives allowing you to build on ALP, FYV, or both, standard interfaces for integration through DeFi Actions, the ability to create custom FYV strategies through extensible strategy patterns, and all code publicly available as open source.
+FCM provides liquidation protection through yield maintaining position health, flexible health targets allowing you to choose your risk tolerance (1.1-1.5), and support for multiple collateral types including FLOW, USD based stablecoins, BTC, and ETH. The system actively monitors and can rebalance positions multiple times per day in response to price movements, ensuring your position stays within safe parameters.
 
 ## Documentation Structure
 
@@ -137,7 +133,7 @@ FCM offers composable primitives allowing you to build on ALP, FYV, or both, sta
 
 ### As a User
 
-1. **Get collateral**: Acquire FLOW, stFLOW, or other supported tokens
+1. **Get collateral**: Acquire FLOW or other supported collateral tokens
 2. **Connect wallet**: Use a Flow-compatible wallet
 3. **Create position**: Deposit collateral to start earning
 4. **Monitor health**: Track your position via the dashboard
@@ -165,17 +161,9 @@ FCM implements multiple security layers including smart contract audits for all 
 
 ## Community & Support
 
-- **GitHub**: [FlowCreditMarket](https://github.com/onflow/FlowCreditMarket) and [FlowYieldVaults](https://github.com/onflow/FlowYieldVaults)
-- **Discord**: [Flow Discord](https://discord.gg/flow) - #fcm channel
-- **Documentation**: This site
-- **Developer Forums**: [Flow Forum](https://forum.onflow.org)
-
-## What's Next?
-
-- **New to FCM?** Start with [Understanding FCM Basics](./basics.md)
-- **Want technical details?** Read the [Architecture Overview](./architecture.md)
-- **Ready to use it?** Explore [ALP](../alp/index.md) or [FYV](#)
-- **Building an integration?** Check the [Integration Guide](#)
+- [FlowCreditMarket](https://github.com/onflow/FlowCreditMarket)
+- [FlowYieldVaults](https://github.com/onflow/FlowYieldVaults)
+- [Flow Discord](https://discord.gg/flow)
 
 ---
 

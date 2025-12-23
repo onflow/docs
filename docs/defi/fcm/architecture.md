@@ -5,7 +5,15 @@ sidebar_position: 3
 
 # FCM Architecture Overview
 
-This document explains how Flow Credit Market's three core components - ALP, FYV, and MOET - integrate to create a complete yield-generating system with automated liquidation prevention.
+This document explains how Flow Credit Market's (FCM) three core components - [Automated Lending Platform (ALP)](../alp/index.md), [Flow Yield Vaults (FYV)](#), and [Medium Of Exchange Token (MOET)](#) - integrate to create a complete yield-generating system with automated liquidation prevention.
+
+
+:::tip Key Insight
+FCM's architecture is designed for **composability** and **automation**. Each component has clear responsibilities and communicates through standardized interfaces (DeFi Actions), enabling:
+- Independent development and upgrades
+- Third-party strategy integrations
+- System resilience through modularity
+:::
 
 ## High-Level Architecture
 
@@ -147,6 +155,8 @@ New HF: 1.3 (restored to target)
 
 **Code integration**:
 
+The integration is implemented through DeFi Actions interfaces in Cadence. On the ALP side, each Position holds references to a DrawDownSink and TopUpSource, which are called during rebalancing operations. When the position becomes overcollateralized, it borrows additional funds and pushes them to the DrawDownSink. When undercollateralized, it pulls funds from the TopUpSource to repay debt.
+
 ```cadence
 // ALP side (simplified)
 access(all) struct Position {
@@ -166,6 +176,10 @@ access(all) struct Position {
     }
 }
 ```
+
+On the FYV side, strategies implement the DeFi Actions interfaces by providing Sink and Source creation functions. These functions return objects that handle the swap between MOET and yield-bearing tokens. When ALP calls the Sink, FYV converts MOET into yield tokens. When ALP pulls from the Source, FYV converts yield tokens back to MOET.
+
+TracerStrategy is one of FYV's yield strategies that tracks and manages positions in external yield-generating protocols. It acts as the bridge between ALP's lending system and external DeFi opportunities, automatically converting between MOET and yield tokens while maintaining the optimal balance for returns.
 
 ```cadence
 // FYV side (simplified)
@@ -230,18 +244,22 @@ sequenceDiagram
     participant FYV
 
     User->>Position: deposit(collateral)
-    Position->>Pool: updateCollateral(+amount)
+    Position->>Position: Store collateral
+    Position->>Pool: Update collateral balance
     Pool->>Pool: updateScaledBalance()
 
     Position->>Oracle: getPrice(collateralToken)
     Oracle-->>Position: priceInMOET
 
     Position->>Position: calculateHealth()
-    alt HF > maxHealth
+    Note over Position: Check if auto-borrow enabled
+    alt HF > maxHealth AND auto-borrow enabled
+        Position->>Position: Calculate excess capacity
         Position->>Pool: borrow(excessCapacity)
         Pool-->>Position: MOET vault
         Position->>DrawDownSink: deposit(MOET)
-        DrawDownSink->>FYV: swap & deploy
+        DrawDownSink->>FYV: Swap MOET to yield tokens
+        FYV->>FYV: Deploy to strategy
     end
 
     Position-->>User: success
@@ -264,13 +282,18 @@ sequenceDiagram
     Position->>Oracle: getPrice(collateralToken)
     Oracle-->>Position: newPrice (lower)
 
+    Position->>Pool: getCurrentDebt()
+    Pool-->>Position: currentDebt
+
     Position->>Position: calculateHealth()
-    Position->>Position: health < minHealth!
+    Note over Position: HF < minHealth (e.g., 1.1)
 
-    Position->>Position: calculate shortfall
-    Position->>TopUpSource: withdraw(shortfall)
+    Position->>Position: Calculate required repayment
+    Note over Position: Need to reach target HF (1.3)
 
-    TopUpSource->>FYV: swap YieldToken → MOET
+    Position->>TopUpSource: withdraw(repaymentAmount)
+    TopUpSource->>FYV: Request MOET
+    FYV->>FYV: Swap YieldToken → MOET
     FYV-->>TopUpSource: MOET vault
     TopUpSource-->>Position: MOET vault
 
@@ -278,7 +301,7 @@ sequenceDiagram
     Pool->>Pool: updateDebt(-amount)
 
     Position->>Position: calculateHealth()
-    Note over Position: health restored to 1.3
+    Note over Position: HF restored to 1.3
 ```
 
 ## Component Responsibilities
@@ -324,7 +347,12 @@ sequenceDiagram
 
 ### 1. DeFi Actions Pattern (ALP ↔ FYV)
 
+DeFi Actions enables ALP and FYV to communicate through standardized interfaces without tight coupling. The Sink pattern allows ALP to push borrowed funds to FYV strategies, while the Source pattern enables ALP to pull funds back when needed for rebalancing or repayment.
+
 **Sink Pattern** (Push):
+
+When ALP has excess borrowing capacity or newly borrowed funds, it uses the Sink interface to deposit MOET into FYV strategies. The FYV strategy receives the funds and automatically converts them to yield-bearing tokens.
+
 ```cadence
 // ALP pushes to FYV
 access(all) resource interface Sink {
@@ -337,6 +365,9 @@ sink.deposit(vault: <-moetVault)
 ```
 
 **Source Pattern** (Pull):
+
+When ALP needs funds to maintain position health, it pulls from the Source interface. FYV converts yield tokens back to MOET and provides the requested amount, enabling automatic liquidation prevention.
+
 ```cadence
 // ALP pulls from FYV
 access(all) resource interface Source {
@@ -350,7 +381,12 @@ let moet <- source.withdraw(amount: 100.0, type: Type<@MOET.Vault>())
 
 ### 2. Oracle Pattern (ALP ↔ MOET)
 
+The Oracle pattern provides a standardized way for ALP to query token prices in MOET terms. All collateral and debt calculations use these MOET-denominated prices, ensuring consistency across the system. This enables health factor calculations and determines borrowing capacity based on real-time market data.
+
 **Price Query**:
+
+The PriceOracle interface returns the current price of any token type denominated in MOET. For example, querying the price of FLOW returns how many MOET one FLOW is worth, which ALP uses to calculate effective collateral values.
+
 ```cadence
 // ALP queries prices in MOET terms
 access(all) resource interface PriceOracle {
@@ -364,7 +400,12 @@ let flowPrice = oracle.getPrice(Type<@FlowToken.Vault>())
 
 ### 3. Event-Driven Pattern
 
+FCM components communicate state changes through events, enabling monitoring, analytics, and external integrations. Each component emits events for significant actions like position changes, yield generation, and token operations. These events allow off-chain systems to track user activity, trigger notifications, and maintain historical records without polling smart contracts.
+
 **Key events across components**:
+
+ALP emits events for all position lifecycle operations including creation, borrowing, repayment, and rebalancing. FYV broadcasts events when deploying to strategies, generating yield, or providing liquidity back to ALP. MOET tracks token supply changes through mint and burn events, ensuring transparency in the stablecoin's circulation.
+
 ```cadence
 // ALP events
 access(all) event PositionCreated(pid: UInt64, owner: Address)
@@ -436,24 +477,13 @@ Actions:
 
 ### Optimizations
 
-1. **Scaled Balance System** (ALP):
-   - Avoids updating every position on interest accrual
-   - Single interest index update affects all positions
-   - Gas-efficient for large position counts
+**Scaled Balance System** - ALP uses a scaled balance approach that avoids updating every position when interest accrues. Instead, a single interest index update affects all positions simultaneously, making the system gas-efficient even with thousands of active positions.
 
-2. **Batch Rebalancing** (ALP):
-   - Multiple positions can be rebalanced in one transaction
-   - Keepers can optimize gas costs
+**Batch Rebalancing** - The protocol allows multiple positions to be rebalanced in a single transaction, enabling keepers to optimize gas costs by processing several positions at once rather than submitting individual transactions for each rebalancing operation.
 
-3. **Lazy Evaluation** (All components):
-   - Prices only fetched when needed
-   - Health only calculated when accessed
-   - Interest only accrued when position touched
+**Lazy Evaluation** - All components use lazy evaluation patterns where prices are only fetched when needed, health factors are calculated only when accessed, and interest accrues only when a position is touched. This approach minimizes unnecessary computations and reduces gas costs for operations that don't require the latest state.
 
-4. **Event-Driven Updates** (All components):
-   - Off-chain indexers track state
-   - UI updates without constant blockchain queries
-   - Reduces RPC load
+**Event-Driven Updates** - The system emits events for all critical operations, allowing off-chain indexers to track state changes efficiently. This enables UI updates without constant blockchain queries and significantly reduces RPC load on the network while providing users with real-time information.
 
 ### Limits & Constraints
 
@@ -499,12 +529,3 @@ Actions:
 - **Explore ALP details**: [ALP Architecture](../alp/architecture.md)
 - **Learn about FYV**: [FYV Documentation](#)
 - **Deep dive into MOET**: [MOET Documentation](#)
-
----
-
-:::tip Key Insight
-FCM's architecture is designed for **composability** and **automation**. Each component has clear responsibilities and communicates through standardized interfaces (DeFi Actions), enabling:
-- Independent development and upgrades
-- Third-party strategy integrations
-- System resilience through modularity
-:::

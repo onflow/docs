@@ -1,6 +1,6 @@
 ---
 title: MOET's Role in ALP
-sidebar_position: 8
+sidebar_position: 4
 ---
 
 # MOET's Role in ALP

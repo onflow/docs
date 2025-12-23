@@ -1,7 +1,7 @@
 ---
 title: Automated Lending Platform (ALP)
-sidebar_label: Overview
-sidebar_position: 1
+sidebar_label: Automated Lending Platform (ALP)
+sidebar_position: 10
 ---
 
 # Automated Lending Platform (ALP)
