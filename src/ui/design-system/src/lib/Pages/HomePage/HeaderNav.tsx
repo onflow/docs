@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { label: 'Ecosystem', href: '/ecosystem' },
   { label: 'Growth', href: '/growth' },
   { label: 'Tutorials', href: '/tutorials' },
-  { label: 'Sign In', href: '/signin' },
+  // { label: 'Sign In', href: '/signin' },
   { label: 'Github', href: 'https://github.com/onflow', external: true },
   { label: 'Discord', href: 'https://discord.gg/flow', external: true },
 ];
