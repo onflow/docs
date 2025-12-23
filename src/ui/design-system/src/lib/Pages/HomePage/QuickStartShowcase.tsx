@@ -376,7 +376,7 @@ function QuickStartShowcaseContent() {
 
   const currentScript = SCRIPTS[selected];
   const currentInputs = inputValues[selected] || {};
-  const { user } = useFlowCurrentUser();
+  const { user, authenticate } = useFlowCurrentUser();
 
   // Create flow client for the current script's network
   const flowClientForScript = useMemo(() => {
@@ -602,7 +602,7 @@ function QuickStartShowcaseContent() {
                       ) : (
                         <button
                           onClick={async () => {
-                            await fcl.authenticate();
+                            await authenticate();
                           }}
                           className="text-xs px-4 py-1.5 bg-[#00EF8B] hover:bg-[#00D67D] text-black rounded-md font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
                         >
