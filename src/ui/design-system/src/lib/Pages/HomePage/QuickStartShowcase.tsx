@@ -434,6 +434,7 @@ function QuickStartShowcaseContent() {
   });
 
   const [showTxDialog, setShowTxDialog] = useState(false);
+  const [lastShownTxId, setLastShownTxId] = useState<string | null>(null);
 
   const handleExecuteTransaction = async () => {
     // If not logged in, authentication will be handled by Connect component
@@ -463,12 +464,13 @@ function QuickStartShowcaseContent() {
     });
   };
 
-  // Show dialog when transaction ID is available
+  // Show dialog only when we get a NEW transaction ID
   useEffect(() => {
-    if (txId && currentScript.type === 'transaction') {
+    if (txId && txId !== lastShownTxId && currentScript.type === 'transaction') {
       setShowTxDialog(true);
+      setLastShownTxId(txId);
     }
-  }, [txId, currentScript]);
+  }, [txId, currentScript, lastShownTxId]);
 
   const handleTabClick = (idx: number, item: string) => {
     setSelected(idx);
