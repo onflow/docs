@@ -299,11 +299,11 @@ const config = {
             label: 'Ecosystem',
             activeBasePath: '/ecosystem',
           },
-          // {
-          //   type: 'custom-connectButton',
-          //   position: 'right',
-          //   label: 'Connect',
-          // },
+          {
+            type: 'custom-connectButton',
+            position: 'right',
+            label: 'Connect',
+          },
           {
             href: 'https://github.com/onflow',
             html: '<img src="" alt="GitHub" id="navbar-github" class="box-content h-32 w-32"/><span class="p-2 desktop:hidden">Github</span>',
