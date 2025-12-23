@@ -14,7 +14,7 @@ const GrowSection: React.FC = () => {
           <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#A855F7]">
             <Icon name={growGridData.icon} className="w-5 h-5 text-white" />
           </span>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Builder toolkit to start, grow, and win</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white m-0">Builder toolkit to start, grow, and win</h2>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

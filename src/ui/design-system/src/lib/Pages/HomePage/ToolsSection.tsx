@@ -14,7 +14,7 @@ const ToolsSection: React.FC = () => {
           <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#00EF8B]">
             <Icon name={toolsGridData.icon} className="w-5 h-5 text-black" />
           </span>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Tools</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white m-0">Tools</h2>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
