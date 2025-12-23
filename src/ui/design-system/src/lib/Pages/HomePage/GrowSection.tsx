@@ -23,7 +23,7 @@ const GrowSection: React.FC = () => {
               key={idx}
               href={card.href}
               {...(typeof (card as any).target === 'string' ? { target: (card as any).target, rel: (card as any).target === '_blank' ? 'noopener noreferrer' : undefined } : {})}
-              className="group flex flex-col p-5 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-[#A855F7] dark:hover:border-[#A855F7] transition-colors duration-200 no-underline hover:no-underline"
+              className="group flex flex-col p-5 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-[#A855F7] dark:hover:border-[#A855F7] transition-all duration-200 no-underline hover:no-underline hover:-translate-y-1 hover:shadow-md"
               onClick={(e) => {
                 event({
                   action: GA_EVENTS.ACTION_CARD_CLICK,
@@ -33,10 +33,13 @@ const GrowSection: React.FC = () => {
                 });
               }}
             >
-              <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 mb-4">
-                {card.icon && <Icon name={card.icon} className="w-5 h-5 text-gray-700 dark:text-gray-300" />}
+              <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#A855F7]/10 mb-4">
+                {card.icon && <Icon name={card.icon} className="w-5 h-5 text-[#A855F7]" />}
               </span>
-              <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">{card.heading}</h3>
+              <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2 flex items-center gap-1">
+                {card.heading}
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+              </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{card.description}</p>
             </a>
           ))}
