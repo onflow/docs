@@ -47,7 +47,7 @@ const HeroSection: React.FC = () => {
                 });
                 window.location.href = '/blockchain-development-tutorials/cadence/getting-started';
               }}
-              className="px-7 py-3 rounded-full bg-transparent text-gray-900 dark:text-white font-semibold text-base border border-gray-300 dark:border-gray-600 hover:border-gray-900 dark:hover:border-white transition-colors duration-200 text-center cursor-pointer"
+              className="px-7 py-3 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold text-base border-none hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors duration-200 text-center cursor-pointer"
             >
               Quickstart
             </button>
