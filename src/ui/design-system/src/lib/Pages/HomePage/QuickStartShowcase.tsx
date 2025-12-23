@@ -516,10 +516,10 @@ function QuickStartShowcaseContent() {
         </h2>
       </div>
       <div 
-        className="grid grid-cols-1 lg:grid-cols-3 gap-0 items-stretch bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-0 items-stretch bg-white dark:bg-[#0d1117] rounded-2xl border-2 border-gray-200 dark:border-gray-700 overflow-hidden shadow-lg dark:shadow-2xl dark:shadow-black/50"
       >
         {/* Left: Selector */}
-        <div className="flex flex-col w-full items-center justify-center bg-gray-50 dark:bg-gray-900/50 border-r border-gray-200 dark:border-gray-800">
+        <div className="flex flex-col w-full items-center justify-center bg-gray-100 dark:bg-[#161b22] border-r-2 border-gray-200 dark:border-gray-700">
           <div className="w-full p-4 flex flex-col gap-1 h-[500px] justify-center overflow-y-auto" style={{ maxWidth: 320 }}>
             {ITEMS.map((item, idx) => (
               <button
@@ -529,8 +529,8 @@ function QuickStartShowcaseContent() {
                 className={clsx(
                   "w-full text-left px-4 py-3 transition text-sm cursor-pointer rounded-lg border-none",
                   selected === idx
-                    ? "bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium"
-                    : "text-gray-600 dark:text-gray-400 bg-transparent hover:text-gray-900 dark:hover:text-white"
+                    ? "bg-white dark:bg-[#00EF8B]/10 text-gray-900 dark:text-[#00EF8B] font-medium shadow-sm dark:shadow-none border-l-2 border-l-[#00EF8B]"
+                    : "text-gray-600 dark:text-gray-400 bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white"
                 )}
                 style={{ outline: 'none' }}
               >
@@ -543,10 +543,10 @@ function QuickStartShowcaseContent() {
         {/* Right: Code + Results (spans 2 columns) */}
         <div className="lg:col-span-2 flex flex-col w-full h-[500px]">
           {/* Code Display */}
-          <div className="flex-1 bg-gray-50 dark:bg-gray-900/30 border-b border-gray-200 dark:border-gray-800 overflow-hidden">
+          <div className="flex-1 bg-gray-50 dark:bg-[#0d1117] overflow-hidden">
             <div className="h-full flex flex-col">
               {/* Code Header */}
-              <div className="px-4 py-2 bg-white dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between gap-2 flex-wrap">
+              <div className="px-4 py-2 bg-white dark:bg-[#161b22] border-b-2 border-gray-200 dark:border-gray-700 flex items-center justify-between gap-2 flex-wrap">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
                     {currentScript.type === 'transaction' ? 'Cadence Transaction' : 'Cadence Script'}
@@ -623,7 +623,7 @@ function QuickStartShowcaseContent() {
               </div>
               
               {/* Code Content */}
-              <div className="flex-1 overflow-auto p-4">
+              <div className="flex-1 overflow-auto p-4 bg-[#fafbfc] dark:bg-[#0d1117]">
                 {isBrowser ? (
                   <Highlight
                     Prism={Prism}
@@ -632,7 +632,7 @@ function QuickStartShowcaseContent() {
                     language="cadence"
                   >
                     {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                      <pre className={clsx(className, "text-xs font-mono")} style={style}>
+                      <pre className={clsx(className, "text-xs font-mono")} style={{ ...style, background: 'transparent' }}>
                         {tokens.map((line, i) => (
                           <div key={i} {...getLineProps({ line })}>
                             {line.map((token, key) => (
@@ -653,19 +653,25 @@ function QuickStartShowcaseContent() {
           </div>
 
           {/* Results Display */}
-          <div className="h-48 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+          <div className="h-48 bg-[#f0fdf4] dark:bg-[#00EF8B]/5 border-t-2 border-gray-200 dark:border-gray-700">
             <div className="h-full flex flex-col">
               {/* Results Header */}
-              <div className="px-4 py-2 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-800">
-                <span className="text-xs font-medium text-gray-500 dark:text-gray-500">Result</span>
+              <div className="px-4 py-2 bg-[#dcfce7] dark:bg-[#00EF8B]/10 border-b border-[#bbf7d0] dark:border-[#00EF8B]/20 flex items-center gap-2">
+                <svg className="w-4 h-4 text-green-600 dark:text-[#00EF8B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-xs font-semibold text-green-700 dark:text-[#00EF8B]">Result</span>
               </div>
               
               {/* Results Content */}
-              <div className="flex-1 overflow-auto p-4">
+              <div className="flex-1 overflow-auto p-4 bg-white/50 dark:bg-transparent">
                 {(currentScript.type === 'transaction' && txError) || (currentScript.type === 'script' && error) ? (
-                  <div className="text-sm text-red-600 dark:text-red-400">
-                    <p className="font-semibold mb-1">
-                      {currentScript.type === 'transaction' ? 'Transaction Error:' : 'Error:'}
+                  <div className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800">
+                    <p className="font-semibold mb-1 flex items-center gap-2">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      {currentScript.type === 'transaction' ? 'Transaction Error' : 'Error'}
                     </p>
                     <p className="font-mono text-xs whitespace-pre-wrap break-words">
                       {(() => {
@@ -682,8 +688,8 @@ function QuickStartShowcaseContent() {
                       const errAny = err as any;
                       return err?.stack || errAny?.cause?.message || (errAny?.cause && String(errAny.cause)) ? (
                         <details className="mt-2">
-                          <summary className="text-xs cursor-pointer text-red-500 dark:text-red-400">Show details</summary>
-                          <pre className="text-xs mt-1 p-2 bg-red-50 dark:bg-red-900/20 rounded overflow-auto whitespace-pre-wrap break-words">
+                          <summary className="text-xs cursor-pointer text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-300">Show details</summary>
+                          <pre className="text-xs mt-1 p-2 bg-red-100 dark:bg-red-900/30 rounded overflow-auto whitespace-pre-wrap break-words">
                             {err?.stack || errAny?.cause?.message || (errAny?.cause && String(errAny.cause)) || JSON.stringify(err, null, 2)}
                           </pre>
                         </details>
@@ -693,8 +699,8 @@ function QuickStartShowcaseContent() {
                 ) : isLoading || txPending ? (
                   <div className="flex items-center justify-center h-full">
                     <div className="text-center">
-                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-3"></div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#00EF8B] mx-auto mb-3"></div>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">
                         {currentScript.type === 'transaction' ? 'Executing transaction...' : 'Executing script...'}
                       </p>
                     </div>
@@ -702,24 +708,29 @@ function QuickStartShowcaseContent() {
                 ) : currentScript.type === 'transaction' ? (
                   <div className="text-sm">
                     {!user?.loggedIn ? (
-                      <p className="text-gray-500 dark:text-gray-400">Connect your wallet to execute this transaction</p>
+                      <div className="flex items-center gap-3 text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800/50 rounded-lg p-3">
+                        <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        <span>Connect your wallet to execute this transaction</span>
+                      </div>
                     ) : txId ? (
                       <div className="space-y-2">
-                        <div>
-                          <span className="text-gray-600 dark:text-gray-400">Transaction ID: </span>
-                          <span className="font-mono text-gray-800 dark:text-gray-200 break-all">{txId}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wide">TX ID</span>
+                          <span className="font-mono text-xs text-gray-800 dark:text-gray-200 break-all bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">{txId}</span>
                         </div>
                         {transactionStatus && (
                           <>
-                            <div>
-                              <span className="text-gray-600 dark:text-gray-400">Status: </span>
+                            <div className="flex items-center gap-2">
+                              <span className="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wide">Status</span>
                               <span className={clsx(
-                                "font-mono",
-                                transactionStatus.status === 4 ? "text-green-600 dark:text-green-400" :
-                                transactionStatus.status === 5 ? "text-red-600 dark:text-red-400" :
-                                transactionStatus.status === 3 ? "text-green-600 dark:text-green-400" :
-                                transactionStatus.status === 2 ? "text-blue-600 dark:text-blue-400" :
-                                "text-yellow-600 dark:text-yellow-400"
+                                "font-mono text-xs px-2 py-1 rounded-full",
+                                transactionStatus.status === 4 ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400" :
+                                transactionStatus.status === 5 ? "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400" :
+                                transactionStatus.status === 3 ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400" :
+                                transactionStatus.status === 2 ? "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400" :
+                                "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400"
                               )}>
                                 {transactionStatus.status === 4 ? "Sealed" :
                                  transactionStatus.status === 5 ? "Expired" :
@@ -729,23 +740,23 @@ function QuickStartShowcaseContent() {
                               </span>
                             </div>
                             {(transactionStatus.status === 2 || transactionStatus.status === 3 || transactionStatus.status === 4 || transactionStatus.status === 5) && transactionStatus.statusCode !== undefined && (
-                              <div>
-                                <span className="text-gray-600 dark:text-gray-400">Execution: </span>
+                              <div className="flex items-center gap-2">
+                                <span className="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wide">Execution</span>
                                 <span className={clsx(
-                                  "font-mono",
-                                  transactionStatus.statusCode === 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"
+                                  "font-mono text-xs px-2 py-1 rounded-full",
+                                  transactionStatus.statusCode === 0 ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400" : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400"
                                 )}>
                                   {transactionStatus.statusCode === 0 ? "Success" : "Failed"}
                                 </span>
                               </div>
                             )}
                             {(transactionStatus.status === 2 || transactionStatus.status === 3 || transactionStatus.status === 4 || transactionStatus.status === 5) && transactionStatus.events && transactionStatus.events.length > 0 && (
-                              <div className="space-y-2">
-                                <div className="text-gray-600 dark:text-gray-400">Events ({transactionStatus.events.length}):</div>
+                              <div className="space-y-2 mt-2">
+                                <div className="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wide">Events ({transactionStatus.events.length})</div>
                                 <div className="font-mono text-xs space-y-1 max-h-32 overflow-auto">
                                   {transactionStatus.events.map((event: any, idx: number) => (
-                                    <div key={idx} className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                                      <div className="text-gray-800 dark:text-gray-200 break-all">{event.type}</div>
+                                    <div key={idx} className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-100 dark:border-blue-800">
+                                      <div className="text-blue-800 dark:text-blue-300 break-all">{event.type}</div>
                                       {event.payload && (
                                         <div className="text-gray-600 dark:text-gray-400 mt-1 whitespace-pre-wrap break-words">
                                           {typeof event.payload === 'string' ? event.payload : JSON.stringify(event.payload, null, 2)}
@@ -757,42 +768,47 @@ function QuickStartShowcaseContent() {
                               </div>
                             )}
                             {transactionStatus.errorMessage && (
-                              <div className="text-red-600 dark:text-red-400">
-                                <p className="font-semibold mb-1">Error:</p>
+                              <div className="text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-lg p-2 border border-red-200 dark:border-red-800 mt-2">
+                                <p className="font-semibold mb-1 text-xs">Error:</p>
                                 <p className="font-mono text-xs whitespace-pre-wrap break-words">{transactionStatus.errorMessage}</p>
                               </div>
                             )}
                           </>
                         )}
                         {txStatusError && (
-                          <div className="text-red-600 dark:text-red-400 text-xs">
+                          <div className="text-red-600 dark:text-red-400 text-xs bg-red-50 dark:bg-red-900/20 rounded p-2">
                             Error fetching transaction status: {txStatusError.message}
                           </div>
                         )}
                       </div>
                     ) : (
-                      <p className="text-gray-500 dark:text-gray-400">Click "Execute Transaction" to run this transaction</p>
+                      <div className="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                        <svg className="w-5 h-5 text-[#00EF8B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <span>Click "Execute" to run this transaction</span>
+                      </div>
                     )}
                   </div>
                 ) : formattedResult ? (
                   <div className="text-sm">
                     {formattedResult.type === 'text' && (
-                      <p className="font-mono text-gray-800 dark:text-gray-200">{formattedResult.value}</p>
+                      <p className="font-mono text-gray-800 dark:text-[#00EF8B] bg-gray-100 dark:bg-[#00EF8B]/10 px-3 py-2 rounded-lg inline-block">{formattedResult.value}</p>
                     )}
                     {formattedResult.type === 'storage' && (
-                      <div className="space-y-2">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-600 dark:text-gray-400">Used:</span>
-                          <span className="font-mono font-semibold">
+                      <div className="space-y-3 max-w-xs">
+                        <div className="flex justify-between items-center bg-gray-100 dark:bg-gray-800/50 px-3 py-2 rounded-lg">
+                          <span className="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wide">Used</span>
+                          <span className="font-mono font-semibold text-gray-800 dark:text-gray-200">
                             {(typeof formattedResult.value.usedMB === 'number' 
                               ? formattedResult.value.usedMB 
                               : parseFloat(formattedResult.value.usedMB) || 0
                             ).toFixed(2)} MB
                           </span>
                         </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-600 dark:text-gray-400">Capacity:</span>
-                          <span className="font-mono font-semibold">
+                        <div className="flex justify-between items-center bg-gray-100 dark:bg-gray-800/50 px-3 py-2 rounded-lg">
+                          <span className="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wide">Capacity</span>
+                          <span className="font-mono font-semibold text-gray-800 dark:text-gray-200">
                             {(typeof formattedResult.value.capacityMB === 'number' 
                               ? formattedResult.value.capacityMB 
                               : parseFloat(formattedResult.value.capacityMB) || 0
@@ -803,18 +819,18 @@ function QuickStartShowcaseContent() {
                     )}
                     {formattedResult.type === 'nft' && (
                       <div className="space-y-2">
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">NFT Collections by Address:</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">NFT Collections by Address</p>
                         <div className="font-mono text-xs max-h-32 overflow-auto">
                           {Object.keys(formattedResult.value).length === 0 ? (
                             <p className="text-gray-500 dark:text-gray-400">No NFTs found</p>
                           ) : (
                             Object.entries(formattedResult.value).map(([address, nfts]: [string, any]) => (
-                              <div key={address} className="mb-3 p-2 bg-gray-50 dark:bg-gray-800 rounded">
+                              <div key={address} className="mb-3 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-100 dark:border-blue-800">
                                 <p className="text-blue-600 dark:text-blue-400 font-semibold mb-1">{address}</p>
                                 {nfts && typeof nfts === 'object' && Object.keys(nfts).length > 0 ? (
                                   <div className="space-y-1">
                                     {Object.entries(nfts).map(([id, display]: [string, any]) => (
-                                      <div key={id} className="text-xs pl-2 border-l-2 border-gray-300 dark:border-gray-600">
+                                      <div key={id} className="text-xs pl-2 border-l-2 border-blue-300 dark:border-blue-600">
                                         <span className="text-gray-600 dark:text-gray-400">ID: {id}</span>
                                         {display && typeof display === 'object' && display.name && (
                                           <span className="ml-2 text-gray-800 dark:text-gray-200">
@@ -835,7 +851,13 @@ function QuickStartShowcaseContent() {
                     )}
                   </div>
                 ) : (
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Click "Run Script" to see result.</p>
+                  <div className="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                    <svg className="w-5 h-5 text-[#00EF8B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Click "Run Script" to see result</span>
+                  </div>
                 )}
               </div>
             </div>
