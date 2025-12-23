@@ -118,13 +118,17 @@ const BrowseByCategory: React.FC = () => {
   return (
     <section className="container mx-auto py-12">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Browse by category</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {CATEGORIES.map((cat) => {
           const firstLink = cat.links[0];
           const remainingLinks = cat.links.slice(1);
           
           return (
-            <div key={cat.title} className="flex flex-col">
+            <div
+              key={cat.title}
+              className="flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm"
+            >
+              {/* Category Header */}
               <a
                 href={firstLink.href}
                 target={firstLink.href.startsWith('http') ? '_blank' : undefined}
@@ -134,7 +138,9 @@ const BrowseByCategory: React.FC = () => {
               >
                 {cat.title}
               </a>
-              <ul className="space-y-2.5">
+              
+              {/* Links */}
+              <ul className="space-y-2 flex-1">
                 {remainingLinks.map((link) => (
                   <li key={link.label}>
                     <a
