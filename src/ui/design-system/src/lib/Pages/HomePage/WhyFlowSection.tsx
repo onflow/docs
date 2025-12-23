@@ -21,7 +21,7 @@ const WhyFlowSection: React.FC = () => {
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-1.5 h-6 bg-[#00EF8B] rounded-full"></div>
-              <h2 className="text-xl font-semibold text-white">
+              <h2 className="text-xl font-semibold text-white leading-none m-0">
                 Why Flow?
               </h2>
             </div>
