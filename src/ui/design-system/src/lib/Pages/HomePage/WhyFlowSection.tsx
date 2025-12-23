@@ -4,10 +4,10 @@ import { GA_EVENTS, GA_CATEGORIES, GA_ACTIONS } from '@site/src/constants/ga-eve
 
 const WhyFlowSection: React.FC = () => {
   return (
-    <section className="container mx-auto pt-8 pb-16">
+    <section className="container mx-auto pb-12">
       <a
         href="/build/flow"
-        className="block bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-md p-8 pt-6 pb-3 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 cursor-pointer no-underline hover:no-underline"
+        className="group block bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 border border-gray-800 dark:border-gray-700 hover:border-[#00EF8B]/50 transition-colors duration-200 cursor-pointer no-underline hover:no-underline"
         onClick={() => {
           event({
             action: GA_EVENTS.ACTION_CARD_CLICK,
@@ -17,28 +17,25 @@ const WhyFlowSection: React.FC = () => {
           });
         }}
       >
-        <div className="flex flex-col gap-2">
-          {/* Heading */}
-          <div className="flex items-start">
-            <div className="w-1 h-8 bg-[#00E099] mr-3 flex-shrink-0"></div>
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white leading-tight mt-0.5" style={{ fontSize: '20px', fontWeight: 600 }}>
-              Why Flow?
-            </h2>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="flex-1">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-1.5 h-6 bg-[#00EF8B] rounded-full"></div>
+              <h2 className="text-xl font-semibold text-white">
+                Why Flow?
+              </h2>
+            </div>
+            
+            <p className="text-base text-gray-300 leading-relaxed max-w-2xl">
+              With <strong className="text-white">600% YoY TVL growth</strong> to $100M+ and the <strong className="text-white">safest risk-adjusted yields</strong> for consumers in DeFi, Flow is uniquely positioned to power the future of Consumer DeFi.
+            </p>
           </div>
           
-          {/* Body Text and CTA Link */}
-          <div className="flex flex-row items-start justify-between gap-8">
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed flex-1 max-w-3xl">
-              With <strong>600% YoY TVL growth</strong> to $100M+ and the <strong>safest risk-adjusted yields</strong> for consumers in DeFi, Flow is uniquely positioned to power the future of Consumer DeFi.
-            </p>
-            
-            {/* Right: CTA Link */}
-            <div className="inline-flex items-center text-gray-900 dark:text-white font-semibold text-lg hover:text-green-600 dark:hover:text-green-400 transition-colors leading-tight flex-shrink-0">
-              Learn more
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
+          <div className="flex items-center text-[#00EF8B] font-medium group-hover:gap-3 gap-2 transition-all duration-200 shrink-0">
+            Learn more
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           </div>
         </div>
       </a>

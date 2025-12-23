@@ -508,31 +508,31 @@ function QuickStartShowcaseContent() {
 
   return (
     <section 
-      className="container mx-auto pt-1 pb-8 hidden lg:block"
+      className="container mx-auto pb-12 hidden lg:block"
     >
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
           Try Cadence live
         </h2>
       </div>
       <div 
-        className="grid grid-cols-1 lg:grid-cols-3 gap-0 items-stretch bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-0 items-stretch bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden"
       >
         {/* Left: Selector */}
-        <div className="flex flex-col w-full items-center justify-center bg-gray-50 dark:bg-gray-800/50 border-r border-gray-200 dark:border-gray-700">
-          <div className="w-full p-4 flex flex-col gap-3 h-[500px] justify-center overflow-y-auto" style={{ maxWidth: 320 }}>
+        <div className="flex flex-col w-full items-center justify-center bg-gray-50 dark:bg-gray-900/50 border-r border-gray-200 dark:border-gray-800">
+          <div className="w-full p-4 flex flex-col gap-1 h-[500px] justify-center overflow-y-auto" style={{ maxWidth: 320 }}>
             {ITEMS.map((item, idx) => (
               <button
                 key={item}
                 type="button"
                 onClick={() => handleTabClick(idx, item)}
                 className={clsx(
-                  "w-full text-left px-4 py-3 transition font-medium text-base cursor-pointer hover:bg-white/50 dark:hover:bg-gray-900/50 rounded-lg",
+                  "w-full text-left px-4 py-3 transition text-sm cursor-pointer rounded-lg border-none",
                   selected === idx
-                    ? "bg-white dark:bg-gray-900 rounded-xl shadow-sm text-green-600 dark:text-green-400 font-bold"
-                    : "text-gray-900 dark:text-gray-100 bg-transparent"
+                    ? "bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium"
+                    : "text-gray-600 dark:text-gray-400 bg-transparent hover:text-gray-900 dark:hover:text-white"
                 )}
-                style={{ outline: 'none', border: 'none' }}
+                style={{ outline: 'none' }}
               >
                 {item}
               </button>
@@ -543,10 +543,10 @@ function QuickStartShowcaseContent() {
         {/* Right: Code + Results (spans 2 columns) */}
         <div className="lg:col-span-2 flex flex-col w-full h-[500px]">
           {/* Code Display */}
-          <div className="flex-1 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 overflow-hidden">
+          <div className="flex-1 bg-gray-50 dark:bg-gray-900/30 border-b border-gray-200 dark:border-gray-800 overflow-hidden">
             <div className="h-full flex flex-col">
               {/* Code Header */}
-              <div className="px-4 py-2 bg-gray-100 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between gap-2 flex-wrap">
+              <div className="px-4 py-2 bg-white dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between gap-2 flex-wrap">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
                     {currentScript.type === 'transaction' ? 'Cadence Transaction' : 'Cadence Script'}
@@ -585,7 +585,7 @@ function QuickStartShowcaseContent() {
                           await refetch();
                         }}
                         disabled={isLoading}
-                        className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+                        className="text-xs px-4 py-1.5 bg-[#00EF8B] hover:bg-[#00D67D] text-black rounded-full font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
                       >
                         {isLoading ? 'Running...' : 'Run Script'}
                       </button>
@@ -595,7 +595,7 @@ function QuickStartShowcaseContent() {
                         <button
                           onClick={handleExecuteTransaction}
                           disabled={txPending}
-                          className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+                          className="text-xs px-4 py-1.5 bg-[#00EF8B] hover:bg-[#00D67D] text-black rounded-full font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
                         >
                           {txPending ? 'Executing...' : 'Execute'}
                         </button>
@@ -604,7 +604,7 @@ function QuickStartShowcaseContent() {
                           onClick={async () => {
                             await fcl.authenticate();
                           }}
-                          className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+                          className="text-xs px-4 py-1.5 bg-[#00EF8B] hover:bg-[#00D67D] text-black rounded-full font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
                         >
                           Sign In
                         </button>
@@ -613,7 +613,7 @@ function QuickStartShowcaseContent() {
                     {(currentScript as any).editLink && (
                       <button
                         onClick={() => window.open((currentScript as any).editLink, '_blank', 'noopener,noreferrer')}
-                        className="text-xs px-4 py-2 bg-transparent hover:bg-purple-50 dark:hover:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded-full border border-purple-500 dark:border-purple-400 font-medium whitespace-nowrap transition-colors cursor-pointer"
+                        className="text-xs px-4 py-1.5 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full border border-gray-300 dark:border-gray-600 font-medium whitespace-nowrap transition-colors cursor-pointer"
                       >
                         Edit
                       </button>
@@ -653,11 +653,11 @@ function QuickStartShowcaseContent() {
           </div>
 
           {/* Results Display */}
-          <div className="h-48 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+          <div className="h-48 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
             <div className="h-full flex flex-col">
               {/* Results Header */}
-              <div className="px-4 py-2 bg-gray-100 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-700">
-                <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Result</span>
+              <div className="px-4 py-2 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-800">
+                <span className="text-xs font-medium text-gray-500 dark:text-gray-500">Result</span>
               </div>
               
               {/* Results Content */}

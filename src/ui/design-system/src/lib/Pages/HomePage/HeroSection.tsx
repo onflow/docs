@@ -4,29 +4,26 @@ import { event } from '@site/src/utils/gtags.client';
 import { GA_EVENTS, GA_CATEGORIES, GA_ACTIONS } from '@site/src/constants/ga-events';
 
 const HeroSection: React.FC = () => {
-  // const { colorMode } = useColorMode();
-  // const calendarSrc = colorMode === 'dark'
-  //   ? 'https://lu.ma/embed/calendar/cal-DBqbEn6mwZR13qQ/events?lt=dark'
-  //   : 'https://lu.ma/embed/calendar/cal-DBqbEn6mwZR13qQ/events';
   return (
-    <section className="container mx-auto pt-16 pb-6">
-      <div className="flex flex-col lg:flex-row items-center justify-between">
-        {/* Left: Hero Content */}
-        <div className="flex-1 max-w-2xl text-left">
-          <h1 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white">
+    <section className="container mx-auto pt-20 pb-16">
+      <div className="flex flex-col items-center text-center">
+        <div className="max-w-3xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight text-gray-900 dark:text-white">
             Turn decentralized finance into personal finance.
           </h1>
-          <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 mb-4 max-w-xl">
-            <strong>Flow</strong> is the leading consumer layer-one network,
+          
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <strong className="text-gray-900 dark:text-white font-semibold">Flow</strong> is the leading consumer layer-one network,
             trusted by 1 million monthly active users. Chosen by top global brands
             like NBA, Disney, PayPal, NFL, and Ticketmaster,
             it is the foundation for the next generation of consumer finance:{" "}
-            <strong>global, always-on, and in real-time.</strong>
+            <strong className="text-gray-900 dark:text-white font-semibold">global, always-on, and in real-time.</strong>
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 mb-4">
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="/blockchain-development-tutorials/forte"
-              className="px-6 py-2 rounded-lg bg-primary-purple text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-primary-purple transition-colors text-center"
+              className="px-7 py-3 rounded-full bg-[#00EF8B] hover:bg-[#00D67D] text-black no-underline hover:no-underline font-semibold text-base transition-colors duration-200 text-center"
               onClick={() => {
                 event({
                   action: GA_EVENTS.ACTION_CARD_CLICK,
@@ -38,6 +35,7 @@ const HeroSection: React.FC = () => {
             >
               Automate DeFi
             </a>
+            
             <button
               type="button"
               onClick={() => {
@@ -49,30 +47,12 @@ const HeroSection: React.FC = () => {
                 });
                 window.location.href = '/blockchain-development-tutorials/cadence/getting-started';
               }}
-              className="px-6 py-2 rounded-lg bg-transparent text-black dark:text-white underline font-bold text-base border-none shadow-none focus:outline-none focus:underline hover:underline hover:text-green-600 dark:hover:text-green-400 transition-colors text-center cursor-pointer"
-              style={{ background: 'transparent' }}
+              className="px-7 py-3 rounded-full bg-transparent text-gray-900 dark:text-white font-semibold text-base border border-gray-300 dark:border-gray-600 hover:border-gray-900 dark:hover:border-white transition-colors duration-200 text-center cursor-pointer"
             >
               Quickstart
             </button>
           </div>
         </div>
-        {/* Right: Calendar card (visible on lg and up) */}
-        {/* <div className="flex-1 hidden lg:flex justify-end items-center pl-8">
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-4 w-[560px] max-w-full flex flex-col items-center">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Upcoming Events</h3>
-            <iframe
-              src={calendarSrc}
-              width="520"
-              height="260"
-              frameBorder="0"
-              style={{ border: '1px solid #bfcbda88', borderRadius: 8 }}
-              allowFullScreen
-              aria-hidden="false"
-              tabIndex={0}
-              title="Flow Events Calendar"
-            />
-          </div>
-        </div> */}
       </div>
     </section>
   );
