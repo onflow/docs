@@ -7,6 +7,13 @@ sidebar_position: 2
 
 To understand how Flow Credit Market (FCM) works, let's build up from simple lending concepts to FCM's innovative three-component architecture.
 
+:::tip Key Takeaway
+FCM = Traditional Lending + Automation + Yield Generation + Liquidation Protection
+
+It's not just "another lending protocol" - it's a complete yield-generating system with automated risk management.
+:::
+
+
 ## From Traditional Lending to FCM
 
 ### Level 1: Traditional Lending (Aave, Compound)
@@ -75,7 +82,7 @@ graph TB
 
     style ALP fill:#f9f,stroke:#333,stroke-width:4px
     style FYV fill:#bfb,stroke:#333,stroke-width:4px
-    style MOET fill:#fbb,stroke:#333,stroke-width:2px
+    style DrawDown fill:#bbf,stroke:#333,stroke-width:2px
 ```
 
 **Complete automation**:
@@ -85,24 +92,16 @@ graph TB
 - ✅ **Auto-protection**: FYV provides liquidity to prevent liquidations
 - ✅ **Auto-everything**: True set-and-forget experience
 
-**The breakthrough**:
-- 🎯 **Yield protects your position**: Your generated yield maintains health automatically
-- 🎯 **No manual intervention**: Everything happens automatically
-- 🎯 **Capital efficiency**: Borrowed capital works for you immediately
+FCM's innovation is that your generated yield protects your position by maintaining health automatically, requiring no manual intervention as everything happens seamlessly in the background. This creates true capital efficiency where borrowed capital works for you immediately upon deployment.
 
 ## Understanding the Three Components
 
 ### Component 1: ALP (The Lending Engine)
 
-**What it does**: Manages collateral and debt positions with automated rebalancing.
-
-**Key concepts**:
-- **Collateral**: Assets you deposit (FLOW, stFLOW, etc.)
-- **Collateral Factor**: Percentage of collateral value you can borrow (e.g., 0.8 = 80%)
-- **Health Factor**: Ratio of collateral to debt (must be > 1.0)
-- **Target Health**: Optimal ratio the system maintains (typically 1.3)
+ALP manages collateral and debt positions with automated rebalancing. You deposit collateral such as FLOW or stFLOW, and the system applies a collateral factor that determines what percentage of your collateral's value you can borrow—for example, a 0.8 collateral factor means you can borrow up to 80% of your collateral's value. The system continuously monitors your health factor, which is the ratio of your collateral to debt and must remain above 1.0 to avoid liquidation. ALP automatically maintains your position at a target health level, typically around 1.3, to provide a safety buffer.
 
 **Example**:
+
 ```
 Deposit: 1000 FLOW @ $1 = $1000
 Collateral Factor: 0.8 (80%)
@@ -112,22 +111,19 @@ Target Health: 1.3
 Max Safe Borrow: $800 / 1.3 ≈ $615.38 MOET
 
 ALP auto-borrows: 615.38 MOET
-Position Health: 800 / 615.38 = 1.3 ✓
+Position Health: 800 / 615.38 = 1.3 
 ```
 
 Learn more: [ALP Documentation](../alp/index.md)
 
 ### Component 2: FYV (The Yield Engine)
 
-**What it does**: Deploys capital into yield-generating strategies and provides liquidity for liquidation prevention.
+**TracerStrategy** acts as the smart converter that takes your borrowed MOET, converts it into yield-earning tokens, and converts them back to MOET when your position needs protection, handling all the conversion logic between MOET and yield opportunities. **AutoBalancer** acts as the smart wallet that holds and manages your yield tokens, automatically monitoring the value of your yield position and rebalancing your holdings as needed to optimize returns and maintain liquidity. Together, TracerStrategy handles the conversion logic while AutoBalancer handles the holding and management of those yield tokens.
 
-**Key concepts**:
-- **Strategies**: Predefined yield-generating approaches (TracerStrategy, etc.)
-- **AutoBalancer**: Manages exposure to yield tokens and rebalancing
-- **DrawDownSink**: Receives borrowed MOET from ALP
-- **TopUpSource**: Provides liquidity back to ALP when needed
+FYV deploys capital into yield-generating strategies and provides liquidity for liquidation prevention. The system uses predefined strategies like TracerStrategy to generate returns, with an AutoBalancer that manages your exposure to yield tokens and handles rebalancing automatically. When ALP borrows MOET on your behalf, the DrawDownSink receives it and deploys it into yield strategies, while the TopUpSource stands ready to provide liquidity back to ALP whenever your position needs debt repayment to maintain health.
 
 **Example strategy (TracerStrategy)**:
+
 ```
 1. Receive MOET from ALP → DrawDownSink
 2. Swap MOET → YieldToken (e.g., LP token, farm token)
@@ -143,15 +139,7 @@ Learn more: [FYV Documentation](#)
 
 ### Component 3: MOET (The Unit of Account)
 
-**What it does**: Serves as the currency for all operations - borrowed asset, pricing unit, and value transfer medium.
-
-**Key concepts**:
-- **Unit of Account**: All prices quoted in MOET (FLOW/MOET, USDC/MOET)
-- **Primary Borrowed Asset**: What ALP auto-borrows and what FYV receives
-- **Synthetic Stablecoin**: Value pegged to maintain stability
-- **Medium of Exchange**: Flows between ALP and FYV
-
-**Why MOET?**: MOET standardizes all valuations, simplifies multi-collateral calculations, is designed specifically for DeFi operations, and provides deep integration with the Flow ecosystem.
+MOET serves as the currency for all operations within FCM, functioning simultaneously as the borrowed asset, pricing unit, and value transfer medium. As the system's unit of account, all prices are quoted in MOET terms—whether FLOW/MOET or USDC/MOET. MOET is the primary borrowed asset that ALP auto-borrows and FYV receives for deployment. As a synthetic stablecoin with value pegged to maintain stability, MOET acts as the medium of exchange that flows seamlessly between ALP and FYV components. This design standardizes all valuations, simplifies multi-collateral calculations, and provides deep integration with the Flow ecosystem specifically for DeFi operations.
 
 Learn more: [MOET Documentation](#)
 
@@ -307,6 +295,7 @@ Option C: Manual yield farming
 ```
 
 **With FCM**:
+
 ```
 Deposit 1000 FLOW → FCM does everything:
   - Borrow optimal amount: ~$615 MOET
@@ -322,26 +311,13 @@ Effort: Set and forget
 
 ### 3. Composability
 
-Each component has value independently:
-
-**Use ALP alone** when you:
-- Want simple lending/borrowing
-- Have your own yield strategies
-- Need DeFi Actions integration
-
-**Use FYV alone** when you:
-- Want yield aggregation
-- Don't need leverage
-- Prefer direct yield farming
-
-**Use FCM together** when you:
-- Want maximum automation
-- Desire liquidation protection
-- Seek optimal capital efficiency
+Each component has value independently, allowing you to choose the level of integration that matches your needs. You can use ALP alone when you want simple lending and borrowing, have your own yield strategies, or need DeFi Actions integration for custom workflows. You can use FYV alone when you want yield aggregation without leverage, or prefer direct yield farming without the complexity of borrowing. You can use FCM together when you want maximum automation with liquidation protection and optimal capital efficiency through the integrated system.
 
 ## Understanding the Math
 
 ### Health Factor Calculation
+
+The health factor is the core metric that determines whether your position is safe or at risk of liquidation. It compares the value of your collateral (adjusted by the collateral factor) against the value of your debt.
 
 ```
 Health Factor = Effective Collateral / Effective Debt
@@ -357,6 +333,8 @@ Example:
 
 ### Target Health Ranges
 
+Different health factor values indicate different states of your position, from dangerous (below 1.0) to overcollateralized (above 1.5). Understanding these ranges helps you know when to take action.
+
 ```
 Health Factor States:
 
@@ -369,6 +347,8 @@ HF > 1.5     → Overcollateralized (should rebalance down)
 ```
 
 ### Borrowing Capacity
+
+This shows how much you can safely borrow while maintaining your target health factor. Borrowing up to this limit ensures you have a safety buffer to protect against price volatility.
 
 ```
 Maximum Safe Borrow = Effective Collateral / Target Health
@@ -385,47 +365,6 @@ Why not borrow more?
 
 Learn more: [Mathematical Foundations](./math.md)
 
-## Common Questions
-
-### How does FCM differ from Uniswap V3?
-
-**Uniswap V3** evolved from V2 by adding:
-- Concentrated liquidity (specific price ranges)
-- Multiple fee tiers
-- Capital efficiency improvements
-- More complex LP management
-
-**FCM** evolves from basic lending by adding:
-- Automated position management
-- Yield generation integration
-- Liquidation prevention via yield
-- Multi-component architecture (ALP + FYV + MOET)
-
-Both are "evolved" versions of simpler protocols, adding complexity for better capital efficiency.
-
-### Can I use FCM without understanding all three components?
-
-**Yes!** Think of it like using a car:
-- **User level**: Just drive (deposit and earn yield)
-- **Enthusiast level**: Understand the engine (how ALP, FYV, and MOET connect)
-- **Builder level**: Modify and extend (create custom strategies)
-
-Start with user level, learn more as you go.
-
-### What happens if FYV doesn't have enough liquidity for rebalancing?
-
-Multiple fallback mechanisms:
-1. **Primary**: FYV provides from yield
-2. **Secondary**: FYV can exit positions partially
-3. **Tertiary**: Traditional liquidation (external liquidators)
-4. **Emergency**: Circuit breakers and admin intervention
-
-The system is designed with multiple safety layers.
-
-### Is my yield always enough to prevent liquidation?
-
-**Not guaranteed**, but highly likely because you're earning yield continuously, the system only pulls what's needed, the health buffer (1.3 target) provides cushion, and you can deposit more collateral anytime. Traditional protocols have 0% chance of automatic prevention - FCM gives you a strong automatic defense.
-
 ## Next Steps
 
 Now that you understand the basics:
@@ -433,12 +372,3 @@ Now that you understand the basics:
 1. **Learn the architecture**: [Architecture Overview](./architecture.md)
 2. **Understand the math**: [Mathematical Foundations](./math.md)
 3. **Explore components**: [ALP](../alp/index.md), [FYV](#), [MOET](#)
-4. **Start using FCM**: Follow the quick start guide
-
----
-
-:::tip Key Takeaway
-FCM = Traditional Lending + Automation + Yield Generation + Liquidation Protection
-
-It's not just "another lending protocol" - it's a complete yield-generating system with automated risk management.
-:::
