@@ -84,7 +84,7 @@ access(all) contract TransferFLOWHandler {
         // is executed
         access(FlowTransactionScheduler.Execute)
         fun executeTransaction(id: UInt64, data: AnyStruct?) {
-            if let to = data as Address {
+            if let to = data as? Address {
                 let providerRef = self.from.borrow()
                     ?? panic("Could not borrow a reference to the provider FlowToken Vault")
 
