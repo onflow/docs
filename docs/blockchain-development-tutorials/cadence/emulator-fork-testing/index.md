@@ -281,10 +281,10 @@ When the emulator starts, note the service account address in the logs:
 
 Add the forked emulator's service account (use the address from the startup logs and a dummy key).
 
-First, create a dummy key file:
+First, create a dummy key file. Use a simple P-256 placeholder so tooling that validates curve membership continues working:
 
 ```bash
-echo "0000000000000000000000000000000000000000000000000000000000000000" > blank-key.pkey
+echo "0x0000000000000000000000000000000000000000000000000000000000000001" > blank-key.pkey
 ```
 
 Then manually add to your `flow.json`:
