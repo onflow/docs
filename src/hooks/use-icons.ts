@@ -61,6 +61,9 @@ const iconMap: Record<IconName, string> = {
   [IconName.ALCHEMY]: '/img/ecosystem/alchemy.svg',
   [IconName.THIRDWEB]: '/img/ecosystem/thirdweb.svg',
   [IconName.UNIBLOCK]: '/img/ecosystem/uniblock.svg',
+  
+  // Security icons
+  [IconName.SHIELD_CHECK]: '/images/icons/shield-check.svg',
 };
 
 // Simple function to get icon path - no need for a hook since it's just static data

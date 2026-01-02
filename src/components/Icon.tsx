@@ -29,13 +29,15 @@ interface IconProps {
   className?: string;
   width?: string | number;
   height?: string | number;
+  style?: React.CSSProperties;
 }
 
 export const Icon: React.FC<IconProps> = ({
   name,
   className = "w-6 h-6",
   width = "100%",
-  height = "100%"
+  height = "100%",
+  style,
 }) => {
   if (!name) {
     return <LocationIcon />;
@@ -50,7 +52,7 @@ export const Icon: React.FC<IconProps> = ({
 
   // Always render as an image since we're using static paths
   return (
-    <div className={className}>
+    <div className={className} style={style}>
       <img 
         src={iconPath} 
         alt={name}
