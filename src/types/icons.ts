@@ -10,7 +10,7 @@ export enum IconName {
   FLOW_CLIENT_LIBRARY = 'flow-client-library',
   TOOLS = 'tools',
   FAUCET = 'faucet',
-
+  
   // GrowGridData icons
   GROW = 'grow',
   BUILDER_CREDITS = 'builder-credits',
@@ -19,13 +19,13 @@ export enum IconName {
   STARTUP_SUPPORT = 'startup-support',
   VCS_AND_FUNDS = 'vcs-&-funds',
   ACCESS_INCREDIBLE_IP = 'access-incredible-ip',
-
+  
   // Other commonly used icons
   LEARN = 'learn',
   GS_HELLO_WORLD = 'gs-hello-world',
   CADENCE = 'cadence',
   SOLIDITY = 'solidity',
-
+  
   // Ecosystem icons
   QUICKNODE = 'quicknode',
   OLYMPIX_LOGO = 'olympix-logo',
@@ -33,14 +33,14 @@ export enum IconName {
   ALCHEMY = 'alchemy',
   THIRDWEB = 'thirdweb',
   UNIBLOCK = 'uniblock',
-
+  
   // Feature icons
   FEATURE_WHY_FLOW_ICON = 'feature-why-flow-icon',
   FEATURE_WAND_ICON = 'feature-wand-icon',
   FEATURE_STACKS_ICON = 'feature-stacks-icon',
   FEATURE_CODE_SCRIPTS_ICON = 'feature-code-scripts-icon',
   FEATURE_EVM_ICON = 'feature-evm-icon',
-
+  
   // Other icons
   ROADMAP = 'roadmap',
   CADENCE_COURSE = 'cadence-course',
@@ -53,10 +53,12 @@ export enum IconName {
   TUTORIALS = 'tutorials',
   CROSS_VM_BRIDGE = 'cross-vm-bridge',
   FORUM = 'forum',
-
+  
   // Social media icons
   DISCORD = 'discord',
   X_COM = 'x.com',
   GITHUB = 'github',
+  
+  // Security icons
   SHIELD_CHECK = 'shield-check',
 }
