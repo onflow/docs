@@ -58,4 +58,7 @@ export enum IconName {
   DISCORD = 'discord',
   X_COM = 'x.com',
   GITHUB = 'github',
+  
+  // Security icons
+  SHIELD_CHECK = 'shield-check',
 }
