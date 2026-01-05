@@ -127,7 +127,7 @@ A JSON version of the information below can be found in [onflow/flow/sporks.json
 | Spork Info                                                                              |
 |:----------------------------------------------------------------------------------------|
 | **Access Node**: access.mainnet.nodes.onflow.org:9000                                   |
-| **Date**: Dec 29, 2025                                                                  |
+| **Date**: Dec 28, 2025                                                                  |
 | **Root Height**: 137390146                                                              |
 | **Root Parent ID**: ee69349b5044c4c1cb959ac5beccbe3df896b370fb098808fb9a6eada57b3f7f    |
 | **Root State Commit**: d0a13c09f930322c5f053113354211acbf4d8c5eeb524c7004eb7c9d052c4bbe |
