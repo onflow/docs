@@ -21,25 +21,26 @@ Flow Client Library (FCL) approaches the idea of blockchain wallets on Flow in a
 
 FCL acts in many ways as a protocol to facilitate communication and configuration between the different parties involved in a blockchain application. An _Application_ can use FCL to _authenticate_ users, and request _authorizations_ for transactions, as well as mutate and query the _Blockchain_. An application using FCL offers its _Users_ a way to connect and select any number of Wallet Providers and their Wallet Services. A selected _Wallet_ provides an Application's instance of FCL with configuration information about itself and its Wallet Services, allowing the _User_ and _Application_ to interact with them.
 
-In the following paragraphs we'll explore ways in which you can integrate with FCL by providing implementations of various FCL services.
+In the following paragraphs, we'll explore ways in which you can integrate with FCL and provide implementations of various FCL services.
 
-The following services will be covered:
+We'll cover the following services:
 
 - Authentication (Authn) Service
 - Authorization (Authz) Service
 - User Signature Service
 - Pre-Authz Service
 
-# Service Methods
+# Service methods
 
-FCL Services are your way as a Wallet Provider of configuring FCL with information about what your wallet can do. FCL uses what it calls `Service Methods` to perform your supported FCL services. Service Methods are the ways FCL can talk to your wallet. Your wallet gets to decide which of these service methods each of your supported services use to communicate with you.
+FCL Services are your way as a Wallet Provider to configure FCL with information about what your wallet can do. FCL uses what it calls `Service Methods` to perform your supported FCL services. Service Methods are the ways FCL can talk to your wallet. Your wallet gets to decide which of these service methods each of your supported services use to communicate with you.
 
 Sometimes services just configure FCL and that's it. An example of this can be seen with the Authentication Service and the OpenID Service.
-With those two services you are simply telling FCL "here is a bunch of info about the current user". (You will see that those two services both have a `method: "DATA"` field in them.
+With those two services, you simply tell FCL "here is a bunch of info about the current user". (You will see that those two services both have a `method: "DATA"` field in them.
 Currently these are the only two cases that can be a data service.)
 
 Other services can be a little more complex. For example, they might require a back and forth communication between FCL and the Service in question.
-Ultimately we want to do this back and forth via a secure back-channel (https requests to servers), **but in some situations that isn't a viable option, so there is also a front-channel option**.
+
+Ultimately, we want to do this back and forth via a secure back-channel (https requests to servers), **but in some situations that isn't a viable option, so there is also a front-channel option**.
 Where possible, you should aim to provide a back-channel support for services, and only fall back to a front-channel if absolutely necessary.
 
 Back-channel communications use `method: "HTTP/POST"`, while front-channel communications use `method: "IFRAME/RPC"`, `method: "POP/RPC"`, `method: "TAB/RPC` and `method: "EXT/RPC"`.
@@ -56,17 +57,17 @@ It's important to note that regardless of the method of communication, the data 
 
 # Protocol schema definitions
 
-In this section we define the schema of objects used in the protocol. While they are JavaScript objects, only features supported by JSON should be used. (Meaning that conversion of an object to and from JSON should not result in any loss.)
+In this section, we define the schema of objects used in the protocol. While they are JavaScript objects, only features supported by JSON should be used. (Which means that conversion of an object to and from JSON should not result in any loss.)
 
-For the schema definition language we choose TypeScript, so that the schema closely resembles the actual type definitions one would use when making an FCL implementation.
+For the schema definition language, we choose TypeScript, so that the schema closely resembles the actual type definitions one would use to make an FCL implementation.
 
-**Note that currently there are no official type definitions available for FCL. If you are using TypeScript, you will have to create your own type definitions (possibly based on the schema definitions presented in this document).**
+**Note that currently there are no official type definitions available for FCL. If you use TypeScript, you will have to create your own type definitions (possibly based on the schema definitions presented in this document).**
 
 ## Common definitions
 
-In this section we introduce some common definitions that the individual object definitions will be deriving from.
+In this section, we introduce some common definitions that the individual object definitions will derive from.
 
-First, let us define the kinds of FCL objects available:
+First, lets define the kinds of FCL objects available:
 
 ```typescript
 type ObjectType =
@@ -95,7 +96,7 @@ All FCL objects carry an `f_type` field so that their types can be identified at
 
 ## FCL objects
 
-In this section we will define the FCL objects with each `ObjectType`.
+In this section, we will define the FCL objects with each `ObjectType`.
 
 We also define the union of them to mean any FCL object:
 
@@ -133,7 +134,7 @@ Each response back to FCL must be "wrapped" in a `PollingResponse`. The `status`
 
 In summary, zero or more `PENDING` responses should be followed by a non-pending response. It is entirely acceptable for your service to immediately return an `APPROVED` Polling Response, skipping a `PENDING` state.
 
-See also [PollingResponse](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/polling-response.js).
+See also [PollingResponse].
 
 Here are some examples of valid `PollingResponse` objects:
 
@@ -253,7 +254,7 @@ The meaning of the fields is as follows.
 - `method`: The service method this service uses. `DATA` means that the purpose of this service is just to provide the information in this `Service` object, and no active communication services are provided.
 - `uid`: A unique identifier for the service. A common scheme for deriving this is to use `'wallet-name#${type}'`, where `${type}` refers to the type of this service.
 - `endpoint`: Defines where to communicate with the service.
-  - When `method` is `EXT/RPC`, this can be an arbitrary unique string, and the extension will need to use it to identify its own services. A common scheme for deriving the `endpoint` is to use `'ext:${address}'`, where `${address}` refers to the wallet's address. (See `ServiceProvider` for more information.)
+  - When `method` is `EXT/RPC`, this can be an arbitrary unique string, and the extension will need to use it to identify its own services. A common scheme to derive the `endpoint` is to use `'ext:${address}'`, where `${address}` refers to the wallet's address. (See `ServiceProvider` for more information.)
 - `id`: The wallet's internal identifier for the user. If no other identifier is used, simply the user's flow account address can be used here.
 - `identity`: Information about the identity of the user.
 - `provider`: Information about the wallet.
@@ -261,16 +262,16 @@ The meaning of the fields is as follows.
 
 See also:
 
-- [authn](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/authn.js)
-- [authz](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/authz.js)
-- [user-signature](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/user-signature.js)
-- [pre-authz](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/pre-authz.js)
-- [open-id](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/open-id.js)
-- [back-channel-rpc](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/back-channel-rpc.js)
+- [authn]
+- [authz]
+- [user-signature]
+- [pre-authz]
+- [open-id]
+- [back-channel-rpc]
 
 ### `Identity`
 
-This object is used to define the identity of the user.
+This object is used to define the user's identity.
 
 ```typescript
 interface Identity extends ObjectBase {
@@ -304,7 +305,7 @@ interface ServiceProvider extends ObjectBase {
 
 The meaning of the fields is as follows.
 
-- `address`: A flow account address owned by the wallet. It is unspecified what this will be used for.
+- `address`: A flow account addressthat the wallet owns. It is unspecified what this will be used for.
 - `name`: The name of the wallet.
 - `description`: A short description for the wallet.
 - `icon`: An image URL for the wallet's icon.
@@ -327,7 +328,7 @@ interface AuthnResponse extends ObjectBase {
 The meaning of the fields is as follows.
 
 - `addr`: The flow account address of the user.
-- `services`: The list of services provided by the wallet.
+- `services`: The list of services the wallet provides.
 
 ### `Signable`
 
@@ -368,7 +369,7 @@ interface CompositeSignature extends ObjectBase {
 }
 ```
 
-See also [CompositeSignature](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/composite-signature.js).
+See also [CompositeSignature].
 
 ### `OpenID`
 
@@ -406,8 +407,8 @@ This object is used to invoke a service when the `EXT/RPC` service method is use
 
 ## See also
 
-- [local-view](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/local-view.js)
-- [frame](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/frame.js)
+- [local-view]
+- [frame]
 
 # Service Methods
 
@@ -419,8 +420,8 @@ This object is used to invoke a service when the `EXT/RPC` service method is use
 - The rendered iframe adds a listener and sends the `"FCL:VIEW:READY"` message. This can be simplified `WalletUtils.ready(callback)`
 - FCL will send the data to be dealt with:
   - Where `body` is the stuff you care about, `params` and `data` are additional information you can provide in the service object.
-- The wallet sends back an `"APPROVED"` or `"DECLINED"` post message. (It will be a `f_type: "PollingResponse"`, which we will get to in a bit). This can be simplified using `WalletUtils.approve` and `WalletUtils.decline`
-  - If it's approved, the polling response's data field will need to be what FCL is expecting.
+- The wallet sends back an `"APPROVED"` or `"DECLINED"` post message. (It will be a `f_type: "PollingResponse"`, which we will get to in a bit). This can be simplified with `WalletUtils.approve` and `WalletUtils.decline`
+  - If it's approved, the polling response's data field will need to be what FCL expects.
   - If it's declined, the polling response's reason field should say why it was declined.
 
 ```javascript
@@ -465,48 +466,47 @@ graph LR
 
 ## HTTP/POST (Back Channel)
 
-`HTTP/POST` initially sends a post request to the `endpoint` specified in the service, which should immediately return a `f_type: "PollingResponse"`.
+`HTTP/POST` initially sends a post request to the `endpoint` specified in the service, which will immediately return a `f_type: "PollingResponse"`.
 
 Like `IFRAME/RPC`, `POP/RPC` or `TAB/RPC`, our goal is to eventually get an `APPROVED` or `DECLINED` polling response, and technically this endpoint could return one of those immediately.
 
-But more than likely that isn't the case and it will be in a `PENDING` state (`PENDING` is not available to `IFRAME/RPC`, `POP/RPC` or `TAB/RPC`).
+But more than likely, that isn't the case and it will be in a `PENDING` state (`PENDING` is not available to `IFRAME/RPC`, `POP/RPC` or `TAB/RPC`).
 When the polling response is `PENDING` it requires an `updates` field that includes a service, `BackChannelRpc`, that FCL can use to request an updated `PollingResponse` from.
 FCL will use that `BackChannelRpc` to request a new `PollingResponse` which itself can be `APPROVED`, `DECLINED` or `PENDING`.
 If it is `APPROVED` FCL will return, otherwise if it is `DECLINED` FCL will error. However, if it is `PENDING`, it will use the `BackChannelRpc` supplied in the new `PollingResponse` updates field. It will repeat this cycle until it is either `APPROVED` or `DECLINED`.
 
-There is an additional optional feature that `HTTP/POST` enables in the first `PollingResponse` that is returned.
-This optional feature is the ability for FCL to render an iframe, popup or new tab, and it can be triggered by supplying a service `type: "VIEW/IFRAME"`, `type: "VIEW/POP"` or `type: "VIEW/TAB"` and the `endpoint` that the wallet wishes to render in the `local` field of the `PollingResponse`. This is a great way for a wallet provider to switch to a webpage if displaying a UI is necessary for the service it is performing.
+There is an additional optional feature that `HTTP/POST` activates in the first `PollingResponse` that is returned. This optional feature is the ability for FCL to render an iframe, popup or new tab, and you can trigger it when you supply a service `type: "VIEW/IFRAME"`, `type: "VIEW/POP"` or `type: "VIEW/TAB"` and the `endpoint` that the wallet wishes to render in the `local` field of the `PollingResponse`. This is a great way for a wallet provider to switch to a webpage if it's necessary to display a UI for the service it performs.
 
 ![HTTP/POST Diagram](https://raw.githubusercontent.com/onflow/fcl-js/master/packages/fcl-core/assets/service-method-diagrams/http-post.png)
 
 ## EXT/RPC (Front Channel)
 
-`EXT/RPC` is used to enable and communicate between FCL and an installed web browser extension. (Though this specification is geared towards Chromium based browsers, it should be implementable in any browser with similar extension APIs available. From now on we will be using the word _Chrome_ to refer to Chromium based browsers.)
+`EXT/RPC` is used to activate and communicate between FCL and an installed web browser extension. (Though this specification is geared towards Chromium based browsers, it should be implementable in any browser with similar extension APIs available. From now on we will be using the word _Chrome_ to refer to Chromium based browsers.)
 
-An implementation of `EXT/RPC` needs to somehow enable communication between the application and the extension context. Implementing this is a bit more complex and usually relies on 3 key scripts to allow message passing between an installed extension and FCL. The separation of contexts enforced by Chrome and the availability of different Chrome APIs within those contexts require these scripts to be set up in a particular sequence so that the communication channels needed by FCL's `EXT/RPC` service method will work.
+An implementation of `EXT/RPC` needs to somehow activate communication between the application and the extension context. Implementing this is a bit more complex and usually relies on three key scripts to allow message passing between an installed extension and FCL. The separation of contexts enforced by Chrome and the availability of different Chrome APIs within those contexts require these scripts to be set up in a particular sequence so that the communication channels needed by FCL's `EXT/RPC` service method will work.
 
 The following is an overview of these scripts and the functionality they need to support FCL:
 
-- `background.js`: Used to launch the extension popup with `chrome.windows.create` if selected by the user from Discovery or set directly via `fcl.config.discovery.wallet`
+- `background.js`: Used to launch the extension popup with `chrome.windows.create` if selected by the user from Discovery or set directly via `fcl.config.discovery.wallet`.
 - `content.js`: Used to proxy messages between the application to the extension via `chrome.runtime.sendMessage`.
 - `script.js`: Injected by `content.js` into the application's HTML page. It appends the extension authn service to the `window.fcl_extensions` array on page load. This allows FCL to confirm installation and send extension details to Discovery or launch your wallet as the default wallet.
 
-An example and guide showing how to build an FCL compatible wallet extension on Flow can be found [here](https://github.com/onflow/wallet-extension-example).
+An example and guide that shows how to build an FCL compatible wallet extension on Flow can be found [here].
 
-Once the extension is enabled (for example when the user selects it through the discovery service), the following communication protocol applies. (The term _send_ should specifically refer to using `window.postMessage` in the application context, as this is the only interface between the application and the extension. Note that since `window.postMessage` broadcasts messages to all message event handlers, care should be taken by each party to filter only the messages targeted at them.)
+After the extension is activated (for example when the user selects it through the discovery service), the following communication protocol applies. (The term _send_ should specifically refer to using `window.postMessage` in the application context, as this is the only interface between the application and the extension. Since `window.postMessage` broadcasts messages to all message event handlers, each party should be careful to filter only the messages targeted at them.)
 
-- An `ExtensionServiceInitiationMessage` object is sent by FCL. It is the extension's responsibility to inspect the `endpoint` field of the service, and only activate itself (e.g. by opening a popup) if it is the provider of this service.
-- The extension should respond by sending a `Message` with type `FCL:VIEW:READY`. (Usually this message will originate from the extension popup, and be relayed to the application context.)
+- FCL sends an `ExtensionServiceInitiationMessage` object. It is the extension's responsibility to inspect the `endpoint` field of the service, and only activate itself (for example, via a popup) if it is the provider of this service.
+- To respond, the extension should send a `Message` with type `FCL:VIEW:READY`. (Usually this message will originate from the extension popup, and be relayed to the application context.)
 - FCL will send a `Message` with type `FCL:VIEW:READY:RESPONSE`. Additional fields specific to the service (such as `body`, `params` or `data`) are usually present. See the section on the specific service for a description of these fields.
 - The wallet sends back a `Message & PollingResponse` with type `FCL:VIEW:RESPONSE` with either an `APPROVED` or `DECLINED` status.
-  - If it's approved, the polling response's data field will need to be what FCL is expecting.
-  - If it's declined, the polling response's reason field should say why it was declined.
+  - If it's approved, the polling response's data field will need to be what FCL expects.
+  - If it's declined, the polling response's reason field should say why.
 
-The extension can send a `Message` with type `FCL:VIEW:CLOSE` at any point during this protocol to indicate an interruption. This will halt FCL's current routine. On the other hand, once a `PollingResponse` with either an `APPROVED` or `DECLINED` status was sent, the protocol is considered finished, and the extension should not send any further messages as part of this exchange.
+The extension can send a `Message` with type `FCL:VIEW:CLOSE` at any point during this protocol to indicate an interruption. This will halt FCL's current routine. On the other hand, after a `PollingResponse` with either an `APPROVED` or `DECLINED` status is sent, the protocol is considered finished, and the extension should not send any further messages as part of this exchange.
 
 Conversely, when FCL sends a new `ExtensionServiceInitiationMessage`, the previous routine is interrupted. (This is the case even when the new service invocation is targeted at a different extension.)
 
-Note that as a consequence of the above restrictions, only single service invocation can be in progress at a time.
+Because of the above restrictions, only single service invocation can be in progress at a time.
 
 Here is a code example for how an extension popup might send its response:
 
@@ -534,9 +534,9 @@ chrome.tabs.sendMessage(tabs[0].id, {
 - `params` will be added onto the `endpoint` as query params.
 - `data` will be included in the body of the `HTTP/POST` request or in the `FCL:VIEW:READY:RESPONSE` for a `IFRAME/RPC`, `POP/RPC`, `TAB/RPC` or `EXT/RPC`.
 
-# Authentication Service
+# Authentication service
 
-In the following examples, we'll walk you through the process of building an authentication service.
+In the following examples, we'll walk you through the process of how to build an authentication service.
 
 In FCL, wallets are configured by passing in a wallet provider's authentication URL or extension endpoint as the `discovery.wallet` config variable.
 
@@ -553,9 +553,9 @@ config({
 });
 ```
 
-If the method specified is `IFRAME/RPC`, `POP/RPC` or `TAB/RPC`, then the URL specified as `discovery.wallet` will be rendered as a webpage. If the configured method is `EXT/RPC`, `discovery.wallet` should be set to the extension's `authn` `endpoint`. Otherwise, if the method specified is `HTTP/POST`, then the authentication process will happen over HTTP requests. (While authentication can be accomplished using any of those service methods, this example will use the `IFRAME/RPC` service method.)
+If the method specified is `IFRAME/RPC`, `POP/RPC` or `TAB/RPC`, then the URL specified as `discovery.wallet` will be rendered as a webpage. If the configured method is `EXT/RPC`, `discovery.wallet` should be set to the extension's `authn` `endpoint`. Otherwise, if the method specified is `HTTP/POST`, then the authentication process will happen over HTTP requests. (While authentication can be accomplished with any of those service methods, this example will use the `IFRAME/RPC` service method.)
 
-Once the Authentication webpage is rendered, the extension popup is enabled, or the API is ready, you then need to tell FCL that it is ready. You will do this by sending a message to FCL, and FCL will send back a message with some additional information that you can use about the application requesting authentication on behalf of the user.
+After the Authentication webpage is rendered, the extension popup is activated, or the API is ready, you then need to tell FCL that it is ready. To do this, send a message to FCL, and FCL will send back a message with some additional information that you can use about the application that requests authentication on behalf of the user.
 
 The following example is using the `IFRAME/RPC` method. Your authentication webpage will likely resemble the following code:
 
@@ -601,34 +601,31 @@ WalletUtils.ready(callback)
 
 During authentication, the application has a chance to request to you what they would like you to send back to them. These requests are included in the `FCL:VIEW:READY:RESPONSE` message sent to the wallet from FCL.
 
-An example of such a request is the OpenID service. The application can request for example that you to send them the email address of the current user. The application requesting this information does not mean you need to send it. It's entirely optional for you to do so. However, some applications may depend on you sending the requested information back, and should you decline to do so it may cause the application to not work.
+An example of such a request is the OpenID service. The application can request for example that you to send them the email address of the current user. The application that requests this information does not mean you need to send it. It's entirely optional for you to do so. However, some applications may depend on whether you send the requested information back, and should you decline to do so, it may cause the application to not work.
 
-In the config they can also tell you a variety of things about them, such as the name of their application or a url for an icon of their application. You can use these pieces of information to customize your wallet's user experience should you desire to do so.
+In the config, they can also tell you a variety of things about them, such as the name of their application or a URL for an icon of their application. You can use these pieces of information to customize your wallet's user experience should you desire to do so.
 
 Your wallet having a visual distinction from the application, but still a seamless and connected experience is our goal here.
 
-Whether your authentication process happens using a webpage with the `IFRAME/RPC`, `POP/RPC` or `TAB/RPC` methods, via an enabled extension using the `EXT/RPC` method, or using a backchannel to an API with the `HTTP/POST` method, the handshake is the same. The same messages are sent in all methods, however the transport mechanism changes. For `IFRAME/RPC`, `POP/RPC`, `TAB/RPC` or `EXT/RPC` methods, the transport is `window.postMessage()`, with the `HTTP/POST` method, the transport is HTTP post messages.
+Whether your authentication process happens using a webpage with the `IFRAME/RPC`, `POP/RPC` or `TAB/RPC` methods, via an actiated extension using the `EXT/RPC` method, or via a backchannel to an API with the `HTTP/POST` method, the handshake is the same. The same messages are sent in all methods, however the transport mechanism changes. For `IFRAME/RPC`, `POP/RPC`, `TAB/RPC` or `EXT/RPC` methods, the transport is `window.postMessage()`, with the `HTTP/POST` method, the transport is HTTP post messages.
 
 As always, you must never trust anything you receive from an application. Always do your due-diligence and be alert as you are the user's first line of defense against potentially malicious applications.
 
-### Authenticate your User
+### Authenticate your user
 
 It's important that you are confident that the user is who the user claims to be.
 
-Have them provide enough proof to you that you are okay with passing their details back to FCL.
-Using Blocto as an example, an authentication code is sent to the email a user enters at login.
-This code can be used as validation and is everything Blocto needs to be confident in the user's identity.
+Have them provide enough proof to you that you are okay with passing their details back to FCL. As an example, a Blotco authentication code is sent to the email a user enters at login. This code can be used as validation and is everything Blocto needs to be confident in the user's identity.
 
-### Once you know who your User is
+### When you know who your user is
 
-Once you're confident in the user's identity, we can complete the authentication process.
+When you're confident in the user's identity, we can complete the authentication process.
 
-The authentication process is complete once FCL receives back a response that configures FCL with FCL Services for the current user. This response is extremely important to FCL. At its core it tells FCL who the user is, and then via the included services it tells FCL how the user authenticated, how to request transaction signatures, how to get a personal message signed and the user's email and other details if requested. In the future it may also include many more things!
+The authentication process is complete when FCL receives back a response that configures FCL with FCL Services for the current user. This response is extremely important to FCL. At its core it tells FCL who the user is, and then via the included services it tells FCL how the user authenticated, how to request transaction signatures, how to get a personal message signed and the user's email and other details if requested. In the future it may also include many more things!
 
 You can kind of think of FCL as a plugin system. But since those plugins exist elsewhere outside of FCL, FCL needs to be configured with information on how to communicate with them.
 
-What you are sending back to FCL is everything that it needs to communicate with the plugins that you are supplying.
-Your wallet is like a plugin to FCL, and these details tell FCL how to use you as a plugin.
+What you send back to FCL is everything that it needs to communicate with the plugins that you supply. Your wallet is like a plugin to FCL, and these details tell FCL how to use you as a plugin.
 
 Here is an example of an authentication response:
 
@@ -729,7 +726,7 @@ WalletUtils.approve({
 })
 ```
 
-### Stopping an Authentication Process
+### Stop an authentication process
 
 From any frame, you can send a `FCL:VIEW:CLOSE` post message to FCL, which will halt FCL's current routine and close the frame.
 
@@ -739,7 +736,7 @@ import { WalletUtils } from '@onflow/fcl';
 WalletUtils.sendMsgToFCL('FCL:VIEW:CLOSE');
 ```
 
-# Authorization Service
+# Authorization service
 
 Authorization services are depicted with with a `type: "authz"`, and a `method` of either `HTTP/POST`, `IFRAME/RPC`, `POP/RPC`, `TAB/RPC` or `EXT/RPC`.
 They are expected to eventually return a `f_type: "CompositeSignature"`.
@@ -767,10 +764,9 @@ An authorization service is expected to know the Account and the Key that will b
 
 FCL will use the `method` provided to request an array of composite signature from authorization service (Wrapped in a `PollingResponse`).
 The authorization service will be sent a `Signable`.
-The service is expected to construct an encoded message to sign from `Signable.voucher`.
-It then needs to hash the encoded message, and prepend a required [transaction domain tag](https://github.com/onflow/fcl-js/blob/master/packages/sdk/src/encode/encode.ts#L18-L21).
-Finally it signs the payload with the user/s keys, producing a signature.
-This signature, as a HEX string, is sent back to FCL as part of the `CompositeSignature` which includes the user address and keyID in the data property of a `PollingResponse`.
+The service is expected to construct an encoded message to sign from `Signable.voucher`. It then needs to hash the encoded message, and prepend a required [transaction domain tag].
+
+Finally it signs the payload with the user/s keys, producing a signature. This signature, as a HEX string, is sent back to FCL as part of the `CompositeSignature` which includes the user address and keyID in the data property of a `PollingResponse`.
 
 ```elixir
 signature =
@@ -782,7 +778,7 @@ signature =
     |> convert_to_hex
 ```
 
-The eventual response back from the authorization service should resolve to something like this:
+The eventual response back from the authorization service will resolve to something like this:
 
 ```javascript
 {
@@ -808,12 +804,12 @@ WalletUtils.CompositeSignature(addr: String, keyId: Number, signature: Hex)
 
 ```
 
-# User Signature Service
+# User Signature service
 
 User Signature services are depicted with a `type: "user-signature"` and a `method` of either `HTTP/POST`, `IFRAME/RPC`, `POP/RPC`, `TAB/RPC` or `EXT/RPC`.
 They are expected to eventually return an array of `f_type: "CompositeSignature"`.
 
-The User Signature service is a stock/standard service.
+The User Signature service is a stock (standard) service.
 
 ```javascript
 {
@@ -828,10 +824,9 @@ The User Signature service is a stock/standard service.
 }
 ```
 
-FCL will use the `method` provided to request an array of composite signatures from the user signature service (Wrapped in a `PollingResponse`).
-The user signature service will be sent a `Signable`.
-The service is expected to tag the `Signable.message` and then sign it with enough keys to produce a full weight.
-The signatures need to be sent back to FCL as HEX strings in an array of `CompositeSignatures`.
+FCL will use the `method` provided to request an array of composite signatures from the user signature service (Wrapped in a `PollingResponse`). The user signature service will be sent a `Signable`.
+
+The service is expected to tag the `Signable.message` and then sign it with enough keys to produce a full weight. The signatures need to be sent back to FCL as HEX strings in an array of `CompositeSignatures`.
 
 ```javascript
 // Pseudocode:
@@ -872,14 +867,13 @@ The eventual response back from the user signature service should resolve to som
 }
 ```
 
-# Pre Authz Service
+# Pre Authz service
 
-This is a strange one, but extremely powerful. This service should be used when a wallet is responsible for an account that's signing as multiple roles of a transaction, and wants the ability to change the accounts on a per role basis.
+This is a strange one, but extremely powerful. Use this service when a wallet is responsible for an account that signs as multiple roles of a transaction, and wants the ability to change the accounts on a per role basis.
 
-Pre Authz Services are depicted with a `type: "pre-authz"` and a `method` of either `HTTP/POST`, `IFRAME/RPC`, `POP/RPC`, `TAB/RPC` or `EXT/RPC`.
-They are expected to eventually return a `f_type: "PreAuthzResponse"`.
+Pre Authz Services are depicted with a `type: "pre-authz"` and a `method` of either `HTTP/POST`, `IFRAME/RPC`, `POP/RPC`, `TAB/RPC` or `EXT/RPC`. They are expected to eventually return a `f_type: "PreAuthzResponse"`.
 
-The Pre Authz Service is a stock/standard service.
+The Pre Authz Service is a stock (standard) service.
 
 ```javascript
 {
@@ -894,11 +888,9 @@ The Pre Authz Service is a stock/standard service.
 }
 ```
 
-FCL will use the `method` provided to request a `PreAuthzReponse` (Wrapped in a `PollingResponse`).
-The Authorizations service will be sent a `PreSignable`.
-The pre-authz service is expected to look at the `PreSignable` and determine the breakdown of accounts to be used.
-The pre-authz service is expected to return `Authz` services for each role it is responsible for.
-A pre-authz service can only supply roles it is responsible for.
+FCL will use the `method` provided to request a `PreAuthzReponse` (Wrapped in a `PollingResponse`). The Authorizations service will be sent a `PreSignable`.
+
+The pre-authz service is expected to look at the `PreSignable` and determine the breakdown of accounts to be used. The pre-authz service is expected to return `Authz` services for each role it is responsible for. A pre-authz service can only supply roles it is responsible for.
 If a pre-authz service is responsible for multiple roles, but it wants the same account to be responsible for all the roles, it will need to supply an Authz service per role.
 
 The eventual response back from the pre-authz service should resolve to something like this:
@@ -939,16 +931,15 @@ The eventual response back from the pre-authz service should resolve to somethin
 
 # Authentication Refresh Service
 
-Since synchronization of a user's session is important to provide a seamless user experience when using an app and transacting with the Flow Blockchain, a way to confirm, extend, and refresh a user session can be provided by the wallet.
+Since synchronization of a user's session is important to provide a seamless user experience when you use an app and transact with the Flow Blockchain, a way to confirm, extend, and refresh a user session can be provided by the wallet.
 
 Authentication Refresh Services should include a `type: "authn-refresh"`, `endpoint`, and supported `method` (`HTTP/POST`, `IFRAME/RPC`, `POP/RPC`, or `EXT/RPC`).
 
-FCL will use the `endpoint` and service `method` provided to request updated authentication data.
-The `authn-refresh` service should refresh the user's session if necessary and return updated authentication configuration and user session data.
+FCL will use the `endpoint` and service `method` provided to request updated authentication data. The `authn-refresh` service should refresh the user's session if necessary and return updated authentication configuration and user session data.
 
 The service is expected to return a `PollingResponse` with a new `AuthnResponse` as data. If user input is required, a `PENDING` `PollingResponse` can be returned with a `local` view for approval/re-submission of user details.
 
-The Authentication Refresh Service is a stock/standard service.
+The Authentication Refresh Service is a stock (standard) service.
 
 ```javascript
   {
@@ -1004,3 +995,18 @@ The eventual response back from the `authn-refresh` service should resolve to an
   }
 }
 ```
+
+<!-- Relative links, will not render on page -->
+
+[PollingResponse]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/polling-response.js
+[authn]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/authn.js
+[authz]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/authz.js
+[user-signature]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/user-signature.js
+[pre-authz]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/pre-authz.js
+[open-id]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/open-id.js
+[back-channel-rpc]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/back-channel-rpc.js
+[CompositeSignature]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/composite-signature.js
+[local-view]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/local-view.js
+[frame]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/frame.js
+[here]: https://github.com/onflow/wallet-extension-example
+[transaction domain tag]: https://github.com/onflow/fcl-js/blob/master/packages/sdk/src/encode/encode.ts#L18-L21

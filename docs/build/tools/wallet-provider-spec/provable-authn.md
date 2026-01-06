@@ -1,28 +1,28 @@
 # Provable Authn
 
-In order to improve UX/DX and encourage seamless integration with App backends and services, `fcl.authenticate` has been upgraded.
+To improve UX/DX and encourage seamless integration with App backends and services, `fcl.authenticate` has been upgraded.
 
-Additional data is sent in the body of `FCL:VIEW:READY:RESPONSE`. This data includes what the wallet needs to build a message for signing with the user’s private key/s.
+Additional data is sent in the body of `FCL:VIEW:READY:RESPONSE`. This data includes what the wallet needs to build a message for signing with the user’s private keys.
+
 The signature can be returned as part of an optional `account-proof` service with the `FCL:VIEW:RESPONSE`.
 
 When provided by the wallet, this **signature** and additional **account-proof data** is available to the App via `fcl.currentUser` services. The service data can be used to recreate the message, and verify the signature on the Flow Blockchain.
 
-For example, it can be sent to the App’s backend and after validating the signature and the other account-proof data, it can safely associate the included account address to a user and log them in.
+For example, it can be sent to the App’s backend and after it validates the signature and the other account-proof data, it can safely associate the included account address to a user and log them in.
 
 ---
 
 ## TL;DR Wallet Provider
 
 1. Wallet receives Authn `FCL:VIEW:READY:RESPONSE` request and parses out the `appIdentifier`, and `nonce`.
-2. The wallet authenticates the user however they choose to do, and determines the user's account `address`
-4. The wallet must validate the `appIdentifier` against the RFC 6454 origin of the request if it matches the
-   format of a [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986) URI.  Requests with a mismatch should be rejected.  Some legacy systems may use arbitrary strings as `appIdentifier` and not [RFC 6454](https://www.rfc-editor.org/rfc/rfc6454.html) origins. In this case, wallets should display a warning to the user that the app identifier does not match the origin of the request.
-5. Wallet prepares and signs the message:
-      - Encodes the `appIdentifier`, `nonce`, and `address` along with the `"FCL-ACCOUNT-PROOF-V0.0"` domain separation tag, [using the encoding scheme described below](#account-proof-message-encoding).
-      - Signs the message with the `signatureAlgorithm` and `hashAlgorithm` specified on user's key. **It is highly recommended that the wallet display the message data and receive user approval before signing.**
-6. Wallet sends back this new service and data along with the other service configuration when completing Authn.
+2. The Wallet authenticates the user however they choose to do, and determines the user's account `address`.
+3. The wallet must validate the `appIdentifier` against the RFC 6454 origin of the request if it matches the format of a [RFC 3986] URI.  Requests with a mismatch should be rejected.  Some legacy systems may use arbitrary strings as `appIdentifier` and not [RFC 6454] origins. In this case, wallets should display a warning to the user that the app identifier does not match the origin of the request.
+4. Wallet prepares and signs the message:
+      - Encodes the `appIdentifier`, `nonce`, and `address` along with the `"FCL-ACCOUNT-PROOF-V0.0"` domain separation tag, [via the encoding scheme described below].
+      - Signs the message with the `signatureAlgorithm` and `hashAlgorithm` specified on user's key. **We strongly recommend that the wallet display the message data and receive user approval before signing.**
+6. Wallet sends back this new service and data along with the other service configuration when it completes Authn.
 
-### Account Proof Message Encoding
+### Account proof message encoding
 
 The account proof message is encoded as follows:
 
@@ -40,12 +40,12 @@ with the following values:
 
 - `ACCOUNT_PROOF_DOMAIN_TAG` is the constant `"FCL-ACCOUNT-PROOF-V0.0"`, encoded as UTF-8 byte array and right-padded with zero bytes to a length of 32 bytes.
 - `APP_IDENTIFIER` is an arbitrary length string.
-- `ADDRESS` is a byte array containing the address bytes, left-padded with zero bytes to a length of 8 bytes.
+- `ADDRESS` is a byte array that contains the address bytes, left-padded with zero bytes to a length of eight bytes.
 - `NONCE` is an byte array with a minimum length of 32 bytes.
 
-`RLP_ENCODE` is a function that performs [RLP encoding](https://eth.wiki/fundamentals/rlp) and returns the encoded value as bytes.
+`RLP_ENCODE` is a function that performs [RLP encoding] and returns the encoded value as bytes.
 
-### JavaScript Signing Example
+### JavaScript signing example
 
 ```javascript
 // Using WalletUtils
@@ -103,3 +103,10 @@ WalletUtils.onMessageFromFcl(
   }
 }
 ```
+
+<!-- Relative links, will not render on page -->
+
+[RFC 3986]: https://www.rfc-editor.org/rfc/rfc3986
+[RFC 6454]: https://www.rfc-editor.org/rfc/rfc6454.html
+[via the encoding scheme described below]: #account-proof-message-encoding
+[RLP encoding]: https://eth.wiki/fundamentals/rlp
