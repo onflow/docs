@@ -57,7 +57,7 @@ The Flow Emulator provides two complementary tools for this purpose:
 
 ## Prerequisites
 
-1. **Flow CLI** installed ([installation guide](https://docs.onflow.org/flow-cli/install/))
+1. **Flow CLI** installed ([installation guide](../../tools/flow-cli/install.md))
 
 2. **[pprof tool](https://github.com/google/pprof)** (for computation profiling):
 
