@@ -77,6 +77,12 @@ Start the emulator with the `--computation-reporting` flag:
 flow emulator --computation-reporting
 ```
 
+:::info
+
+For more accurate computation numbers that reflect real network conditions, consider using [emulator fork testing](../../../blockchain-development-tutorials/cadence/emulator-fork-testing/index.md). Forking allows you to profile against actual Mainnet or Testnet state without requiring a full emulator environment setup.
+
+:::
+
 ### Viewing Computation Reports
 
 Once enabled, access the computation report at:
