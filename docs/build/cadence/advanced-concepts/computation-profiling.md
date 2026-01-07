@@ -17,7 +17,7 @@ sidebar_position: 1
 
 This guide provides comprehensive instructions for using the computation profiling and reporting features in the Flow Emulator. These tools help Cadence developers analyze and optimize their smart contracts by understanding computational costs and identifying performance bottlenecks.
 
-## Introduction
+## Overview
 
 When developing smart contracts on Flow, understanding computational costs is essential for:
 
