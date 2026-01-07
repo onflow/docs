@@ -355,30 +355,6 @@ curl http://localhost:8080/emulator/computationReport > report_b.json
 
 **4. Compare the `computation` values in both reports.**
 
-## Best Practices
-
-1. **Profile early and often**: Don't wait until production to understand your computation costs.
-
-2. **Use the right tool for the job**:
-   - **Computation Reporting**: Quick checks, automated tests, CI/CD pipelines
-   - **Computation Profiling**: Deep analysis, visual exploration, optimization work
-
-3. **Reset between isolated tests**: Always reset profiles when comparing different implementations or testing in isolation.
-
-4. **Use `#sourceFile` consistently**: Add pragmas to all your transactions and scripts for better debugging and reporting.
-
-5. **Consider compute limits**: Be aware of the emulator's compute limits:
-   - `--transaction-max-compute-limit` (default: 9999)
-   - `--script-compute-limit` (default: 100000)
-
-6. **Profile realistic scenarios**: Test with realistic data volumes and usage patterns.
-
-7. **Monitor expensive operations**: Pay attention to high-cost operations like:
-   - Large loops
-   - Frequent storage reads/writes (`GetValue`, `SetValue`)
-   - Cryptographic operations (`Hash`, `VerifySignature`)
-   - Event emissions (`EmitEvent`)
-
 ## API Reference
 
 | Endpoint | Method | Description |
