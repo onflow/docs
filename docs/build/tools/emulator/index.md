@@ -171,6 +171,7 @@ flow emulator --help
 ## Debugging and Testing
 
 - **Code Coverage**: Add `--coverage-reporting` flag and visit `http://localhost:8080/emulator/codeCoverage`
+- **Computation Profiling**: Add `--computation-profiling` and/or `--computation-reporting` flags to analyze computational costs and identify performance bottlenecks in your Cadence code. See the [Cadence Computation Profiling guide] for detailed instructions.
 - **Debugging**: Use `#debugger()` pragma in Cadence code for breakpoints
 - **Fork mode note**: When you use `flow emulator --fork`, only Flow chain state is available. External oracles/APIs and cross-chain reads are not live; mock these or run local stub services for E2E.
 
@@ -232,3 +233,4 @@ To learn more about how to use the Emulator, have a look at the [public GitHub r
 [Create Emulator Snapshot]: ../flow-cli/utils/snapshot-save.md
 [public GitHub repository]: https://github.com/onflow/flow-emulator
 [Interactive Testing with Forked Emulator]: ../../../blockchain-development-tutorials/cadence/emulator-fork-testing/index.md
+[Cadence Computation Profiling guide]: ../../cadence/advanced-concepts/computation-profiling.md

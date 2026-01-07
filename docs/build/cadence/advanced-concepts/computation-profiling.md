@@ -486,7 +486,7 @@ flow emulator --coverage-reporting
 
 View coverage at: `http://localhost:8080/emulator/codeCoverage`
 
-Learn more in the [README](../README.md#cadence-code-coverage).
+Learn more in the [Flow Emulator documentation](../../tools/emulator/index.md).
 
 ### Debugger
 
