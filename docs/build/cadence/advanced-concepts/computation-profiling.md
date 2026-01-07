@@ -17,29 +17,6 @@ sidebar_position: 1
 
 This guide provides comprehensive instructions for using the computation profiling and reporting features in the Flow Emulator. These tools help Cadence developers analyze and optimize their smart contracts by understanding computational costs and identifying performance bottlenecks.
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Prerequisites](#prerequisites)
-- [Computation Reporting](#computation-reporting)
-  - [Enabling Computation Reporting](#enabling-computation-reporting)
-  - [Viewing Computation Reports](#viewing-computation-reports)
-- [Computation Profiling (pprof)](#computation-profiling-pprof)
-  - [Enabling Computation Profiling](#enabling-computation-profiling)
-  - [Downloading the Profile](#downloading-the-profile)
-  - [Viewing Profiles with pprof](#viewing-profiles-with-pprof)
-  - [Viewing Source Code in pprof](#viewing-source-code-in-pprof)
-  - [Resetting Computation Profiles](#resetting-computation-profiles)
-- [Using Source File Pragmas](#using-source-file-pragmas)
-- [Practical Examples](#practical-examples)
-  - [Profiling a Simple Transaction](#profiling-a-simple-transaction)
-  - [Identifying Performance Bottlenecks](#identifying-performance-bottlenecks)
-  - [Comparing Computation Costs](#comparing-computation-costs)
-- [Best Practices](#best-practices)
-- [API Reference](#api-reference)
-- [Troubleshooting](#troubleshooting)
-- [Related Features](#related-features)
-
 ## Introduction
 
 When developing smart contracts on Flow, understanding computational costs is essential for:
