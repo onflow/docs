@@ -122,6 +122,19 @@ A JSON version of the information below can be found in [onflow/flow/sporks.json
 | **Docker Image Tag**: v0.37.26                                                         |
 | **Release Notes**: [v0.37.26](https://github.com/onflow/flow-go/releases/tag/v0.37.26) |
 
+## Mainnet 28
+
+| Spork Info                                                                              |
+|:----------------------------------------------------------------------------------------|
+| **Access Node**: access.mainnet.nodes.onflow.org:9000                                   |
+| **Date**: Dec 28, 2025                                                                  |
+| **Root Height**: 137390146                                                              |
+| **Root Parent ID**: ee69349b5044c4c1cb959ac5beccbe3df896b370fb098808fb9a6eada57b3f7f    |
+| **Root State Commit**: d0a13c09f930322c5f053113354211acbf4d8c5eeb524c7004eb7c9d052c4bbe |
+| **Git Commit**: dd73c65fe83822e5fc2846879fb93f8a15b1b25c                                |
+| **Branch/Tag**: [v0.44.3](https://github.com/onflow/flow-go/releases/tag/v0.44.3)       |
+| **Docker Image Tag**: v0.44.3                                                           |
+
 ## Mainnet 27
 
 | Spork Info                                                                              |
