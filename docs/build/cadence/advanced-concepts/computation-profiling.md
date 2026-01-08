@@ -30,7 +30,7 @@ The Flow Emulator provides two complementary tools for this purpose:
 | Feature | Output | Best For |
 |---------|--------|----------|
 | **Computation Reporting** | JSON report with detailed intensities | Quick numerical analysis, CI/CD integration, automated testing |
-| **Computation Profiling** | pprof-compatible flame graphs | Visual analysis, deep-dive debugging, call stack exploration |
+| **Computation Profiling** | pprof profile | Visual analysis (e.g. flame graphs), deep-dive debugging, call stack exploration |
 
 ## Prerequisites
 
