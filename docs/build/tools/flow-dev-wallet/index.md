@@ -4,35 +4,29 @@ sidebar_label: Flow Dev Wallet
 sidebar_position: 5
 ---
 
-The Flow Dev Wallet is a mock Flow wallet that simulates the protocols used by [FCL](../clients/fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.
+The Flow Dev Wallet is a mock Flow wallet that simulates the protocols the Flow Client Library ([FCL]) uses to interact with the Flow blockchain on behalf of simulated user accounts.
 
-:::warning[IMPORTANT]
+:::warning
 
-This project implements an FCL compatible
-interface, but should **not** be used as a reference for
-building a production grade wallet.
+This project implements an FCL compatible interface, but should **not** be used as a reference to build a production grade wallet.
 
-This project should only be used in aid of local
-development against a locally run instance of the Flow
-blockchain like the Flow emulator, and should never be used in
-conjunction with Flow Mainnet, Testnet, or any
-other instances of Flow.
+This project should only be used in aid of local development against a locally run instance of the Flow blockchain like the Flow emulator, and should never be used in conjunction with Flow Mainnet, Testnet, or any other instances of Flow.
 
 :::
 
 :::info
 
-To see a full list of Flow compatible wallets visit [Wallets page](../../../ecosystem/wallets.md)
+To see a full list of Flow compatible wallets, visit the [Wallets page]
 
 :::
 
-## Getting Started
+## Get started
 
-Before using the dev wallet, you'll need to start the Flow emulator.
+Before you use the dev wallet, you'll need to start the Flow emulator.
 
 ### Install the `flow-cli`
 
-The Flow emulator is bundled with the Flow CLI. Instructions for installing the CLI can be found here: [flow-cli/install/](../flow-cli/install.md)
+The Flow emulator is bundled with the Flow CLI. Instructions for how to install the CLI can be found here: [flow-cli/install/]
 
 ### Create a `flow.json` file
 
@@ -44,14 +38,14 @@ flow init --config-only
 
 ### Start the Emulator
 
-Start the Emulator and deploy the contracts by running the following command from the directory containing `flow.json` in your project:
+To start the Emulator and deploy the contracts, run the following command from the directory that contains `flow.json` in your project:
 
 ```sh
 flow emulator start
 flow project deploy --network emulator
 ```
 
-### Start the Dev Wallet
+### Start the dev wallet
 
 In a separate terminal session, start the dev wallet service.
 
@@ -59,11 +53,11 @@ In a separate terminal session, start the dev wallet service.
 flow dev-wallet
 ```
 
-### Configuring Your JavaScript Application
+### Configure your JavaScript application
 
-The Flow Dev Wallet is designed to be used with [`@onflow/fcl`](https://github.com/onflow/fcl-js) version `1.0.0` or higher. The FCL package can be installed with: `npm install @onflow/fcl` or `yarn add @onflow/fcl`.
+The Flow Dev Wallet is designed to be used with [`@onflow/fcl`] version `1.0.0` or higher. The FCL package can be installed with: `npm install @onflow/fcl` or `yarn add @onflow/fcl`.
 
-To use the dev wallet, configure FCL to point to the address of a locally running [Flow emulator](#start-the-emulator) and the dev wallet endpoint.
+To use the dev wallet, configure FCL to point to the address of a locally running [Flow emulator] and the dev wallet endpoint.
 
 ```javascript
 import * as fcl from '@onflow/fcl';
@@ -78,22 +72,21 @@ fcl
 
 :::info
 
-For a full example refer to [Authenticate using FCL snippet](https://academy.ecdao.org/en/snippets/fcl-authenticate)
+For a full example refer to [Authenticate using FCL snippet]
 
 :::
 
 ### Test harness
 
-It's easy to use this FCL harness app as a barebones
-app to interact with the dev-wallet during development:
+It's easy to use this FCL harness app as a barebones app to interact with the dev-wallet during development:
 
 Navigate to http://localhost:8701/harness
 
 ### Wallet Discovery
 
-[Wallet Discovery](../clients/fcl-js/discovery.md) offers a convenient modal and mechanism to authenticate users and connects to all wallets available in the Flow ecosystem.
+[Wallet Discovery]offers a convenient modal and mechanism to authenticate users and connects to all wallets available in the Flow ecosystem.
 
-The following code from [Emerald Academy](https://academy.ecdao.org/en/snippets/fcl-authenticate) can be added to your React app to enable Wallet Discovery:
+The following code from [Emerald Academy] can be added to your React app to turn on Wallet Discovery:
 
 ```javascript
 import { config, authenticate, unauthenticate, currentUser } from '@onflow/fcl';
@@ -158,9 +151,9 @@ export default function App() {
 }
 ```
 
-### Account/Address creation
+### Account or Address creation
 
-You can [create a new account](https://cadence-lang.org/docs/language/accounts#account-creation) by using the `&Account` constructor. When you do this, make sure to specify which account will pay for the creation fees by setting it as the payer.
+You can [create a new account] with the `&Account` constructor. When you do this, make sure to specify which account will pay for the creation fees. TO do this, set it as the payer.
 
 The account you choose to pay these fees must have enough money to cover the cost. If it doesn't, the process will stop and the account won't be created.
 
@@ -183,12 +176,12 @@ transaction(publicKey: String) {
 
 To create a new Flow account refer to these resources
 
-- [Create an Account with FCL snippet](https://academy.ecdao.org/en/snippets/fcl-create-account)
-- [Create an Account in Cadence snippet](https://academy.ecdao.org/en/snippets/cadence-create-account)
+- [Create an Account with FCL snippet]
+- [Create an Account in Cadence snippet]
 
-### Get Flow Balance
+### Get Flow balance
 
-Retrieving the token balance of a specific account involves writing a script to pull data from onchain. The user may have both locked tokens as well as unlocked so to retrieve the total balance we would aggregate them together.
+To retrieve the token balance of a specific account, you must write involves write a script that pulls data from onchain. The user may have both locked tokens as well as unlocked so to retrieve the total balance we would aggregate them together.
 
 ```javascript
 import * as fcl from '@onflow/fcl';
@@ -227,14 +220,32 @@ export const getTotalFlowBalance = async (address) => {
 };
 ```
 
-## Contributing
+## Contribute
 
-Releasing a new version of Dev Wallet is as simple as tagging and creating a release, a Github Action will then build a bundle of the Dev Wallet that can be used in other tools (such as CLI). If the update of the Dev Wallet is required in the CLI, a seperate update PR on the CLI should be created. For more information, please visit the [fcl-dev-wallet GitHub repository](https://github.com/onflow/fcl-dev-wallet).
+To release a new version of Dev Wallet is as simple as tagging and creating a release, a Github Action will then build a bundle of the Dev Wallet that can be used in other tools (such as CLI). If the update of the Dev Wallet is required in the CLI, create a seperate update PR on the CLI. For more information, visit the [fcl-dev-wallet GitHub repository].
 
 ## More
 
-Additionally, consider exploring these resources:
+Additionally, you can explore these resources:
 
-- [Guide to Creating a Fungible Token on Flow](../../../blockchain-development-tutorials/tokens/fungible-token-cadence.md)
-- [Tutorial on Fungible Tokens](https://cadence-lang.org/docs/tutorial/fungible-tokens)
-- [Faucets](../../../ecosystem/faucets.md)
+- [Guide to Creating a Fungible Token on Flow]
+- [Tutorial on Fungible Tokens]
+- [Faucets]
+
+<!-- Relative links, will not render on page -->
+
+[FCL]: ../clients/fcl-js/index.md
+[Wallets page]: ../../../ecosystem/wallets.md
+[flow-cli/install/]: ../flow-cli/install.md
+[`@onflow/fcl`]: https://github.com/onflow/fcl-js
+[Flow emulator]: #start-the-emulator 
+[Authenticate using FCL snippet]: https://academy.ecdao.org/en/snippets/fcl-authenticate
+[Wallet Discovery]: ../clients/fcl-js/discovery.md
+[Emerald Academy]: https://academy.ecdao.org/en/snippets/fcl-authenticate
+[create a new account]: https://cadence-lang.org/docs/language/accounts#account-creation
+[Create an Account with FCL snippet]: https://academy.ecdao.org/en/snippets/fcl-create-account
+[Create an Account in Cadence snippet]: https://academy.ecdao.org/en/snippets/cadence-create-account
+[fcl-dev-wallet GitHub repository]: https://github.com/onflow/fcl-dev-wallet
+[Guide to Creating a Fungible Token on Flow]: ../../../blockchain-development-tutorials/tokens/fungible-token-cadence.md
+[Tutorial on Fungible Tokens]: https://cadence-lang.org/docs/tutorial/fungible-tokens
+[Faucets]: ../../../ecosystem/faucets.md
