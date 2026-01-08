@@ -36,12 +36,6 @@ The Flow Emulator provides two complementary tools for this purpose:
 
 1. **Flow CLI** installed ([installation guide](../../tools/flow-cli/install.md))
 
-2. **[pprof tool](https://github.com/google/pprof)** (for computation profiling):
-
-   ```bash
-   go install github.com/google/pprof@latest
-   ```
-
 ## Computation Reporting
 
 Computation reporting provides a JSON-based view of computational costs for all executed transactions and scripts.
@@ -123,6 +117,10 @@ The total `computation` value is calculated by multiplying each intensity by its
 ## Computation Profiling (pprof)
 
 Computation profiling generates pprof-compatible profiles that can be visualized as flame graphs, providing a powerful way to understand your code's execution patterns.
+
+### Installing pprof
+
+To visualize computation profiles, you'll need the [pprof tool](https://github.com/google/pprof). See the [pprof installation guide](https://github.com/google/pprof#building-pprof) for instructions.
 
 ### Enabling Computation Profiling
 
