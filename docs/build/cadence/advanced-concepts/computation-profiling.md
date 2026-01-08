@@ -205,7 +205,9 @@ curl -X PUT http://localhost:8080/emulator/computationProfile/reset
 
 ## Using Source File Pragmas
 
-The `#sourceFile` pragma improves report readability by associating your code with meaningful file paths. Without it, reports show generic identifiers.
+The `#sourceFile` pragma improves computation report readability by associating your code with meaningful file paths. Without it, reports show generic identifiers.
+
+> **Note**: The `#sourceFile` pragma currently only affects **Computation Reporting** (JSON reports). It does not change filenames in **Computation Profiling** (pprof profiles).
 
 ### Usage
 
@@ -233,9 +235,8 @@ access(all) fun main(address: Address): UFix64 {
 
 ### Benefits
 
-- Reports show file paths instead of generic IDs
+- Computation reports show file paths instead of generic IDs
 - Easier to correlate computation costs with source files
-- Better integration with pprof source views
 - Useful for tracking costs across multiple files in a project
 
 ## Practical Examples
@@ -415,9 +416,9 @@ flow emulator --computation-profiling
 curl -X PUT http://localhost:8080/emulator/computationProfile/reset
 ```
 
-### Reports not showing file paths
+### Computation reports not showing file paths
 
-**Problem**: The `path` field in reports is empty.
+**Problem**: The `path` field in computation reports is empty.
 
 **Solution**: Add the `#sourceFile` pragma to your transactions and scripts:
 
