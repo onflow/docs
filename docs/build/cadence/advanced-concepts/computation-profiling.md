@@ -329,19 +329,19 @@ After profiling, you might see high values for:
 
 ### Comparing Computation Costs
 
-You can compare two implementation approaches by:
+You can compare two implementation approaches by downloading and comparing profiles:
 
-**1. Reset the report between tests:**
+**1. Reset the profile:**
 
 ```bash
 curl -X PUT http://localhost:8080/emulator/computationProfile/reset
 ```
 
-**2. Run implementation A and record the computation:**
+**2. Run implementation A and save the profile:**
 
 ```bash
 flow transactions send approach_a.cdc
-curl http://localhost:8080/emulator/computationReport > report_a.json
+curl -o profile_a.pprof http://localhost:8080/emulator/computationProfile
 ```
 
 **3. Reset and test implementation B:**
@@ -349,10 +349,20 @@ curl http://localhost:8080/emulator/computationReport > report_a.json
 ```bash
 curl -X PUT http://localhost:8080/emulator/computationProfile/reset
 flow transactions send approach_b.cdc
-curl http://localhost:8080/emulator/computationReport > report_b.json
+curl -o profile_b.pprof http://localhost:8080/emulator/computationProfile
 ```
 
-**4. Compare the `computation` values in both reports.**
+**4. Compare using pprof:**
+
+```bash
+# View profile A
+pprof -top profile_a.pprof
+
+# View profile B
+pprof -top profile_b.pprof
+```
+
+The `-top` view shows total computation, making it easy to compare the two approaches.
 
 ## API Reference
 
