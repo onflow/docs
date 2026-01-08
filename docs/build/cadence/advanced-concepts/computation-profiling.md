@@ -32,7 +32,11 @@ The Flow Emulator provides two complementary tools for this purpose:
 | **Computation Reporting** | JSON report with detailed intensities | Quick numerical analysis, CI/CD integration, automated testing |
 | **Computation Profiling** | pprof profile | Visual analysis (e.g. flame graphs), deep-dive debugging, call stack exploration |
 
+:::note
+
 Before getting started, make sure you have the [Flow CLI installed](../../tools/flow-cli/install.md).
+
+:::
 
 ## Computation Reporting
 
