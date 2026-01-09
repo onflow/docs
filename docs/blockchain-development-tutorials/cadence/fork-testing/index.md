@@ -112,26 +112,13 @@ Use the [Dependency Manager] to install the `FlowToken` and `FungibleToken` cont
 flow dependencies install FlowToken FungibleToken
 ```
 
-This downloads the contracts and their dependencies into the `imports/` folder and updates your `flow.json` with the correct addresses and aliases across all networks (mainnet, testnet, emulator).
+This downloads the contracts into the `imports/` folder and configures aliases for different networks.
 
-Your `flow.json` now includes an entry like:
+## Understanding `mainnet-fork`
 
-```json
-{
-  "dependencies": {
-    "FlowToken": {
-      "source": "mainnet://1654653399040a61.FlowToken",
-      "aliases": {
-        "emulator": "0ae53cb6e3f42a79",
-        "mainnet": "1654653399040a61",
-        "testnet": "7e60df042a9c0868"
-      }
-    }
-  }
-}
-```
+When you run `flow init`, the CLI automatically creates a `mainnet-fork` network in your `flow.json`. This network inherits all contract addresses from mainnet, so imports like `"FlowToken"` automatically resolve to their mainnet addresses (`0x1654653399040a61`).
 
-Your `flow.json` now has the mainnet and testnet networks configured from `flow init`. In fork mode, contract imports automatically resolve to the correct network addresses.
+Using `#test_fork(network: "mainnet-fork")` in your test files runs your tests against a local snapshot of mainnet state. You can deploy contracts, impersonate accounts, and modify state locally without affecting the real network.
 
 ## Test reading live state
 
@@ -160,7 +147,7 @@ flow generate test FlowToken
 Open `cadence/tests/FlowToken_test.cdc` and replace its contents with:
 
 ```cadence cadence/tests/FlowToken_test.cdc
-#test_fork(network: "mainnet", height: nil)
+#test_fork(network: "mainnet-fork", height: nil)
 
 import Test
 
@@ -179,10 +166,10 @@ access(all) fun testFlowTokenSupplyIsPositive() {
 
 :::info
 
-- **The `#test_fork` pragma** at the top configures this test to run against mainnet
+- **The `#test_fork` pragma** configures this test to run against the `mainnet-fork` network
 - Use `Test.executeScript()` to read contract state
 - The script imports `FlowToken` by name - the dependency manager handles address resolution
-- In fork mode, this automatically uses the mainnet FlowToken contract
+- Because we're using `mainnet-fork`, this automatically uses the mainnet FlowToken contract
 - Extract the return value with proper type casting and assert on it
 - File paths in `Test.readFile()` are relative to the test file location (use `../scripts/` from `cadence/tests/`)
 
@@ -197,12 +184,6 @@ flow test cadence/tests/FlowToken_test.cdc
 ```
 
 The pragma handles the fork configuration automatically! You will see the test PASS. If not, verify your network host in `flow.json` and that dependencies are installed.
-
-**To test against testnet instead**, simply change the pragma in the test file:
-
-```cadence
-#test_fork(network: "testnet", height: nil)
-```
 
 ## Deploy and test Your contract
 
@@ -330,7 +311,7 @@ flow generate test TokenChecker
 Open `cadence/tests/TokenChecker_test.cdc` and replace its contents with:
 
 ```cadence cadence/tests/TokenChecker_test.cdc
-#test_fork(network: "mainnet", height: nil)
+#test_fork(network: "mainnet-fork", height: nil)
 
 import Test
 
@@ -539,7 +520,7 @@ Test results: "cadence/tests/TokenChecker_test.cdc"
 **Recommended:** Configure fork tests in your test file with `#test_fork`
 
 ```cadence
-#test_fork(network: "mainnet", height: nil)
+#test_fork(network: "mainnet-fork", height: nil)
 import Test
 // Your tests...
 ```
@@ -569,7 +550,7 @@ Use `Test.deployContract()` to deploy your mock to any mainnet account address. 
 ### Example
 
 ```cadence
-#test_fork(network: "mainnet", height: nil)
+#test_fork(network: "mainnet-fork", height: nil)
 
 import Test
 
@@ -602,7 +583,7 @@ This validates your contract changes against real production state and integrati
 For reproducible test results, pin your tests to a specific block height:
 
 ```cadence
-#test_fork(network: "mainnet", height: 85229104)
+#test_fork(network: "mainnet-fork", height: 85229104)
 ```
 
 This ensures your tests run against the same blockchain state every time, useful for:
@@ -614,7 +595,7 @@ This ensures your tests run against the same blockchain state every time, useful
 To use the latest state instead, use `height: nil`:
 
 ```cadence
-#test_fork(network: "mainnet", height: nil)
+#test_fork(network: "mainnet-fork", height: nil)
 ```
 
 Note that block heights are only available within the current spork (network upgrade period). See [Testing Smart Contracts] for more on managing pinned heights over time.
