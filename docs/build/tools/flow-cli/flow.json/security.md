@@ -281,6 +281,18 @@ secrets.json
 }
 ```
 
+:::info Extracting Existing Inline Keys
+
+If you already have inline keys in your `flow.json`, you can easily extract them to separate files:
+
+```bash
+flow config extract-key --all
+```
+
+This command creates `.pkey` files with restricted permissions, updates your `flow.json` to reference them, and adds the key files to `.gitignore`.
+
+:::
+
 ## Troubleshooting
 
 ### Environment Variables Not Loading
