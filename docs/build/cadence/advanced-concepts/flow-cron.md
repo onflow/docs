@@ -70,7 +70,7 @@ When you specify both day-of-month and day-of-week (not `*`), the job runs if **
 
 ## Setup
 
-Setting up a cron job involves creating a handler for your logic, wrapping it with FlowCron and scheduling the first tick. All transactions and scripts referenced below are available in the [FlowCron GitHub repository].
+Setting up a cron job involves creating a handler for your logic, wrapping it with `FlowCron` and scheduling the first tick. All transactions and scripts referenced below are available in the [FlowCron GitHub repository].
 
 Before you start, make sure you have:
 
