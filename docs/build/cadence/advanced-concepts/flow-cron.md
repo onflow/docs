@@ -119,7 +119,7 @@ access(all) contract MyRecurringTask {
 
 Deploy this and save a handler instance to storage. See [CounterTransactionHandler.cdc] for a working example.
 
-### 2. Wrap It with FlowCron
+### 2. Wrap It with `FlowCron`
 
 Create a CronHandler that wraps your handler with a cron expression:
 
