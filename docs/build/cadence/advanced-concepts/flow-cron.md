@@ -16,7 +16,7 @@ FlowCron builds on Flow's Scheduled Transactions. If you haven't worked with sch
 
 ## How It Works
 
-FlowCron provides a **CronHandler** resource that wraps any existing [TransactionHandler]. You give it a cron expression and your handler, and it takes care of scheduling and perpetuating the execution cycle. Once started, the schedule runs indefinitely without further intervention.
+FlowCron provides a `CronHandler` resource that wraps any existing [TransactionHandler]. You give it a cron expression and your handler, and it takes care of scheduling and perpetuating the execution cycle. Once started, the schedule runs indefinitely without further intervention.
 
 Under the hood, the `CronHandler` runs two types of transactions per tick to ensure fault tolerance:
 
