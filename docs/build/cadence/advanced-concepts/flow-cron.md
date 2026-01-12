@@ -1,5 +1,5 @@
 ---
-title: Cron-based Recurring Transactions
+title: Cron-Based Recurring Transactions
 sidebar_position: 9
 description: Learn how to schedule recurring transactions on Flow using FlowCron smart contract.
 ---
