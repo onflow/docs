@@ -5,8 +5,8 @@ sidebar_position: 7
 
 # Error Codes
 
-List of error codes returned from failing transactions and scripts. The error code has an accompanied error message that usually gives more clarification. This list is meant to give more information and helpful hints.
-[Code file](https://github.com/onflow/flow-go/blob/master/fvm/errors/codes.go)
+List of error codes returned from transactions and scripts that fail. The error code has an accompanied error message that usually gives more clarification. This list is meant to give more information and helpful hints.
+[Code file]
 
 ### 1006
 
@@ -99,7 +99,7 @@ Example:
 Example:
 `[Error Code: 1103] The account with address (xxx) uses 96559611 bytes of storage which is over its capacity (96554500 bytes). Capacity can be increased by adding FLOW tokens to the account.`
 
-For more information refer to [Fees](../cadence/basics/fees.md#maximum-available-balance)
+For more information refer to [Fees]
 
 ### 1105
 
@@ -282,3 +282,8 @@ Example:
 
 Example:
 `...`
+
+<!-- Reference-style links, does not render on page -->
+
+[Code file]: https://github.com/onflow/flow-go/blob/master/fvm/errors/codes.go
+[Fees]: ../cadence/basics/fees.md#maximum-available-balance
