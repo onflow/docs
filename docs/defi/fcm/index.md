@@ -13,15 +13,21 @@ Flow Credit Market (FCM) is a comprehensive DeFi yield platform on Flow that off
 FCM is **not a single protocol** - it's an integrated system composed of three core components working together:
 
 ```mermaid
-graph LR
-    ALP[ALP<br/>Automated Lending<br/>Platform] --> FCM[Flow Credit<br/>Market]
-    FYV[FYV<br/>Flow Yield<br/>Vaults] --> FCM
-    MOET[MOET<br/>Synthetic<br/>Stablecoin] --> FCM
+graph TB
+    subgraph FCM[Flow Credit Market - Integrated DeFi System]
+        ALP[ALP<br/>Automated Lending Platform<br/>Collateral & Borrowing]
+        FYV[FYV<br/>Flow Yield Vaults<br/>Yield Strategies]
+        MOET[MOET<br/>Synthetic Stablecoin<br/>Unit of Account]
 
-    style FCM fill:#f9f,stroke:#333,stroke-width:4px
-    style ALP fill:#bbf,stroke:#333,stroke-width:2px
-    style FYV fill:#bfb,stroke:#333,stroke-width:2px
-    style MOET fill:#fbb,stroke:#333,stroke-width:2px
+        ALP <-->|Borrows| MOET
+        FYV <-->|Deploys| MOET
+        ALP <-->|Provides Liquidity| FYV
+    end
+
+    style FCM fill:#e6b3ff,stroke:#333,stroke-width:4px
+    style ALP fill:#6699ff,stroke:#333,stroke-width:2px
+    style FYV fill:#66cc66,stroke:#333,stroke-width:2px
+    style MOET fill:#ff6666,stroke:#333,stroke-width:2px
 ```
 
 ### The Three Components
@@ -38,7 +44,7 @@ graph LR
    - Provides liquidity for ALP liquidation prevention
    - Manages risk through auto-balancing
 
-3. **[MOET](#)**: The synthetic stablecoin
+3. **[MOET](../moet/index.md)**: The synthetic stablecoin
    - Serves as the unit of account for all pricing
    - Primary borrowed asset in ALP
    - Medium of exchange between components

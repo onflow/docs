@@ -9,18 +9,16 @@ sidebar_position: 10
 The Automated Lending Platform (ALP) is the core lending protocol component of [Flow Credit Market (FCM)](../fcm/index.md). ALP provides the foundational lending and borrowing infrastructure with automated position management and liquidation protection.
 
 :::info
-ALP is one of three core components that make up FCM: ALP (Automated Lending Platform) provides the lending/borrowing engine, [Flow Yield Vaults (FYV)](#) handles yield aggregation strategies, and [MOET](#) serves as the synthetic stablecoin and unit of account.
+ALP is one of three core components that make up FCM: ALP (Automated Lending Platform) provides the lending/borrowing engine, [Flow Yield Vaults (FYV)](../flow-yield-vaults/index.md) handles yield aggregation strategies, and [MOET](../moet/index.md) serves as the synthetic stablecoin and unit of account.
 :::
-
-## What is ALP?
 
 ALP is a decentralized lending protocol that enables users to deposit collateral to create lending positions, borrow assets against their collateral up to their borrowing limit, earn interest on deposits, and maintain positions through automated rebalancing.
 
 The protocol uses MOET as its primary unit of account and default borrowed asset, with all prices quoted in MOET terms.
 
-## Key Innovation: Automated Rebalancing
+## Automated Rebalancing
 
-ALP's standout feature is its **automated rebalancing** system that uses DeFi Actions to maintain optimal position health. When overcollateralized (health > 1.5), the system automatically borrows more to maximize capital efficiency. When undercollateralized (health < 1.1), it automatically repays debt using yield from FYV. The protocol targets a health range of 1.1 to 1.5 for balanced risk/reward, and prevents liquidations by pulling from TopUpSource (often FYV strategies) when needed.
+ALP's standout feature is its **automated rebalancing** system that uses [DeFi Actions](../../blockchain-development-tutorials/forte/flow-actions/index.md) to maintain optimal position health. When overcollateralized (health > 1.5), the system automatically borrows more to maximize capital efficiency. When undercollateralized (health < 1.1), it automatically repays debt using yield from FYV. The protocol targets a health range of 1.1 to 1.5 for balanced risk/reward, and prevents liquidations by pulling from TopUpSource (often FYV strategies) when needed.
 
 ### Integration with FYV
 
@@ -31,7 +29,8 @@ ALP's unique liquidation prevention mechanism leverages yield from Flow Yield Va
 3. Borrowed MOET flows into FYV strategy (via DrawDownSink)
 4. FYV generates yield on the borrowed MOET
 5. If collateral price drops, ALP pulls from FYV (via TopUpSource) to prevent liquidation
-6. **Result**: Yield helps maintain position health automatically
+6. If collateral price increases and health factor exceeds 1.5, ALP borrows more MOET (via DrawDownSink) to maximize capital efficiency
+7. **Result**: Yield helps maintain position health automatically while optimizing leverage
 
 ## Core Components
 
@@ -39,49 +38,27 @@ The protocol consists of four key components: the **Pool** serves as the central
 
 Learn more in [Architecture Overview](./architecture.md).
 
-## Documentation Sections
-
-### Core Concepts
-- [Architecture Overview](./architecture.md) - Core components and system design
-- [Credit Market Mechanics](./credit-market-mechanics.md) - How lending and borrowing works
-- [Position Lifecycle](./position-lifecycle.md) - Creating, managing, and closing positions
-
-### Advanced Features
-- [Rebalancing](./rebalancing.md) - Automated position management
-- [Liquidation System](./liquidation-system.md) - Liquidation triggers and mechanisms
-- [DeFi Actions](./defi-actions.md) - Protocol composability framework
-- [MOET's Role](./moet-role.md) - The unit of account in ALP
-
 ## How ALP Fits into FCM
 
 ```mermaid
 graph TB
-    User[User] -->|Deposits Collateral| ALP[ALP Position]
-    ALP -->|Auto-borrows MOET| MOET[MOET Token]
-    MOET -->|Via DrawDownSink| FYV[FYV Strategy]
-    FYV -->|Generates Yield| Yield[Yield Tokens]
+    User[User] -->|1. Deposits Collateral| ALP[ALP Position]
+    ALP -->|2. Auto-borrows MOET| MOET[MOET Token]
+    MOET -->|3. Via DrawDownSink| FYV[FYV Strategy]
+    FYV -->|4. Generates Yield| Yield[Yield Tokens]
 
-    Price[Price Drop] -.->|Triggers Rebalancing| ALP
-    ALP -->|Pulls Funds| FYV
-    FYV -->|Via TopUpSource| ALP
-    ALP -->|Repays Debt| MOET
+    Price[Price Drop] -.->|5. Triggers Rebalancing| ALP
+    FYV -->|6. Withdraws Yield| Yield
+    Yield -->|7. Swaps to MOET| Swap[SwapConnector]
+    Swap -->|8. Via TopUpSource| ALP
+    ALP -->|9. Repays Debt| MOET
 
-    style ALP fill:#f9f,stroke:#333,stroke-width:4px
-    style FYV fill:#bbf,stroke:#333,stroke-width:2px
-    style MOET fill:#bfb,stroke:#333,stroke-width:2px
+    style ALP fill:#e6b3ff,stroke:#333,stroke-width:4px
+    style FYV fill:#66cc66,stroke:#333,stroke-width:2px
+    style MOET fill:#ff6666,stroke:#333,stroke-width:2px
+    style Yield fill:#ffcc66,stroke:#333,stroke-width:2px
+    style Swap fill:#99ccff,stroke:#333,stroke-width:2px
 ```
-
-## Getting Started with ALP
-
-To use ALP directly:
-
-1. Ensure you have Flow tokens or other supported collateral
-2. Connect your wallet to the Flow blockchain
-3. Create a position by depositing collateral
-4. Configure DrawDownSink and TopUpSource for automation
-5. Monitor your position health
-
-For most users, we recommend using **[Flow Credit Market (FCM)](../fcm/index.md)** which provides a complete solution combining ALP, FYV, and MOET.
 
 ## Resources
 

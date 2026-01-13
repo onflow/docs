@@ -5,9 +5,7 @@ sidebar_position: 4
 
 # MOET's Role in ALP
 
-MOET plays a central role in ALP as the default token and primary unit of account. Understanding MOET's function is essential for effectively using ALP and [Flow Credit Market (FCM)](../fcm/index.md).
-
-## What is MOET?
+MOET plays a central role in ALP as the default token and primary unit of account. Understanding MOET's function is essential for effectively using ALP and [Flow Credit Market (FCM)](../fcm/index.md). It standardizes pricing, enables automation, and makes yield-powered liquidation prevention possible. 
 
 **MOET** is a fungible token on Flow that serves as:
 - 💰 **The primary borrowed asset** - What you borrow from ALP
@@ -429,9 +427,3 @@ MOET is central to all FCM calculations:
 - **See the big picture**: [FCM Architecture](../fcm/architecture.md)
 - **Deep dive on MOET**: [MOET Documentation](#)
 - **Explore position management**: [Position Lifecycle](./position-lifecycle.md)
-
----
-
-:::tip Key Takeaway
-MOET isn't just another token - it's the **backbone** of FCM. It standardizes pricing, enables automation, and makes yield-powered liquidation prevention possible. Think of it as the "blood" flowing through FCM's veins, carrying value between ALP and FYV.
-:::
