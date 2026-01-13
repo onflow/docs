@@ -114,7 +114,7 @@ This system is highly gas efficient since it eliminates per-user balance updates
 
 ### Price Oracle
 
-The **Price Oracle** provides real-time token prices denominated in [MOET](../moet/index.md) terms, implementing the [DeFi Actions PriceOracle interface](../../../blockchain-development-tutorials/forte/flow-actions/intro-to-flow-actions.md#price-oracle) for standardized price queries across the protocol. The oracle is critical for accurate health factor calculations, liquidation triggers, and collateral valuations.
+The **Price Oracle** provides real-time token prices denominated in [MOET](../moet/index.md) terms, implementing the [DeFi Actions PriceOracle interface](../../blockchain-development-tutorials/forte/flow-actions/intro-to-flow-actions.md) for standardized price queries across the protocol. The oracle is critical for accurate health factor calculations, liquidation triggers, and collateral valuations.
 
 **Core Functionality:**
 
