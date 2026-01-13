@@ -4,9 +4,13 @@ sidebar_position: 9
 description: Learn how to schedule recurring transactions on Flow using the FlowCron smart contract.
 ---
 
-# Cron-based Recurring Transactions
+# Cron-Based Recurring Transactions
 
-On traditional systems, cron jobs handle recurring executions. On Flow, the **FlowCron** smart contract brings the same familiar cron syntax onchain. You define a schedule like `0 0 * * *` (daily at midnight) using a cron expression, and your transaction runs countinously based on the schedule.
+Sometimes you need blockchain logic to run automatically on a schedule: distributing rewards every day, checking conditions every hour, or processing batches every week. Instead of manually triggering these transactions, you can automate them.
+
+**Cron** is a time-based scheduling system originally from Unix. It lets you define "run this at 9am every Monday" using a simple pattern called a cron expression. The **FlowCron** smart contract brings this same concept onchain, so you can schedule recurring transactions that run automatically without any external triggers.
+
+For example, with the cron expression `0 0 * * *` (daily at midnight), your transaction executes every day at midnight UTC—indefinitely—until you stop it.
 
 :::info
 
@@ -16,14 +20,18 @@ FlowCron builds on Flow's Scheduled Transactions. If you haven't worked with sch
 
 ## How It Works
 
-FlowCron provides a `CronHandler` resource that wraps any existing [TransactionHandler]. You give it a cron expression and your handler, and it takes care of scheduling and perpetuating the execution cycle. Once started, the schedule runs indefinitely without further intervention.
+FlowCron provides a `CronHandler` resource that wraps your existing [TransactionHandler]. You give it a cron expression (like `*/5 * * * *` for every 5 minutes) and your handler, and FlowCron takes care of the rest. Once started, your schedule runs indefinitely without any further action from you.
 
-Under the hood, the `CronHandler` runs two types of transactions per tick to ensure fault tolerance:
+### Why Two Transactions?
+
+A key challenge with recurring schedules is fault tolerance: what happens if your code has a bug? You don't want one failed execution to break the entire schedule.
+
+FlowCron solves this by running two separate transactions each time your cron triggers:
 
 - **Executor**: Runs your code. If your logic fails, only this transaction reverts.
-- **Keeper**: Schedules the next cycle. Runs independently so the schedule survives even if your code throws an error.
+- **Keeper**: Schedules the next cycle. Runs independently, so even if your code throws an error, the schedule continues.
 
-This separation keeps the recurring loop alive regardless of what happens in your handler.
+**The benefit**: Your recurring schedule won't break if your TransactionHandler execution fails. The keeper always ensures the next execution is scheduled, regardless of whether the current one succeeded or failed.
 
 ```
 Timeline ─────────────────────────────────────────────────────────>
@@ -39,7 +47,9 @@ Timeline ───────────────────────�
 
 ## Cron Expressions
 
-FlowCron uses the standard 5-field cron format that you may already know from Unix systems:
+A cron expression is just five numbers (or wildcards) that define when something should run.
+
+FlowCron uses the standard 5-field cron format:
 
 ```
 ┌───────────── minute (0-59)
@@ -70,17 +80,32 @@ When you specify both day-of-month and day-of-week (not `*`), the job runs if **
 
 ## Setup
 
-Setting up a cron job involves creating a handler for your logic, wrapping it with `FlowCron` and scheduling the first tick. All transactions and scripts referenced below are available in the [FlowCron GitHub repository].
+Setting up a cron job involves four steps:
+
+1. **Create a handler**: Write the code you want to run on each tick
+2. **Wrap it with FlowCron**: Connect your handler to a cron schedule
+3. **Start the schedule**: Kick off the first execution
+4. **Monitor**: Check that everything is running
+
+All transactions and scripts referenced below are available in the [FlowCron GitHub repository].
+
+### Prerequisites
 
 Before you start, make sure you have:
 
-- Flow CLI installed
-- Some FLOW for transaction fees
-- A [TransactionHandler] containing your recurring logic
+- **[Flow CLI]** installed: This is the command-line tool you'll use to deploy contracts, send transactions, and run scripts. If you don't have it yet, follow the [installation guide].
+- **FLOW tokens** for transaction fees: Every transaction costs a small amount of FLOW. Get free testnet FLOW from the [Faucet].
+- A **Flow account**: The CLI will help you create one if you don't have one yet.
 
 ### 1. Create Your Handler
 
-Create a contract that implements the `TransactionHandler` interface:
+First, you need to write the code that will run on each scheduled tick. In Cadence, this is called a **TransactionHandler**. A TransactionHandler is a resource that implements the `FlowTransactionScheduler.TransactionHandler` interface.
+
+The key part is the `executeTransaction` function. This is where you put whatever logic you want to run on schedule: updating state, distributing tokens, checking conditions, etc.
+
+For more details on how handlers work, see the [Scheduled Transactions documentation](scheduled-transactions.md#create-a-scheduled-transaction).
+
+Here's a simple example contract:
 
 ```cadence
 import "FlowTransactionScheduler"
@@ -117,11 +142,29 @@ access(all) contract MyRecurringTask {
 }
 ```
 
-Deploy this and save a handler instance to storage. See [CounterTransactionHandler.cdc] for a working example.
+This example handler simply logs the timestamp when executed. Replace the `log` statement with your own logic.
+
+#### Deploy Your Contract
+
+Use the Flow CLI to deploy your TransactionHandler contract:
+
+```bash
+flow project deploy --network=testnet
+```
+
+This command reads your `flow.json` configuration and deploys all configured contracts. If you're new to deploying, see the [deployment guide] for a complete walkthrough.
+
+#### Create and Store a Handler Instance
+
+After deploying, you need to create an instance of your handler and save it to your account's **storage**. The **storage** is an area in your account where you can save resources (like your handler) that persist between transactions.
+
+See [CounterTransactionHandler.cdc] for a complete working example that includes the storage setup.
 
 ### 2. Wrap It with `FlowCron`
 
-Create a CronHandler that wraps your handler with a cron expression:
+Now you need to wrap your handler with a `CronHandler`. This connects your handler to a cron schedule.
+
+The following transaction creates a new `CronHandler` resource that holds your cron expression and a reference to your handler:
 
 ```cadence
 transaction(
@@ -147,18 +190,23 @@ transaction(
 }
 ```
 
-See [CreateCronHandler.cdc] for the full transaction. Run it with:
+See [CreateCronHandler.cdc] for the full transaction.
+
+**Send this transaction using the Flow CLI:**
 
 ```bash
 flow transactions send CreateCronHandler.cdc \
   "*/5 * * * *" \
   /storage/MyRecurringTaskHandler \
-  /storage/MyCronHandler
+  /storage/MyCronHandler \
+  --network=testnet
 ```
+
+The arguments are: your cron expression, the storage path where your handler lives, and the path where the new `CronHandler` will be stored.
 
 ### 3. Start the Schedule
 
-Schedule the first executor and keeper to kick off the perpetual loop:
+This transaction schedules the first executor and keeper, which kicks off the self-perpetuating loop. After this, your cron job runs automatically:
 
 ```cadence
 transaction(
@@ -194,7 +242,9 @@ transaction(
 }
 ```
 
-See [ScheduleCronHandler.cdc] for the full transaction. Run it with:
+See [ScheduleCronHandler.cdc] for the full transaction.
+
+**Send this transaction using the Flow CLI:**
 
 ```bash
 flow transactions send ScheduleCronHandler.cdc \
@@ -202,7 +252,8 @@ flow transactions send ScheduleCronHandler.cdc \
   nil \
   2 \
   500 \
-  2500
+  2500 \
+  --network=testnet
 ```
 
 **Parameters:**
@@ -215,9 +266,21 @@ flow transactions send ScheduleCronHandler.cdc \
 | `executorExecutionEffort` | Computation units for your code (start with `500`) |
 | `keeperExecutionEffort` | Computation units for keeper (use `2500`) |
 
+:::warning[Fees]
+
+Starting a cron job requires prepaying fees for the scheduled transactions. FLOW will be deducted from your account to cover the executor and keeper fees. Make sure you have enough FLOW before running this transaction.
+
+:::
+
+Once this transaction succeeds, **your cron job is live**. The first execution will happen at the next cron tick, and the schedule will continue automatically from there. You don't need to do anything else, unless you want to monitor it or stop it.
+
 ### 4. Check Status
 
-Query your cron job's metadata with [GetCronInfo.cdc]:
+Use Cadence **scripts** to check your cron job's status. Scripts are read-only queries that inspect blockchain state without submitting a transaction—they're free to run and don't modify anything. Learn more in the [scripts documentation].
+
+#### Query Cron Info
+
+The [GetCronInfo.cdc] script returns metadata about your cron handler:
 
 ```cadence
 access(all) fun main(handlerAddress: Address, handlerStoragePath: StoragePath): FlowCron.CronInfo? {
@@ -229,11 +292,17 @@ access(all) fun main(handlerAddress: Address, handlerStoragePath: StoragePath): 
 }
 ```
 
+**Run this script using the Flow CLI:**
+
 ```bash
-flow scripts execute GetCronInfo.cdc 0xYourAddress /storage/MyCronHandler
+flow scripts execute GetCronInfo.cdc 0xYourAddress /storage/MyCronHandler --network=testnet
 ```
 
-Calculate when the next tick will occur with [GetNextExecutionTime.cdc]:
+If your cron job is running, you'll see output showing the cron expression, next scheduled execution time, and handler status.
+
+#### Calculate Next Execution Time
+
+The [GetNextExecutionTime.cdc] script calculates when your cron expression will next trigger:
 
 ```cadence
 access(all) fun main(cronExpression: String, afterUnix: UInt64?): UFix64? {
@@ -247,18 +316,27 @@ access(all) fun main(cronExpression: String, afterUnix: UInt64?): UFix64? {
 }
 ```
 
+**Run this script using the Flow CLI:**
+
 ```bash
-flow scripts execute GetNextExecutionTime.cdc "*/5 * * * *" nil
+flow scripts execute GetNextExecutionTime.cdc "*/5 * * * *" nil --network=testnet
 ```
 
-Additional scripts for debugging:
+#### Additional Debugging Scripts
 
-- [GetCronScheduleStatus.cdc] — Returns executor/keeper IDs, timestamps, and status
+- [GetCronScheduleStatus.cdc] — Returns executor/keeper transaction IDs, timestamps, and current status
 - [GetParsedCronExpression.cdc] — Validates and parses a cron expression into a `CronSpec`
 
 ## Stopping a Cron Job
 
-To stop a running cron job, cancel both the executor and keeper transactions:
+You might want to stop a cron job for several reasons:
+
+- **Debugging**: Something isn't working and you need to investigate
+- **Updating**: You want to change the schedule or handler logic
+- **Cost**: You no longer need the recurring execution
+- **Temporary pause**: You want to stop temporarily and restart later
+
+To stop a running cron job, you need to cancel both the pending executor and keeper transactions. This transaction retrieves the scheduled transaction IDs from your `CronHandler` and cancels them:
 
 ```cadence
 transaction(cronHandlerStoragePath: StoragePath) {
@@ -284,10 +362,12 @@ transaction(cronHandlerStoragePath: StoragePath) {
 }
 ```
 
-See [CancelCronSchedule.cdc] for the full transaction. Run it with:
+See [CancelCronSchedule.cdc] for the full transaction.
+
+**Send this transaction using the Flow CLI:**
 
 ```bash
-flow transactions send CancelCronSchedule.cdc /storage/MyCronHandler
+flow transactions send CancelCronSchedule.cdc /storage/MyCronHandler --network=testnet
 ```
 
 Cancelling refunds 50% of the prepaid fees back to your account.
@@ -311,6 +391,11 @@ FlowCron is deployed on both Testnet and Mainnet:
 [FlowCron GitHub repository]: https://github.com/onflow/flow-cron
 [Scheduled Transactions Documentation]: scheduled-transactions.md
 [TransactionHandler]: scheduled-transactions.md#create-a-scheduled-transaction
+[Flow CLI]: ../../tools/flow-cli/index.md
+[installation guide]: ../../tools/flow-cli/install.md
+[Faucet]: https://faucet.flow.com/
+[deployment guide]: ../smart-contracts/deploying.md
+[scripts documentation]: ../basics/scripts.md
 
 <!-- Transactions -->
 
