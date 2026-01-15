@@ -14,19 +14,19 @@ For example, with the cron expression `0 0 * * *` (daily at midnight), your tran
 
 :::info
 
-FlowCron builds on Flow's Scheduled Transactions. If you haven't worked with scheduled transactions before, check out the [Scheduled Transactions documentation](scheduled-transactions.md) first.
+`FlowCron` builds on Flow's Scheduled Transactions. If you haven't worked with scheduled transactions before, check out the [Scheduled Transactions documentation](scheduled-transactions.md) first.
 
 :::
 
 ## How It Works
 
-FlowCron provides a `CronHandler` resource that wraps your existing [TransactionHandler]. You give it a cron expression (like `*/5 * * * *` for every 5 minutes) and your handler, and FlowCron takes care of the rest. Once started, your schedule runs indefinitely without any further action from you.
+`FlowCron` provides a `CronHandler` resource that wraps your existing [TransactionHandler]. You give it a cron expression (like `*/5 * * * *` for every 5 minutes) and your handler, and `FlowCron` takes care of the rest. Once started, your schedule runs indefinitely without any further action from you.
 
 ### Why Two Transactions?
 
 A key challenge with recurring schedules is fault tolerance: what happens if your code has a bug? You don't want one failed execution to break the entire schedule.
 
-FlowCron solves this by running two separate transactions each time your cron triggers:
+`FlowCron` solves this by running two separate transactions each time your cron triggers:
 
 - **Executor**: Runs your code. If your logic fails, only this transaction reverts.
 - **Keeper**: Schedules the next cycle. Runs independently, so even if your code throws an error, the schedule continues.
@@ -49,7 +49,7 @@ Timeline ───────────────────────�
 
 A cron expression is just five numbers (or wildcards) that define when something should run.
 
-FlowCron uses the standard 5-field cron format:
+`FlowCron` uses the standard 5-field cron format:
 
 ```
 ┌───────────── minute (0-59)
@@ -374,12 +374,12 @@ Cancelling refunds 50% of the prepaid fees back to your account.
 
 ## Contract Addresses
 
-FlowCron is deployed on both Testnet and Mainnet:
+`FlowCron` is deployed on both Testnet and Mainnet:
 
 | Contract | Testnet | Mainnet |
 | --- | --- | --- |
-| FlowCron | `0x5cbfdec870ee216d` | `0x6dec6e64a13b881e` |
-| FlowCronUtils | `0x5cbfdec870ee216d` | `0x6dec6e64a13b881e` |
+| `FlowCron` | `0x5cbfdec870ee216d` | `0x6dec6e64a13b881e` |
+| `FlowCronUtils` | `0x5cbfdec870ee216d` | `0x6dec6e64a13b881e` |
 
 ## Resources
 
