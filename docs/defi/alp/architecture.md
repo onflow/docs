@@ -160,8 +160,8 @@ graph TB
         P3 --> P4[FYV or other<br/>DeFi Protocol]
     end
 
-    style S1 fill:#bbf
-    style P1 fill:#fbb
+    style S1 fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
+    style P1 fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 The **Sink Interface** receives tokens when positions are overcollateralized, automatically pushing borrowed funds to user wallets or other protocols through the `drawDownSink` configuration on positions, enabling automated value flows out of positions. The **Source Interface** provides tokens when positions need rebalancing, automatically pulling funds to repay debt when undercollateralized through the `topUpSource` configuration, enabling automated value flows into positions.
@@ -185,9 +185,9 @@ graph TB
     Position -->|Auto-Pull| Source[TopUp Source]
     Pool -->|Liquidates| Liquidator[Liquidators/Keepers]
 
-    style Pool fill:#f9f,stroke:#333,stroke-width:4px
-    style Position fill:#bbf,stroke:#333,stroke-width:2px
-    style Oracle fill:#bfb,stroke:#333,stroke-width:2px
+    style Pool fill:#7b5ba1,stroke:#333,stroke-width:4px,color:#fff
+    style Position fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
+    style Oracle fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 ## Data Sequence
@@ -204,12 +204,12 @@ graph TB
         D5 --> D6[615 MOET → FYV<br/>Earning yield automatically<br/>Liquidation protection active]
     end
 
-    style D1 fill:#e1f5ff
-    style D2 fill:#fff4e6
-    style D3 fill:#f5f5f5
-    style D4 fill:#e8f5e9
-    style D5 fill:#e3f2fd
-    style D6 fill:#f3e5f5
+    style D1 fill:#5b9bd5,stroke:#333,stroke-width:2px,color:#fff
+    style D2 fill:#f9a825,stroke:#333,stroke-width:2px
+    style D3 fill:#757575,stroke:#333,stroke-width:2px,color:#fff
+    style D4 fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
+    style D5 fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
+    style D6 fill:#7b5ba1,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 **What happens:**
@@ -235,14 +235,14 @@ graph TB
         R7 --> R8[Liquidation Prevented!<br/>Health restored: 1.3<br/>Position safe again]
     end
 
-    style R1 fill:#ffebee
-    style R2 fill:#fff3e0
-    style R3 fill:#f5f5f5
-    style R4 fill:#e8f5e9
-    style R5 fill:#fff9c4
-    style R6 fill:#e1f5fe
-    style R7 fill:#f3e5f5
-    style R8 fill:#c8e6c9
+    style R1 fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
+    style R2 fill:#f9a825,stroke:#333,stroke-width:2px
+    style R3 fill:#757575,stroke:#333,stroke-width:2px,color:#fff
+    style R4 fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
+    style R5 fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
+    style R6 fill:#7b5ba1,stroke:#333,stroke-width:2px,color:#fff
+    style R7 fill:#5b9bd5,stroke:#333,stroke-width:2px,color:#fff
+    style R8 fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 **What happens:**

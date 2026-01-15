@@ -24,19 +24,19 @@ graph TB
     end
 
     subgraph "FCM System"
-        subgraph "ALP - Lending Layer"
+        subgraph ALP["ALP Components"]
             Pool[Pool Contract]
             Position[Position]
             Oracle[Price Oracle]
         end
 
-        subgraph "FYV - Yield Layer"
+        subgraph FYV["FYV Components"]
             Strategy[Yield Strategy]
             AutoBalancer[Auto Balancer]
             Swapper[Token Swapper]
         end
 
-        subgraph "MOET - Currency Layer"
+        subgraph MOET_Layer["MOET Layer"]
             MOET[MOET Token]
             Pricing[Price Feeds]
         end
@@ -61,9 +61,10 @@ graph TB
     AutoBalancer -->|Manage exposure| Strategy
     Strategy -->|Via TopUpSource| Position
 
-    style ALP fill:#f9f,stroke:#333,stroke-width:3px
-    style FYV fill:#bfb,stroke:#333,stroke-width:3px
-    style MOET fill:#fbb,stroke:#333,stroke-width:3px
+    style ALP fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
+    style FYV fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
+    style MOET_Layer fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
+    style MOET fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 ## Component Integration
@@ -235,73 +236,38 @@ When needed: Exit yield source → Swap to MOET → Return to ALP
 ### User Deposit Flow
 
 ```mermaid
-sequenceDiagram
-    participant User
-    participant Position
-    participant Pool
-    participant Oracle
-    participant DrawDownSink
-    participant FYV
+graph LR
+    User[👤 You deposit<br/>1000 FLOW] --> Position[ALP Position<br/>stores collateral]
+    Position --> Oracle[Oracle checks<br/>FLOW price]
+    Oracle --> Health{Health Factor<br/>calculation}
+    Health -->|HF > 1.5<br/>Can borrow| Borrow[Auto-borrow<br/>615 MOET]
+    Health -->|HF ≤ 1.5<br/>No borrowing| Done1[✅ Deposit complete]
+    Borrow --> DrawDown[Push to<br/>DrawDownSink]
+    DrawDown --> FYV[FYV Strategy<br/>swaps to yield tokens]
+    FYV --> Done2[✅ Earning yield<br/>HF = 1.3]
 
-    User->>Position: deposit(collateral)
-    Position->>Position: Store collateral
-    Position->>Pool: Update collateral balance
-    Pool->>Pool: updateScaledBalance()
-
-    Position->>Oracle: getPrice(collateralToken)
-    Oracle-->>Position: priceInMOET
-
-    Position->>Position: calculateHealth()
-    Note over Position: Check if auto-borrow enabled
-    alt HF > maxHealth AND auto-borrow enabled
-        Position->>Position: Calculate excess capacity
-        Position->>Pool: borrow(excessCapacity)
-        Pool-->>Position: MOET vault
-        Position->>DrawDownSink: deposit(MOET)
-        DrawDownSink->>FYV: Swap MOET to yield tokens
-        FYV->>FYV: Deploy to strategy
-    end
-
-    Position-->>User: success
+    style Position fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
+    style FYV fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
+    style Borrow fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
+    style Done2 fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
-### Price Change & Rebalancing Flow
+### Price Drop & Rebalancing Flow
 
 ```mermaid
-sequenceDiagram
-    participant Oracle
-    participant Position
-    participant Pool
-    participant TopUpSource
-    participant FYV
+graph LR
+    Drop[📉 FLOW price<br/>drops 20%] --> Position[ALP Position<br/>detects HF = 1.05]
+    Position --> Calc[Calculate needed<br/>repayment: 123 MOET]
+    Calc --> TopUp[Pull from<br/>TopUpSource]
+    TopUp --> FYV[FYV Strategy<br/>swaps yield tokens]
+    FYV --> MOET[Returns<br/>123 MOET]
+    MOET --> Repay[ALP repays<br/>debt to Pool]
+    Repay --> Restored[✅ Health restored<br/>HF = 1.3]
 
-    Oracle->>Oracle: Price update (collateral drops)
-
-    Note over Position: Periodic check or triggered
-
-    Position->>Oracle: getPrice(collateralToken)
-    Oracle-->>Position: newPrice (lower)
-
-    Position->>Pool: getCurrentDebt()
-    Pool-->>Position: currentDebt
-
-    Position->>Position: calculateHealth()
-    Note over Position: HF < minHealth (e.g., 1.1)
-
-    Position->>Position: Calculate required repayment
-    Note over Position: Need to reach target HF (1.3)
-
-    Position->>TopUpSource: withdraw(repaymentAmount)
-    TopUpSource->>FYV: Request MOET
-    FYV->>FYV: Swap YieldToken → MOET
-    FYV-->>TopUpSource: MOET vault
-    TopUpSource-->>Position: MOET vault
-
-    Position->>Pool: repay(MOET)
-    Pool->>Pool: updateDebt(-amount)
-
-    Position->>Position: calculateHealth()
-    Note over Position: HF restored to 1.3
+    style Position fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
+    style FYV fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
+    style MOET fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
+    style Restored fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 ## Component Responsibilities

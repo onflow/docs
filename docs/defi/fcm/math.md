@@ -44,7 +44,7 @@ These mathematical foundations ensure FCM operates predictably and safely. All f
 
 ## Fundamental Formulas
 
-### 1. Effective Collateral
+### Effective Collateral
 
 The effective collateral is the sum of all collateral assets multiplied by their prices and collateral factors:
 
@@ -63,7 +63,7 @@ EC = (1000 × 1 × 0.8) + (500 × 1 × 0.9)
    = $1250 MOET
 ```
 
-### 2. Effective Debt
+### Effective Debt
 
 The effective debt is the sum of all borrowed assets multiplied by their prices and borrow factors:
 
@@ -82,7 +82,7 @@ ED = 800 × 1 × 1.0
    = $800 MOET
 ```
 
-### 3. Health Factor
+### Health Factor
 
 The health factor is the ratio of effective collateral to effective debt:
 
@@ -104,7 +104,7 @@ EC = $1250, ED = $800
 HF = 1250 / 800 = 1.5625
 ```
 
-### 4. Maximum Borrowing Capacity
+### Maximum Borrowing Capacity
 
 The maximum amount that can be borrowed to reach target health:
 
@@ -555,7 +555,7 @@ In full liquidation:
 ```
 
 **Better example with partial liquidation:**
- k
+
 ```
 Initial position (moderately undercollateralized):
 - Collateral: 1000 FLOW @ $0.78

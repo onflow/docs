@@ -20,7 +20,7 @@ graph LR
 
     Effective --> Borrow[Can Borrow<br/>$615 @ HF 1.3]
 
-    style Effective fill:#bfb,stroke:#333,stroke-width:2px
+    style Effective fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 Each token has a **collateral factor** that determines what percentage of its value can be used. For example, depositing 1,000 FLOW worth $1,000 with a collateral factor of 0.8 results in $800 of effective collateral. This safety buffer protects the protocol against price volatility and ensures positions remain solvent even with market fluctuations.
@@ -123,7 +123,7 @@ graph TD
     Note1[No transaction<br/>needed!]
     Time -.-> Note1
 
-    style Current fill:#fbb
+    style Current fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 Instead of updating every user's balance constantly, ALP:
@@ -177,7 +177,7 @@ graph TD
     P3 --> Calc
     P4 --> Calc
 
-    style MOET fill:#fbb,stroke:#333,stroke-width:3px
+    style MOET fill:#d94d4d,stroke:#333,stroke-width:3px,color:#fff
 ```
 
 All token prices are quoted in terms of MOET (FLOW/MOET, USDC/MOET, and other token prices), which simplifies calculations and ensures consistency across the protocol.
@@ -198,8 +198,8 @@ graph TD
     Up --> UpResult[New HF: 2.0<br/>Can borrow more!]
     Down --> DownResult[New HF: 1.33<br/>May trigger rebalancing]
 
-    style UpResult fill:#bfb
-    style DownResult fill:#ffa
+    style UpResult fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
+    style DownResult fill:#f9a825,stroke:#333,stroke-width:2px
 ```
 
 **Collateral price increases**: Health improves, can borrow more
@@ -260,7 +260,7 @@ graph LR
     Util --> Low[Low <80%<br/>Lower rates]
     Util --> High[High >80%<br/>Higher rates]
 
-    style Util fill:#bbf,stroke:#333,stroke-width:2px
+    style Util fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 The protocol tracks **utilization** for each token:
@@ -287,8 +287,11 @@ graph LR
 
     Reserve --> Uses[Insurance Fund<br/>Development<br/>Emergency<br/>Treasury]
 
-    style Reserve fill:#ffa
-    style Lender fill:#bfb
+    style Borrower fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
+    style Protocol fill:#7b5ba1,stroke:#333,stroke-width:2px,color:#fff
+    style Reserve fill:#f9a825,stroke:#333,stroke-width:2px
+    style Lender fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
+    style Uses fill:#757575,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 Reserves are used for the protocol insurance fund, development and maintenance, emergency situations, and the governance-controlled treasury.

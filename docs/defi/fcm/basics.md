@@ -18,81 +18,66 @@ It's not just "another lending protocol" - it's a complete yield-generating syst
 
 ### Level 1: Traditional Lending (Aave, Compound)
 
-In traditional DeFi lending protocols:
+Basic lending with complete manual management:
 
 ```mermaid
 graph LR
-    User[User] -->|Deposit FLOW| Protocol[Lending Protocol]
-    Protocol -->|Borrow USDC| User
-    User -->|Repay + Interest| Protocol
+    User[👤 User] -->|1. Deposit FLOW| Protocol[Lending Protocol]
+    Protocol -->|2. User manually<br/>borrows USDC| Borrowed[💵 USDC]
+    Borrowed -->|3. Sits idle or<br/>manually deployed| User
 
-    style Protocol fill:#bbf,stroke:#333,stroke-width:2px
+    Drop[📉 Price Drop] -.->|4. Health drops!| Alert[⚠️ Must act now!]
+    Alert -.->|5. Manual repay<br/>or liquidation| User
+
+    style Protocol fill:#757575,stroke:#333,stroke-width:2px,color:#fff
+    style Alert fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
-**How it works**:
-1. Deposit collateral (e.g., 1000 FLOW worth $1000)
-2. Borrow up to ~75% of collateral value (e.g., $750 USDC)
-3. Pay interest on borrowed amount
-4. **Your responsibility**: Monitor health factor and manually manage position
+Traditional lending protocols require complete manual management at every step. Users must calculate their safe borrowing capacity, execute borrowing transactions themselves, and manually deploy borrowed funds into yield strategies. Most critically, they must constantly monitor their position's health factor and respond quickly to price drops or risk liquidation. This hands-on approach demands significant time, expertise, and attention to maintain a safe and profitable position.
 
-**Limitations**: Traditional lending requires you to manually monitor and rebalance positions, quickly add collateral or repay debt if collateral price drops, manually deploy borrowed funds to avoid them sitting idle, and act fast enough to prevent liquidation.
+### Level 2: ALP (Automated Lending)
 
-### Level 2: Automated Lending (ALP)
-
-ALP adds automation to traditional lending:
+Adds automatic borrowing and rebalancing:
 
 ```mermaid
 graph LR
-    User[User] -->|Deposit FLOW| ALP[ALP Position]
-    ALP -->|Auto-borrow MOET| User
+    User[👤 User] -->|1. Deposit FLOW| ALP[ALP Position]
+    ALP -->|2. AUTO-BORROW<br/>MOET at optimal ratio| Borrowed[💵 MOET]
+    Borrowed -->|3. Still needs<br/>manual deployment| User
 
-    Price[Price Drop] -.->|Triggers| Rebalance[Auto-Rebalance]
-    Rebalance -->|Pulls funds| Source[TopUpSource]
-    Source -->|Repays debt| ALP
+    Drop[📉 Price Drop] -.->|4. AUTO-REBALANCE<br/>if TopUpSource available| ALP
+    User -.->|5. Must manually<br/>fund TopUpSource| TopUp[TopUpSource]
+    TopUp -.->|Provides funds| ALP
 
-    style ALP fill:#f9f,stroke:#333,stroke-width:2px
+    style ALP fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
+    style Borrowed fill:#ffd700,stroke:#333,stroke-width:2px
 ```
 
-**New features**:
-- ✅ **Auto-borrowing**: Automatically borrows optimal amount when you deposit
-- ✅ **Auto-rebalancing**: Maintains target health ratio automatically
-- ✅ **TopUpSource integration**: Can pull from external sources to prevent liquidation
-
-**Better, but**:
-- ⚠️ TopUpSource must have funds available
-- ⚠️ Borrowed MOET still needs manual deployment for yield
-- ⚠️ Still some manual intervention required
+ALP introduces partial automation by calculating and executing optimal borrowing amounts when you deposit collateral, and automatically rebalancing your position when health drops below safe levels. However, users still need to manually deploy borrowed MOET into yield strategies and manage their TopUpSource for rebalancing. Without a properly funded TopUpSource, liquidation protection remains limited, leaving a critical gap in the automation.
 
 ### Level 3: FCM (ALP + FYV + MOET)
 
-FCM completes the automation by adding yield generation:
+Complete yield automation with self-protecting positions:
 
 ```mermaid
-graph TB
-    User[User] -->|1. Deposit FLOW| ALP[ALP Position]
-    ALP -->|2. Auto-borrow MOET| DrawDown[DrawDownSink]
-    DrawDown -->|3. Deploy| FYV[FYV Strategy]
-    FYV -->|4. Generate yield| Yield[Yield Tokens]
+graph LR
+    User[👤 User] -->|1. Deposit FLOW| ALP[ALP]
+    ALP -->|2. AUTO-BORROW| MOET[MOET]
+    MOET -->|3. AUTO-DEPLOY<br/>via DrawDownSink| FYV[FYV]
+    FYV -->|4. AUTO-EARN<br/>yield| Yield[💰 Yield]
 
-    Price[Price Drop] -.->|Triggers| ALP
-    FYV -->|5. Provide liquidity| TopUp[TopUpSource]
-    TopUp -->|6. Repay debt| ALP
+    Drop[📉 Price Drop] -.->|5. AUTO-DETECT| ALP
+    Yield -.->|6. AUTO-PROVIDE<br/>via TopUpSource| ALP
+    ALP -.->|7. AUTO-REPAY<br/>debt restored| Safe[✅ Safe]
 
-    Yield -.->|Accumulates| FYV
-
-    style ALP fill:#f9f,stroke:#333,stroke-width:4px
-    style FYV fill:#bfb,stroke:#333,stroke-width:4px
-    style DrawDown fill:#bbf,stroke:#333,stroke-width:2px
+    style ALP fill:#4a7abf,stroke:#333,stroke-width:3px,color:#fff
+    style FYV fill:#4d994d,stroke:#333,stroke-width:3px,color:#fff
+    style MOET fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
+    style Yield fill:#f9a825,stroke:#333,stroke-width:2px
+    style Safe fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
-**Complete automation**:
-- ✅ **Auto-borrowing**: Instantly borrow optimal amount
-- ✅ **Auto-deployment**: Borrowed MOET flows directly to yield strategies
-- ✅ **Auto-compounding**: FYV strategies reinvest yields
-- ✅ **Auto-protection**: FYV provides liquidity to prevent liquidations
-- ✅ **Auto-everything**: True set-and-forget experience
-
-FCM's innovation is that your generated yield protects your position by maintaining health automatically, requiring no manual intervention as everything happens seamlessly in the background. This creates true capital efficiency where borrowed capital works for you immediately upon deployment.
+FCM completes the automation cycle by integrating ALP with FYV and MOET. The system calculates and executes optimal borrowing, automatically deploys borrowed MOET into yield strategies through FYV, and continuously generates returns. When market volatility threatens your position, FCM uses your accumulated yield to prevent liquidations and rebalances automatically to maintain optimal health. This creates a self-healing position where your earnings actively protect your collateral, delivering true set-and-forget lending with no manual intervention required.
 
 ## Understanding the Three Components
 

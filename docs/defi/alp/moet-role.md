@@ -8,12 +8,13 @@ sidebar_position: 4
 MOET plays a central role in ALP as the default token and primary unit of account. Understanding MOET's function is essential for effectively using ALP and [Flow Credit Market (FCM)](../fcm/index.md). It standardizes pricing, enables automation, and makes yield-powered liquidation prevention possible. 
 
 **MOET** is a fungible token on Flow that serves as:
-- 💰 **The primary borrowed asset** - What you borrow from ALP
-- 📊 **The unit of account** - All prices quoted in MOET terms
-- 🔄 **The rebalancing medium** - Used for all automated operations
-- 🌉 **The value bridge** - Flows between ALP and FYV
 
-For more about MOET tokenomics, see the [MOET documentation](#).
+- **The primary borrowed asset** - What you borrow from ALP
+- **The unit of account** - All prices quoted in MOET terms
+- **The rebalancing medium** - Used for all automated operations
+- **The value bridge** - Flows between ALP and FYV
+
+For more about MOET tokenomics, see the [MOET documentation](../moet/index.md).
 
 ## MOET as Unit of Account
 
@@ -29,23 +30,20 @@ graph TD
     MOET --> stFLOW[stFLOW = 1.05 MOET]
     MOET --> Other[Other tokens...]
 
-    style MOET fill:#fbb,stroke:#333,stroke-width:4px
+    style MOET fill:#d94d4d,stroke:#333,stroke-width:4px,color:#fff
 ```
 
-**Why this matters**: Using MOET as the unit of account simplifies calculations by expressing all values in one currency, standardizes pricing consistently across all tokens, enables multi-collateral positions by making it easy to compare different assets, and provides unified risk management through a single health metric.
+Using MOET as the unit of account simplifies calculations by expressing all values in one currency, standardizes pricing consistently across all tokens, enables multi-collateral positions by making it easy to compare different assets, and provides unified risk management through a single health metric.
 
 **Health factor calculation example**:
+
 ```
 Collateral: 1000 FLOW @ 1.0 MOET each × 0.8 factor = 800 MOET value
 Debt: 615.38 MOET
 Health Factor = 800 / 615.38 = 1.30
 
-All in MOET terms = Simple and consistent!
+Both collateral and debt in terms of MOET.
 ```
-
-:::tip Why Not Just Use USD?
-MOET is designed specifically for Flow DeFi, ensuring deep on-chain liquidity, native protocol integration, optimized performance for Flow operations, and better composability with FYV and other protocols.
-:::
 
 ## MOET in the Auto-Borrowing Flow
 
@@ -87,8 +85,8 @@ graph LR
     C --> D[Push to DrawDownSink]
     D --> E[Health = 1.3 ✓]
 
-    style A fill:#bfb
-    style E fill:#bfb
+    style A fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
+    style E fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 **Example**:
@@ -111,8 +109,8 @@ graph LR
     C --> D[Repay MOET debt]
     D --> E[Health = 1.3 ✓]
 
-    style A fill:#fbb
-    style E fill:#bfb
+    style A fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
+    style E fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 **Example**:
@@ -139,7 +137,7 @@ graph LR
     Auto --> Wallet[Your Wallet]
     Wallet --> Use[Use MOET<br/>Yield/Trading/etc]
 
-    style ALP fill:#f9f,stroke:#333,stroke-width:2px
+    style ALP fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 **Flow**: Collateral → Borrow MOET → You control it
@@ -161,9 +159,9 @@ graph TB
     ALP -->|Repay| MOET
     ALP -->|Health Restored| Safe[Health = 1.3 ✓]
 
-    style ALP fill:#f9f,stroke:#333,stroke-width:3px
-    style FYV fill:#bfb,stroke:#333,stroke-width:3px
-    style MOET fill:#fbb,stroke:#333,stroke-width:2px
+    style ALP fill:#4a7abf,stroke:#333,stroke-width:3px,color:#fff
+    style FYV fill:#4d994d,stroke:#333,stroke-width:3px,color:#fff
+    style MOET fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 **Flow**: Collateral → Auto-borrow MOET → FYV → Yield protects position!
@@ -185,7 +183,7 @@ graph LR
     MOET -->|Add Liquidity| LP[LP Pool<br/>MOET/FLOW]
     LP -->|Earn| Fees[Trading Fees]
 
-    style LP fill:#bbf,stroke:#333,stroke-width:2px
+    style LP fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 **Flow**: Collateral → Borrow MOET → LP Pool → Earn trading fees
@@ -199,7 +197,7 @@ graph LR
     ALP[Borrow from ALP<br/>5% APY] -->|MOET| Protocol[Lend to Protocol<br/>8% APY]
     Protocol -->|Earn| Spread[3% Spread<br/>Profit!]
 
-    style Spread fill:#bfb,stroke:#333,stroke-width:2px
+    style Spread fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 **Flow**: Borrow MOET cheap → Lend MOET expensive → Keep spread
@@ -236,8 +234,8 @@ graph LR
     C --> D[Repay MOET Debt]
     D --> E[Health Restored]
 
-    style A fill:#fbb
-    style E fill:#bfb
+    style A fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
+    style E fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 **Example**:
@@ -277,7 +275,7 @@ graph TB
     Supply --> Market
     Market --> Rate[Interest Rates]
 
-    style Market fill:#fbb,stroke:#333,stroke-width:3px
+    style Market fill:#d94d4d,stroke:#333,stroke-width:3px,color:#fff
 ```
 
 ### Interest Rate Dynamics
@@ -317,101 +315,15 @@ Utilization = Total MOET Borrowed / Total MOET Available
 4. **Predictability**: Standard token across all FCM operations
 5. **Efficiency**: Single token simplifies everything
 
-### Can I Use Other Tokens?
-
-Yes, but with limitations:
-
-:::info For Developers
-You can manually borrow other tokens:
-```cadence
-// Borrow FLOW instead of MOET
-let flowBorrowed <- position.borrow(
-    type: Type<@FlowToken.Vault>(),
-    amount: 100.0
-)
-```
-
-However:
-- Auto-borrowing always uses MOET
-- Rebalancing always uses MOET
-- Health calculations still in MOET terms
-- FYV integration requires MOET
-:::
-
 ## Best Practices
 
 ### For Borrowers
 
-✅ **Do**:
-- Maintain MOET buffer in wallet for emergencies
-- Set up TopUpSource with MOET for auto-protection
-- Monitor MOET interest rates
-- Diversify yield strategies with borrowed MOET
-
-❌ **Don't**:
-- Assume MOET will always be cheap to borrow
-- Put all borrowed MOET in one place
-- Ignore MOET balance in TopUpSource
-- Forget MOET debt accumulates interest
+When borrowing MOET, always maintain a buffer in your wallet for emergencies and set up a TopUpSource with sufficient MOET for automatic liquidation protection. Actively monitor MOET interest rates as they fluctuate with utilization, and diversify your yield strategies to spread risk across multiple opportunities. Avoid assuming MOET will always be cheap to borrow, concentrating all borrowed funds in one place, neglecting your TopUpSource balance, or forgetting that MOET debt continuously accumulates interest over time.
 
 ### For Yield Seekers
 
-✅ **Do**:
-- Use full FCM integration (ALP + FYV)
-- Let MOET flow automatically to FYV
-- Let yield protect your position
-- Monitor FYV MOET liquidity
-
-❌ **Don't**:
-- Manually manage MOET if using FYV
-- Interrupt the automated flow
-- Remove MOET from FYV when position needs it
-
-## Real-World Example
-
-### Complete MOET Lifecycle
-
-```mermaid
-graph TB
-    Start[User deposits<br/>1000 FLOW] --> Calc[ALP calculates:<br/>Can borrow 615 MOET]
-    Calc --> Borrow[Auto-borrow<br/>615 MOET]
-    Borrow --> Deploy[MOET → FYV<br/>via DrawDownSink]
-    Deploy --> Earn[FYV generates<br/>yield in MOET]
-
-    Price[FLOW price<br/>drops 20%] -.-> Detect[ALP detects<br/>HF = 1.04]
-    Detect --> Need[Need 123 MOET<br/>to rebalance]
-    Need --> Pull[Pull from FYV<br/>via TopUpSource]
-    Pull --> Repay[Repay 123 MOET]
-    Repay --> Safe[Health = 1.3 ✓<br/>Liquidation avoided]
-
-    style Start fill:#bbf
-    style Earn fill:#bfb
-    style Price fill:#fbb
-    style Safe fill:#bfb
-```
-
-**What happened**:
-1. Deposited FLOW → Auto-borrowed 615 MOET
-2. MOET deployed to FYV → Earned yield
-3. Price dropped → Position at risk
-4. FYV provided 123 MOET → Debt repaid
-5. **Result**: Your MOET yield prevented liquidation!
-
-## Summary
-
-**MOET's Three Roles**:
-1. 💰 **Borrowed Asset**: What you borrow from ALP
-2. 📊 **Unit of Account**: How all prices are quoted
-3. 🔄 **Rebalancing Medium**: Flows between ALP and FYV
-
-**Key Points**:
-- All auto-borrowing is in MOET
-- All rebalancing uses MOET
-- All health calculations in MOET terms
-- MOET enables FCM's yield-powered liquidation prevention
-
-**Why MOET Matters**:
-Without MOET as the standard, FCM's automation wouldn't work. MOET is the "common currency" that lets ALP and FYV communicate seamlessly, enabling the unique liquidation prevention mechanism.
+For optimal yield generation, use the full FCM integration with ALP and FYV to enable complete automation. Allow MOET to flow automatically to FYV strategies and let the accumulated yield protect your position from liquidation. Monitor FYV's MOET liquidity to ensure adequate funds are available for rebalancing. Once you've enabled FYV integration, avoid manually managing MOET, interrupting the automated flow, or removing MOET from FYV when your position might need it for rebalancing.
 
 ## Mathematical Foundation
 
@@ -425,5 +337,5 @@ MOET is central to all FCM calculations:
 
 - **Understand automation**: [Rebalancing Mechanics](./rebalancing.md)
 - **See the big picture**: [FCM Architecture](../fcm/architecture.md)
-- **Deep dive on MOET**: [MOET Documentation](#)
+- **Deep dive on MOET**: [MOET Documentation](../moet/index.md)
 - **Explore position management**: [Position Lifecycle](./position-lifecycle.md)

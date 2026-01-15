@@ -14,7 +14,7 @@ FCM is **not a single protocol** - it's an integrated system composed of three c
 
 ```mermaid
 graph TB
-    subgraph FCM[Flow Credit Market - Integrated DeFi System]
+    subgraph FCM[Flow Credit Market]
         ALP[ALP<br/>Automated Lending Platform<br/>Collateral & Borrowing]
         FYV[FYV<br/>Flow Yield Vaults<br/>Yield Strategies]
         MOET[MOET<br/>Synthetic Stablecoin<br/>Unit of Account]
@@ -24,10 +24,10 @@ graph TB
         ALP <-->|Provides Liquidity| FYV
     end
 
-    style FCM fill:#e6b3ff,stroke:#333,stroke-width:4px
-    style ALP fill:#6699ff,stroke:#333,stroke-width:2px
-    style FYV fill:#66cc66,stroke:#333,stroke-width:2px
-    style MOET fill:#ff6666,stroke:#333,stroke-width:2px
+    style FCM fill:#b388d9,stroke:#333,stroke-width:4px,color:#fff
+    style ALP fill:#4a7abf,stroke:#333,stroke-width:2px,color:#fff
+    style FYV fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
+    style MOET fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 ### The Three Components
@@ -64,7 +64,7 @@ sequenceDiagram
     participant FYV
     participant Yield
 
-    User->>ALP: 1. Deposit FLOW collateral
+    User->>ALP: 1. Deposit collateral
     ALP->>ALP: 2. Calculate borrowing capacity
     ALP->>MOET: 3. Auto-borrow MOET
     MOET->>FYV: 4. Deploy to yield strategy
@@ -88,6 +88,16 @@ sequenceDiagram
 6. **If collateral price drops**: FYV provides liquidity to ALP (via TopUpSource)
 7. **ALP repays debt** automatically to prevent liquidation
 8. **User keeps position healthy** without manual intervention
+
+## Key Metrics
+
+Understanding these metrics is crucial for using FCM:
+
+- **Health Factor**: Ratio of collateral value to debt (must stay above 1.0)
+- **Target Health**: Optimal ratio (typically 1.3)
+- **Collateral Factor**: Percentage of collateral value usable for borrowing (e.g., 0.8 = 80%)
+- **APY**: Annual Percentage Yield from FYV strategies
+- **Utilization Rate**: Percentage of ALP liquidity currently borrowed
 
 ## Key Innovations
 
@@ -150,16 +160,6 @@ FCM provides liquidation protection through yield maintaining position health, f
 2. **Study FYV**: Learn about yield strategies
 3. **Read DeFi Actions**: Master the composability framework
 4. **Build**: Create your own strategies or integrations
-
-## Key Metrics
-
-Understanding these metrics is crucial for using FCM:
-
-- **Health Factor**: Ratio of collateral value to debt (must stay above 1.0)
-- **Target Health**: Optimal ratio (typically 1.3)
-- **Collateral Factor**: Percentage of collateral value usable for borrowing (e.g., 0.8 = 80%)
-- **APY**: Annual Percentage Yield from FYV strategies
-- **Utilization Rate**: Percentage of ALP liquidity currently borrowed
 
 ## Security & Audits
 

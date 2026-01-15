@@ -45,19 +45,21 @@ graph TB
     User[User] -->|1. Deposits Collateral| ALP[ALP Position]
     ALP -->|2. Auto-borrows MOET| MOET[MOET Token]
     MOET -->|3. Via DrawDownSink| FYV[FYV Strategy]
-    FYV -->|4. Generates Yield| Yield[Yield Tokens]
+    FYV -->|4. Swaps to Yield Tokens| Yield[Yield Tokens<br/>Generating Returns]
 
-    Price[Price Drop] -.->|5. Triggers Rebalancing| ALP
-    FYV -->|6. Withdraws Yield| Yield
-    Yield -->|7. Swaps to MOET| Swap[SwapConnector]
-    Swap -->|8. Via TopUpSource| ALP
-    ALP -->|9. Repays Debt| MOET
+    Price[📉 Price Drop] -.->|5. Health drops below 1.1| Trigger[Rebalancing Triggered]
+    Trigger -.->|6. Requests funds| TopUp[TopUpSource]
+    TopUp -.->|7. Pulls from| FYV
+    FYV -.->|8. Swaps yield tokens<br/>back to MOET| MOET_Return[MOET]
+    MOET_Return -.->|9. Repays debt| ALP
+    ALP -.->|10. Health restored to 1.3| Safe[✅ Safe Position]
 
-    style ALP fill:#e6b3ff,stroke:#333,stroke-width:4px
-    style FYV fill:#66cc66,stroke:#333,stroke-width:2px
-    style MOET fill:#ff6666,stroke:#333,stroke-width:2px
-    style Yield fill:#ffcc66,stroke:#333,stroke-width:2px
-    style Swap fill:#99ccff,stroke:#333,stroke-width:2px
+    style ALP fill:#4a7abf,stroke:#333,stroke-width:4px,color:#fff
+    style FYV fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
+    style MOET fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
+    style MOET_Return fill:#d94d4d,stroke:#333,stroke-width:2px,color:#fff
+    style Yield fill:#f9a825,stroke:#333,stroke-width:2px
+    style Safe fill:#4d994d,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 ## Resources
