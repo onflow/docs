@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 title: Authentication Integration Guide
 description: Set up user authentication for your Flow application using Crossmint's integrated authentication system with email, social logins, and wallet connections.
 keywords:
