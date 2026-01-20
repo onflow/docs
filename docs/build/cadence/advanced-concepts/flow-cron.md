@@ -146,7 +146,7 @@ This example handler simply logs the timestamp when executed. Replace the `log` 
 
 #### Deploy Your Contract
 
-Use the Flow CLI to deploy your TransactionHandler contract:
+Use the Flow CLI to deploy your `TransactionHandler` contract:
 
 ```bash
 flow project deploy --network=testnet
