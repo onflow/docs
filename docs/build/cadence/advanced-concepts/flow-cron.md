@@ -31,7 +31,7 @@ A key challenge with recurring schedules is fault tolerance: what happens if you
 - **Executor**: Runs your code. If your logic fails, only this transaction reverts.
 - **Keeper**: Schedules the next cycle. Runs independently, so even if your code throws an error, the schedule continues.
 
-**The benefit**: Your recurring schedule won't break if your TransactionHandler execution fails. The keeper always ensures the next execution is scheduled, regardless of whether the current one succeeded or failed.
+**The benefit**: Your recurring schedule won't break if your `TransactionHandler` execution fails. The keeper always ensures the next execution is scheduled, regardless of whether the current one succeeded or failed.
 
 ```
 Timeline ─────────────────────────────────────────────────────────>
