@@ -18,9 +18,9 @@ sidebar_position: 8
 
 ## Introduction
 
-:::warning
+:::info
 
-Scheduled transactions were part of the Forte network upgrade and are available on Flow Mainnet, Flow Emulator (CLI v2.7.0+) and Flow Testnet. For more infomation, see [Forte: Introducing Actions & Agents].
+Scheduled transactions were part of the Forte network upgrade and are available on Flow Mainnet, Flow Emulator (CLI v2.7.0+) and Flow Testnet. For more information, see [Forte: Introducing Actions & Agents].
 
 :::
 
