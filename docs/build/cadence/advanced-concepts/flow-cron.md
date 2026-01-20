@@ -99,7 +99,7 @@ Before you start, make sure you have:
 
 ### 1. Create Your Handler
 
-First, you need to write the code that will run on each scheduled tick. In Cadence, this is called a **TransactionHandler**. A TransactionHandler is a resource that implements the `FlowTransactionScheduler.TransactionHandler` interface.
+First, you need to write the code that will run on each scheduled tick. In Cadence, this is called a `TransactionHandler`. A `TransactionHandler` is a resource that implements the `FlowTransactionScheduler.TransactionHandler` interface.
 
 The key part is the `executeTransaction` function. This is where you put whatever logic you want to run on schedule: updating state, distributing tokens, checking conditions, etc.
 
