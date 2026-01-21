@@ -2,15 +2,15 @@
 
 ## Overview
 
-An Authorization Function is a function which enables the JS-SDK and FCL to know which Flow account fulfills which signatory role in a transaction and how to recieve a signature on behalf of the supplied account.
+An Authorization Function is a function which allows the JS-SDK and Flow Client Library (FCL) to know which Flow account fulfills which signatory role in a transaction and how to recieve a signature on behalf of the supplied account.
 
-## How to Use an Authorization Function
+## How to use an Authorization Function
 
-An authorization function is a function that you may use in place of an authorization in the Flow JS-SDK and FCL. An authorization is a concept that is used when denoting a proposer, payer or authorizer for a transaction. An authorization can either be a data structure represenating an authorization, or a function which when called returns an authorization called an Authorization Function. In this document we discuss the latter.
+An Authorization Function is a function that you may use in place of an authorization in the Flow JS-SDK and FCL. An authorization is a concept that is used to denote a proposer, payer or authorizer for a transaction. An authorization can either be a data structure that represents an authorization, or a function which when called returns an authorization called an Authorization Function. In this document, we discuss the latter.
 
 To use an Authorization Function, you specify that Authorization Function as the authorization for a proposer, payer or authorizer for a transaction.
 
-> `fcl.currentUser().authorization` which is aliased to `fcl.authz` is itself an authorization function. It tells the underlying js-sdk the current users flow account will be used for the signatory role and supplies a signing function that enables the application to request a signature from the users wallet.
+> `fcl.currentUser().authorization` which is aliased to `fcl.authz` is itself an authorization function. It tells the underlying js-sdk the current users flow account will be used for the signatory role and supplies a signing function that allows the application to request a signature from the users wallet.
 
 Example 1:
 ```javascript
@@ -28,19 +28,19 @@ const response = fcl.send([
 
 The builder functions, `fcl.proposer`, `fcl.payer` and `fcl.authorizations` each consume the Authorization Function and set it as the resolve field on the internal Account object it creates.
 
-During the resolve phase of the Flow JS-SDK and FCL, when [`resolveAccounts`](https://github.com/onflow/fcl-js/blob/master/packages/sdk/src/resolve/resolve.js#L58) is called, the resolve field on each internal Account object is called, which means each Authorization Function is called appropriately and the account is _resolved_ into the data structure the authorizationFunction returns. These accounts are then deduped based on the a mix of the `addr`, `keyId` and `tempId` so that only a single signature request happens per `address` `keyId` pair. When [`resolveSignatures`](https://github.com/onflow/fcl-js/blob/master/packages/sdk/src/resolve/resolve.js#L62) is called the signing function for each `address` `keyId` pair is called returning a composite signature for each signatory role.
+During the resolve phase of the Flow JS-SDK and FCL, when [`resolveAccounts`] is called, the resolve field on each internal Account object is called, which means each Authorization Function is called appropriately and the account is _resolved_ into the data structure the authorizationFunction returns. These accounts are then deduped based on the a mix of the `addr`, `keyId` and `tempId` so that only a single signature request happens per `address` `keyId` pair. When [`resolveSignatures`] is called, the signing function for each `address` `keyId` pair is called, and returns a composite signature for each signatory role.
 
-## How to Create An Authorization Function
+## How to create An Authorization Function
 
-Fortunately, creating an Authorization Function is relatively straight forward.
+Fortunately, it's relatively straight forward to create an Authorization Function.
 
-An Authorization Function needs to be able to do at minimum two things.
+An Authorization Function needs to be able to do at minimum two things:
 - Who will sign -- Know which account is going to sign and the keyId of the key it will use to sign
 - How they sign -- Know how to get a signature for the supplied account and key from the first piece.
 
-The Authorization Function has a concept of an account. An account represent a possible signatory for the transaction, it includes the who is signing as well as the how it will be signed. The Authorization Function is passed an empty Account and needs to return an Account, your job when making an Authorization Function is mostly to fill in this Account with the information so that the account you want to sign things can.
+The Authorization Function has a concept of an account. An account represent a possible signatory for the transaction. It includes who signs it as well as how it will be signed. The Authorization Function is passed an empty Account and needs to return an Account, your job when you make an Authorization Function is mostly to fill in this Account with the information so that the account you want to sign things can.
 
-Lets say we knew up front the account, keyId and had a function that could sign things.
+Let's say we knew up front the account, keyId, and had a function that could sign things.
 
 ```javascript
 const ADDRESS = "0xba1132bc08f82fe2"
@@ -74,7 +74,7 @@ const authorizationFunction = async (account) => {
 
 ## Async stuff
 
-Both the Authorization Function, and the accounts Signing Function can be asynchronous. This means both of these functions can go and get the information needed elsewhere. Say each of your users had a `userId`. From this `userId` say you had an api call that could return the corresponding address and key that is needed for the Authorization Functions account. You could also have another endpoint that when posted the signable (includes what needs to be signed) and the `userId` it can return with the composite signature if your api decides its okay to sign (the signable has all sorts of info to help you decide). An authorization function that can do that could look something like this.
+Both the Authorization Function, and the account's Signing Function can be asynchronous. This means both of these functions can go and get the information needed elsewhere. Say each of your users had a `userId`. From this `userId` say you had an API call that could return the address and key needed for the Authorization Functions account. You could also have another endpoint that when posted the signable (includes what needs to be signed) and the `userId` it can return with the composite signature if your API decides its okay to sign (the signable has all sorts of info to help you decide). An Authorization Function that can do that could look something like this.
 
 Example 3:
 ```javascript
@@ -107,7 +107,7 @@ The above **Example 3** is the same as **Example 2**, but the information is gat
 
 Creating a signing function is also relatively simple!
 
-To create a signing function you specify a function which consumes a payload and returns a signature data structure.
+To create a signing function, you specify a function which consumes a payload and returns a signature data structure.
 
 Example 3:
 ```javascript
@@ -129,3 +129,7 @@ const signingFunction = ({
   }
 }
 ```
+<!-- Relative links, will not render on page -->
+
+[`resolveAccounts`]: https://github.com/onflow/fcl-js/blob/master/packages/sdk/src/resolve/resolve.js#L58
+[`resolveSignatures`]: https://github.com/onflow/fcl-js/blob/master/packages/sdk/src/resolve/resolve.js#L62
