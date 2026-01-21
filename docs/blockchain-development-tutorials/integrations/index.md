@@ -5,12 +5,15 @@ sidebar_position: 10
 keywords:
   - Gelato
   - Crossmint
+  - ZeroDev
   - integrations
   - infrastructure
   - gasless transactions
   - payments
   - wallets
   - authentication
+  - smart accounts
+  - ERC-4337
 ---
 
 # Third-Party integrations
@@ -25,14 +28,18 @@ This section provides comprehensive integration guides for platforms that enhanc
 
 Eliminate gas fees and improve user experience with Gelato's sponsored transaction infrastructure on Flow EVM. This comprehensive guide shows you how to implement gasless transactions with EIP-7702 features, configure API keys and funding accounts, and integrate the Gelato Smart Wallet SDK for seamless user onboarding. Learn to leverage Flow's low gas costs combined with Gelato's sponsorship infrastructure to create applications that rival traditional Web2 experiences and maintain blockchain security and transparency.
 
+### [ZeroDev Smart Account]
+
+Enable gasless transactions on Flow EVM using ZeroDev's ERC-4337 compliant Kernel Smart Account with sponsored User Operations. This guide shows you how to configure a ZeroDev project with V3 RPC endpoints and Gas Sponsorship Policies, set up clients using the Core SDK and viem, and implement smart account creation with batched transaction support. Learn to leverage ZeroDev's account abstraction infrastructure to eliminate gas fees for your users while maintaining full control over transaction sponsorship and costs.
+
 ### [Crossmint Integration Platform]
 
-Build enterprise-grade Web3 applications on Flow with Crossmint's comprehensive blockchain infrastructure platform. This extensive integration guide covers four key areas: 
+Build enterprise-grade Web3 applications on Flow with Crossmint's comprehensive blockchain infrastructure platform. This extensive integration guide covers four key areas:
 
 - Authentication with email, Social logins, and wallet connections.
 - Fiat payment processing supporting credit cards, Apple Pay, and Google Pay
 - NFT and token minting platform with no-code deployment tools
-- Access to real-world goods through crypto payments. 
+- Access to real-world goods through crypto payments.
 
 Crossmint allows you to create complete blockchain applications that feel familiar to Web2 users and leverage Flow's advanced capabilities.
 
@@ -41,4 +48,5 @@ Crossmint allows you to create complete blockchain applications that feel famili
 These third-party integrations demonstrate Flow's commitment to provide developers with the tools they need to build mainstream-ready blockchain applications. When you combine Flow's innovative architecture with best-in-class infrastructure platforms, you can eliminate traditional Web3 barriers and create user experiences that drive adoption. Whether you want to build decentralized finance (DeFi) protocols, NFT marketplaces, or consumer applications, these integrations provide the foundation for scalable, user-friendly products that bridge the gap between Web2 expectations and Web3 capabilities.
 
 [Gelato Smart Wallet]: ./gelato-sw.md
+[ZeroDev Smart Account]: ./zero-dev-smart-account.md
 [Crossmint Integration Platform]: ./crossmint/index.md
