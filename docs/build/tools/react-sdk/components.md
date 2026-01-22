@@ -22,25 +22,25 @@ A drop-in wallet connection component with UI for copy address, logout, and bala
 
 **Props:**
 
-- `variant?: ButtonProps["variant"]` – Optional button style variant (default: `"primary"`)
-- `onConnect?: () => void` – Callback triggered after successful authentication
-- `onDisconnect?: () => void` – Callback triggered after logout
+- `variant?: ButtonProps["variant"]` – Optional button style variant (default: `"primary"`).
+- `onConnect?: () => void` – Callback triggered after successful authentication.
+- `onDisconnect?: () => void` – Callback triggered after logout.
 - `balanceType?: "cadence" | "evm" | "combined"` – Specifies which balance to display (default: `"cadence"`). Options:
-  - `"cadence"`: Shows the token balance from the Cadence side
-  - `"evm"`: Shows the token balance from the Flow EVM side
-  - `"combined"`: Shows the total combined token balance from both sides
+  - `"cadence"`: Shows the token balance from the Cadence side.
+  - `"evm"`: Shows the token balance from the Flow EVM side.
+  - `"combined"`: Shows the total combined token balance from both sides.
 - `balanceTokens?: TokenConfig[]` – Optional array of token configurations to display in the balance selector. Each `TokenConfig` requires:
-  - `symbol: string` – Token symbol (e.g. "FLOW", "USDC")
-  - `name: string` – Full token name
-  - Either `vaultIdentifier: string` (for Cadence tokens) or `erc20Address: string` (for EVM tokens)
+  - `symbol: string` – Token symbol (for example, "FLOW", "USDC")
+  - `name: string` – Full token name.
+  - Either `vaultIdentifier: string` (for Cadence tokens) or `erc20Address: string` (for EVM tokens).
 - `modalConfig?: ConnectModalConfig` – Optional configuration for the profile modal:
-  - `scheduledTransactions.show?: boolean` – Whether to show the scheduled transactions tab (default: `false`)
-  - `scheduledTransactions.filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter displayed transactions
-- `modalEnabled?: boolean` – Whether to show the profile modal on click when connected (default: `true`). When `false`, clicking the button when connected will disconnect instead
+  - `scheduledTransactions.show?: boolean` – Whether to show the scheduled transactions tab (default: `false`).
+  - `scheduledTransactions.filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter displayed transactions.
+- `modalEnabled?: boolean` – Whether to show the profile modal on click when connected (default: `true`). When `false`, click the button when connected to disconnect.
 
 :::note WalletConnect Support
 
-To enable WalletConnect as a wallet option, add your registered project ID to the `walletconnectProjectId` field in your `FlowProvider` config.
+To turn on WalletConnect as a wallet option, add your registered project ID to the `walletconnectProjectId` field in your `FlowProvider` config.
 
 :::
 
@@ -66,30 +66,30 @@ import { Connect } from "@onflow/react-sdk"
 
 ### `Profile`
 
-A standalone component for displaying wallet information including account address, balance and optional scheduled transactions.
+A standalone component used to display wallet information, such as account address, balance and optional scheduled transactions.
 
 <div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#profile" /></div>
 
 **Props:**
 
-- `onDisconnect?: () => void` – Callback triggered when the user clicks the disconnect button
+- `onDisconnect?: () => void` – Callback triggered when the user disconnects.
 - `balanceType?: "cadence" | "evm" | "combined"` – Specifies which balance to display (default: `"cadence"`). Options:
-  - `"cadence"`: Shows the token balance from the Cadence side
-  - `"evm"`: Shows the token balance from the Flow EVM side
-  - `"combined"`: Shows the total combined token balance from both sides
+  - `"cadence"`: Shows the token balance from the Cadence side.
+  - `"evm"`: Shows the token balance from the Flow EVM side.
+  - `"combined"`: Shows the total combined token balance from both sides.
 - `balanceTokens?: TokenConfig[]` – Optional array of token configurations to display in the balance selector. Each `TokenConfig` requires:
-  - `symbol: string` – Token symbol (e.g. "FLOW", "USDC")
-  - `name: string` – Full token name
-  - Either `vaultIdentifier: string` (for Cadence tokens) or `erc20Address: string` (for EVM tokens)
+  - `symbol: string` – Token symbol (for example, "FLOW", "USDC").
+  - `name: string` – Full token name.
+  - Either `vaultIdentifier: string` (for Cadence tokens) or `erc20Address: string` (for EVM tokens).
 - `profileConfig?: ProfileConfig` – Optional configuration for the profile display:
-  - `scheduledTransactions.show?: boolean` – Whether to show the scheduled transactions tab (default: `false`)
-  - `scheduledTransactions.filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter displayed transactions
-- `className?: string` – Optional custom CSS class
-- `style?: React.CSSProperties` – Optional inline styles
+  - `scheduledTransactions.show?: boolean` – Whether to show the scheduled transactions tab (default: `false`).
+  - `scheduledTransactions.filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter displayed transactions.
+- `className?: string` – Optional custom CSS class.
+- `style?: React.CSSProperties` – Optional inline styles.
 
 :::note WalletConnect Support
 
-To enable WalletConnect as a wallet option, add your registered project ID to the `walletconnectProjectId` field in your `FlowProvider` config.
+To turn on WalletConnect as a wallet option, add your registered project ID to the `walletconnectProjectId` field in your `FlowProvider` config.
 
 :::
 
@@ -106,16 +106,16 @@ import { Profile } from "@onflow/react-sdk"
 
 ### `TransactionButton`
 
-Button component for executing Flow transactions with built-in loading states and global transaction management.
+Button component used to execute Flow transactions with built-in loading states and global transaction management.
 
 <div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#transactionbutton" /></div>
 
 **Props:**
 
-- `transaction: Parameters<typeof mutate>[0]` – Flow transaction object to execute when clicked
-- `label?: string` – Optional custom button label (default: `"Execute Transaction"`)
-- `mutation?: UseMutationOptions<string, Error, Parameters<typeof mutate>[0]>` – Optional TanStack React Query mutation options
-- `...buttonProps` – All other `ButtonProps` except `onClick` and `children` (includes `variant`, `disabled`, `className`, etc.)
+- `transaction: Parameters<typeof mutate>[0]` – Flow transaction object to execute when clicked.
+- `label?: string` – Optional custom button label (default: `"Execute Transaction"`).
+- `mutation?: UseMutationOptions<string, Error, Parameters<typeof mutate>[0]>` – Optional TanStack React Query mutation options.
+- `...buttonProps` – All other `ButtonProps` except `onClick` and `children` (includes `variant`, `disabled`, `className`, and so on).
 
 ```tsx
 import { TransactionButton } from "@onflow/react-sdk"
@@ -166,15 +166,15 @@ Dialog component for real-time transaction status updates.
 
 **Props:**
 
-- `open: boolean` – Whether the dialog is open
-- `onOpenChange: (open: boolean) => void` – Callback to open/close dialog
-- `txId?: string` – Optional Flow transaction ID or scheduled transaction ID to track
-- `onSuccess?: () => void` – Optional callback when transaction is successful
-- `pendingTitle?: string` – Optional custom pending state title
-- `pendingDescription?: string` – Optional custom pending state description
-- `successTitle?: string` – Optional custom success state title
-- `successDescription?: string` – Optional custom success state description
-- `closeOnSuccess?: boolean` – If `true`, closes the dialog automatically after success
+- `open: boolean` – Whether the dialog is open.
+- `onOpenChange: (open: boolean) => void` – Callback to open and close dialog
+- `txId?: string` – Optional Flow transaction ID or scheduled transaction ID to track.
+- `onSuccess?: () => void` – Optional callback when transaction is successful.
+- `pendingTitle?: string` – Optional custom pending state title.
+- `pendingDescription?: string` – Optional custom pending state description.
+- `successTitle?: string` – Optional custom success state title.
+- `successDescription?: string` – Optional custom success state description.
+- `closeOnSuccess?: boolean` – If `true`, closes the dialog automatically after success.
 
 ```tsx
 import { TransactionDialog } from "@onflow/react-sdk"
@@ -204,8 +204,8 @@ Link to the block explorer with the appropriate network scoped to transaction ID
 
 **Props:**
 
-- `txId: string` – The transaction ID or scheduled transaction ID to link to
-- `variant?: ButtonProps["variant"]` – Optional button variant (defaults to `"link"`)
+- `txId: string` – The transaction ID or scheduled transaction ID to link to.
+- `variant?: ButtonProps["variant"]` – Optional button variant (defaults to `"link"`).
 
 ```tsx
 import { TransactionLink } from "@onflow/react-sdk"
@@ -226,22 +226,22 @@ import { TransactionLink } from "@onflow/react-sdk"
 
 ### `NftCard`
 
-A component for rendering a NFT with image, name, description, collection details, traits and external links. Features include loading states, error handling, dark mode support and optional custom actions.
+A component used to render a NFT with image, name, description, collection details, traits and external links. Features include loading states, error handling, dark mode support and optional custom actions.
 
 <div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#nftcard" /></div>
 
 **Props:**
 
-- `accountAddress: string` – The Flow account address that owns the NFT
-- `tokenId: string | number` – The ID of the NFT
-- `publicPathIdentifier: string` – The public path identifier for the NFT collection (e.g., "A.0b2a3299cc857e29.TopShot.Collection")
-- `showTraits?: boolean` – Whether to display NFT traits/attributes (default: `false`). Shows up to 4 traits with a button to view all
-- `showExtra?: boolean` – Whether to display additional information like serial number, rarity, and external links (default: `false`)
+- `accountAddress: string` – The Flow account address that owns the NFT.
+- `tokenId: string | number` – The ID of the NFT.
+- `publicPathIdentifier: string` – The public path identifier for the NFT collection (for example, "A.0b2a3299cc857e29.TopShot.Collection").
+- `showTraits?: boolean` – Whether to display NFT traits or attributes (default: `false`). Shows up to four traits with a button to view all.
+- `showExtra?: boolean` – Whether to display additional information like serial number, rarity, and external links (default: `false`).
 - `actions?: NftCardAction[]` – Optional array of custom action buttons displayed in a dropdown menu. Each action requires:
-  - `title: string` – Display text for the action
-  - `onClick: () => Promise<void> | void` – Handler function called when action is clicked
-- `className?: string` – Optional custom CSS class
-- `style?: React.CSSProperties` – Optional inline styles
+  - `title: string` – Display text for the action.
+  - `onClick: () => Promise<void> | void` – Handler function called when action is clicked.
+- `className?: string` – Optional custom CSS class.
+- `style?: React.CSSProperties` – Optional inline styles.
 
 ```tsx
 import { NftCard } from "@onflow/react-sdk"
@@ -273,18 +273,18 @@ import { NftCard } from "@onflow/react-sdk"
 
 ### `ScheduledTransactionList`
 
-A component for displaying scheduled transactions for a Flow account. Shows transaction metadata including thumbnails, descriptions, priority, scheduled time, execution effort, fees and provides an optional transaction cancellation functionality.
+A component used to display scheduled transactions for a Flow account. Shows transaction metadata such as thumbnails, descriptions, priority, scheduled time, execution effort, fees and provides an optional transaction cancellation functionality.
 
 <div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#scheduledtransactionlist" /></div>
 
 **Props:**
 
-- `address: string` – The Flow account address to fetch scheduled transactions for
-- `filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter which transactions are displayed. Only transactions with matching `handlerTypeIdentifier` will be shown
-- `cancelEnabled?: boolean` – Whether to show the cancel button for transactions (default: `true`)
-- `className?: string` – Optional custom CSS class
-- `style?: React.CSSProperties` – Optional inline styles
-- `flowClient?: UseFlowScheduledTransactionListArgs["flowClient"]` – Optional custom Flow client instance
+- `address: string` – The Flow account address to fetch scheduled transactions for.
+- `filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter which transactions are displayed. Only transactions with matching `handlerTypeIdentifier` will be shown.
+- `cancelEnabled?: boolean` – Whether to show the cancel button for transactions (default: `true`).
+- `className?: string` – Optional custom CSS class.
+- `style?: React.CSSProperties` – Optional inline styles.
+- `flowClient?: UseFlowScheduledTransactionListArgs["flowClient"]` – Optional custom Flow client instance.
 
 ```tsx
 import { ScheduledTransactionList } from "@onflow/react-sdk"
@@ -303,11 +303,11 @@ import { ScheduledTransactionList } from "@onflow/react-sdk"
 
 ## Theming
 
-### How Theming Works
+### How theming works
 
-All UI components in `@onflow/react-sdk` are styled using [Tailwind CSS](https://tailwindcss.com/) utility classes. The kit supports both light and dark themes out of the box, using Tailwind's `dark:` variant for dark mode styling.
+All UI components in `@onflow/react-sdk` are styled with [Tailwind CSS] utility classes. The kit supports both light and dark themes out of the box, and uses Tailwind's `dark:` variant for dark mode styling.
 
-You can customize the look and feel of the kit by providing a custom theme to the `FlowProvider` via the `theme` prop. This allows you to override default colors and styles to better match your app's branding.
+To customize the look and feel of the kit, you can provide a custom theme to the `FlowProvider` via the `theme` prop. This allows you to override default colors and styles to better match your app's branding.
 
 ### Theme Colors
 
@@ -358,11 +358,11 @@ You only need to specify the colors you want to override—any unspecified color
 
 ---
 
-## Dark Mode
+## Dark mode
 
-### How Dark Mode Works
+### How dark mode works
 
-Dark mode is **fully controlled by the parent app** using the `darkMode` prop on `FlowProvider`. The kit does not manage dark mode state internally—this gives you full control and ensures the kit always matches your app's theme.
+Dark mode is **fully controlled by the parent app** with the `darkMode` prop on `FlowProvider`. The kit does not manage dark mode state internally—this gives you full control and ensures the kit always matches your app's theme.
 
 - `darkMode={false}` (default): Forces all kit components to use light mode styles.
 - `darkMode={true}`: Forces all kit components to use dark mode styles.
@@ -383,7 +383,7 @@ function App() {
 }
 ```
 
-**Accessing Dark Mode State in Components:**
+**Access dark mode in components:**
 
 You can use the `useDarkMode` hook to check the current mode inside your components:
 
@@ -399,6 +399,10 @@ function MyComponent() {
 
 #### Notes
 
-- The kit does **not** automatically follow system preferences or save user choices. You are responsible for managing and passing the correct `darkMode` value.
+- The kit does **not** automatically follow system preferences or save user choices. It's your responsibility to manage and pass the correct `darkMode` value.
 - All kit components will automatically apply the correct Tailwind `dark:` classes based on the `darkMode` prop.
 - For best results, ensure your app's global theme and the kit's `darkMode` prop are always in sync.
+
+<!-- Relative links, will not render on page -->
+
+[Tailwind CSS]: https://tailwindcss.com/

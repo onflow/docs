@@ -10,11 +10,11 @@ import PlaygroundButton from '@site/src/components/PlaygroundButton';
 
 :::info
 
-Many of these hooks are built using [`@tanstack/react-query`](https://tanstack.com/query/latest), which provides powerful caching, revalidation, and background refetching features. As a result, you'll see return types like `UseQueryResult` and `UseMutationResult` throughout this section. Other types—such as `Account`, `Block`, and `CurrentUser`—are from the [Flow Client Library (FCL) TypeDefs](https://github.com/onflow/fcl-js/blob/master/packages/typedefs/src/index.ts). Refer to their respective documentation for full type definitions and usage patterns.
+Many of these hooks are built with [`@tanstack/react-query`], which provides powerful caching, revalidation, and background refetch features. As a result, you'll see return types like `UseQueryResult` and `UseMutationResult` throughout this section. Other types—such as `Account`, `Block`, and `CurrentUser`—are from the [Flow Client Library (FCL) TypeDefs]. Refer to the hooks' respective documentation for full type definitions and usage patterns.
 
 :::
 
-## Cadence Hooks
+## Cadence hooks
 
 ### `useFlowCurrentUser`
 
@@ -26,17 +26,17 @@ import { useFlowCurrentUser } from "@onflow/react-sdk"
 
 #### Parameters
 
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns:
 
-- `user: CurrentUser` – The current user object from FCL
-- `authenticate: () => Promise<CurrentUser>` – Triggers wallet authentication
-- `unauthenticate: () => void` – Logs the user out
+- `user: CurrentUser` – The current user object from FCL.
+- `authenticate: () => Promise<CurrentUser>` – Triggers wallet authentication.
+- `unauthenticate: () => void` – Logs the user out.
 
 :::note WalletConnect Support
 
-To enable WalletConnect as a wallet option, add your registered project ID to the `walletconnectProjectId` field in your `FlowProvider` config.
+To turn on WalletConnect as a wallet option, add your registered project ID to the `walletconnectProjectId` field in your `FlowProvider` config.
 
 :::
 
@@ -71,9 +71,9 @@ import { useFlowAccount } from "@onflow/react-sdk"
 
 #### Parameters:
 
-- `address?: string` – Flow address (with or without `0x` prefix)
-- `query?: UseQueryOptions<Account | null, Error>` – Optional TanStackQuery options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `address?: string` – Flow address (with or without `0x` prefix).
+- `query?: UseQueryOptions<Account | null, Error>` – Optional TanStackQuery options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseQueryResult<Account | null, Error>`
 
@@ -111,11 +111,11 @@ import { useFlowBlock } from "@onflow/react-sdk"
 
 #### Parameters:
 
-- `sealed?: boolean` – If `true`, fetch latest sealed block
-- `id?: string` – Block by ID
-- `height?: number` – Block by height
-- `query?: UseQueryOptions<Block | null, Error>` – Optional TanStackQuery options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `sealed?: boolean` – If `true`, fetch latest sealed block.
+- `id?: string` – Block by ID.
+- `height?: number` – Block by height.
+- `query?: UseQueryOptions<Block | null, Error>` – Optional TanStackQuery options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 Only one of `sealed`, `id`, or `height` should be provided.
 
@@ -148,7 +148,7 @@ function LatestBlock() {
 import { useFlowChainId } from "@onflow/react-sdk"
 ```
 
-This hook retrieves the Flow chain ID, which is useful for identifying the current network.
+This hook retrieves the Flow chain ID, which is useful to help identify the current network.
 
 #### Parameters:
 
@@ -157,7 +157,7 @@ This hook retrieves the Flow chain ID, which is useful for identifying the curre
 
 #### Returns: `UseQueryResult<string | null, Error>`
 
-Valid chain IDs include: `testnet` (Flow Testnet), `mainnet` (Flow Mainnet), and `emulator` (Flow Emulator).  The `flow-` prefix will be stripped from the chain ID returned by the access node (e.g. `flow-testnet` will return `testnet`).
+Valid chain IDs include: `testnet` (Flow Testnet), `mainnet` (Flow Mainnet), and `emulator` (Flow Emulator).  The `flow-` prefix will be stripped from the chain ID returned by the access node (for example, `flow-testnet` will return `testnet`).
 
 ```tsx
 function ChainIdExample() {
@@ -182,7 +182,7 @@ This hook returns the `FlowClient` for the current `<FlowProvider />` context.
 
 #### Parameters:
 
-- `flowClient?: FlowClient` - Optional `FlowClient` instance to override the result
+- `flowClient?: FlowClient` - Optional `FlowClient` instance to override the result.
 
 ---
 
@@ -221,15 +221,15 @@ import { useFlowEvents } from "@onflow/react-sdk"
 
 #### Parameters:
 
-- `startBlockId?: string` – Optional ID of the block to start listening from
-- `startHeight?: number` – Optional block height to start listening from
-- `eventTypes?: string[]` – Array of event type strings (e.g., `A.0xDeaDBeef.Contract.EventName`)
-- `addresses?: string[]` – Filter by Flow addresses
-- `contracts?: string[]` – Filter by contract identifiers
-- `opts?: { heartbeatInterval?: number }` – Options for subscription heartbeat
-- `onEvent: (event: Event) => void` – Callback for each event received
-- `onError?: (error: Error) => void` – Optional error handler
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `startBlockId?: string` – Optional ID of the block to start listening from.
+- `startHeight?: number` – Optional block height to start listening from.
+- `eventTypes?: string[]` – Array of event type strings (for example, `A.0xDeaDBeef.Contract.EventName`)
+- `addresses?: string[]` – Filter by Flow addresses.
+- `contracts?: string[]` – Filter by contract identifiers.
+- `opts?: { heartbeatInterval?: number }` – Options for subscription heartbeat.
+- `onEvent: (event: Event) => void` – Callback for each event received.
+- `onError?: (error: Error) => void` – Optional error handler.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Example:
 
@@ -257,10 +257,10 @@ import { useFlowQuery } from "@onflow/react-sdk"
 
 #### Parameters:
 
-- `cadence: string` – Cadence script to run
-- `args?: (arg, t) => unknown[]` – Function returning FCL arguments
-- `query?: UseQueryOptions<unknown, Error>` – Optional TanStackQuery options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `cadence: string` – Cadence script to run.
+- `args?: (arg, t) => unknown[]` – Function that returns FCL arguments.
+- `query?: UseQueryOptions<unknown, Error>` – Optional TanStackQuery options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseQueryResult<unknown, Error>`
 
@@ -303,10 +303,10 @@ This hook is identical to `useFlowQuery` but returns the raw, non-decoded respon
 
 #### Parameters:
 
-- `cadence: string` – Cadence script to run
-- `args?: (arg, t) => unknown[]` – Function returning FCL arguments
-- `query?: UseQueryOptions<unknown, Error>` – Optional TanStackQuery options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `cadence: string` – Cadence script to run.
+- `args?: (arg, t) => unknown[]` – Function that returns FCL arguments.
+- `query?: UseQueryOptions<unknown, Error>` – Optional TanStackQuery options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseQueryResult<unknown, Error>`
 
@@ -349,8 +349,8 @@ import { useFlowMutate } from "@onflow/react-sdk"
 
 #### Parameters:
 
-- `mutation?: UseMutationOptions<string, Error, FCLMutateParams>` – Optional TanStackQuery mutation options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `mutation?: UseMutationOptions<string, Error, FCLMutateParams>` – Optional TanStackQuery mutation options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseMutationResult<string, Error, FCLMutateParams>`
 
@@ -446,14 +446,12 @@ function RandomValues() {
 
 #### Notes:
 
-* Randomness is generated using the **onchain `revertibleRandom`** function on Flow, producing pseudorandom values tied to block and script execution.
+* Randomness is generated via the **onchain `revertibleRandom`** function on Flow, and produces pseudorandom values tied to block and script execution.
 * Values are **deterministic**: The values returned for identical calls within the same block will be identical.
 * If `count ` is larger than one, the returned values are distinct.
 * This hook is designed for simple use cases that don't require unpredictability, such as randomized UIs.
   Since the hook uses script executions on existing blocks, the random source is already public and the randoms are predictable.
 * For **more advanced use cases** that **do** require onchain randomness logic via transactions, Flow provides built-in support using Cadence's `revertibleRandom` and [commit-reveal scheme].
-
-[commit-reveal scheme]: ../../cadence/advanced-concepts/randomness#commit-reveal-scheme
 
 ---
 
@@ -470,8 +468,8 @@ Fetches a Flow transaction by ID and returns the decoded transaction object.
 #### Parameters:
 
 * `txId?: string` – The Flow transaction ID or scheduled transaction ID to fetch.
-* `query?: Omit<UseQueryOptions<Transaction | null, Error>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
-* `flowClient?: FlowClient` - Optional `FlowClient` instance
+* `query?: Omit<UseQueryOptions<Transaction | null, Error>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, and so on.
+* `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseQueryResult<Transaction | null, Error>`
 
@@ -509,8 +507,8 @@ import { useFlowTransactionStatus } from "@onflow/react-sdk"
 
 #### Parameters:
 
-- `id: string` – Transaction ID or scheduled transaction ID to subscribe to
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `id: string` – Transaction ID or scheduled transaction ID to subscribe to.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns:
 
@@ -538,11 +536,11 @@ function TransactionStatusComponent() {
 import { useDarkMode } from "@onflow/react-sdk"
 ```
 
-This hook provides access to the current dark mode state from the `FlowProvider`. It's useful for conditionally rendering content or applying custom styling based on the current theme.
+This hook provides access to the current dark mode state from the `FlowProvider`. It's useful if you want to conditionally render content or apply custom styling based on the current theme.
 
 #### Returns:
 
-- `isDark: boolean` – Whether dark mode is currently enabled
+- `isDark: boolean` – Whether dark mode is currently turned on.
 
 ```tsx
 function ThemeAwareComponent() {
@@ -571,11 +569,11 @@ This hook fetches NFT metadata including display information, traits, rarity, an
 
 #### Parameters:
 
-- `accountAddress?: string` – Flow address of the account holding the NFT
-- `tokenId?: string | number` – The NFT token ID
-- `publicPathIdentifier?: string` – Public path identifier for the collection
-- `query?: UseQueryOptions<unknown, Error>` – Optional TanStack Query options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `accountAddress?: string` – Flow address of the account which holds the NFT.
+- `tokenId?: string | number` – The NFT token ID.
+- `publicPathIdentifier?: string` – Public path identifier for the collection.
+- `query?: UseQueryOptions<unknown, Error>` – Optional TanStack Query options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseQueryResult<NftViewResult | null, Error>`
 
@@ -643,8 +641,8 @@ A React hook that returns an authorization function for Flow transactions. If no
 
 #### Parameters:
 
-- `authz?: AuthorizationFunction` – Optional custom authorization function
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `authz?: AuthorizationFunction` – Optional custom authorization function.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 Where `AuthorizationFunction` is defined as:
 
@@ -729,10 +727,10 @@ Fetches a scheduled transaction by ID.
 
 #### Parameters:
 
-- `txId?: string` – Scheduled transaction ID
+- `txId?: string` – Scheduled transaction ID.
 - `includeHandlerData?: boolean` – Include handler data (default: false)
-- `query?: UseQueryOptions<ScheduledTransaction | null, Error>` – Optional TanStack Query options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `query?: UseQueryOptions<ScheduledTransaction | null, Error>` – Optional TanStack Query options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseQueryResult<ScheduledTransaction | null, Error>`
 
@@ -793,10 +791,10 @@ Lists all scheduled transactions for an account.
 
 #### Parameters:
 
-- `account?: string` – Flow address to query
-- `includeHandlerData?: boolean` – Include handler data (default: false)
-- `query?: UseQueryOptions<ScheduledTransaction[], Error>` – Optional TanStack Query options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `account?: string` – Flow address to query.
+- `includeHandlerData?: boolean` – Include handler data (default: false).
+- `query?: UseQueryOptions<ScheduledTransaction[], Error>` – Optional TanStack Query options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseQueryResult<ScheduledTransaction[], Error>`
 
@@ -841,8 +839,8 @@ Cancels a scheduled transaction and refunds fees.
 
 #### Parameters:
 
-- `mutation?: UseMutationOptions<string, Error, string>` – Optional TanStack Query mutation options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `mutation?: UseMutationOptions<string, Error, string>` – Optional TanStack Query mutation options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseFlowScheduledTransactionCancelResult`
 
@@ -961,12 +959,12 @@ function SchedulerSetup() {
 import { useCrossVmBatchTransaction } from "@onflow/react-sdk"
 ```
 
-This hook allows you to execute multiple EVM transactions in a single atomic Cadence transaction. It is useful for batch processing EVM calls while ensuring they are executed together, either all succeeding or allowing for some to fail without affecting the others.
+This hook allows you to execute multiple EVM transactions in a single atomic Cadence transaction. It is useful for batch processing EVM calls and ensure they are executed together, either all succeeding or allowing for some to fail without affecting the others.
 
 #### Parameters:
 
-- `mutation?: UseMutationOptions<string, Error, UseCrossVmBatchTransactionMutateArgs>` – Optional TanStackQuery mutation options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmBatchTransactionMutateArgs>` – Optional TanStackQuery mutation options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseCrossVmBatchTransactionResult`
 
@@ -1063,7 +1061,7 @@ Fetch the balance of a token balance for a given user across both Cadence and EV
 #### Parameters:
 
 - `owner: string` – Cadence address of the account whose token balances you want.
-- `vaultIdentifier?: string` – Optional Cadence resource identifier (e.g. "0x1cf0e2f2f715450.FlowToken.Vault") for onchain balance
+- `vaultIdentifier?: string` – Optional Cadence resource identifier (efor example, "0x1cf0e2f2f715450.FlowToken.Vault") for onchain balance
 - `erc20AddressHexArg?: string` – Optional bridged ERC-20 contract address (hex) for EVM/COA balance
 - `query?: Omit<UseQueryOptions<unknown, Error>, "queryKey" | "queryFn">` – Optional TanStack Query config (e.g. staleTime, enabled)
 - `flowClient?: FlowClient` - Optional `FlowClient` instance
@@ -1197,8 +1195,8 @@ This hook bridges NFTs from Flow EVM to Cadence. It withdraws an NFT from the si
 
 #### Parameters:
 
-- `mutation?: UseMutationOptions<string, Error, UseCrossVmBridgeNftFromEvmTxMutateArgs>` – Optional TanStackQuery mutation options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmBridgeNftFromEvmTxMutateArgs>` – Optional TanStackQuery mutation options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseCrossVmBridgeNftFromEvmTxResult`
 
@@ -1265,8 +1263,8 @@ This hook bridges NFTs from Cadence to Flow EVM and executes arbitrary EVM trans
 
 #### Parameters:
 
-- `mutation?: UseMutationOptions<string, Error, UseCrossVmBridgeNftToEvmTxMutateArgs>` – Optional TanStackQuery mutation options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmBridgeNftToEvmTxMutateArgs>` – Optional TanStackQuery mutation options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseCrossVmBridgeNftToEvmTxResult`
 
@@ -1343,8 +1341,8 @@ This hook bridges fungible tokens from Flow EVM to Cadence. It withdraws tokens 
 
 #### Parameters:
 
-- `mutation?: UseMutationOptions<string, Error, UseCrossVmBridgeTokenFromEvmMutateArgs>` – Optional TanStackQuery mutation options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmBridgeTokenFromEvmMutateArgs>` – Optional TanStackQuery mutation options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseCrossVmBridgeTokenFromEvmResult`
 
@@ -1411,8 +1409,8 @@ This hook bridges fungible tokens from Cadence to Flow EVM and executes arbitrar
 
 #### Parameters:
 
-- `mutation?: UseMutationOptions<string, Error, UseCrossVmBridgeTokenToEvmMutateArgs>` – Optional TanStackQuery mutation options
-- `flowClient?: FlowClient` - Optional `FlowClient` instance
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmBridgeTokenToEvmMutateArgs>` – Optional TanStackQuery mutation options.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance.
 
 #### Returns: `UseCrossVmBridgeTokenToEvmResult`
 
@@ -1474,3 +1472,9 @@ function BridgeTokenToEvmExample() {
   )
 }
 ```
+
+<!-- Relative links, will not render on page -->
+
+[`@tanstack/react-query`]: https://tanstack.com/query/latest
+[Flow Client Library (FCL) TypeDefs]: https://github.com/onflow/fcl-js/blob/master/packages/typedefs/src/index.ts
+[commit-reveal scheme]: ../../cadence/advanced-concepts/randomness#commit-reveal-scheme
