@@ -25,16 +25,55 @@ When developing smart contracts on Flow, understanding computational costs is es
 - **Cost Awareness**: Understand how much computation your transactions and scripts consume
 - **Bottleneck Identification**: Pinpoint exactly where your code spends the most resources
 
-The Flow Emulator provides two complementary tools for this purpose:
+The Flow CLI provides three complementary approaches for profiling computation:
 
-| Feature | Output | Best For |
-|---------|--------|----------|
-| **Computation Reporting** | JSON report with detailed intensities | Quick numerical analysis, CI/CD integration, automated testing |
-| **Computation Profiling** | pprof profile | Visual analysis (e.g. flame graphs), deep-dive debugging, call stack exploration |
+| Approach | Output | Best For |
+|----------|--------|----------|
+| **Transaction Profiling** (`flow transactions profile`) | pprof profile for sealed transactions | Analyzing production transactions on mainnet/testnet |
+| **Emulator Computation Reporting** (`flow emulator --computation-reporting`) | JSON report with detailed intensities | Quick numerical analysis, CI/CD integration, automated testing |
+| **Emulator Computation Profiling** (`flow emulator --computation-profiling`) | pprof profile for development | Visual analysis during development, flame graphs, call stack exploration |
 
 :::note
 
 Before getting started, make sure you have the [Flow CLI installed](../../tools/flow-cli/install.md).
+
+:::
+
+## Transaction Profiling
+
+For analyzing sealed transactions on any Flow network (mainnet, testnet, or emulator), use the `flow transactions profile` command. This is particularly useful for:
+
+- **Production Analysis**: Profile real transactions on mainnet to understand actual performance
+- **Debugging High Costs**: Investigate why a specific transaction used more computation than expected
+- **Post-Deployment Optimization**: Analyze live transactions to identify optimization opportunities
+
+### Basic Usage
+
+```bash
+# Profile a mainnet transaction
+flow transactions profile 07a8...b433 --network mainnet
+
+# Profile with custom output location
+flow transactions profile 0xabc123 --network testnet --output my-profile.pb.gz
+```
+
+### Analyzing Transaction Profiles
+
+The command generates a pprof profile that can be analyzed with standard tools:
+
+```bash
+# Interactive web interface
+go tool pprof -http=:8080 profile-07a8b433.pb.gz
+
+# Command-line analysis
+go tool pprof -top profile-07a8b433.pb.gz
+```
+
+📖 **[Learn more about transaction profiling](../../tools/flow-cli/transactions/profile-transactions.md)**
+
+:::info
+
+Transaction profiling works with sealed transactions on any network, while emulator profiling (described below) is designed for development and provides aggregated profiles across multiple executions.
 
 :::
 
