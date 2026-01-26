@@ -232,7 +232,20 @@ flow transactions get-system latest 07a8...b433
 flow transactions get-system 12345
 ```
 
-📖 **[Learn more about scripts](./scripts/execute-scripts.md)** | **[Learn more about transactions](./transactions/send-transactions.md)**
+### Profile Transaction Performance
+
+```bash
+# Profile a mainnet transaction
+flow transactions profile 07a8...b433 --network mainnet
+
+# Profile with custom output location
+flow transactions profile 0xabc123 --network testnet --output my-profile.pb.gz
+
+# Analyze profile with pprof
+go tool pprof -http=:8080 profile-07a8b433.pb.gz
+```
+
+📖 **[Learn more about scripts](./scripts/execute-scripts.md)** | **[Learn more about transactions](./transactions/send-transactions.md)** | **[Learn more about transaction profiling](./transactions/profile-transactions.md)**
 
 ## Dependency Management
 
