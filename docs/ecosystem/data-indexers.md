@@ -23,3 +23,11 @@ To integrate Moralis into your project, begin by [creating an account](https://m
 **Getting Started with Alchemy**
 
 To begin using Alchemy, developers can [sign up for an account](https://www.alchemy.com/) on the Alchemy website. The platform offers extensive [documentation](https://docs.alchemy.com/) including API references, tutorials, and guides to help developers integrate Alchemy into their projects.
+
+### **SubQuery**
+
+[SubQuery](https://subquery.network) is a leading blockchain data indexer that provides developers with fast, flexible, universal, open source and decentralised APIs for web3 projects. SubQuery SDK allows developers to get rich indexed data and build intuitive and immersive decentralised applications in a faster and more efficient way.
+
+**Getting Started with SubQuery**
+
+The platform provides comprehensive [documentation](https://subquery.network/doc/), including API references, tutorials, and guides to support developers in integrating SubQuery into their projects. Starter indexing projects for the Flow blockchain are available [here](https://github.com/subquery/ethereum-subql-starter/tree/main/Flow) and can also be accessed through the CLI template.
