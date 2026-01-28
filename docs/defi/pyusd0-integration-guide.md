@@ -45,10 +45,15 @@ This guide is for developers and protocols integrating PYUSD0 on Flow. PYUSD0 is
 
 ### Testnet
 
+There's no official PYUSD0 testnet deployment because of how LayerZero OFT (Omnichain Fungible Token) standards work. PYUSD0 requires actual PYUSD to be issued by Paxos and then locked by LayerZero to create the 1:1 representation for cross-chain flows.
 | Contract    | Address                                      |
 | ----------- | -------------------------------------------- |
 | [PYUSD0][7] | `0xd7d43ab7b365f0d0789aE83F4385fA710FfdC98F` |
 
+For local testing, deploy the Paxos PYUSD contract directly:
+
+* [Paxos PYUSD Contract][4]  
+* This gives you a functionally equivalent token you can mint/control for testing.
 This is a stand-in token for testing purposes only. Mainnet PYUSD0 requires real PYUSD locked via LayerZero. The testnet contract has a [mint function][8] and a [liquidity pool][9] so you can mint or swap tokens for development.
 
 ### **Deprecated (USDF)**
