@@ -16,7 +16,9 @@ keywords:
 
 The Flow CLI provides a command to profile the computational performance of sealed transactions on any Flow network. This diagnostic tool generates detailed CPU profiles in the industry-standard `pprof` format, allowing you to analyze exactly where computation is being spent during transaction execution.
 
-The command works by forking the blockchain state and replaying the transaction in an isolated environment, ensuring accurate profiling results that match the original execution.
+:::info
+The command works by forking the blockchain state and replaying the transaction in an isolated environment, ensuring accurate profiling results that match the original execution. Learn more about state forking in the [Fork Testing guide](../fork-testing.md).
+:::
 
 ```shell
 flow transactions profile <tx_id> --network <network_name> [flags]
