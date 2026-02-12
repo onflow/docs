@@ -617,6 +617,18 @@ While FCL v0.0.67 is not strictly necessary to use Mainnet 6, we strongly recomm
 
 > Currently only includes HCUs from 2025.
 
+## Devnet 54
+
+| Spork Info                                                                              |
+|:----------------------------------------------------------------------------------------|
+| **Date**: Feb 12th, 2026                                                                |
+| **Root Height**: 305778201                                                              |
+| **Root Parent ID**: c26d0ebae62f0c39f8a8a2d94d49622b5fb46ec6f44888de2090e0c37783e440    |
+| **Root State Commit**: 1c886e1717c638506d55cc446d1b0e7fb8f189222f0b74212b2d810143b9bfe6 |
+| **Git Commit**: ae8fb8a4337cf99b119946c7906eee49075513b6                                |
+| **Branch/Tag**: v0.46.0                                                                 |
+| **Docker Image Tag**: v0.46.0                                                           |
+
 ## Height Coordinated Upgrade 14
 
 | HCU Info                                                                             |
