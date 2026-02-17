@@ -63,6 +63,8 @@ Why this works: `manager.schedule()` does all the validation anyway, so you only
 
 In the long run, this will save a TON on transaction fees, especially if your app is scheduling a lot of recurring transactions!
 
+One case where the `estimate()` function still may be useful is if you are scheduling a high priority transaction. These fail if there is no space in the requested timestamp, so it could be useful to see if that still fits with `estimate()`. Otherwise, you should always use `calculateFee()` instead!
+
 ## Bonus Optimization: Store Known Sizes
 
 Scheduled Transactions can provide an optional piece of data when scheduling to be included with the transaction. The user must pay a fee for the storage of this data, so the contract needs to know its size.
@@ -86,6 +88,8 @@ let fee = FlowTransactionScheduler.calculateFee(executionEffort, priority, dataS
 ```
 
 Pro tip: If your scheduled transaction payload is standardized with same fields and similar values, calculate the size once and store it in a configurable field in your contract or resource.
+
+Remember, even if your data size changes each time, you still don't need `estimate()` every time. You can use `FlowTransactionScheduler.getSizeOfData()` to get the size for `calculateFee()`.
 
 ## Real World Examples
 

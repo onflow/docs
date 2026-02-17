@@ -290,6 +290,8 @@ The `executionEffort` is also supplied as an argument in the transaction. This r
 To create the vault, the `calculateFee()` function calculates the amount needed:
 
 ```cadence
+// Calculates the estimated fee for the provided execution effort, priority, and transaction data size (in megabytes)
+// If the scheduled transaction has no data for its `data` argument, then the data size can be zero
 let est = FlowTransactionScheduler.calculateFee(
     executionEffort: executionEffort, priority: pr, dataSizeMB: 0
 )
@@ -465,7 +467,7 @@ let priority = FlowTransactionScheduler.Priority.Medium
 let executionEffort: UInt64 = 1000
 ```
 
-Next, add the `calculateFee()` call to calculate the fee for the scheduled transaction and ensure that a handler for the scheduled transaction exists.
+Next, add the `calculateFee()` call to calculate the fee for the scheduled transaction and ensure that a handler for the scheduled transaction exists. Your transaction does not provide and accompanying data, so your `dataSizeMB` argument can be zero.
 
 ```cadence
 let estimate = FlowTransactionScheduler.calculateFee(
