@@ -5,7 +5,14 @@ sidebar_position: 7
 
 # DeFi Actions Integration
 
-DeFi Actions is a composability framework that enables ALP to integrate seamlessly with other DeFi protocols like [Flow Yield Vaults (FYV)](#). This powerful abstraction allows for automated value flows and complex strategy compositions.
+DeFi Actions is a composability framework that enables the [Automated Lending Platform (ALP)](./index.md) to integrate seamlessly with other DeFi protocols like [Flow Yield Vaults (FYV)](../flow-yield-vaults/index.md). This powerful abstraction allows for automated value flows and complex strategy compositions. For comprehensive documentation on DeFi Actions, see [Flow Actions](../../blockchain-development-tutorials/forte/flow-actions/index.md).
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **ALP** = [Automated Lending Platform](./index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
 
 ## Understanding DeFi Actions
 

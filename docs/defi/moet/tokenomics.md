@@ -8,6 +8,13 @@ sidebar_position: 2
 
 This document provides a comprehensive analysis of MOET's supply dynamics, minting and burning mechanisms, interest rate models, and economic incentives.
 
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **APY** = Annual Percentage Yield
+
 ## Supply Management
 
 MOET employs a **dynamic supply model** where total supply directly tracks outstanding debt across all ALP positions.

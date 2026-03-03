@@ -7,6 +7,14 @@ sidebar_position: 8
 
 FYV enables access to yield opportunities across multiple blockchains through Flow's EVM bridge. This document explains how cross-chain integration works and how to access Ethereum-compatible yield vaults from Flow.
 
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+- **FYV** = Flow Yield Vaults
+- **EVM** = Ethereum Virtual Machine
+- **COA** = CadenceOwnedAccount
+
 ## Flow-EVM Bridge Overview
 
 Flow's EVM bridge connects Flow's Cadence environment with Ethereum Virtual Machine (EVM) compatible chains, enabling seamless asset transfer and smart contract interaction across ecosystems.

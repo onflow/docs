@@ -7,6 +7,14 @@ sidebar_position: 2
 
 Flow Yield Vaults (FYV) is built on a modular architecture that separates concerns between user position management, yield strategy implementation, and automated rebalancing. This document explains the core components and how they interact to create an automated leveraged yield farming system.
 
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+- **FYV** = Flow Yield Vaults
+
 ## System Architecture
 
 ```mermaid
@@ -184,7 +192,7 @@ Learn more in [AutoBalancer](./autobalancer.md).
 
 Each FYV vault maintains a capability to an ALP Position resource for leveraged borrowing.
 
-**What it does**: The Position holds collateral deposited by the strategy, borrows MOET against the collateral (up to 80% of value), maintains health factor (target: 1.3), and provides liquidity source for deficit recovery.
+**What it does**: The Position holds collateral deposited by the strategy, borrows [MOET](../moet/index.md) against the collateral (up to 80% of value), maintains health factor (target: 1.3), and provides liquidity source for deficit recovery.
 
 **Health factor management:**
 ```
@@ -233,7 +241,7 @@ Handle deposits and withdrawals from yield-bearing protocols.
 
 **ERC4626SinkConnectors**: Deposit to and withdraw from ERC4626-compatible vaults (standard interface for yield-bearing vaults).
 
-**TopUpSource/DrawDownSink**: Bridge between ALP positions and FYV strategies for automated liquidity provision.
+**TopUpSource/DrawDownSink**: Bridge between [ALP](../alp/index.md) positions and FYV strategies for automated liquidity provision. For more details, see [DeFi Actions](../../blockchain-development-tutorials/forte/flow-actions/index.md).
 
 **Example usage:**
 ```cadence

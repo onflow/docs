@@ -7,6 +7,14 @@ sidebar_position: 2
 
 To understand how Flow Credit Market (FCM) works, let's build up from simple lending concepts to FCM's innovative three-component architecture.
 
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = Flow Credit Market
+
 :::tip Key Takeaway
 FCM = Traditional Lending + Automation + Yield Generation + Liquidation Protection
 
@@ -120,13 +128,13 @@ FYV deploys capital into yield-generating strategies and provides liquidity for 
    - ALP repays debt
 ```
 
-Learn more: [FYV Documentation](#)
+Learn more: [FYV Documentation](../flow-yield-vaults/index.md)
 
 ### Component 3: MOET (The Unit of Account)
 
-MOET serves as the currency for all operations within FCM, functioning simultaneously as the borrowed asset, pricing unit, and value transfer medium. As the system's unit of account, all prices are quoted in MOET terms—whether FLOW/MOET or USDC/MOET. MOET is the primary borrowed asset that ALP auto-borrows and FYV receives for deployment. As a synthetic stablecoin with value pegged to maintain stability, MOET acts as the medium of exchange that flows seamlessly between ALP and FYV components. This design standardizes all valuations, simplifies multi-collateral calculations, and provides deep integration with the Flow ecosystem specifically for DeFi operations.
+MOET serves as the currency for all operations within FCM, functioning simultaneously as the borrowed asset, pricing unit, and value transfer medium. As the system's unit of account, all prices are quoted in MOET terms—whether FLOW/MOET or USDC/MOET. MOET is the primary borrowed asset that ALP auto-borrows and FYV receives for deployment. As a synthetic stablecoin with value determined by the weighted average of its backing assets, MOET acts as the medium of exchange that flows seamlessly between ALP and FYV components. This design standardizes all valuations, simplifies multi-collateral calculations, and provides deep integration with the Flow ecosystem specifically for DeFi operations.
 
-Learn more: [MOET Documentation](#)
+Learn more: [MOET Documentation](../moet/index.md)
 
 ## The Capital Flow Cycle
 
@@ -356,4 +364,4 @@ Now that you understand the basics:
 
 1. **Learn the architecture**: [Architecture Overview](./architecture.md)
 2. **Understand the math**: [Mathematical Foundations](./math.md)
-3. **Explore components**: [ALP](../alp/index.md), [FYV](#), [MOET](#)
+3. **Explore components**: [ALP](../alp/index.md), [FYV](../flow-yield-vaults/index.md), [MOET](../moet/index.md)

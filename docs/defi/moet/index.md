@@ -6,7 +6,7 @@ sidebar_position: 11
 
 # MOET - FlowCreditMarket USD
 
-MOET (FlowCreditMarket USD) is a synthetic stablecoin that serves as the backbone of the [Flow Credit Market (FCM)](../fcm/index.md) ecosystem. It functions as the unit of account, primary borrowed asset, and value transfer medium between [ALP](../alp/index.md) and [FYV](../flow-yield-vaults/index.md).
+MOET (FlowCreditMarket USD) is a synthetic stablecoin that serves as the backbone of the [Flow Credit Market (FCM)](../fcm/index.md) ecosystem. It functions as the unit of account, primary borrowed asset, and value transfer medium between [Automated Lending Platform (ALP)](../alp/index.md) and [Flow Yield Vaults (FYV)](../flow-yield-vaults/index.md).
 
 :::warning Current Status
 The current MOET implementation is explicitly marked as a "mock version for testing purposes." Production deployment will require additional stability mechanisms, decentralized governance, and enhanced economic controls.
@@ -14,11 +14,11 @@ The current MOET implementation is explicitly marked as a "mock version for test
 
 ## What is MOET?
 
-MOET is a protocol debt token designed to enable capital-efficient lending and yield generation within FCM. Unlike traditional stablecoins backed by fiat reserves or crypto collateral held in separate vaults, MOET is directly integrated into the lending protocol itself, with every MOET token representing active debt backed by over-collateralized positions in ALP.
+MOET is a protocol debt token designed to enable capital-efficient lending and yield generation within FCM. Unlike traditional stablecoins backed by fiat reserves or crypto collateral held in separate vaults, MOET is directly integrated into the lending protocol itself, with every MOET token representing active debt backed by over-collateralized positions in the Automated Lending Platform (ALP).
 
 **Key Characteristics:**
 
-- **Synthetic Stablecoin**: Designed to maintain a 1:1 peg with USD through over-collateralization
+- **Synthetic Stablecoin**: MOET's value is determined by the geometric weighted average of its backing assets through over-collateralization
 - **Protocol Debt Token**: Every MOET in circulation represents borrowed value backed by collateral
 - **Unit of Account**: All asset prices in FCM are quoted in MOET terms
 - **Capital Efficiency Medium**: Enables seamless value transfer between ALP and FYV for automated yield generation
@@ -46,9 +46,9 @@ graph TB
 
 MOET serves three critical roles in the FCM ecosystem:
 
-1. **Borrowing Asset in ALP**: Users deposit collateral (FLOW, stFLOW, USDC, wBTC, wETH) and borrow MOET against it. The amount they can borrow is determined by collateral factors and target health ratios, ensuring all MOET is over-collateralized.
+1. **Borrowing Asset in ALP**: Users deposit collateral (FLOW, stFLOW, USDC, wBTC, wETH) and borrow MOET against it. The amount they can borrow is determined by collateral factors (CF) and target health ratios, ensuring all MOET is over-collateralized.
 
-2. **Yield Medium in FYV**: Borrowed MOET flows into Flow Yield Vaults where it's converted to yield-bearing assets. The yield generated helps maintain ALP position health during market volatility, creating a self-sustaining liquidation prevention mechanism.
+2. **Yield Medium in FYV**: Borrowed MOET flows into Flow Yield Vaults (FYV) where it's converted to yield-bearing assets. The yield generated helps maintain ALP position health during market volatility, creating a self-sustaining liquidation prevention mechanism.
 
 3. **Unit of Account**: All collateral prices are quoted in MOET terms (FLOW/MOET, USDC/MOET, etc.), simplifying multi-collateral calculations and creating a consistent pricing framework across the entire system.
 
@@ -66,17 +66,19 @@ This direct coupling ensures MOET supply naturally responds to lending demand wi
 
 ### Over-Collateralization
 
-Every MOET token is backed by collateral worth significantly more than $1:
+Every MOET token is backed by collateral with substantial over-collateralization:
 
 ```
 Example Position:
 ├── Collateral: 1000 FLOW @ $1.00 = $1,000
-├── Collateral Factor: 0.8 (80%)
+├── Collateral Factor (CF): 0.8 (80%)
 ├── Effective Collateral: $800
-├── Target Health: 1.3
+├── Target Health Factor (HF): 1.3
 ├── Max Borrow: $800 / 1.3 = 615.38 MOET
 └── Collateralization Ratio: $1,000 / $615.38 = 162.5%
 ```
+
+In the following, we denote the **Health Factor** by **HF** and the **Collateral Factor** by **CF**. The HF measures position safety (effective collateral ÷ debt), while the CF determines what percentage of collateral value can be borrowed against (e.g., CF of 0.8 = 80% usable). For more details on these concepts, see [ALP Position Mechanics](../alp/credit-market-mechanics.md).
 
 With collateral factors of 0.8 and target health of 1.3, positions maintain approximately 162.5% collateralization, providing substantial safety margin against price volatility.
 
@@ -97,7 +99,7 @@ Understanding MOET is critical for analyzing FCM's mechanics and risk profile:
 - **Debt Tracking**: MOET supply metrics reveal total system leverage and borrowing activity
 - **Collateralization Analysis**: MOET/collateral ratios indicate system health and liquidation risks
 - **Capital Efficiency**: MOET enables borrowed capital to immediately generate yield, improving returns
-- **Systemic Risk**: MOET peg stability is crucial - depeg scenarios could trigger cascading liquidations
+- **Systemic Risk**: MOET value stability is crucial - significant value deviations could trigger cascading liquidations
 
 ### For the FCM System
 

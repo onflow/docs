@@ -5,7 +5,15 @@ sidebar_position: 5
 
 # Position Lifecycle
 
-A Position in ALP represents your lending account. Understanding the complete lifecycle from creation to closure helps you manage your positions effectively and maximize your DeFi strategy. A position's lifecycle is all about managing the health factor. Stay in the healthy range (1.1-1.5), use automation for hands-free management, and always have a plan for when prices move against you.
+A Position in the Automated Lending Platform (ALP) represents your lending account. Understanding the complete lifecycle from creation to closure helps you manage your positions effectively and maximize your DeFi strategy. A position's lifecycle is all about managing the health factor. Stay in the healthy range (1.1-1.5), use automation for hands-free management, and always have a plan for when prices move against you.
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](./index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
 
 A **Position** tracks everything about your lending activity. It maintains a complete record of your collateral deposits (the assets you've deposited), debt obligations (the amounts you've borrowed), health metrics (your current safety status), and DeFi connectors (automation via Sinks and Sources that enable seamless integration with other protocols).
 

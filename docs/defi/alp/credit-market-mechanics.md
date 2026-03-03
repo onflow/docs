@@ -5,7 +5,16 @@ sidebar_position: 3
 
 # Credit Market Mechanics
 
-ALP operates as a decentralized lending protocol where users can deposit collateral and borrow assets. Understanding the core mechanics is essential for effectively managing positions and maximizing capital efficiency. The auto-borrowing feature, scaled interest system, and multi-token support create a powerful yet accessible lending platform.
+The Automated Lending Platform (ALP) operates as a decentralized lending protocol where users can deposit collateral and borrow assets. Understanding the core mechanics is essential for effectively managing positions and maximizing capital efficiency. The auto-borrowing feature, scaled interest system, and multi-token support create a powerful yet accessible lending platform.
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](./index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin and unit of account)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+- **APY** = Annual Percentage Yield
 
 ## Basic Lending Mechanics
 

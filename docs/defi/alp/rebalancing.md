@@ -5,7 +5,15 @@ sidebar_position: 6
 
 # Rebalancing Mechanics
 
-Rebalancing is ALP's automated position management system that maintains positions within target health ranges. This powerful feature eliminates manual management and optimizes capital efficiency.
+Rebalancing is the Automated Lending Platform's (ALP) automated position management system that maintains positions within target health ranges. This powerful feature eliminates manual management and optimizes capital efficiency.
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](./index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
 
 ## Understanding Rebalancing
 

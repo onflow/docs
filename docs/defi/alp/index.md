@@ -8,6 +8,13 @@ sidebar_position: 10
 
 The Automated Lending Platform (ALP) is the core lending protocol component of [Flow Credit Market (FCM)](../fcm/index.md). ALP provides the foundational lending and borrowing infrastructure with automated position management and liquidation protection.
 
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin and unit of account)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+
 :::info
 ALP is one of three core components that make up FCM: ALP (Automated Lending Platform) provides the lending/borrowing engine, [Flow Yield Vaults (FYV)](../flow-yield-vaults/index.md) handles yield aggregation strategies, and [MOET](../moet/index.md) serves as the synthetic stablecoin and unit of account.
 :::
@@ -18,7 +25,7 @@ The protocol uses MOET as its primary unit of account and default borrowed asset
 
 ## Automated Rebalancing
 
-ALP's standout feature is its **automated rebalancing** system that uses [DeFi Actions](../../blockchain-development-tutorials/forte/flow-actions/index.md) to maintain optimal position health. When overcollateralized (health > 1.5), the system automatically borrows more to maximize capital efficiency. When undercollateralized (health < 1.1), it automatically repays debt using yield from FYV. The protocol targets a health range of 1.1 to 1.5 for balanced risk/reward, and prevents liquidations by pulling from TopUpSource (often FYV strategies) when needed.
+ALP's standout feature is its **automated rebalancing** system that uses [DeFi Actions](../../blockchain-development-tutorials/forte/flow-actions/index.md) to maintain optimal position health. When overcollateralized (health > 1.5), the system automatically borrows more to maximize capital efficiency. When undercollateralized (health < 1.1), it automatically repays debt using yield from [FYV](../flow-yield-vaults/index.md). The protocol targets a health range of 1.1 to 1.5 for balanced risk/reward, and prevents liquidations by pulling from TopUpSource (often FYV strategies) when needed.
 
 ### Integration with FYV
 
@@ -66,7 +73,7 @@ graph TB
 
 - [ALP GitHub Repository](https://github.com/onflow/FlowCreditMarket) (FlowCreditMarket contract)
 - [Flow Credit Market (FCM)](../fcm/index.md) - The complete product
-- [MOET Token Documentation](#)
+- [MOET Token Documentation](../moet/index.md)
 - [Flow Documentation](https://developers.flow.com)
 
 ## Security Considerations

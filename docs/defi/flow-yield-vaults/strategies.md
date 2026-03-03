@@ -7,6 +7,15 @@ sidebar_position: 3
 
 Strategies in FYV define how yield is generated from deposited collateral. Each strategy implements a specific approach to converting collateral into yield-bearing positions, managing those positions, and handling withdrawals. This document explains the available strategies and how they work.
 
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+- **FYV** = Flow Yield Vaults
+- **APY** = Annual Percentage Yield
+
 ## Strategy Interface
 
 All strategies implement the `Strategy` interface, which provides a consistent API regardless of the underlying yield mechanism.
@@ -37,7 +46,7 @@ TracerStrategy is the flagship strategy that implements automated leveraged yiel
 
 TracerStrategy combines three components to create leveraged yield:
 
-**ALP Position** (Collateral & Borrowing): Deposits collateral (FLOW, stFLOW, etc.) to ALP, borrows MOET against collateral up to 80% of value, and maintains health factor at target of 1.3.
+**[ALP](../alp/index.md) Position** (Collateral & Borrowing): Deposits collateral (FLOW, stFLOW, etc.) to ALP, borrows [MOET](../moet/index.md) against collateral up to 80% of value, and maintains health factor at target of 1.3.
 
 **Swap Connectors** (Token Conversion): Converts MOET to yield-bearing tokens (LP tokens, farm tokens), converts yield tokens back to FLOW for rebalancing, and provides slippage protection on all swaps.
 

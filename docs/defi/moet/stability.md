@@ -6,7 +6,15 @@ sidebar_position: 4
 
 # MOET Stability and Risk Management
 
-This document analyzes MOET's stability mechanisms, risk factors, and the safety measures that protect its $1 peg within the FCM ecosystem.
+This document analyzes MOET's stability mechanisms, risk factors, and the safety measures that maintain its value through over-collateralization within the [Flow Credit Market (FCM)](../fcm/index.md) ecosystem.
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+- **APY** = Annual Percentage Yield
 
 ## Current Implementation Status
 
@@ -16,8 +24,8 @@ The current MOET implementation is explicitly a "mock version for testing purpos
 
 **Missing in Current Implementation:**
 
-- Active MOET/USD price oracle monitoring
-- Algorithmic supply adjustments based on peg deviation
+- Active MOET price oracle monitoring relative to backing assets
+- Algorithmic supply adjustments based on value deviation
 - Reserve fund for redemptions
 - Governance controls for economic parameters
 - Emergency circuit breakers for extreme scenarios
@@ -36,6 +44,8 @@ The current MOET implementation is explicitly a "mock version for testing purpos
 The primary stability mechanism is requiring all MOET debt to be backed by excess collateral.
 
 **Collateralization Requirements:**
+
+In the following, we denote the **Health Factor** by **HF** and the **Collateral Factor** by **CF**. The HF measures position safety, while the CF determines borrowing capacity.
 
 ```
 Standard Position:
@@ -63,10 +73,10 @@ For Every 1 MOET Borrowed:
 
 **Why Over-Collateralization Provides Stability:**
 
-1. **Redemption Backing**: Every MOET can theoretically be redeemed for >$1 worth of collateral
+1. **Redemption Backing**: Every MOET can theoretically be redeemed for collateral worth significantly more than the debt value
 2. **Liquidation Buffer**: Provides time for liquidators to act before insolvency
 3. **Market Confidence**: Users trust MOET is backed by real, valuable assets
-4. **Arbitrage Floor**: If MOET < $1, arbitrageurs can profit by buying MOET to repay debt and unlock collateral
+4. **Arbitrage Floor**: If MOET trades below backing value, arbitrageurs can profit by buying MOET to repay debt and unlock collateral
 
 ### Liquidation System
 
@@ -198,58 +208,58 @@ Phase 4: Equilibrium
 
 ### Arbitrage Mechanisms
 
-Price deviations from $1 create profitable arbitrage opportunities that naturally restore the peg.
+Price deviations from MOET's backing value create profitable arbitrage opportunities that naturally restore stability.
 
-**MOET Trading Above $1 (e.g., $1.05):**
+**MOET Trading Above Backing Value:**
 
 ```
 Arbitrage Strategy:
 Step 1: Borrow MOET
-├── Deposit: $1,625 FLOW collateral
-├── Borrow: 1,000 MOET (valued at $1,000 on-protocol)
-├── Cost: Interest on 1,000 MOET debt
-└── Capital: 1,000 MOET in hand
+├── Deposit: Collateral (e.g., FLOW)
+├── Borrow: MOET against collateral at protocol-determined value
+├── Cost: Interest on MOET debt
+└── Capital: MOET in hand
 
 Step 2: Sell MOET on Market
-├── Market price: $1.05
-├── Sell: 1,000 MOET for $1,050
-├── Profit captured: $50 immediate
-└── Hold: $1,050 stablecoins
+├── Market price: Premium above backing value
+├── Sell: MOET for stable assets at premium
+├── Profit captured: Difference between market and backing value
+└── Hold: Stablecoins
 
-Step 3: Wait for Peg Restoration
-├── MOET price: Returns to $1.00
-├── Or: Hold position and earn on $1,050
-└── Later repay: 1,000 MOET debt
+Step 3: Wait for Value Normalization
+├── MOET price: Returns to backing value
+├── Or: Hold position and earn yield
+└── Later repay: MOET debt
 
 Step 4: Close Position
-├── Buy back: 1,000 MOET at $1.00 = $1,000
-├── Repay debt: 1,000 MOET to ALP
-├── Withdraw: $1,625 FLOW collateral
-├── Net profit: $1,050 - $1,000 - interest ≈ $45
-└── Market impact: Selling pressure pushed MOET → $1.00
+├── Buy back: MOET at normalized backing value
+├── Repay debt: MOET to ALP
+├── Withdraw: Collateral
+├── Net profit: Premium minus interest and costs
+└── Market impact: Selling pressure pushes MOET toward backing value
 
 Arbitrageur Incentive:
-├── Risk-free profit: When MOET > $1
+├── Profit opportunity: When MOET trades above backing value
 ├── Increased supply: More MOET on market (from borrowing)
 ├── Selling pressure: Drives price down
-└── Peg restored: MOET returns to $1
+└── Value restored: MOET returns to backing value
 ```
 
-**MOET Trading Below $1 (e.g., $0.95):**
+**MOET Trading Below Backing Value:**
 
 ```
 Arbitrage Strategy:
 Step 1: Buy Discounted MOET
-├── Market price: $0.95
-├── Buy: 1,000 MOET for $950
-├── Savings: $50 vs. $1 peg
-└── Capital: 1,000 MOET in hand
+├── Market price: Below backing value
+├── Buy: MOET on market at discount
+├── Savings: Discount relative to backing value
+└── Capital: MOET in hand
 
 Step 2: Repay Existing Debt
-├── Existing position: 1,000 MOET debt (valued at $1,000 on-protocol)
-├── Repay using: 1,000 MOET purchased for $950
-├── Debt cleared: 1,000 MOET
-└── Savings realized: $50
+├── Existing position: MOET debt valued at backing value on-protocol
+├── Repay using: MOET purchased at discount
+├── Debt cleared: Full MOET amount
+└── Savings realized: Discount amount
 
 Step 3: Unlock Collateral
 ├── Debt: Fully repaid
@@ -258,24 +268,24 @@ Step 3: Unlock Collateral
 └── Collateral freed: Can be used elsewhere
 
 Alternative Strategy (Profitable Liquidations):
-├── Buy: 1,000 MOET for $950
+├── Buy: MOET at discount
 ├── Liquidate: Underwater positions
-├── Receive: Collateral worth $1,050 (5% bonus)
-├── Net profit: $1,050 - $950 = $100
-└── Market impact: Buying pressure pushed MOET → $1.00
+├── Receive: Collateral with liquidation bonus
+├── Net profit: Bonus plus discount
+└── Market impact: Buying pressure pushes MOET toward backing value
 
 Arbitrageur Incentive:
-├── Discounted debt repayment: When MOET < $1
-├── Profitable liquidations: Higher margins
+├── Discounted debt repayment: When MOET below backing value
+├── Profitable liquidations: Enhanced margins from discount
 ├── Buying pressure: Drives price up
-└── Peg restored: MOET returns to $1
+└── Value restored: MOET returns to backing value
 ```
 
 ## Risk Factors and Mitigation
 
-### Depeg Risk
+### Value Deviation Risk
 
-**Risk**: MOET trades significantly away from $1, breaking user confidence.
+**Risk**: MOET trades significantly away from its backing value, breaking user confidence.
 
 **Causes:**
 
@@ -284,13 +294,13 @@ Supply-Side Shock:
 ├── Sudden collateral price crash
 ├── Mass liquidations → large MOET sell pressure
 ├── Liquidators dump MOET on market
-└── Price spirals: MOET → $0.80
+└── Price spirals: MOET trades below backing value
 
 Demand-Side Shock:
 ├── Loss of confidence in protocol
 ├── Users rush to repay debt
 ├── High MOET demand → price spike
-└── Price spikes: MOET → $1.20
+└── Price spikes: MOET trades above backing value
 
 Oracle Failure:
 ├── Oracle reports incorrect prices
@@ -309,14 +319,14 @@ Current (Implicit):
 └── Arbitrage: Profit-seeking restores peg
 
 Needed for Production:
-├── MOET/USD Price Feed: Active monitoring
+├── MOET Value Oracle: Active monitoring relative to backing assets
 ├── Circuit Breakers: Pause minting/borrowing during extreme volatility
-├── Reserve Fund: Protocol-owned MOET/collateral to stabilize price
-├── Stability Module: Direct MOET ↔ $1 redemptions (like DAI PSM)
+├── Reserve Fund: Protocol-owned MOET/collateral to stabilize value
+├── Stability Module: Redemption mechanisms tied to backing asset values
 └── Gradual Rollout: Caps on total supply during early phase
 ```
 
-**Example Depeg Scenario:**
+**Example Value Deviation Scenario:**
 
 ```
 Day 1: Flash Crash
@@ -325,32 +335,32 @@ Day 1: Flash Crash
 ├── Liquidations triggered: 3M MOET worth
 ├── Liquidators acquire: 3M MOET
 ├── Liquidators sell: On DEXs for stablecoins
-├── MOET price: $1.00 → $0.92 (-8%)
+├── MOET market price: Drops 8% below backing value
 └── Fear spreads: Users panic
 
 Day 2: Panic Selling
 ├── Users sell: MOET positions on DEXs
 ├── More liquidations: Triggered by volatility
-├── MOET price: $0.92 → $0.85 (-15% total)
+├── MOET market price: 15% below backing value
 ├── System still solvent: Collateral > debt
-└── But: Market price ≠ redemption value
+└── But: Market price temporarily deviates from backing value
 
 Recovery Mechanism (Without Direct Intervention):
-├── Arbitrageurs notice: MOET at $0.85, redeemable for $1 of collateral
-├── Arbitrage: Buy MOET at $0.85, repay debt, profit $0.15 per MOET
+├── Arbitrageurs notice: MOET trading below backing value
+├── Arbitrage: Buy discounted MOET, repay debt, profit from discount
 ├── Buying pressure: Increases demand
 ├── Liquidations stabilize: Collateral prices bottom out
-├── Days 3-7: MOET gradually recovers to $0.95
-├── Days 8-14: Returns to $1.00
+├── Days 3-7: MOET gradually recovers toward backing value
+├── Days 8-14: Returns to backing value
 └── Lesson: Protocol remained solvent, market recovered naturally
 
 Recovery Mechanism (With Direct Intervention):
-├── Protocol Reserve: Buys 500K MOET at $0.85 = $425K spent
+├── Protocol Reserve: Buys 500K MOET at discount
 ├── Immediate support: Prevents further decline
-├── Confidence restored: Users see protocol actively defending peg
-├── Days 2-3: MOET returns to $0.98
-├── Days 4-5: Stabilizes at $1.00
-├── Protocol profits: Sells 500K MOET at $1.00 = $500K (earned $75K)
+├── Confidence restored: Users see protocol actively defending value
+├── Days 2-3: MOET returns closer to backing value
+├── Days 4-5: Stabilizes at backing value
+├── Protocol profits: Sells 500K MOET at backing value (earns spread)
 └── Reserves replenished: Ready for next crisis
 ```
 
@@ -615,8 +625,8 @@ Example Impact:
 
 | Enhancement | Purpose | Priority |
 |-------------|---------|----------|
-| **MOET/USD Oracle** | Monitor peg deviation | Critical |
-| **Reserve Fund** | Direct peg support | Critical |
+| **MOET Value Oracle** | Monitor value relative to backing assets | Critical |
+| **Reserve Fund** | Direct value support | Critical |
 | **Circuit Breakers** | Pause during crisis | High |
 | **Multi-Sig Minting** | Decentralize control | Critical |
 | **Liquidation Limits** | Prevent cascades | High |
@@ -637,7 +647,7 @@ Critical Risk (Address Immediately):
 
 High Risk (Address Before Mainnet):
 ├── Cascading Liquidations: Medium likelihood, High impact
-├── Depeg During Volatility: High likelihood, Medium impact
+├── Value Deviation During Volatility: High likelihood, Medium impact
 └── Liquidity Crisis: Medium likelihood, High impact
 
 Medium Risk (Monitor and Improve):
@@ -680,9 +690,9 @@ Aggressive View:
 ### Phase 1: Critical Infrastructure (Pre-Mainnet)
 
 ```
-1. Implement MOET/USD Oracle
-├── Deploy: Chainlink or similar price feed
-├── Monitor: Real-time peg tracking
+1. Implement MOET Value Oracle
+├── Deploy: Price feeds for monitoring value relative to backing assets
+├── Monitor: Real-time backing value tracking
 └── Alert: Deviations > ±2%
 
 2. Add Multi-Sig Minting
@@ -758,9 +768,9 @@ MOET's stability relies on a multi-layered approach combining over-collateraliza
 3. **Economic incentives** through interest rates and arbitrage opportunities
 4. **Automated capital flows** via FYV yield providing position protection
 
-For production deployment, critical enhancements are needed including MOET/USD oracles, reserve funds, multi-sig controls, and comprehensive audits. With these measures in place, MOET can serve as a stable, capital-efficient synthetic stablecoin powering the FCM ecosystem.
+For production deployment, critical enhancements are needed including MOET value oracles, reserve funds, multi-sig controls, and comprehensive audits. With these measures in place, MOET can serve as a stable, capital-efficient synthetic stablecoin powering the FCM ecosystem.
 
-**Key Takeaway for Analysts**: MOET's stability is fundamentally sound in design but requires additional infrastructure before large-scale production use. The over-collateralization model provides strong backing, but active monitoring and intervention capabilities are essential for maintaining the peg during extreme market conditions.
+**Key Takeaway for Analysts**: MOET's stability is fundamentally sound in design but requires additional infrastructure before large-scale production use. The over-collateralization model provides strong backing, but active monitoring and intervention capabilities are essential for maintaining value stability relative to backing assets during extreme market conditions. MOET's value is determined by the geometric weighted average of its backing assets, making it impractical to maintain a strict peg to any single external asset like USD.
 
 ## Additional Resources
 

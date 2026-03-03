@@ -6,7 +6,14 @@ sidebar_position: 3
 
 # MOET System Integration
 
-This document explains how MOET connects and enables seamless interactions between ALP, FYV, and the broader FCM ecosystem.
+This document explains how MOET connects and enables seamless interactions between [Automated Lending Platform (ALP)](../alp/index.md), [Flow Yield Vaults (FYV)](../flow-yield-vaults/index.md), and the broader [Flow Credit Market (FCM)](../fcm/index.md) ecosystem.
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
 
 ## Overview of Integration Architecture
 
@@ -149,11 +156,11 @@ access(all) resource interface PriceOracle {
 Oracle Price Feeds (in MOET):
 ├── FLOW/MOET: 1.0 (1 FLOW = 1 MOET)
 ├── stFLOW/MOET: 1.05 (liquid staking premium)
-├── USDC/MOET: 1.0 (stablecoin parity)
-├── wBTC/MOET: 65,000.0 (Bitcoin price)
-└── wETH/MOET: 3,500.0 (Ethereum price)
+├── USDC/MOET: 1.0 (stable value parity)
+├── wBTC/MOET: 65,000.0 (Bitcoin price equivalent)
+└── wETH/MOET: 3,500.0 (Ethereum price equivalent)
 
-Assumption: 1 MOET = 1 USD
+Note: MOET serves as the unit of account with value determined by the weighted average of backing assets
 ```
 
 **Health Factor Calculation Using MOET Prices:**
@@ -802,7 +809,7 @@ Monitor Liquidation Activity:
 
 ## Next Steps
 
-- **[Stability Mechanisms](./stability.md)**: Understand how MOET maintains its peg and manages risk
+- **[Stability Mechanisms](./stability.md)**: Understand how MOET maintains value stability and manages risk
 - **[ALP Documentation](../alp/index.md)**: Deep dive into ALP's lending mechanics
 - **[FYV Documentation](../flow-yield-vaults/index.md)**: Explore FYV yield strategies
 - **[DeFi Actions](../../blockchain-development-tutorials/forte/flow-actions/index.md)**: Learn about the composability framework

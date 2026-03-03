@@ -5,7 +5,13 @@ sidebar_position: 9
 
 # DeFi Actions
 
-DeFi Actions are composable primitives that enable complex DeFi operations through simple, reusable components. FYV leverages DeFi Actions to build sophisticated yield strategies from modular building blocks. This document explains the DeFi Actions framework and how it powers FYV's composability.
+DeFi Actions are composable primitives that enable complex DeFi operations through simple, reusable components. FYV leverages DeFi Actions to build sophisticated yield strategies from modular building blocks. This document explains the DeFi Actions framework and how it powers FYV's composability. For comprehensive documentation on DeFi Actions, see [Flow Actions](../../blockchain-development-tutorials/forte/flow-actions/index.md).
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+- **FYV** = Flow Yield Vaults
 
 ## What are DeFi Actions?
 

@@ -8,6 +8,13 @@ sidebar_position: 1
 
 This guide explains the fundamental mechanics of MOET and how it functions within the Flow Credit Market ecosystem.
 
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+
 ## What Makes MOET Different
 
 MOET is fundamentally different from traditional stablecoins like USDC or DAI. Rather than existing as an independent token backed by separate reserves, MOET is directly integrated into the lending protocol as the **protocol debt token**.
@@ -22,7 +29,7 @@ MOET is fundamentally different from traditional stablecoins like USDC or DAI. R
 | **Use Case** | FCM ecosystem (lending, yield) | General payments, DeFi | General DeFi usage |
 | **Peg Mechanism** | Over-collateralization + liquidations | 1:1 fiat redemption | Stability fee + DSR + liquidations |
 
-The key insight is that **MOET doesn't need separate reserves** because every MOET token represents debt backed by collateral already locked in ALP positions.
+The key insight is that **MOET doesn't need separate reserves** because every MOET token represents debt backed by collateral already locked in [Automated Lending Platform (ALP)](../alp/index.md) positions.
 
 ## The Lifecycle of MOET
 
@@ -42,8 +49,8 @@ Initial State:
 
 Alice's Action:
 ├── Deposits: 1000 FLOW into new ALP position
-├── Target Health Factor: 1.3
-├── Collateral Factor for FLOW: 0.8
+├── Target Health Factor (HF): 1.3
+├── Collateral Factor (CF) for FLOW: 0.8
 
 Calculation:
 ├── Total Collateral Value: 1000 × $1.00 = $1,000
@@ -70,7 +77,7 @@ Result:
 
 ### 2. Utilization (Capital Deployment)
 
-Once minted, MOET flows through the FCM ecosystem to generate yield.
+Once minted, MOET flows through the [FCM ecosystem](../fcm/index.md) to generate yield.
 
 **Alice's MOET Journey:**
 
@@ -80,8 +87,8 @@ Step 1: Borrow from ALP
 └── MOET created and ready for deployment
 
 Step 2: Flow to FYV (via DrawDownSink)
-├── MOET automatically flows to: FYV TracerStrategy
-├── No manual transfer needed (DeFi Actions handle it)
+├── MOET automatically flows to: [Flow Yield Vaults (FYV)](../flow-yield-vaults/index.md) TracerStrategy
+├── No manual transfer needed ([DeFi Actions](../../blockchain-development-tutorials/forte/flow-actions/index.md) handle it)
 └── Alice's 615.38 MOET enters yield generation
 
 Step 3: Convert to Yield Assets
@@ -178,15 +185,17 @@ Alice's Profit:
 
 **Key Principle**: Burning MOET reduces total supply, ensuring supply always equals outstanding debt.
 
-## How MOET Maintains Its Peg
+## How MOET Maintains Value Stability
 
-While MOET is a mock token in testing, the production version relies on several mechanisms to maintain its $1 peg:
+While MOET is a mock token in testing, the production version relies on several mechanisms to maintain value stability through its backing assets:
 
 ### Over-Collateralization
 
-Every MOET is backed by collateral worth significantly more than $1.
+MOET maintains value through substantial over-collateralization, with backing assets worth significantly more than the debt value.
 
 **Collateralization Calculation:**
+
+In the following, we denote the **Health Factor** by **HF** and the **Collateral Factor** by **CF**. The HF measures position safety (effective collateral ÷ debt), while the CF determines what percentage of collateral value can be borrowed against.
 
 ```
 Position Parameters:
@@ -194,13 +203,13 @@ Position Parameters:
 ├── Target Health Factor (HF): 1.3
 └── Typical Collateralization = CF × HF = 0.8 × 1.3 = 1.04
 
-For $1 of MOET debt:
-├── Effective Collateral Required: $1.30 (due to HF = 1.3)
-├── Total Collateral Required: $1.30 / 0.8 = $1.625
+For 1 MOET of debt:
+├── Effective Collateral Required: 1.30 MOET worth (due to HF = 1.3)
+├── Total Collateral Required: 1.30 / 0.8 = 1.625 MOET worth
 └── Collateralization Ratio: 162.5%
 
 Buffer Against Price Drops:
-├── Collateral can drop: ($1.625 - $1.00) / $1.625 = 38.5%
+├── Collateral can drop: (1.625 - 1.00) / 1.625 = 38.5%
 └── Before reaching liquidation threshold (HF = 1.0)
 ```
 
@@ -242,31 +251,31 @@ Result:
 
 ### Arbitrage Opportunities
 
-If MOET trades away from $1, arbitrage opportunities arise:
+If MOET trades away from its backing value, arbitrage opportunities arise:
 
-**MOET Trading Above $1 (e.g., $1.05):**
-
-```
-Arbitrage Strategy:
-1. Deposit $1,625 of FLOW collateral
-2. Borrow 1,000 MOET (valued at $1,000)
-3. Sell 1,000 MOET for: $1,050 (at $1.05 market price)
-4. Profit: $1,050 - $1,000 = $50
-5. Result: Increased MOET supply pushes price down toward $1
-```
-
-**MOET Trading Below $1 (e.g., $0.95):**
+**MOET Trading Above Backing Value:**
 
 ```
 Arbitrage Strategy:
-1. Buy 1,000 MOET for: $950 (at $0.95 market price)
-2. Repay $1,000 MOET debt (valued at $1,000)
-3. Saved: $1,000 - $950 = $50 on repayment
-4. Withdraw collateral (now unlocked)
-5. Result: Increased MOET demand pushes price up toward $1
+1. Deposit collateral worth more than borrowing capacity
+2. Borrow MOET against collateral
+3. Sell MOET on market at premium
+4. Profit from the spread between borrowing cost and market premium
+5. Result: Increased MOET supply pushes price down toward backing value
 ```
 
-**Key Principle**: Market participants profit from deviations, naturally stabilizing MOET around $1.
+**MOET Trading Below Backing Value:**
+
+```
+Arbitrage Strategy:
+1. Buy MOET on market at discount
+2. Repay existing MOET debt at protocol value
+3. Save the discount amount on repayment
+4. Withdraw unlocked collateral
+5. Result: Increased MOET demand pushes price up toward backing value
+```
+
+**Key Principle**: Market participants profit from deviations, naturally stabilizing MOET around its backing value determined by the weighted average of collateral assets.
 
 ## MOET as Unit of Account
 
@@ -370,7 +379,7 @@ Understanding MOET requires grasping these core principles:
 
 6. **Liquidation Creates Demand**: Profitable liquidations incentivize MOET accumulation
 
-7. **Arbitrage Maintains Peg**: Deviations from $1 create profit opportunities that naturally stabilize price
+7. **Arbitrage Maintains Value**: Deviations from backing value create profit opportunities that naturally stabilize price around the weighted average of collateral assets
 
 8. **Utilization-Driven Rates**: Interest rates automatically adjust to balance borrowing demand
 

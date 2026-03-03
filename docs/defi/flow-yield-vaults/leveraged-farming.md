@@ -7,6 +7,15 @@ sidebar_position: 6
 
 Leveraged farming amplifies your yield potential by using borrowed capital to increase your exposure to yield-generating assets. This document explains how FYV's TracerStrategy implements leveraged farming and the mechanics of leverage amplification.
 
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+- **FYV** = Flow Yield Vaults
+- **APY** = Annual Percentage Yield
+
 ## What is Leveraged Farming?
 
 Leveraged farming combines collateralized borrowing with yield farming to achieve returns greater than your initial capital. By depositing collateral to borrow additional capital, converting borrowed capital to yield-bearing tokens, and earning yield on both your capital and borrowed funds, you amplify your total returns while maintaining automated risk management through health factor monitoring.
@@ -29,7 +38,7 @@ With 1.61x leverage:
 
 ## How TracerStrategy Achieves Leverage
 
-TracerStrategy implements leveraged farming through integration with ALP's lending platform:
+TracerStrategy implements leveraged farming through integration with [ALP's](../alp/index.md) lending platform:
 
 ### Step-by-Step Leverage Mechanics
 

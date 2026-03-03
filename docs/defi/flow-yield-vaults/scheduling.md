@@ -7,6 +7,13 @@ sidebar_position: 7
 
 FYV implements a sophisticated self-scheduling mechanism that enables perpetual automated rebalancing without relying on external bots or keepers. This document explains how the scheduling system works and ensures continuous vault optimization.
 
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+- **FYV** = Flow Yield Vaults
+
 ## Overview
 
 The scheduling system consists of three main components:

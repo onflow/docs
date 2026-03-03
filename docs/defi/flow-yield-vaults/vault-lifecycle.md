@@ -7,6 +7,14 @@ sidebar_position: 5
 
 This guide walks you through the complete lifecycle of a Flow Yield Vault, from initial setup to closing your position and claiming your accumulated value.
 
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+- **FYV** = Flow Yield Vaults
+
 ## Overview
 
 A YieldVault goes through five main phases:

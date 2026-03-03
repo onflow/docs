@@ -5,22 +5,28 @@ sidebar_position: 4
 
 # MOET's Role in ALP
 
-MOET plays a central role in ALP as the default token and primary unit of account. Understanding MOET's function is essential for effectively using ALP and [Flow Credit Market (FCM)](../fcm/index.md). It standardizes pricing, enables automation, and makes yield-powered liquidation prevention possible. 
+MOET plays a central role in the Automated Lending Platform (ALP) as the default token and primary unit of account. Understanding MOET's function is essential for effectively using ALP and [Flow Credit Market (FCM)](../fcm/index.md). It standardizes pricing, enables automation, and makes yield-powered liquidation prevention possible.
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](./index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md) 
 
 **MOET** is a fungible token on Flow that serves as:
 
 - **The primary borrowed asset** - What you borrow from ALP
 - **The unit of account** - All prices quoted in MOET terms
 - **The rebalancing medium** - Used for all automated operations
-- **The value bridge** - Flows between ALP and FYV
+- **The value bridge** - Flows between ALP and Flow Yield Vaults (FYV)
 
 For more about MOET tokenomics, see the [MOET documentation](../moet/index.md).
 
 ## MOET as Unit of Account
 
-Think of MOET as the "common language" for all value in ALP - like how everything in a store is priced in dollars.
-
-### All Prices in MOET Terms
+Think of MOET as the "common language" for all value in ALP, like how everything in a store is priced in dollars.
 
 ```mermaid
 graph TD
@@ -61,16 +67,12 @@ sequenceDiagram
     ALP->>ALP: Can borrow: 800 / 1.3 = 615.38
     ALP->>MOET: Auto-borrow 615.38 MOET
     MOET->>User: Receive 615.38 MOET
-    ALP->>ALP: Health = 1.3 ✓
+    ALP->>ALP: Health = 1.3
 
     Note over User,MOET: All automatic, no manual steps!
 ```
 
-**Why MOET?**
-1. **Standardization**: One primary asset simplifies everything
-2. **Liquidity**: MOET designed for high liquidity
-3. **Predictability**: You always know what you'll receive
-4. **Efficiency**: No token choice complexity
+Using MOET as the primary borrowed asset provides standardization by simplifying the entire system with one primary asset, ensuring high liquidity through its design for deep markets, delivering predictability so you always know what you'll receive when borrowing, and maximizing efficiency by eliminating token choice complexity.
 
 ## MOET in Rebalancing
 

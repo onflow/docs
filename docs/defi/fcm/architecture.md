@@ -5,7 +5,16 @@ sidebar_position: 3
 
 # FCM Architecture Overview
 
-This document explains how Flow Credit Market's (FCM) three core components - [Automated Lending Platform (ALP)](../alp/index.md), [Flow Yield Vaults (FYV)](#), and [Medium Of Exchange Token (MOET)](#) - integrate to create a complete yield-generating system with automated liquidation prevention.
+This document explains how Flow Credit Market's (FCM) three core components - [Automated Lending Platform (ALP)](../alp/index.md), [Flow Yield Vaults (FYV)](../flow-yield-vaults/index.md), and [MOET (FlowCreditMarket USD)](../moet/index.md) - integrate to create a complete yield-generating system with automated liquidation prevention.
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **BF** = Borrow Factor (risk multiplier for borrowed assets)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = Flow Credit Market
 
 
 :::tip Key Insight
@@ -429,7 +438,7 @@ Actions:
 System State: Emergency
 ├── ALP Positions: Multiple HF < 1.0
 ├── FYV Strategies: Emergency liquidation mode
-├── MOET: Potential depeg risk
+├── MOET: Potential value deviation risk
 └── Oracles: Stale or unreliable
 
 Actions:
@@ -493,5 +502,5 @@ Actions:
 
 - **Understand the math**: [Mathematical Foundations](./math.md)
 - **Explore ALP details**: [ALP Architecture](../alp/architecture.md)
-- **Learn about FYV**: [FYV Documentation](#)
-- **Deep dive into MOET**: [MOET Documentation](#)
+- **Learn about FYV**: [FYV Documentation](../flow-yield-vaults/index.md)
+- **Deep dive into MOET**: [MOET Documentation](../moet/index.md)

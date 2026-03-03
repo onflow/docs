@@ -5,7 +5,15 @@ sidebar_position: 9
 
 # Liquidation System
 
-Liquidations are a critical safety mechanism in ALP that protect the protocol from insolvency. When a position becomes undercollateralized, it can be liquidated to restore the protocol's health and protect lenders.
+Liquidations are a critical safety mechanism in the Automated Lending Platform (ALP) that protect the protocol from insolvency. When a position becomes undercollateralized, it can be liquidated to restore the protocol's health and protect lenders.
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](./index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
 
 ## Understanding Liquidations
 

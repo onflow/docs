@@ -7,6 +7,14 @@ sidebar_position: 4
 
 The AutoBalancer is FYV's core optimization engine that continuously monitors yield positions and automatically rebalances when thresholds are exceeded. This document explains how AutoBalancers work, when they trigger, and how they maintain optimal position health.
 
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+- **FYV** = Flow Yield Vaults
+
 ## What is an AutoBalancer?
 
 An AutoBalancer is a resource that holds yield-bearing tokens in ERC4626 vaults, monitors the ratio between current value and historical deposits, automatically withdraws excess profits or requests deficit recovery, and self-schedules continuous rebalancing at 60-second intervals.

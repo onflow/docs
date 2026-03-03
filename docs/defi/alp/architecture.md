@@ -5,7 +5,15 @@ sidebar_position: 2
 
 # ALP Architecture Overview
 
-ALP is built on a modular architecture with several core components that work together to provide a secure and efficient lending protocol with efficiency and security. The scaled balance system eliminates gas overhead, DeFi Actions enable composability, and multiple security layers protect users. This design makes ALP both powerful for developers and accessible for users.
+The Automated Lending Platform (ALP) is built on a modular architecture with several core components that work together to provide a secure and efficient lending protocol with efficiency and security. The scaled balance system eliminates gas overhead, DeFi Actions enable composability, and multiple security layers protect users. This design makes ALP both powerful for developers and accessible for users.
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](./index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
 
 ## Core Components
 
@@ -118,7 +126,7 @@ The **Price Oracle** provides real-time token prices denominated in [MOET](../mo
 
 **Core Functionality:**
 
-The oracle returns prices for any supported token type (FLOW, stFLOW, USDC, wBTC, wETH) with all values expressed in MOET, creating a unified pricing framework. For example, if FLOW is trading at $1.00 and the system assumes 1 MOET = $1 USD, the oracle returns 1.0 for FLOW/MOET. This MOET-denominated pricing eliminates the need for complex cross-currency conversions when calculating health factors across multi-collateral positions.
+The oracle returns prices for any supported token type (FLOW, stFLOW, USDC, wBTC, wETH) with all values expressed in MOET, creating a unified pricing framework. For example, if FLOW is trading at $1.00 and MOET's backing value is equivalent to $1, the oracle returns 1.0 for FLOW/MOET. This MOET-denominated pricing eliminates the need for complex cross-currency conversions when calculating health factors across multi-collateral positions.
 
 **Safety Features:**
 

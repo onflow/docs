@@ -5,7 +5,18 @@ sidebar_position: 4
 
 # Mathematical Foundations of FCM
 
-This document explains the mathematical models and formulas that power Flow Credit Market. Understanding these fundamentals helps you reason about system behavior and make informed decisions.
+This document explains the mathematical models and formulas that power Flow Credit Market (FCM). Understanding these fundamentals helps you reason about system behavior and make informed decisions.
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **BF** = Borrow Factor (risk multiplier for borrowed assets)
+- **EC** = Effective Collateral (total collateral value adjusted by collateral factors)
+- **ED** = Effective Debt (total debt value adjusted by borrow factors)
+- **APY** = Annual Percentage Yield
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
 
 :::tip
 These mathematical foundations ensure FCM operates predictably and safely. All formulas are implemented on-chain and can be verified by examining the smart contracts.

@@ -8,6 +8,14 @@ sidebar_position: 9
 
 Flow Credit Market (FCM) is a comprehensive DeFi yield platform on Flow that offers a capital-efficient system for generating returns on crypto assets.
 
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **FYV** = [Flow Yield Vaults](../flow-yield-vaults/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **APY** = Annual Percentage Yield
+
 ## How FCM Works
 
 FCM is **not a single protocol** - it's an integrated system composed of three core components working together:
@@ -35,10 +43,10 @@ graph TB
 1. **[ALP (Automated Lending Platform)](../alp/index.md)**: The core lending/borrowing engine
    - Manages collateral deposits and debt positions
    - Provides automated rebalancing to maintain position health
-   - Uses DeFi Actions for composability
+   - Uses [DeFi Actions](../../blockchain-development-tutorials/forte/flow-actions/index.md) for composability
    - Implements liquidation prevention mechanisms
 
-2. **[FYV (Flow Yield Vaults)](#)**: The yield aggregation layer
+2. **[FYV (Flow Yield Vaults)](../flow-yield-vaults/index.md)**: The yield aggregation layer
    - Deploys borrowed capital into optimal yield strategies
    - Automatically compounds returns
    - Provides liquidity for ALP liquidation prevention
@@ -137,13 +145,13 @@ FCM provides liquidation protection through yield maintaining position health, f
 
 ### Component Documentation
 - **[ALP Documentation](../alp/index.md)** - Deep dive into the lending platform
-- **[FYV Documentation](#)** - Yield strategies and vaults
-- **[MOET Documentation](#)** - The synthetic stablecoin
+- **[FYV Documentation](../flow-yield-vaults/index.md)** - Yield strategies and vaults
+- **[MOET Documentation](../moet/index.md)** - The synthetic stablecoin
 
 ### Advanced Topics
-- **[Capital Flows](#)** - How value moves through the system
-- **[Risk Management](#)** - Understanding and managing risks
-- **[Integration Guide](#)** - Building on top of FCM
+- **[Capital Flows](./architecture.md)** - How value moves through the system
+- **[Risk Management](../moet/stability.md)** - Understanding and managing risks
+- **[FCM Math](./math.md)** - Mathematical foundations and formulas
 
 ## Quick Start
 

@@ -6,10 +6,18 @@ sidebar_position: 11
 
 # Flow Yield Vaults (FYV)
 
-Flow Yield Vaults (FYV) is a DeFi protocol that enables users to deposit tokens into yield-generating strategies that automatically optimize returns through leveraged positions and continuous rebalancing. FYV is one of the three core components of [Flow Credit Market (FCM)](../fcm/index.md), working alongside [ALP](../alp/index.md) and [MOET](#) to create a fully automated yield farming system.
+Flow Yield Vaults (FYV) is a DeFi protocol that enables users to deposit tokens into yield-generating strategies that automatically optimize returns through leveraged positions and continuous rebalancing. FYV is one of the three core components of [Flow Credit Market (FCM)](../fcm/index.md), working alongside [ALP](../alp/index.md) and [MOET](../moet/index.md) to create a fully automated yield farming system.
+
+**Key Abbreviations:** Throughout this document, we use the following abbreviations:
+- **HF** = Health Factor (measures position safety: effective collateral ÷ debt)
+- **CF** = Collateral Factor (percentage of collateral value that can be borrowed against)
+- **ALP** = [Automated Lending Platform](../alp/index.md)
+- **MOET** = [FlowCreditMarket USD](../moet/index.md) (synthetic stablecoin)
+- **FCM** = [Flow Credit Market](../fcm/index.md)
+- **FYV** = Flow Yield Vaults
 
 :::info
-FYV is one of three core components that make up FCM: [ALP (Automated Lending Platform)](../alp/index.md) provides the lending/borrowing engine, FYV (Flow Yield Vaults) handles yield aggregation strategies, and [MOET](#) serves as the synthetic stablecoin and unit of account.
+FYV is one of three core components that make up FCM: [ALP (Automated Lending Platform)](../alp/index.md) provides the lending/borrowing engine, FYV (Flow Yield Vaults) handles yield aggregation strategies, and [MOET](../moet/index.md) serves as the synthetic stablecoin and unit of account.
 :::
 
 ## What is FYV?
