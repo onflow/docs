@@ -4,16 +4,16 @@ description: How to get an event from the command line
 sidebar_position: 2
 ---
 
-Use the event command to fetch a single or multiple events in a specific range of blocks. 
-You can provide start and end block height range, but also specify number of the latest blocks to 
-be used to search for specified event. Events are fetched concurrently by using multiple workers which 
+Use the event command to fetch a single or multiple events in a specific range of blocks. You can provide start and end block height range, but also specify number of the latest blocks to use to search for specified event. 
+
+Events are fetched concurrently via multiple workers, which 
 optionally you can also control by specifying the flags.
 
 ```shell
 flow events get <event_name>
 ```
 
-## Example Usage
+## Example usage
 
 Get the event by name `A.0b2a3299cc857e29.TopShot.Deposit` from the last 20 blocks on mainnet.
 ```shell
@@ -85,13 +85,12 @@ and `A.1654653399040a61.FlowToken.TokensWithdrawn` in the block height range on 
 
 ## Arguments
 
-### Event Name
+### Event name
 
 - Name: `event_name`
 - Valid Input: String
 
-Fully-qualified identifier for the events.
-You can provide multiple event names separated by a space.
+Fully-qualified identifier for the events. You can provide multiple event names separated by a space.
 
 ## Flags
 
@@ -100,16 +99,14 @@ You can provide multiple event names separated by a space.
 - Flag: `--start`
 - Valid inputs: valid block height
 
-Specify the start block height used alongside the end flag. 
-This will define the lower boundary of the block range.
+Specify the start block height used alongside the end flag. This will define the lower boundary of the block range.
 
 ### End
 
 - Flag: `--end`
 - Valid inputs: valid block height
 
-Specify the end block height used alongside the start flag.
-This will define the upper boundary of the block range.
+Specify the end block height used alongside the start flag. This will define the upper boundary of the block range.
 
 ### Last
 
@@ -117,8 +114,7 @@ This will define the upper boundary of the block range.
 - Valid inputs: number
 - Default: `10`
 
-Specify the number of blocks relative to the last block. Ignored if the 
-start flag is set. Used as a default if no flags are provided.
+Specify the number of blocks relative to the last block. Ignored if the  start flag is set. Used as a default if no flags are provided.
 
 ### Batch
 
@@ -134,8 +130,7 @@ Number of blocks each worker will fetch.
 - Valid inputs: number
 - Default: `10`
 
-Number of workers to use when fetching events concurrently.
-
+Number of workers to use when you fetch events concurrently.
 
 ### Host
 
@@ -143,17 +138,14 @@ Number of workers to use when fetching events concurrently.
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the hostname of the Access API to use to execute the command. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
-- Valid inputs: A valid network public key of the host in hex string format
+- Valid inputs: A valid network public key of the host in hex string format.
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API to use to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -186,7 +178,7 @@ Specify the format of the command results.
 - Short Flag: `-s`
 - Valid inputs: a path in the current filesystem.
 
-Specify the filename where you want the result to be saved
+Specify the filename where you want the result to be saved.
 
 ### Log
 
@@ -204,11 +196,9 @@ Specify the log level. Control how much output you want to see during command ex
 - Valid inputs: a path in the current filesystem.
 - Default: `flow.json`
 
-Specify the path to the `flow.json` configuration file.
-You can use the `-f` flag multiple times to merge
-several configuration files.
+Specify the path to the `flow.json` configuration file. You can use the `-f` flag multiple times to merge several configuration files.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`

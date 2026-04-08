@@ -103,10 +103,8 @@ This example assumes you have a test script named `test_script_test.cdc` in your
 // test_script_test.cdc
 import Test
 
-access(all) let blockchain = Test.newEmulatorBlockchain()
-
 access(all) fun testSumOfTwo() {
-    let scriptResult = blockchain.executeScript(
+    let scriptResult = Test.executeScript(
         "access(all) fun main(a: Int, b: Int): Int { return a + b }",
         [2, 3]
     )

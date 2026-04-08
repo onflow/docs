@@ -5,23 +5,169 @@ description: Essential tools for the Flow blockchain ecosystem
 ---
 
 import DocCardList from '@theme/DocCardList';
-import { isSamePath } from '@docusaurus/theme-common/internal';
-import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
-import { useLocation } from '@docusaurus/router';
+
+# Tools & SDKs
+
+Flow provides a comprehensive suite of development tools to help you build, test, and deploy applications on the blockchain.
+
+## Which Tool Should I Use?
+
+| I want to... | Use this |
+|--------------|----------|
+| Build a React frontend | [React SDK](./react-sdk/index.mdx) |
+| Build with vanilla JS/TypeScript | [FCL-JS](./clients/fcl-js/index.md) |
+| Build a Go backend | [Flow Go SDK](./clients/flow-go-sdk/index.md) |
+| Develop and test locally | [Flow CLI](./flow-cli/index.md) + [Emulator](./emulator/index.md) |
+| Write and debug Cadence | [VS Code Extension](./vscode-extension/index.md) |
+| Simulate wallet interactions | [Flow Dev Wallet](./flow-dev-wallet/index.md) |
+| Build a wallet provider | [Wallet Provider Spec](./wallet-provider-spec/index.md) |
+
+## Core Tools
 
 <DocCardList items={[
-  ...useDocsSidebar().items.filter(item => !isSamePath(item.href, useLocation().pathname)),
+  {
+    type: 'link',
+    label: 'React SDK',
+    href: '/build/tools/react-sdk',
+    description: 'React hooks and components for building Flow apps. The easiest way to integrate Flow into your React application.',
+    customProps: {
+      icon: '/images/tools/tool-fcl.svg',
+      author: {
+        name: 'Flow',
+        profileImage: '/img/ecosystem/flow.svg',
+      },
+      githubLink: 'https://github.com/onflow/fcl-js/tree/master/packages/react-sdk'
+    }
+  },
+  {
+    type: 'link',
+    label: 'Flow CLI',
+    href: '/build/tools/flow-cli',
+    description: 'Command-line interface for managing Flow projects, deploying contracts, and interacting with the blockchain.',
+    customProps: {
+      icon: '/images/tools/tool-cli.svg',
+      author: {
+        name: 'Flow',
+        profileImage: '/img/ecosystem/flow.svg',
+      },
+      githubLink: 'https://github.com/onflow/flow-cli'
+    }
+  },
+  {
+    type: 'link',
+    label: 'Flow Emulator',
+    href: '/build/tools/emulator',
+    description: 'Local Flow blockchain for development and testing. Fork mainnet or testnet to test against real state.',
+    customProps: {
+      icon: '/images/tools/tool-emulator.svg',
+      author: {
+        name: 'Flow',
+        profileImage: '/img/ecosystem/flow.svg',
+      },
+      githubLink: 'https://github.com/onflow/flow-emulator'
+    }
+  },
+  {
+    type: 'link',
+    label: 'VS Code Extension',
+    href: '/build/tools/vscode-extension',
+    description: 'Cadence language support for VS Code with syntax highlighting, type checking, and code completion.',
+    customProps: {
+      icon: '/images/tools/tool-vscode.svg',
+      author: {
+        name: 'Flow',
+        profileImage: '/img/ecosystem/flow.svg',
+      },
+      githubLink: 'https://github.com/onflow/vscode-cadence'
+    }
+  },
+  {
+    type: 'link',
+    label: 'Flow Dev Wallet',
+    href: '/build/tools/flow-dev-wallet',
+    description: 'Mock wallet for local development. Simulates wallet interactions for testing FCL-powered applications.',
+    customProps: {
+      icon: '/images/tools/tool-default.svg',
+      author: {
+        name: 'Flow',
+        profileImage: '/img/ecosystem/flow.svg',
+      },
+      githubLink: 'https://github.com/onflow/fcl-dev-wallet'
+    }
+  },
+  {
+    type: 'link',
+    label: 'FCL-JS',
+    href: '/build/tools/clients/fcl-js',
+    description: 'Flow Client Library for JavaScript/TypeScript. Wallet integration, transactions, scripts, and authentication.',
+    customProps: {
+      icon: '/images/tools/tool-fcl.svg',
+      author: {
+        name: 'Flow',
+        profileImage: '/img/ecosystem/flow.svg',
+      },
+      githubLink: 'https://github.com/onflow/fcl-js'
+    }
+  },
+  {
+    type: 'link',
+    label: 'Flow Go SDK',
+    href: '/build/tools/clients/flow-go-sdk',
+    description: 'Go SDK for building backends and services on Flow. High-performance blockchain interaction and testing utilities.',
+    customProps: {
+      icon: '/images/tools/tool-default.svg',
+      author: {
+        name: 'Flow',
+        profileImage: '/img/ecosystem/flow.svg',
+      },
+      githubLink: 'https://github.com/onflow/flow-go-sdk'
+    }
+  },
+  {
+    type: 'link',
+    label: 'Client Tools',
+    href: '/build/tools/clients',
+    description: 'SDKs for Python, JVM, Swift, PHP, Elixir, and more. Find the right client library for your stack.',
+    customProps: {
+      icon: '/images/tools/tool-default.svg',
+      author: {
+        name: 'Flow',
+        profileImage: '/img/ecosystem/flow.svg',
+      },
+      githubLink: 'https://github.com/onflow'
+    }
+  },
+  {
+    type: 'link',
+    label: 'Wallet Provider Spec',
+    href: '/build/tools/wallet-provider-spec',
+    description: 'Specification for building FCL-compatible wallets. Authentication, authorization, and signing protocols.',
+    customProps: {
+      icon: '/images/tools/tool-default.svg',
+      author: {
+        name: 'Flow',
+        profileImage: '/img/ecosystem/flow.svg',
+      },
+      githubLink: 'https://github.com/onflow/fcl-js'
+    }
+  },
+]}/>
+
+## Community Tools
+
+Tools built by the Flow community to enhance your development experience.
+
+<DocCardList items={[
   {
     type: 'link',
     label: 'Flowser',
     href: 'https://flowser.dev/',
-    description: 'Flowser combines all the tools for local development and gives you a clear UI to inspect the local Flow network.',
+    description: 'GUI for local development. Inspect accounts, transactions, and contracts on the emulator with a visual interface.',
     customProps: {
       icon: 'https://flowser.dev/icon.png',
       author: {
         name: 'Flowser',
-        profileImage:
-          'https://flowser.dev/icon.png',
+        profileImage: 'https://flowser.dev/icon.png',
       },
       twitterLink: 'https://twitter.com/onflowser',
       githubLink: 'https://github.com/onflowser/flowser'
@@ -31,13 +177,12 @@ import { useLocation } from '@docusaurus/router';
     type: 'link',
     label: 'Overflow',
     href: 'https://github.com/bjartek/overflow',
-    description: 'Overflow is a Go-based DSL for testing and running interactive stories',
+    description: 'Go-based DSL for testing and scripting Flow interactions. Write integration tests and interactive stories.',
     customProps: {
       icon: '',
       author: {
         name: 'bjartek',
-        profileImage:
-          'https://avatars.githubusercontent.com/u/10621?v=4',
+        profileImage: 'https://avatars.githubusercontent.com/u/10621?v=4',
       },
       discordLink: 'https://discord.gg/t6GEtHnWFh',
       githubLink: 'https://github.com/bjartek/overflow'

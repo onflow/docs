@@ -122,6 +122,19 @@ A JSON version of the information below can be found in [onflow/flow/sporks.json
 | **Docker Image Tag**: v0.37.26                                                         |
 | **Release Notes**: [v0.37.26](https://github.com/onflow/flow-go/releases/tag/v0.37.26) |
 
+## Mainnet 28
+
+| Spork Info                                                                              |
+|:----------------------------------------------------------------------------------------|
+| **Access Node**: access.mainnet.nodes.onflow.org:9000                                   |
+| **Date**: Dec 28, 2025                                                                  |
+| **Root Height**: 137390146                                                              |
+| **Root Parent ID**: ee69349b5044c4c1cb959ac5beccbe3df896b370fb098808fb9a6eada57b3f7f    |
+| **Root State Commit**: d0a13c09f930322c5f053113354211acbf4d8c5eeb524c7004eb7c9d052c4bbe |
+| **Git Commit**: dd73c65fe83822e5fc2846879fb93f8a15b1b25c                                |
+| **Branch/Tag**: [v0.44.3](https://github.com/onflow/flow-go/releases/tag/v0.44.3)       |
+| **Docker Image Tag**: v0.44.3                                                           |
+
 ## Mainnet 27
 
 | Spork Info                                                                              |
@@ -603,6 +616,18 @@ While FCL v0.0.67 is not strictly necessary to use Mainnet 6, we strongly recomm
 ## Testnet Upgrades
 
 > Currently only includes HCUs from 2025.
+
+## Devnet 54
+
+| Spork Info                                                                              |
+|:----------------------------------------------------------------------------------------|
+| **Date**: Feb 12th, 2026                                                                |
+| **Root Height**: 305778201                                                              |
+| **Root Parent ID**: c26d0ebae62f0c39f8a8a2d94d49622b5fb46ec6f44888de2090e0c37783e440    |
+| **Root State Commit**: 1c886e1717c638506d55cc446d1b0e7fb8f189222f0b74212b2d810143b9bfe6 |
+| **Git Commit**: ae8fb8a4337cf99b119946c7906eee49075513b6                                |
+| **Branch/Tag**: v0.46.0                                                                 |
+| **Docker Image Tag**: v0.46.0                                                           |
 
 ## Height Coordinated Upgrade 14
 

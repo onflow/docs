@@ -45,6 +45,7 @@ The `networks` section defines which Flow networks your project can connect to.
 ```
 
 **Common Networks:**
+
 - `emulator`: Your local development environment
 - `testnet`: Flow's test network for development and testing
 - `mainnet`: Flow's production network
@@ -61,11 +62,27 @@ For enhanced security, you can specify network keys:
 }
 ```
 
+**Fork Networks:**
+Fork networks allow you to test against a local emulator that mirrors mainnet or testnet state. When you run `flow emulator --fork mainnet`, the CLI automatically creates a `mainnet-fork` network configuration that inherits contract aliases from the parent network:
+
+```json
+"networks": {
+  "mainnet-fork": {
+    "host": "127.0.0.1:3569",
+    "fork": "mainnet"
+  }
+}
+```
+
+The `fork` property tells the CLI to inherit all contract aliases from the specified network (e.g., `mainnet`), so you don't need to manually duplicate aliases for forked networks.
+
+Learn more: [Fork Testing Overview](../fork-testing.md)
+
 ### Accounts
 
 The `accounts` section defines the accounts you can use for transactions and deployments.
 
-#### Simple Account Format
+#### Simple account format
 
 ```json
 "accounts": {
@@ -76,7 +93,7 @@ The `accounts` section defines the accounts you can use for transactions and dep
 }
 ```
 
-#### Advanced Account Format
+#### Advanced account format
 
 For more control over key management:
 
@@ -96,6 +113,7 @@ For more control over key management:
 ```
 
 **Key Types:**
+
 - `hex`: Standard hex-encoded private key
 - `file`: Read key from a separate file
 - `bip44`: Derive from mnemonic phrase
@@ -116,16 +134,17 @@ For better security, you can store private keys in separate files:
 }
 ```
 
-The key file should contain only the hex-encoded private key (e.g., `ae1b44c0f5e8f6992ef2348898a35e50a8b0b9684000da8b1dade1b3bcd6ebee`).
+The key file should contain only the hex-encoded private key (for example, `ae1b44c0f5e8f6992ef2348898a35e50a8b0b9684000da8b1dade1b3bcd6ebee`).
 
 **Special Address Values:**
+
 - `"service"`: Use the default service account (emulator only)
 
 ### Contracts
 
 The `contracts` section maps contract names to their source files.
 
-#### Simple Contract Format
+#### Simple contract format
 
 ```json
 "contracts": {
@@ -134,7 +153,7 @@ The `contracts` section maps contract names to their source files.
 }
 ```
 
-#### Advanced Contract Format with Aliases
+#### Advanced contract format with aliases
 
 Use aliases when contracts are already deployed on specific networks:
 
@@ -151,13 +170,14 @@ Use aliases when contracts are already deployed on specific networks:
 ```
 
 **When to Use Aliases:**
+
 - For core contracts already deployed on mainnet/testnet
 - To avoid redeploying dependencies
 - To use the official versions of common contracts
 
-#### Cadence Import Aliasing
+#### Cadence import aliasing
 
-When deploying the same contract to multiple addresses with different names, use the `canonical` field to reference the original contract. This allows you to import multiple instances of the same contract with different identifiers.
+When you deploy the same contract to multiple addresses with different names, use the `canonical` field to reference the original contract. This allows you to import multiple instances of the same contract with different identifiers.
 
 ```json
 "contracts": {
@@ -209,6 +229,7 @@ The `deployments` section defines which contracts get deployed to which accounts
 **Format:** `"NETWORK": { "ACCOUNT": ["CONTRACT1", "CONTRACT2"] }`
 
 **Important Notes:**
+
 - Don't deploy contracts that have aliases defined for that network
 - Contracts are deployed in dependency order automatically
 - You can deploy the same contract to multiple accounts (but not in the same deploy command)
@@ -226,7 +247,7 @@ Customize emulator settings (optional):
 }
 ```
 
-## Complete Example
+## Complete example
 
 Here's a complete `flow.json` for a project with multiple contracts and networks:
 
@@ -272,9 +293,9 @@ Here's a complete `flow.json` for a project with multiple contracts and networks
 }
 ```
 
-## Managing Configuration
+## Manage configuration
 
-Instead of editing `flow.json` manually, use the CLI commands:
+Rather than edit `flow.json` manually, use the CLI commands:
 
 ```bash
 # Add an account
@@ -292,16 +313,23 @@ flow config remove account my-account
 
 ## Best Practices
 
-1. **Use CLI commands** when possible instead of manual editing
-2. **Keep private keys secure** - consider using file-based keys for production
-3. **Use aliases** for core contracts to avoid redeployment
-4. **Test on emulator first** before deploying to testnet
-5. **Use different accounts** for different networks
-6. **Backup your configuration** before making major changes
+1. **Use CLI commands** when possible instead of manual editing.
+2. **Keep private keys secure** - consider file-based keys for production.
+3. **Use aliases** for core contracts to avoid redeployment.
+4. **Test on emulator first** before you deploy to testnet.
+5. **Use different accounts** for different networks.
+6. **Backup your configuration** before you make major changes.
 
 ## Related Commands
 
-- [`flow init`](./initialize-configuration.md) - Initialize a new project
-- [`flow config add`](./manage-configuration.md) - Add configuration items
-- [`flow project deploy`](../deployment/deploy-project-contracts.md) - Deploy contracts
-- [`flow accounts create`](../accounts/create-accounts.md) - Create new accounts
+- [`flow init`] - Initialize a new project
+- [`flow config add`] - Add configuration items
+- [`flow project deploy`] - Deploy contracts
+- [`flow accounts create`] - Create new accounts
+
+<!-- Reference-style links, will not render on page. -->
+
+[`flow init`]: ./initialize-configuration.md
+[`flow config add`]: ./manage-configuration.md
+[`flow project deploy`]: ../deployment/deploy-project-contracts.md
+[`flow accounts create`]: ../accounts/create-accounts.md

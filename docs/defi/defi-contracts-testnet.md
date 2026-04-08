@@ -29,21 +29,21 @@ Below is a list of commonly used DeFi contracts on Flow Testnet:
 
 #### Flow EVM Testnet
 
-| Token                     | EVM Testnet Address                          | How to Get  |
-| ------------------------- | -------------------------------------------- | ----------- |
-| FLOW (native, non-erc20)  | —                                            | [Faucet][1] |
-| [WFLOW][2]                | `0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e` | [Swap][28]  |
-| [MOET][3]                 | `0x51f5cc5f50afb81e8f23c926080fa38c3024b238` | [Swap][29]  |
-| [MockUSDC][4]                 | `0xd431955D55a99EF69BEb96BA34718d0f9fBc91b1` | [Swap][30]  |
-| [mUSDC][5]     | `0x4154d5B0E2931a0A1E5b733f19161aa7D2fc4b95` | [Swap][31]  |
-| [USDf][6]          | `0xd7d43ab7b365f0d0789aE83F4385fA710FfdC98F` | [Swap][32]  |
-| [USD Flow][7] | `0xf2E5A325f7D678DA511E66B1c0Ad7D5ba4dF93D3` | —           |
-| [USDC.e][8]       | `0x9B7550D337bB449b89C6f9C926C3b976b6f4095b` | —           |
-| [ankrFLOW][9]             | `0xe132751AB5A14ac0bD3Cb40571a9248Ee7a2a9EA` | —           |
-| [ankrFLOWEVM][10]         | `0x8E3DC6E937B560ce6a1Aaa78AfC775228969D16c` | —           |
-| [ETHf][11]                | `0x059A77239daFa770977DD9f1E98632C3E4559848` | [Mint][14]  |
-| [BTCf][12]                | `0x208d09d2a6Dd176e3e95b3F0DE172A7471C5B2d6` | [Mint][15]  |
-| [cbBTC][13]               | `0x30F44C64725727F2001E6C1eF6e6CE9c7aB91dC3` | [Mint][16]  |
+| Token                    | EVM Testnet Address                          | How to Get  |
+| ------------------------ | -------------------------------------------- | ----------- |
+| FLOW (native, non-erc20) | —                                            | [Faucet][1] |
+| [WFLOW][2]               | `0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e` | [Swap][28]  |
+| [MOET][3]                | `0x51f5cc5f50afb81e8f23c926080fa38c3024b238` | [Swap][29]  |
+| [MockUSDC][4]            | `0xd431955D55a99EF69BEb96BA34718d0f9fBc91b1` | [Swap][30]  |
+| [mUSDC][5]               | `0x4154d5B0E2931a0A1E5b733f19161aa7D2fc4b95` | [Swap][31]  |
+| [PYUSD0][6]              | `0xd7d43ab7b365f0d0789aE83F4385fA710FfdC98F` | [Swap][32]  |
+| [USD Flow][7]            | `0xf2E5A325f7D678DA511E66B1c0Ad7D5ba4dF93D3` | —           |
+| [USDC.e][8]              | `0x9B7550D337bB449b89C6f9C926C3b976b6f4095b` | —           |
+| [ankrFLOW][9]            | `0xe132751AB5A14ac0bD3Cb40571a9248Ee7a2a9EA` | —           |
+| [ankrFLOWEVM][10]        | `0x8E3DC6E937B560ce6a1Aaa78AfC775228969D16c` | —           |
+| [ETHf][11]               | `0x059A77239daFa770977DD9f1E98632C3E4559848` | [Mint][14]  |
+| [BTCf][12]               | `0x208d09d2a6Dd176e3e95b3F0DE172A7471C5B2d6` | [Mint][15]  |
+| [cbBTC][13]              | `0x30F44C64725727F2001E6C1eF6e6CE9c7aB91dC3` | [Mint][16]  |
 
 #### Flow Cadence Testnet
 
@@ -74,32 +74,32 @@ Below is a list of commonly used DeFi contracts on Flow Testnet:
 
 #### Flow EVM Testnet
 
-| Contract                                      | EVM Testnet Address                          |
-| --------------------------------------------- | -------------------------------------------- |
-| [UniswapV2Factory (FlowSwap)][33]                   | `0x7d726261FB76B264fc20eA1f19D900D760136566` |
-| [UniswapV2Router02 (FlowSwap)][34]                    | `0x524E1291c109BE27FDE48De97cAf0B3c0F02A68f` |
-| [UniswapV2Pair (FlowSwap)][35]             | `0x21E3aa01561d7D869785aAedB14130C5807C5A12` |
-| [UniswapV3Factory (FlowSwap)][36]                   | `0x92657b195e22b69E4779BBD09Fa3CD46F0CF8e39` |
-| [NonfungiblePositionManager (FlowSwap)][37]      | `0x8b9F96390EC35d5859937c7c5D68Ff6D5CFC312f` |
-| [SwapRouter02 (FlowSwap)][38]               | `0x2Db6468229F6fB1a77d248Dbb1c386760C257804` |
-| [QuoterV2 (FlowSwap)][39]         | `0xA1e0E4CCACA34a738f03cFB1EAbAb16331FA3E2c` |
+| Contract                                     | EVM Testnet Address                          |
+| -------------------------------------------- | -------------------------------------------- |
+| [UniswapV2Factory (FlowSwap)][33]            | `0x7d726261FB76B264fc20eA1f19D900D760136566` |
+| [UniswapV2Router02 (FlowSwap)][34]           | `0x524E1291c109BE27FDE48De97cAf0B3c0F02A68f` |
+| [UniswapV2Pair (FlowSwap)][35]               | `0x21E3aa01561d7D869785aAedB14130C5807C5A12` |
+| [UniswapV3Factory (FlowSwap)][36]            | `0x92657b195e22b69E4779BBD09Fa3CD46F0CF8e39` |
+| [NonfungiblePositionManager (FlowSwap)][37]  | `0x8b9F96390EC35d5859937c7c5D68Ff6D5CFC312f` |
+| [SwapRouter02 (FlowSwap)][38]                | `0x2Db6468229F6fB1a77d248Dbb1c386760C257804` |
+| [QuoterV2 (FlowSwap)][39]                    | `0xA1e0E4CCACA34a738f03cFB1EAbAb16331FA3E2c` |
 | [V3Migrator (FlowSwap)][40]                  | `0x00a101726ff770cd8ed53E8376b9440Bad40CAd9` |
-| [UniswapV3Staker (FlowSwap)][41]                    | `0x04400857ad69EaA7dd6fEF1C329E80E50BD30b76` |
-| [TickLens (FlowSwap)][42]                 | `0x36D9bDCbA840F5bcb95EE7bD54a86808aef6581F` |
-| [NFTDescriptor (FlowSwap)][43]        | `0x6982D5Cb80Cd7E2cb7C0d0B8452841471Bc84Bc2` |
-| [v3_nft_position_descriptor (FlowSwap)][44]   | `0x61f4e983A72d9BD8429154982A3d9fCF3A1D98d0` |
-| [TransparentUpgradeableProxy (FlowSwap)][45]          | `0xE0895150a7c84e8fB9fecCE72F4C80c130C80fDa` |
-| [UniswapV3Pool (FlowSwap)][46]            | `0xa4Db57e3d3c6674FA02a2f3a667d3C22Fe17efF4` |
+| [UniswapV3Staker (FlowSwap)][41]             | `0x04400857ad69EaA7dd6fEF1C329E80E50BD30b76` |
+| [TickLens (FlowSwap)][42]                    | `0x36D9bDCbA840F5bcb95EE7bD54a86808aef6581F` |
+| [NFTDescriptor (FlowSwap)][43]               | `0x6982D5Cb80Cd7E2cb7C0d0B8452841471Bc84Bc2` |
+| [v3_nft_position_descriptor (FlowSwap)][44]  | `0x61f4e983A72d9BD8429154982A3d9fCF3A1D98d0` |
+| [TransparentUpgradeableProxy (FlowSwap)][45] | `0xE0895150a7c84e8fB9fecCE72F4C80c130C80fDa` |
+| [UniswapV3Pool (FlowSwap)][46]               | `0xa4Db57e3d3c6674FA02a2f3a667d3C22Fe17efF4` |
 | [UniversalRouter (FlowSwap)][47]             | `0xB685ab04Dfef74c135A2ed4003441fF124AFF9a0` |
-| [Permit2 (FlowSwap)][48]                      | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
-| [FusionXInterfaceMulticall (FlowSwap)][49]                   | `0x02b9B840CDCEe84510a02cc85f351CAaD41f46CE` |
-| [proxy_admin (FlowSwap)][50]                  | `0xf4011F45A666dC7eC54445a710c3aae735F7E890` |
-| [StableKittyFactoryNG (KittyPunch)][51]   | `0x0699C35C0104e478f510531F5Dfc3F9313ae49D1` |
-| [TwoKittyFactory (KittyPunch)][52]        | `0xeaa5949471C7B31ae97D3a52483028aE595E8e83` |
-| [TriKittyFactory (KittyPunch)][53]        | `0x62aC6e05Bac04702bF744106499F72f200297121` |
-| [KittyRouterNgPoolsOnly (KittyPunch)][54] | `0x70e8C797f698De61787A7275628713077723694`  |
-| [PunchSwapV2Router02 (KittyPunch)][55]    | `0xeD53235cC3E9d2d464E9c408B95948836648870B` |
-| [PunchSwapV2Factory (KittyPunch)][56]     | `0x0f6C2EF40FA42B2F0E0a9f5987b2f3F8Af3C173f` |
+| [Permit2 (FlowSwap)][48]                     | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
+| [FusionXInterfaceMulticall (FlowSwap)][49]   | `0x02b9B840CDCEe84510a02cc85f351CAaD41f46CE` |
+| [proxy_admin (FlowSwap)][50]                 | `0xf4011F45A666dC7eC54445a710c3aae735F7E890` |
+| [StableKittyFactoryNG (KittyPunch)][51]      | `0x0699C35C0104e478f510531F5Dfc3F9313ae49D1` |
+| [TwoKittyFactory (KittyPunch)][52]           | `0xeaa5949471C7B31ae97D3a52483028aE595E8e83` |
+| [TriKittyFactory (KittyPunch)][53]           | `0x62aC6e05Bac04702bF744106499F72f200297121` |
+| [KittyRouterNgPoolsOnly (KittyPunch)][54]    | `0x70e8C797f698De61787A7275628713077723694`  |
+| [PunchSwapV2Router02 (KittyPunch)][55]       | `0xeD53235cC3E9d2d464E9c408B95948836648870B` |
+| [PunchSwapV2Factory (KittyPunch)][56]        | `0x0f6C2EF40FA42B2F0E0a9f5987b2f3F8Af3C173f` |
 
 #### Flow Cadence Testnet
 

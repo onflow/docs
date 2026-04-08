@@ -15,15 +15,7 @@ keywords:
   - defi automation
 ---
 
-# Introduction to scheduled transactions
-
-:::warning
-
-Scheduled transactions are a new feature that is under development and is a part of [FLIP 330]. Currently, they only work in the emulator and testnet. We're close to finishing the specific implementation, but it but may change during the development process.
-
-We will update these tutorials, but you may need to refactor your code if the implementation changes.
-
-:::
+# Introduction to Scheduled Transactions
 
 Flow, EVM, and other blockchains are a form of a **single** shared computer that anyone can use, with no admin privileges, super user roles, or complete control. For this to work, it must be impossible for any user to freeze the computer, on purpose or by accident.
 
@@ -295,27 +287,17 @@ The `executionEffort` is also supplied as an argument in the transaction. This r
 
 - `fees`: A [vault] containing the appropriate amount of compute unit fees needed to pay for the execution of the scheduled transaction.
 
-To create the vault, the `estimate()` function calculates the amount needed:
+To create the vault, the `calculateFee()` function calculates the amount needed:
 
 ```cadence
-let est = FlowTransactionScheduler.estimate(
-    data: transactionData,
-    timestamp: future,
-    priority: pr,
-    executionEffort: executionEffort
+// Calculates the estimated fee for the provided execution effort, priority, and transaction data size (in megabytes)
+// If the scheduled transaction has no data for its `data` argument, then the data size can be zero
+let est = FlowTransactionScheduler.calculateFee(
+    executionEffort: executionEffort, priority: pr, dataSizeMB: 0
 )
 ```
 
 Then, an [authorized reference] to the signer's vault is created and used to `withdraw()` the needed funds and [move] them into the `fees` variable, which is then sent in the `schedule()` function call.
-
-Finally, we also `assert` that some minimums are met to ensure the transaction will be called:
-
-```cadence
-assert(
-    est.timestamp != nil || pr == FlowTransactionScheduler.Priority.Low,
-    message: est.error ?? "estimation failed"
-)
-```
 
 ## Use the FlowTransactionSchedulerUtils.Manager
 
@@ -485,19 +467,11 @@ let priority = FlowTransactionScheduler.Priority.Medium
 let executionEffort: UInt64 = 1000
 ```
 
-Next, create the `estimate` and `assert` to validate minimums are met, and that the `Handler` exists:
+Next, add the `calculateFee()` call to calculate the fee for the scheduled transaction and ensure that a handler for the scheduled transaction exists. Your transaction does not provide and accompanying data, so your `dataSizeMB` argument can be zero.
 
 ```cadence
-let estimate = FlowTransactionScheduler.estimate(
-    data: data,
-    timestamp: future,
-    priority: priority,
-    executionEffort: executionEffort
-)
-
-assert(
-    estimate.timestamp != nil || priority == FlowTransactionScheduler.Priority.Low,
-    message: estimate.error ?? "estimation failed"
+let estimate = FlowTransactionScheduler.calculateFee(
+    executionEffort: executionEffort, priority: priority, dataSizeMB: 0
 )
 
  // Ensure a handler resource exists in the contract account storage
@@ -520,7 +494,7 @@ Then withdraw the necessary funds:
 let vaultRef = CounterLoopTransactionHandler.account.storage
     .borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(from: /storage/flowTokenVault)
     ?? panic("missing FlowToken vault on contract account")
-let fees <- vaultRef.withdraw(amount: estimate.flowFee ?? 0.0) as! @FlowToken.Vault
+let fees <- vaultRef.withdraw(amount: estimate ?? 0.0) as! @FlowToken.Vault
 ```
 
 Finally, schedule the transaction:
@@ -617,22 +591,14 @@ transaction(
                 ? FlowTransactionScheduler.Priority.Medium
                 : FlowTransactionScheduler.Priority.Low
 
-        let est = FlowTransactionScheduler.estimate(
-            data: transactionData,
-            timestamp: future,
-            priority: pr,
-            executionEffort: executionEffort
-        )
-
-        assert(
-            est.timestamp != nil || pr == FlowTransactionScheduler.Priority.Low,
-            message: est.error ?? "estimation failed"
+        let est = FlowTransactionScheduler.calculateFee(
+            executionEffort: executionEffort, priority: pr, dataSizeMB: 0
         )
 
         let vaultRef = signer.storage
             .borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(from: /storage/flowTokenVault)
             ?? panic("missing FlowToken vault")
-        let fees <- vaultRef.withdraw(amount: est.flowFee ?? 0.0) as! @FlowToken.Vault
+        let fees <- vaultRef.withdraw(amount: est ?? 0.0) as! @FlowToken.Vault
 
         // if a transaction scheduler manager has not been created for this account yet, create one
         if !signer.storage.check<@{FlowTransactionSchedulerUtils.Manager}>(from: FlowTransactionSchedulerUtils.managerStoragePath) {
