@@ -2,6 +2,16 @@ import React from 'react';
 import { event } from '@site/src/utils/gtags.client';
 import { GA_EVENTS, GA_CATEGORIES } from '@site/src/constants/ga-events';
 
+const CATEGORY_COLORS: Record<string, string> = {
+  Defi: '#10b981',
+  Tutorials: '#3b82f6',
+  Cadence: '#a855f7',
+  EVM: '#f97316',
+  Tools: '#64748b',
+  Networks: '#06b6d4',
+  Ecosystem: '#ec4899',
+};
+
 const CATEGORIES = [
   {
     title: 'Defi',
@@ -117,38 +127,52 @@ const BrowseByCategory: React.FC = () => {
 
   return (
     <section className="container mx-auto py-12">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">Browse by category</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Browse by category</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {CATEGORIES.map((cat) => {
           const firstLink = cat.links[0];
           const remainingLinks = cat.links.slice(1);
           
+          const color = CATEGORY_COLORS[cat.title] || '#64748b';
+          
           return (
-            <div key={cat.title} className="bg-white dark:bg-gray-900 rounded-lg shadow p-6 flex flex-col">
-              <a
-                href={firstLink.href}
-                target={firstLink.href.startsWith('http') ? '_blank' : undefined}
-                rel={firstLink.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                onClick={() => handleLinkClick(firstLink.label, firstLink.href, cat.title)}
-                className="text-xl font-semibold text-primary-green-600 dark:text-primary-green-400 mb-4 hover:text-primary-green-700 dark:hover:text-primary-green-300 transition-colors underline"
-              >
-                {cat.title}
-              </a>
-              <ul className="space-y-2">
-                {remainingLinks.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      target={link.href.startsWith('http') ? '_blank' : undefined}
-                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      onClick={() => handleLinkClick(link.label, link.href, cat.title)}
-                      className="text-base text-gray-800 dark:text-gray-100 hover:text-primary-green-500 dark:hover:text-primary-green-300 transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            <div
+              key={cat.title}
+              className="rounded-xl bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden"
+            >
+              {/* Color bar at top */}
+              <div style={{ height: '4px', backgroundColor: color }} />
+              
+              <div className="flex flex-col p-5">
+                {/* Category Header */}
+                <a
+                  href={firstLink.href}
+                  target={firstLink.href.startsWith('http') ? '_blank' : undefined}
+                  rel={firstLink.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  onClick={() => handleLinkClick(firstLink.label, firstLink.href, cat.title)}
+                  className="text-base font-bold text-gray-900 dark:text-white mb-4 hover:text-[#00EF8B] transition-colors no-underline group flex items-center gap-1"
+                >
+                  {cat.title}
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+                
+                {/* Links */}
+                <ul className="space-y-2 flex-1">
+                  {remainingLinks.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        target={link.href.startsWith('http') ? '_blank' : undefined}
+                        rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        onClick={() => handleLinkClick(link.label, link.href, cat.title)}
+                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           );
         })}

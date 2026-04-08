@@ -6,19 +6,19 @@ sidebar_position: 7
 
 :::info
 
-The [Flow Testnet Faucet](https://testnet-faucet.onflow.org/) allows users to create accounts and receive 1,000 Testnet FLOW tokens for testing and development purposes. You can also fund an existing Testnet accounts without needing to create one through the site, or through the CLI.
+The [Flow Testnet Faucet] allows users to create accounts and receive 1,000 Testnet FLOW tokens for testing and development purposes. You can also fund a current Testnet account without the need to create one through the site, or through the CLI.
 
 :::
 
-Fund a valid Testnet Flow Account using the Flow CLI.
+Fund a valid Testnet Flow Account with the Flow CLI.
 
 ```shell
 flow accounts fund [address|name]
 ```
 
-## Example Usage
+## Example usage
 
-### Fund by Address
+### Fund by address
 
 ```
 > flow accounts fund 8e94eaa81771313a
@@ -29,7 +29,7 @@ If there is an issue, please use this link instead: https://testnet-faucet.onflo
 
 ```
 
-### Fund by Account Name
+### Fund by account name
 
 ```
 > flow accounts fund testnet-account
@@ -40,7 +40,7 @@ If there is an issue, please use this link instead: https://testnet-faucet.onflo
 
 ```
 
-### Interactive Prompt
+### Interactive prompt
 
 ```
 > flow accounts fund
@@ -53,7 +53,7 @@ If there is an issue, please use this link instead: https://testnet-faucet.onflo
 
 ## Arguments
 
-### Address or Account Name (Optional)
+### Address or account name (optional)
 
 - Name: `address|name`
 - Valid Input: Flow Testnet account address or account name from `flow.json`
@@ -62,3 +62,8 @@ You can provide:
 - A Flow [account address](../../../cadence/basics/accounts.md) (prefixed with `0x` or not)
 - An account name configured in your `flow.json`
 - No argument to get an interactive prompt for account selection
+
+<!-- Relative links, will not render on page -->
+
+[Flow Testnet Faucet]: https://testnet-faucet.onflow.org/
+[account address]: ../../../cadence/basics/accounts.md

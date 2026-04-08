@@ -17,9 +17,9 @@ keywords:
 
 # EVM Quickstart
 
-Flow EVM is an EVM-equivalent blockchain that combines the advantages of Flow, including security, low-cost gas, and native VRF with compatibility with existing blockchain applications tools and contracts. If it works on another EVM-equivalent blockchain, it should work on Flow EVM!
+Flow EVM is an EVM-equivalent blockchain that combines the advantages of Flow, such as security, low-cost gas, and native VRF with compatibility with current blockchain applications tools and contracts. If it works on another EVM-equivalent blockchain, it should work on Flow EVM!
 
-This guide is a self-contained quickstart that walks you through deploying a contract on Flow EVM testnet with [Hardhat] and testing it with [testnet Flowscan].
+This guide is a self-contained quickstart that walks you through how to deploy a contract on Flow EVM testnet with [Hardhat] and test it with [testnet Flowscan].
 
 If you prefer, check out our tutorials for [Remix] and [Foundry] for information on how to deploy a contract with those platforms.
 
@@ -54,18 +54,18 @@ Flow EVM has the following public RPC nodes available:
 
 ## Objectives
 
-After completing this guide, you'll be able to:
+After you complete this guide, you'll be able to:
 
-- Fund a wallet with testnet tokens from the [Flow Faucet]
-- Deploy a contract on Flow EVM Testnet
-- Interact with a contract using [Flowscan]
-- Utilize automatically sponsored gas with the [Flow Wallet] on testnet **and mainnet**
+- Fund a wallet with testnet tokens from the [Flow Faucet].
+- Deploy a contract on Flow EVM Testnet.
+- Interact with a contract using [Flowscan].
+- Use automatically sponsored gas with the [Flow Wallet] on testnet **and mainnet**.
 
 ## Prerequisites
 
 ### Traditional cryptocurrency wallet
 
-EVM [Accounts] created by the Flow wallet have unique properties that allow for powerful features, but they do **not** have recovery phrases or private keys that can be exported in a way that's compatible with [Hardhat]. As a result, you'll need to use a traditional EOA and [MetaMask] or the wallet of your choice to deploy your contracts.
+EVM [Accounts] created by the Flow wallet have unique properties that allow for powerful features, but they do **not** have recovery phrases or private keys that you can export in a way that's compatible with [Hardhat]. As a result, you'll need to use a traditional EOA and [MetaMask] or the wallet of your choice to deploy your contracts.
 
 ## Deploy your contract
 
@@ -100,7 +100,7 @@ Open a terminal window and navigate either to the folder where you wish to creat
 
 3. Enter `.` if you ran the command from an empty folder, or enter a path.
 
-4. Choose the defaults for the remaining options, then open the project in your editor.
+4. Choose the defaults for the last options, then open the project in your editor.
 
 ### Environment setup
 
@@ -121,7 +121,7 @@ The [private key] functions the same as the recovery phrase for a wallet. Anyone
 
 ### Hardhat config
 
-We'll be using [OpenZeppelin Contracts] in the following steps:
+We'll use [OpenZeppelin Contracts] in the following steps:
 
 1. Install them and then open the project in your editor:
 
@@ -151,7 +151,7 @@ We'll be using [OpenZeppelin Contracts] in the following steps:
 
    The default config is pretty bare. We'll need to add quite a few items. We'll do these one at a time, then provide a complete copy at the end.
 
-5. Add a `networks` property containing the network information for Flow Testnet and Mainnet:
+5. Add a `networks` property that contains the network information for Flow Testnet and Mainnet:
 
    ```tsx
    networks: {
@@ -173,7 +173,7 @@ We'll be using [OpenZeppelin Contracts] in the following steps:
    }
    ```
 
-7. In it, add a property for `apiKey` and add keys for Flow Mainnet and Testnet. Note that the Etherscan API requires this to be here, but at the time of writing, API keys aren't actually needed. Any text can be used:
+7. In it, add a property for `apiKey` and add keys for Flow Mainnet and Testnet. The Etherscan API requires this to be here, but currently, API keys aren't actually needed. You can use any text:
 
    ```tsx
    apiKey: {
@@ -316,7 +316,7 @@ Deploy the contract with:
 npx hardhat ignition deploy ./ignition/modules/ClickToken.ts --network flowTestnet
 ```
 
-You should see something similar to:
+You will see something similar to:
 
 ```bash
 ✔ Confirm deploy to network flowTestnet (545)? … yes
@@ -351,7 +351,7 @@ Successfully verified contract "contracts/ClickToken.sol:ClickToken" for network
   - https://evm-testnet.flowscan.io//address/0x64366c923d5046F8417Dcd8a0Cb4a789F8722387#code
 ```
 
-## Testing the contract
+## Test the contract
 
 To test the contract:
 
@@ -360,35 +360,35 @@ To test the contract:
 
    ![read write contract](read-write.png)
 
-3. Find the `mintTo` function and expand the UI to mint yourself a few tokens. You can click the `self` button to automatically add your address without needing to copy/paste.
+3. Find the `mintTo` function and expand the UI to mint yourself a few tokens. You can click the `self` button to automatically add your address without the need to to copy and paste.
 
-4. Once you've "earned" a few tokens, use `balanceOf` to see how many tokens you have. You can also use `getAllScores` to get a list of everyone with the tokens, and how many they have.
+4. After you've "earned" a few tokens, use `balanceOf` to see how many tokens you have. You can also use `getAllScores` to get a list of everyone with the tokens, and how many they have.
 
-### Testing with free gas
+### Test with free gas
 
-If you don't have it yet, set up the [Flow Wallet], connect, and try minting some more tokens. You'll see that the wallet automatically sponsors your gas:
+If you don't have it yet, set up the [Flow Wallet], connect, and try to mint some more tokens. You'll see that the wallet automatically sponsors your gas:
 
 ![flow-wallet](sponsored-gas.png)
 
-Even better, the [Flow Wallet] is currently **sponsoring transactions on mainnet** too!
+Even better, the [Flow Wallet] currently **sponsors transactions on mainnet** too!
 
 ## Conclusion
 
 In this tutorial, you learned how to:
 
-- Fund a wallet with testnet tokens from the [Flow Faucet]
-- Deploy a contract on Flow EVM Testnet using Hardhat
+- Fund a wallet with testnet tokens from the [Flow Faucet].
+- Deploy a contract on Flow EVM Testnet with Hardhat.
 - Interact with a contract using [Flowscan]
-- Utilize automatically sponsored gas with the [Flow Wallet] on testnet and mainnet
+- Use automatically sponsored gas with the [Flow Wallet] on testnet and mainnet.
 
-You've now mastered the basics of deploying and interacting with EVM contracts on Flow. But this is just the beginning! Flow EVM's true power lies in its ability to combine the best of both worlds: EVM compatibility with Flow's native features.
+You've now mastered the basics of how to deploy and interact with EVM contracts on Flow. But this is just the beginning! Flow EVM's true power lies in its ability to combine the best of both worlds: EVM compatibility with Flow's native features.
 
-In our [Cross-VM Apps] tutorial series, you'll learn how to supercharge your EVM applications by integrating them with Flow Cadence. You'll discover how to:
+In our [Cross-VM Apps] tutorial series, you'll learn how to supercharge your EVM applications when you integrate them with Flow Cadence. You'll discover how to:
 
-- Build hybrid applications that seamlessly connect to both Flow EVM and Flow Cadence
-- Use Cadence's powerful features to enhance your EVM contracts
-- Enable multi-call contract writes with a single signature
-- Take advantage of Flow's native features like VRF and sponsored transactions
+- Build hybrid applications that seamlessly connect to both Flow EVM and Flow Cadence.
+- Use Cadence's powerful features to enhance your EVM contracts.
+- Enable multi-call contract writes with a single signature.
+- Take advantage of Flow's native features like VRF and sponsored transactions.
 
 Ready to unlock the full potential of Flow EVM? Start with our [Batched Transactions] tutorial to learn how to build your first cross-VM application.
 

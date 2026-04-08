@@ -4,13 +4,13 @@ description: How to get staking info
 sidebar_position: 6
 ---
 
-Retrieve staking information for the account on the Flow network using Flow CLI.
+Retrieve staking information for the account on the Flow network with Flow CLI.
 
 ```shell
 flow accounts staking-info <address>
 ```
 
-## Example Usage
+## Example usage
 
 ```shell
 > accounts staking-info 535b975637fb6bee --host access.testnet.nodes.onflow.org:9000
@@ -49,11 +49,11 @@ Account Delegation Info:
 - Name: `address`
 - Valid Input: Flow account address.
 
-Flow [account address](../../../cadence/basics/accounts.md) (prefixed with `0x` or not).
+Flow [account address] (prefixed with `0x` or not).
 
 ## Flags
 
-### Include Fields
+### Include fields
 
 - Flag: `--include`
 - Valid inputs: `contracts`
@@ -66,17 +66,14 @@ Specify fields to include in the result output. Applies only to the text output.
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the hostname of the Access API that will be used to execute the command. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API that will be used to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -131,9 +128,13 @@ Specify the path to the `flow.json` configuration file.
 You can use the `-f` flag multiple times to merge
 several configuration files.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
+
+<!-- Relative links, will not render on page -->
+
+[account address]: ../../../cadence/basics/accounts.md

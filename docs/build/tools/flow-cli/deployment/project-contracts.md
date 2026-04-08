@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Generate a Contract
 
-Create a new contract file using the Flow CLI:
+Create a new contract file with the Flow CLI:
 
 ```bash
 flow generate contract Foo
@@ -14,9 +14,9 @@ flow generate contract Foo
 
 This command creates `cadence/contracts/Foo.cdc` with a basic contract template and automatically adds it to your `flow.json` configuration.
 
-## Add a Contract to Configuration
+## Add a contract to configuration
 
-If you have an existing contract file, add it to your project configuration using the CLI:
+If you have a contract file, add it to your project configuration with the CLI:
 
 ```bash
 flow config add contract
@@ -24,8 +24,8 @@ flow config add contract
 
 Follow the interactive prompts:
 
-1. **Contract name**: Enter the contract name (e.g., `Foo`)
-2. **Contract filename**: Enter the path to your contract file (e.g., `./cadence/contracts/Foo.cdc`)
+1. **Contract name**: Enter the contract name (for exxample, `Foo`)
+2. **Contract filename**: Enter the path to your contract file (for example, `./cadence/contracts/Foo.cdc`)
 3. **Add aliases**: Optionally add network aliases for dependencies
 
 You can also use flags to specify all details at once:
@@ -46,9 +46,9 @@ flow config add contract \
 }
 ```
 
-## Configure Contract Deployment Targets
+## Configure contract deployment targets
 
-Once a contract is added to your configuration, configure deployment targets using the CLI:
+After a contract is added to your configuration, configure deployment targets with the CLI:
 
 ```bash
 flow config add deployment
@@ -56,9 +56,9 @@ flow config add deployment
 
 Follow the interactive prompts:
 
-1. **Network**: Select the network (e.g., `testnet`, `mainnet`, `emulator`)
-2. **Account**: Select the account to deploy to (e.g., `my-testnet-account`)
-3. **Contract**: Select the contract to deploy (e.g., `Foo`)
+1. **Network**: Select the network (for example, `testnet`, `mainnet`, `emulator`)
+2. **Account**: Select the account to deploy to (for example, `my-testnet-account`)
+3. **Contract**: Select the contract to deploy (for example, `Foo`)
 4. **Deploy more contracts**: Choose `yes` to add additional contracts to the same deployment
 
 You can also use flags to specify all details:
@@ -82,7 +82,7 @@ flow config add deployment \
 }
 ```
 
-## Add Multiple Contracts to a Deployment
+## Add multiple contracts to a deployment
 
 To deploy multiple contracts to the same account, run the deployment configuration command multiple times or use the interactive prompt to add more contracts:
 
@@ -102,7 +102,7 @@ This adds `Bar` to the existing deployment:
 }
 ```
 
-## Remove Contracts and Deployments
+## Remove contracts and deployments
 
 Remove contracts or deployments using the CLI:
 
@@ -116,9 +116,14 @@ flow config remove deployment testnet my-testnet-account Foo
 
 ## Best Practices
 
-- **Use CLI commands**: Always use `flow config add` and `flow config remove` instead of manually editing `flow.json`
+- **Use CLI commands**: Always use `flow config add` and `flow config remove` rather than manually edit `flow.json`
 - **Generate contracts**: Use `flow generate contract` to create new contracts with proper structure
 - **Verify configuration**: Use `flow accounts list` and check your `flow.json` to verify your configuration
 - **Network-specific deployments**: Configure separate deployments for each network (emulator, testnet, mainnet)
 
-For more information, see [Manage Configuration](../flow.json/manage-configuration.md) and [Production Deployment](../../../../blockchain-development-tutorials/cadence/getting-started/production-deployment.md).
+For more information, see [Manage Configuration] and [Production Deployment].
+
+<!-- Relative links, will not render on page -->
+
+[Manage Configuration]: ../flow.json/manage-configuration.md
+[Production Deployment]: ../../../../blockchain-development-tutorials/cadence/getting-started/production-deployment.md

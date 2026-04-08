@@ -10,7 +10,7 @@ The Flow CLI provides a command to fetch any account by its address from the Flo
 flow accounts get <address>
 ```
 
-## Example Usage
+## Example usage
 
 ```shell
 flow accounts get 0xf8d6e0586b0a20c7
@@ -45,11 +45,11 @@ Contract: 'FlowStorageFees'
 - Name: `address`
 - Valid Input: Flow account address
 
-Flow [account address](../../../cadence/basics/accounts.md) (prefixed with `0x` or not).
+Flow [account address] (prefixed with `0x` or not).
 
 ## Flags
 
-### Include Fields
+### Include fields
 
 - Flag: `--include`
 - Valid inputs: `contracts`
@@ -62,17 +62,14 @@ Specify fields to include in the result output. Applies only to the text output.
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the hostname of the Access API that will be used to execute the command. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API that will be used to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -105,7 +102,7 @@ Specify the format of the command results.
 - Short Flag: `-s`
 - Valid inputs: a path in the current filesystem.
 
-Specify the filename where you want the result to be saved
+Specify the filename where you want the result to be saved.
 
 ### Log
 
@@ -124,12 +121,16 @@ Specify the log level. Control how much output you want to see during command ex
 - Default: `flow.json`
 
 Specify the path to the `flow.json` configuration file.
-You can use the `-f` flag multiple times to merge
-several configuration files.
 
-### Version Check
+You can use the `-f` flag multiple times to merge several configuration files.
+
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
+
+<!-- Relative links, will not render on page -->
+
+[account address]: ../../../cadence/basics/accounts.md

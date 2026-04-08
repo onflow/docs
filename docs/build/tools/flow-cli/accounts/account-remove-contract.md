@@ -4,13 +4,13 @@ sidebar_position: 5
 ---
 _This feature is only found in the Emulator. You **cannot** remove a contract on Testnet or Mainnet._
 
-Remove an existing contract deployed to a Flow account using the Flow CLI.
+Remove a contract deployed to a Flow account with the Flow CLI.
 
 ```shell
 flow accounts remove-contract <name>
 ```
 
-## Example Usage
+## Example usage
 
 ```shell
 > flow accounts remove-contract FungibleToken
@@ -31,7 +31,7 @@ Key 0	Public Key		 640a5a359bf3536d15192f18d872d57c98a96cb871b92b70cecb0739c2d5c
 
 Contracts Deployed: 0
 ```
-**Testnet Example**
+**Testnet example**
 ```
 > flow accounts remove-contract FungibleToken --signer alice --network testnet
 
@@ -72,7 +72,7 @@ Name of the contract as it is defined in the contract source code.
 
 Specify the name of the account that will be used to sign the transaction.
 
-### Include Fields
+### Include fields
 
 - Flag: `--include`
 - Valid inputs: `contracts`
@@ -86,17 +86,14 @@ Specify fields to include in the result output. Applies only to the text output.
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the hostname of the Access API that will be used to execute the command. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API that will be used to create a secure GRPC client when executing the command.
 
 ### Network
 
@@ -147,9 +144,7 @@ Specify the log level. Control how much output you want to see during command ex
 - Valid inputs: a path in the current filesystem
 - Default: `flow.json`
 
-Specify the path to the `flow.json` configuration file. 
-You can use the `-f` flag multiple times to merge
-several configuration files.
+Specify the path to the `flow.json` configuration file.  You can use the `-f` flag multiple times to merge several configuration files.
 
 ### Version Check
 
@@ -157,3 +152,5 @@ several configuration files.
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
+
+

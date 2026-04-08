@@ -3,18 +3,18 @@ title: Update a Contract
 sidebar_position: 4
 ---
 
-Update an existing contract deployed to a Flow account using the Flow CLI.
+Update a contract deployed to a Flow account with the Flow CLI.
 
 ```shell
 flow accounts update-contract <filename> [<argument> <argument>...] [flags]
 ```
 
-⚠️  Deprecation notice: using name argument in update contract command will be deprecated soon.
+⚠️  Deprecation notice: We will depreate the name argument in update contract command soon.
 ```shell
 flow accounts update-contract <name> <filename> [<argument> <argument>...] [flags]
 ```
 
-## Example Usage
+## Example usage
 
 ```shell
 > flow accounts update-contract ./FungibleToken.cdc
@@ -36,7 +36,7 @@ Key 0	Public Key		 640a5a359bf3536d15192f18d872d57c98a96cb871b92b70cecb0739c2d5c
 Contracts Deployed: 1
 Contract: 'FungibleToken'
 ```
-**Testnet Example**
+**Testnet example**
 ```
 > flow accounts update-contract ./FungibleToken.cdc --signer alice --network testnet
 
@@ -73,14 +73,13 @@ Name of the contract as it is defined in the contract source code.
 - Name: `filename`
 - Valid inputs: Any filename and path valid on the system.
 
-Filename of the file containing contract source code.
+Filename of the file that contains contract source code.
 
 ### Arguments
 - Name: `argument`
-- Valid inputs: valid [cadence values](https://cadencelang.dev/docs/1.0/json-cadence-spec)
-  matching argument type in transaction code.
+- Valid inputs: valid [cadence values] that match thr argument type in transaction code.
 
-Input arguments values matching corresponding types in the source code and passed in the same order.
+Input arguments values that match corresponding types in the source code and passed in the same order.
 
 Example:
 ```shell
@@ -108,7 +107,7 @@ Specify the name of the account that will be used to sign the transaction.
 - Flag: `--show-diff`
 - Valid inputs: `true`, `false`
 
-Shows a diff to approve before updating between deployed contract and new contract updates.
+Shows a diff to approve before you update between deployed contract and new contract updates.
 
 ### Arguments JSON
 
@@ -117,8 +116,8 @@ Shows a diff to approve before updating between deployed contract and new contra
 - Example: `flow accounts update-contract ./tx.cdc '[{"type": "String", "value": "Hello"}]'`
 
 Arguments passed to the Cadence transaction in Cadence JSON format.
-Cadence JSON format contains `type` and `value` keys and is
-[documented here](https://cadencelang.dev/docs/1.0/json-cadence-spec).
+
+Cadence JSON format contains `type` and `value` keys and is [documented here].
 
 ### Include Fields
 
@@ -133,17 +132,14 @@ Specify fields to include in the result output. Applies only to the text output.
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the hostname of the Access API that will be used to execute the command. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API that will be used to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -195,8 +191,8 @@ Specify the log level. Control how much output you want to see during command ex
 - Default: `flow.json`
 
 Specify the path to the `flow.json` configuration file.
-You can use the `-f` flag multiple times to merge
-several configuration files.
+
+You can use the `-f` flag multiple times to merge several configuration files.
 
 ### Version Check
 
@@ -204,3 +200,8 @@ several configuration files.
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
+
+<!-- Relative links, will not render on page -->
+
+[cadence values]: https://cadencelang.dev/docs/1.0/json-cadence-spec
+[documented here]: https://cadencelang.dev/docs/1.0/json-cadence-spec

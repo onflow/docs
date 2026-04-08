@@ -309,25 +309,52 @@ All UI components in `@onflow/react-sdk` are styled using [Tailwind CSS](https:/
 
 You can customize the look and feel of the kit by providing a custom theme to the `FlowProvider` via the `theme` prop. This allows you to override default colors and styles to better match your app's branding.
 
+### Theme Colors
+
+The theme object accepts a `colors` property with the following options:
+
+| Property | Description | Default |
+|----------|-------------|---------|
+| `primary` | Primary action color (CTAs, main buttons) | `flow-bg-slate-900 dark:flow-bg-white` |
+| `primaryForeground` | Text color on primary backgrounds | `flow-text-white dark:flow-text-slate-900` |
+| `secondary` | Secondary action color (secondary buttons) | `flow-bg-slate-100 dark:flow-bg-slate-800` |
+| `secondaryForeground` | Text color on secondary backgrounds | `flow-text-slate-900 dark:flow-text-slate-100` |
+| `accent` | Accent color for highlights, selected states | `flow-bg-slate-800 dark:flow-bg-slate-200` |
+| `background` | Default background color (cards, modals) | `flow-bg-white dark:flow-bg-slate-800` |
+| `foreground` | Default text color | `flow-text-slate-900 dark:flow-text-slate-100` |
+| `muted` | Muted/subtle background color | `flow-bg-slate-100 dark:flow-bg-slate-700` |
+| `mutedForeground` | Muted text color | `flow-text-slate-500 dark:flow-text-slate-400` |
+| `border` | Border color | `flow-border-slate-200 dark:flow-border-slate-700` |
+| `success` | Success state color | `flow-text-green-600 dark:flow-text-green-400` |
+| `error` | Error state color | `flow-text-red-600 dark:flow-text-red-400` |
+| `link` | Link text color | `flow-text-slate-900 dark:flow-text-slate-100` |
+
+### Example
+
 ```tsx
 import { FlowProvider } from "@onflow/react-sdk"
 
-<FlowProvider
-  config={...}
-  theme={{
-    colors: {
-      primary: {
-        background: "bg-blue-600 dark:bg-blue-400",
-        text: "text-white dark:text-blue-900",
-        hover: "hover:bg-blue-700 dark:hover:bg-blue-300",
-      },
-      // ...other color overrides
-    }
-  }}
->
-  <App />
-</FlowProvider>
+const customTheme = {
+  colors: {
+    primary: "flow-bg-purple-600 dark:flow-bg-purple-400",
+    primaryForeground: "flow-text-white dark:flow-text-purple-900",
+    secondary: "flow-bg-emerald-500 dark:flow-bg-emerald-400",
+    secondaryForeground: "flow-text-white dark:flow-text-emerald-900",
+    accent: "flow-bg-purple-700 dark:flow-bg-purple-300",
+    border: "flow-border-purple-200 dark:flow-border-purple-700",
+  }
+}
+
+function App() {
+  return (
+    <FlowProvider config={...} theme={customTheme}>
+      <MyApp />
+    </FlowProvider>
+  )
+}
 ```
+
+You only need to specify the colors you want to override—any unspecified colors will use the default values.
 
 ---
 

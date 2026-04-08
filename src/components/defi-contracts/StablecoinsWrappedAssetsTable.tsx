@@ -25,7 +25,7 @@ const mainnetContracts: ContractData[] = [
       'https://www.flowscan.io/ft/token/A.1654653399040a61.FlowToken.Vault',
   },
   {
-    name: 'USDC (stgUSDC)',
+    name: 'USDC',
     evmAddress: '0xF1815bd50389c46847f0Bda824eC8da914045D14',
     cadenceAddress: '0x1e4aa0b87d10b141',
     cadenceName: 'EVMVMBridgedToken_f1815bd50389c46847f0bda824ec8da914045d14',
@@ -35,14 +35,24 @@ const mainnetContracts: ContractData[] = [
       'https://flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_f1815bd50389c46847f0bda824ec8da914045d14.Vault',
   },
   {
-    name: 'USDT (stgUSDT)',
-    evmAddress: '0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8',
+    name: 'PYUSD0',
+    evmAddress: '0x99aF3EeA856556646C98c8B9b2548Fe815240750',
     cadenceAddress: '0x1e4aa0b87d10b141',
-    cadenceName: 'EVMVMBridgedToken_674843c06ff83502ddb4d37c2e09c01cda38cbc8',
+    cadenceName: 'EVMVMBridgedToken_99af3eea856556646c98c8b9b2548fe815240750',
     evmUrl:
-      'https://evm.flowscan.io/token/0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8',
+      'https://evm.flowscan.io/token/0x99aF3EeA856556646C98c8B9b2548Fe815240750',
     cadenceUrl:
-      'https://flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_674843c06ff83502ddb4d37c2e09c01cda38cbc8.Vault',
+      'https://flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_99af3eea856556646c98c8b9b2548fe815240750.Vault',
+  },
+  {
+    name: 'MOET',
+    evmAddress: '0x213979bB8A9A86966999b3AA797C1fcf3B967ae2',
+    cadenceAddress: '0x6b00ff876c299c61',
+    cadenceName: 'MOET',
+    evmUrl:
+      'https://evm.flowscan.io/token/0x213979bB8A9A86966999b3AA797C1fcf3B967ae2',
+    cadenceUrl:
+      'https://flowscan.io/ft/token/A.6b00ff876c299c61.MOET.Vault',
   },
   {
     name: 'USDF (USD Flow)',
@@ -65,6 +75,16 @@ const mainnetContracts: ContractData[] = [
       'https://flowscan.io/ft/token/A.f1ab99c82dee3526.USDCFlow.Vault',
   },
   {
+    name: 'USDT',
+    evmAddress: '0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8',
+    cadenceAddress: '0x1e4aa0b87d10b141',
+    cadenceName: 'EVMVMBridgedToken_674843c06ff83502ddb4d37c2e09c01cda38cbc8',
+    evmUrl:
+      'https://evm.flowscan.io/token/0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8',
+    cadenceUrl:
+      'https://flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_674843c06ff83502ddb4d37c2e09c01cda38cbc8.Vault',
+  },
+  {
     name: 'stFlow (Increment Staked FLOW)',
     evmAddress: '0x5598c0652B899EB40f169Dd5949BdBE0BF36ffDe',
     cadenceAddress: '0xd6f80565193ad727',
@@ -83,6 +103,16 @@ const mainnetContracts: ContractData[] = [
       'https://evm.flowscan.io/token/0x1b97100eA1D7126C4d60027e231EA4CB25314bdb',
     cadenceUrl:
       'https://flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_1b97100ea1d7126c4d60027e231ea4cb25314bdb.Vault',
+  },
+  {
+    name: 'WBTC',
+    evmAddress: '0x717DAE2BaF7656BE9a9B01deE31d571a9d4c9579',
+    cadenceAddress: '0x1e4aa0b87d10b141',
+    cadenceName: 'EVMVMBridgedToken_717dae2baf7656be9a9b01dee31d571a9d4c9579',
+    evmUrl:
+      'https://evm.flowscan.io/token/0x717DAE2BaF7656BE9a9B01deE31d571a9d4c9579',
+    cadenceUrl:
+      'https://www.flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_717dae2baf7656be9a9b01dee31d571a9d4c9579.Vault',
   },
   {
     name: 'WETH',

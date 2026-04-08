@@ -2,29 +2,33 @@
 title: Signing and Verifying Arbitrary Data
 ---
 
-## Signing Arbitrary Data
+## Signing and Verifying Arbitrary Data
 
-Cryptographic signatures are a key part of the blockchain. They are used to prove ownership of an address without exposing its private key. While primarily used for signing transactions, cryptographic signatures can also be used to sign arbitrary messages.
+Cryptographic signatures are a key part of the blockchain. They prove ownership of an address without exposing its private key. While primarily used to sign transactions, you can also use cryptographic signatures to sign arbitrary messages.
 
-FCL has a feature that lets you send arbitrary data to a configured wallet/service where the user may approve signing it with their private key/s.
+FCL has a feature that lets you send arbitrary data to a configured wallet or service. The user may approve signing it with their private keys.
 
-## Verifying User Signatures
+## Verify user signatures
 
 What makes message signatures more interesting is that we can use Flow blockchain to verify the signatures. Cadence has a built-in function  `publicKey.verify` that will verify a signature against a Flow account given the account address.
 
-FCL includes a utility function, `AppUtils.verifyUserSignatures`, for verifying one or more signatures against an account's public key on the Flow blockchain.
+FCL includes a utility function, `AppUtils.verifyUserSignatures`, that verifies one or more signatures against an account's public key on the Flow blockchain.
 
 You can use both in tandem to prove a user is in control of a private key or keys.
 
-This enables cryptographically-secure login flow using a message-signing-based authentication mechanism with a user’s public address as their identifier.
+This allows cryptographically-secure login flow with a message-signing-based authentication mechanism with a user’s public address as their identifier.
 
 ---
 
 ## `currentUser.signUserMessage()`
 
-A method to use allowing the user to personally sign data via FCL Compatible Wallets/Services.
+A method that allows the user to personally sign data via FCL Compatible Wallets or Services.
 
-> :Note: **Requires authentication/configuration with an authorized signing service.**
+:::info
+
+> **Requires authentication/configuration with an authorized signing service.**
+
+:::
 
 ### Arguments
 
@@ -36,7 +40,7 @@ A method to use allowing the user to personally sign data via FCL Compatible Wal
 
 | Type    | Description                                                                                                                                                                               |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Array` | An Array of [CompositeSignatures](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-provider-spec/draft-v2.md#compositesignature): {`addr`, `keyId`, `signature`} |
+| `Array` | An Array of [CompositeSignatures]: {`addr`, `keyId`, `signature`} |
 
 #### Usage
 
@@ -57,11 +61,13 @@ const signMessage = async () => {
 
 ## `AppUtils.verifyUserSignatures`
 
-#### Note
+:::info
 
 ⚠️ `fcl.config.flow.network` or options override is required to use this API. See [FCL Configuration](./configure-fcl.md).
 
-A method allowing applications to cryptographically verify the ownership of a Flow account by verifying a message was signed by a user's private key/s. This is typically used with the response from `currentUser.signUserMessage`.
+A method to verify that a user's private keys signed a message, which allows applications to cryptographically verify Flow account ownership. This is typically used with the response from `currentUser.signUserMessage`.
+
+:::
 
 ### Arguments
 
@@ -107,3 +113,8 @@ A method allowing applications to cryptographically verify the ownership of a Fl
 Use cases include cryptographic login, message validation, verifiable credentials, and others.
 
 ---
+
+<!-- Reference-style links, will not render on page. -->
+
+[FCL Configuration]: ./configure-fcl.md
+[CompositeSignatures]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-provider-spec/draft-v2.md#compositesignature
