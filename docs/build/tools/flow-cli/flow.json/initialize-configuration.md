@@ -4,9 +4,9 @@ description: How to initialize Flow configuration using CLI
 sidebar_position: 1
 ---
 
-The `flow init` command creates a new Flow project with a basic `flow.json` configuration file. This is the first step in setting up any Flow project.
+The `flow init` command creates a new Flow project with a basic `flow.json` configuration file. This is the first step to set up any Flow project.
 
-## Basic Usage
+## Basic usage
 
 ```shell
 flow init
@@ -14,15 +14,15 @@ flow init
 
 This command will:
 
-- Create a new `flow.json` configuration file
-- Set up default networks (emulator, testnet, mainnet)
-- Create an emulator service account
-- Generate a basic project structure with `cadence/` directories
-- Give you options for project scaffolding
+- Create a new `flow.json` configuration file.
+- Set up default networks (emulator, testnet, mainnet).
+- Create an emulator service account.
+- Generate a basic project structure with `cadence/` directories.
+- Give you options for project scaffolding.
 
-## Project Structure
+## Project structure
 
-After running `flow init`, you'll have:
+After you run `flow init`, you'll have:
 
 ```
 my-project/
@@ -35,9 +35,9 @@ my-project/
     └── tests/
 ```
 
-## Configuration Only
+## Configuration only
 
-If you only want to generate the `flow.json` file without creating the full project structure, use the `--config-only` flag:
+If you only want to generate the `flow.json` file, but not create the full project structure, use the `--config-only` flag:
 
 ```shell
 flow init --config-only
@@ -45,11 +45,11 @@ flow init --config-only
 
 This is useful when:
 
-- You already have a project structure
-- You want to add Flow configuration to an existing project
-- You're setting up configuration for a specific environment
+- You already have a project structure.
+- You want to add Flow configuration to a current project.
+- You want to set up configuration for a specific environment.
 
-## Global Configuration
+## Global configuration
 
 You can create a global `flow.json` file that applies to all Flow projects on your system:
 
@@ -67,9 +67,9 @@ flow init --global
 1. Local `flow.json` (highest priority)
 2. Global `flow.json` (lowest priority)
 
-Local configuration files will override global settings for overlapping properties.
+Local configuration files will override global settings for properties that overlap.
 
-## Error Handling
+## Error handling
 
 If a `flow.json` file already exists, you'll see this error:
 
@@ -79,13 +79,13 @@ If a `flow.json` file already exists, you'll see this error:
 
 **Solutions:**
 
-- Delete the existing `flow.json` file first
-- Initialize in a different directory
-- Use `--config-only` to create a new config in a different location
+- Delete the current `flow.json` file first.
+- Initialize in a different directory.
+- Use `--config-only` to create a new config in a different location.
 
 ## Flags
 
-### Configuration Only
+### Configuration only
 
 ```shell
 flow init --config-only
@@ -93,7 +93,7 @@ flow init --config-only
 
 Creates only the `flow.json` file without project structure.
 
-### Global Flags
+### Global flags
 
 The following global flags are also available:
 
@@ -112,7 +112,7 @@ flow init --yes
 
 ## Next Steps
 
-After initializing your configuration:
+After you initialize the configuration:
 
 1. **Review the generated `flow.json`** - Understand the default setup
 2. **Add your contracts** - Use `flow config add contract`
@@ -122,6 +122,12 @@ After initializing your configuration:
 
 ## Related Commands
 
-- [`flow config add`](./manage-configuration.md) - Add configuration items
-- [`flow accounts create`](../accounts/create-accounts.md) - Create new accounts
-- [`flow project deploy`](../deployment/deploy-project-contracts.md) - Deploy contracts
+- [`flow config add`] - Add configuration items
+- [`flow accounts create`] - Create new accounts
+- [`flow project deploy`] - Deploy contracts
+
+<!-- Reference-style links, will not render on page. -->
+
+[`flow config add`]: ./manage-configuration.md
+[`flow project deploy`]: ../deployment/deploy-project-contracts.md
+[`flow accounts create`]: ../accounts/create-accounts.md

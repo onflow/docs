@@ -10,9 +10,9 @@ The Flow CLI provides a command to decode encoded public account keys.
 flow keys decode <rlp|pem> <encoded public key>
 ```
 
-## Example Usage
+## Example usage
 
-### Decode RLP Encoded Public Key
+### Decode RLP encoded public key
 ```shell
 > flow keys decode rlp f847b84084d716c14b051ad6b001624f738f5d302636e6b07cc75e4530af7776a4368a2b586dbefc0564ee28384c2696f178cbed52e62811bcc9ecb59568c996d342db2402038203e8
 
@@ -23,7 +23,7 @@ Weight 			 1000
 Revoked 		 false
 ```
 
-### Decode PEM Encoded Public Key From File
+### Decode PEM encoded public key from file
 ```shell
 > flow keys decode pem --from-file key.pem
 
@@ -41,16 +41,15 @@ Revoked 		 false
 
 First argument specifies a valid encoding of the public key provided.
 
-### Optional: Public Key
+### Optional: public key
 - Name: `encoded public key`
 - Valid inputs: valid encoded key content
 
-Optional second argument provides content of the encoded public key. 
-If this argument is omitted the `--from-file` must be used instead.  
+Optional second argument provides content of the encoded public key. If this argument is omitted, the `--from-file` must be used instead.  
 
 ## Flags
 
-### From File
+### From file
 
 - Flag: `--from-file`
 - Valid inputs: valid filepath
@@ -79,9 +78,9 @@ Specify the format of the command results.
 - Short Flag: `-s`
 - Valid inputs: a path in the current filesystem.
 
-Specify the filename where you want the result to be saved
+Specify the filename where you want the result to be saved.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`
