@@ -11,7 +11,7 @@ any Flow Access API.
 flow transactions send <code filename> [<argument> <argument>...] [flags]
 ```
 
-## Example Usage
+## Example use
 
 ```shell
 > flow transactions send ./tx.cdc "Hello"
@@ -74,26 +74,23 @@ JSON arguments from a file example:
 
 ## Arguments
 
-### Code Filename
+### Code filename
 
 - Name: `code filename`
 - Valid inputs: Any filename and path valid on the system.
 
-The first argument is a path to a Cadence file containing the
-transaction to be executed.
+The first argument is a path to a Cadence file that contains the transaction to be executed.
 
 ### Arguments
 
 - Name: `argument`
-- Valid inputs: valid [cadence values](https://cadencelang.dev/docs/1.0/json-cadence-spec)
-  matching argument type in transaction code.
+- Valid inputs: valid [cadence values] that matches the argument type in transaction code.
 
-Input arguments values matching corresponding types in the source code and passed in the same order.
-You can pass a `nil` value to optional arguments by sending the transaction like this: `flow transactions send tx.cdc nil`.
+Input arguments values that match types which correspond in the source code and passed in the same order. to can pass a `nil` value to optional arguments, send the transaction like this: `flow transactions send tx.cdc nil`.
 
 ## Flags
 
-### Include Fields
+### Include fields
 
 - Flag: `--include`
 - Valid inputs: `code`, `payload`
@@ -112,7 +109,7 @@ Specify fields to include in the result output. Applies only to the text output.
 
 ⚠️ No longer supported: all transactions will provide result.
 
-### Exclude Fields
+### Exclude fields
 
 - Flag: `--exclude`
 - Valid inputs: `events`
@@ -122,7 +119,7 @@ Specify fields to exclude from the result output. Applies only to the text outpu
 ### Signer
 
 - Flag: `--signer`
-- Valid inputs: the name of an account defined in the configuration (`flow.json`)
+- Valid inputs: the name of an account defined in the configuration (`flow.json`).
 
 Specify the name of the account that will be used to sign the transaction.
 
@@ -131,21 +128,21 @@ Specify the name of the account that will be used to sign the transaction.
 - Flag: `--proposer`
 - Valid inputs: the name of an account defined in the configuration (`flow.json`)
 
-Specify the name of the account that will be used as proposer in the transaction.
+Specify the name of the account that will be used as the proposer in the transaction.
 
 ### Payer
 
 - Flag: `--payer`
 - Valid inputs: the name of an account defined in the configuration (`flow.json`)
 
-Specify the name of the account that will be used as payer in the transaction.
+Specify the name of the account that will be used as the payer in the transaction.
 
 ### Authorizer
 
 - Flag: `--authorizer`
 - Valid inputs: the name of a single or multiple comma-separated accounts defined in the configuration (`flow.json`)
 
-Specify the name of the account(s) that will be used as authorizer(s) in the transaction. If you want to provide multiple authorizers separate them using commas (e.g. `alice,bob`)
+Specify the name of the account(s) that will be used as authorizer(s) in the transaction. If you want to provide multiple authorizers, separate them with commas (for example, `alice,bob`)
 
 ### Arguments JSON
 
@@ -154,8 +151,8 @@ Specify the name of the account(s) that will be used as authorizer(s) in the tra
 - Example: `flow transactions send ./tx.cdc '[{"type": "String", "value": "Hello World"}]'`
 
 Arguments passed to the Cadence transaction in Cadence JSON format.
-Cadence JSON format contains `type` and `value` keys and is
-[documented here](https://cadencelang.dev/docs/1.0/json-cadence-spec).
+The Cadence JSON format contains `type` and `value` keys and is
+[documented here].
 
 ### Compute Limit
 
@@ -171,17 +168,14 @@ Specify the compute unit (gas) limit for this transaction.
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the hostname of the Access API that will be used to execute the command. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API that will be used to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -214,7 +208,7 @@ Specify the format of the command results.
 - Short Flag: `-s`
 - Valid inputs: a path in the current filesystem.
 
-Specify the filename where you want the result to be saved
+Specify the filename where you want to save the result.
 
 ### Log
 
@@ -232,13 +226,16 @@ Specify the log level. Control how much output you want to see during command ex
 - Valid inputs: a path in the current filesystem.
 - Default: `flow.json`
 
-Specify the path to the `flow.json` configuration file.
-You can use the `-f` flag multiple times to merge
-several configuration files.
+Specify the path to the `flow.json` configuration file. You can use the `-f` flag multiple times to merge several configuration files.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
+
+<!-- Reference-style links, will not render on page. -->
+
+[cadence values]: https://cadencelang.dev/docs/1.0/json-cadence-spec
+[documented here]: https://cadencelang.dev/docs/1.0/json-cadence-spec

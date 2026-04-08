@@ -4,8 +4,7 @@ description: How to decode a Flow transaction from the command line
 sidebar_position: 7
 ---
 
-The Flow CLI provides a command to decode a transaction
-from RLP in a file. It uses same transaction format as get command
+The Flow CLI provides a command to decode a transaction from RLP in a file. It uses same transaction format as get command
 
 ```shell
 flow transactions decode <file>
@@ -42,11 +41,11 @@ Payload (hidden, use --include payload)
 - Name: `<file_name>`
 - Valid Input: file name.
 
-The first argument is the filename containing the transaction RLP.
+The first argument is the filename that contains the transaction RLP.
 
 ## Flags
     
-### Include Fields
+### Include fields
 
 - Flag: `--include`
 - Valid inputs: `code`, `payload`, `signatures`
@@ -69,7 +68,7 @@ Specify the format of the command results.
 
 Specify the filename where you want the result to be saved
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`

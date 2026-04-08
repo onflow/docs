@@ -6,26 +6,23 @@ sidebar_position: 4
 
 **Simple Transactions**
 
-Sending a transaction using the Flow CLI can simply be
-achieved by using the [send command documented here](./send-transactions.md).
+To send a transaction with the Flow CLI use the [send command documented here].
 
 **Complex Transactions**
 
-If you would like to build more complex transactions the Flow CLI provides
-commands to build, sign and send transactions allowing you to specify different
-authorizers, signers and proposers.
+If you would like to build more complex transactions the Flow CLI provides commands to build, sign and send transactions that allow you to specify different authorizers, signers and proposers.
 
-The process of sending a complex transactions includes three steps:
+To send a complex transactions includes three steps:
 
-1. [build a transaction](./build-transactions.md)
-2. [sign the built transaction](./sign-transaction.md)
-3. [send signed transaction](./send-signed-transactions.md)
+1. [build a transaction]
+2. [sign the built transaction]
+3. [send signed transaction]
 
 Read more about each command flags and arguments in the above links.
 
 ## Examples
 
-We will describe common examples for complex transactions. All examples are using an [example configuration](./complex-transactions.md#configuration).
+We will describe common examples for complex transactions. All examples use an [example configuration].
 
 ### Single payer, proposer and authorizer
 
@@ -65,7 +62,7 @@ transaction {
 
 ### Single payer and proposer, multiple authorizers
 
-A transaction that declares same payer and proposer but multiple authorizers each required to sign the transaction. Please note that the order of signing is important, and [the payer must sign last](../../../cadence/basics/transactions.md#payer-signs-last).
+A transaction that declares same payer and proposer but multiple authorizers each required to sign the transaction. The order of signing is important, and [the payer must sign last].
 
 Build the transaction:
 
@@ -114,8 +111,7 @@ transaction {
 
 ### Different payer, proposer and authorizer
 
-A transaction that declares different payer, proposer and authorizer each signing separately.
-Please note that the order of signing is important, and [the payer must sign last](../../../cadence/basics/transactions.md#payer-signs-last).
+A transaction that declares different payer, proposer and authorizer each signing separately. The order of signing is important, and [the payer must sign last].
 
 Build the transaction:
 
@@ -208,7 +204,7 @@ transaction {
 
 ### Configuration
 
-This is an example configuration using mock values:
+This is an example configuration that uses mock values:
 
 ```json
 {
@@ -238,3 +234,12 @@ This is an example configuration using mock values:
     ...
 }
 ```
+
+<!-- Reference-style links, will not render on page. -->
+
+[send command documented here]: ./send-transactions.md
+[build a transaction]: ./build-transactions.md
+[sign the built transaction]: ./sign-transaction.md
+[send signed transaction]: ./send-signed-transactions.md
+[example configuration]: ./complex-transactions.md#configuration
+[the payer must sign last]: ../../../cadence/basics/transactions.md#payer-signs-last
