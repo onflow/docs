@@ -1,8 +1,19 @@
+# developers.flow.com robots.txt
 # algolia: 98E1096D4FD67E70
+#
+# Content Signals Policy (contentsignals.org, 2025) — explicitly permit
+# search indexing, live AI retrieval (ChatGPT / Claude / Perplexity / etc.
+# citation), and AI training on all content. Flow developer docs are
+# open source and intended to be maximally discoverable by humans and
+# AI agents.
 
-# Allow all bots
 User-agent: *
-Disallow:
+# Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
 
-# Sitemap
 Sitemap: https://developers.flow.com/sitemap.xml
+
+# Machine-readable AI indexes (complementary, non-standard):
+#   Curated index:   https://developers.flow.com/llms.txt
+#   Full corpus:     https://developers.flow.com/llms-full.txt
+#   Companion site:  https://cadence-lang.org/llms.txt
