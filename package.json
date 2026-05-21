@@ -41,6 +41,7 @@
     "@tailwindcss/typography": "0.5.19",
     "autoprefixer": "10.4.21",
     "clsx": "^2.1.1",
+    "docusaurus-plugin-copy-page-button": "^0.6.1",
     "docusaurus-theme-search-typesense": "^0.25.0",
     "dotenv": "^17.2.3",
     "eslint-config-prettier": "^10.1.8",

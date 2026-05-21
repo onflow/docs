@@ -235,6 +235,8 @@ const config = {
     ],
   ],
 
+  plugins: ['docusaurus-plugin-copy-page-button'],
+
   themes: [hasTypesense && 'docusaurus-theme-search-typesense'].filter(Boolean),
 
   themeConfig:
