@@ -70,8 +70,11 @@ Launch an access node using QuickNode
 
 [https://www.quicknode.com/chains/flow](https://www.quicknode.com/chains/flow)
 
-:::
+:::info
 
+Launch an access node using GetBlock
+
+[https://www.getblock.io/nodes/flow/](https://getblock.io/nodes/flow/)
 
 :::info
 
