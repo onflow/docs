@@ -147,7 +147,7 @@ docker run --rm \
 	--ingress-addr=0.0.0.0:9000 \
 	--admin-addr=0.0.0.0:9002 \
 	--bind 0.0.0.0:3569 \
-	--access-node-ids=4e17496619df8bb4dcd579c252d9fb026e54995db0dc6825bdcd27bd3288a990 \
+	--access-node-ids=4e17496619df8bb4dcd579c252d9fb026e54995db0dc6825bdcd27bd3288a990,c0710209b76bd840f0f4c1fb66f6863a712581f39b5b09b96c91e50a3f206c0e,1f46b4d23c7557e7b3c21f85aebddcb7bcda7cc4d589732ce53087cb1b5faf8e \
 	--gossipsub-peer-scoring-enabled=false  \
 	--gossipsub-peer-gater-enabled=true \
 	--loglevel=error
@@ -169,7 +169,7 @@ docker run --rm \
 	--secretsdir=/data/secrets \
 	--admin-addr=0.0.0.0:9002 \
 	--bind 0.0.0.0:3569 \
-	--access-node-ids=4e17496619df8bb4dcd579c252d9fb026e54995db0dc6825bdcd27bd3288a990 \
+	--access-node-ids=4e17496619df8bb4dcd579c252d9fb026e54995db0dc6825bdcd27bd3288a990,c0710209b76bd840f0f4c1fb66f6863a712581f39b5b09b96c91e50a3f206c0e,1f46b4d23c7557e7b3c21f85aebddcb7bcda7cc4d589732ce53087cb1b5faf8e \
 	--gossipsub-peer-scoring-enabled=false  \
 	--gossipsub-peer-gater-enabled=true \
 	--loglevel=error
