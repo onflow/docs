@@ -12,7 +12,6 @@ keywords:
   - Flow EVM
   - EVM
   - Relay.link
-  - DeBridge
   - Stargate
   - LayerZero
   - Celer
@@ -43,8 +42,3 @@ Intent based bridges do not depend on pre-funded liquidity pools which can impro
 ### Relay
 
 [Relay.link](https://relay.link/bridge/base) allows users to specify desired cross-chain swap outcomes for orders.
-
-### DeBridge
-
-[DeBridge](https://app.debridge.finance/) achieves efficient cross-chain swaps with minimal slippage in a decentralized environment
-through a peer-to-peer transaction mechanism.
