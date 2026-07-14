@@ -16,8 +16,6 @@ When building applications that leverage Flow data, developers have multiple Dat
 
 You can auto-generate an indexer from any verified contract with `pnpx envio init`. For a step-by-step walkthrough, see the [HyperIndex quickstart](https://docs.envio.dev/docs/HyperIndex/quickstart?utm_source=flow&utm_medium=partner-docs) and the [supported networks](https://docs.envio.dev/docs/HyperIndex/supported-networks?utm_source=flow&utm_medium=partner-docs) and [RPC data source](https://docs.envio.dev/docs/HyperIndex/rpc-sync?utm_source=flow&utm_medium=partner-docs) guides in the [Envio documentation](https://docs.envio.dev/?utm_source=flow&utm_medium=partner-docs).
 
-See Envio's [performance benchmarks](https://docs.envio.dev/docs/HyperIndex/benchmarking?utm_source=flow&utm_medium=partner-docs).
-
 ### Moralis
 
 [Moralis](https://moralis.io/) provides a robust suite of data APIs designed to support a wide array of blockchain applications. These APIs deliver both indexed and real-time data across 16+ blockchain networks, including comprehensive details on portfolio and wallet balances, NFT data, token metrics, price feeds, candlestick charts, and net worth calculations. Moralis enhances this data with additional layers of metadata, parsed events, and address labels to provide deeper insights and context.
