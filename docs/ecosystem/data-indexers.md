@@ -10,7 +10,7 @@ When building applications that leverage Flow data, developers have multiple Dat
 
 ### Envio
 
-[Envio](https://envio.dev/?utm_source=flow&utm_medium=partner-docs) is a high-performance indexing framework that turns smart contract events into a queryable GraphQL API. Envio's HyperIndex natively supports indexing any EVM chain out of the box, so you can index Flow EVM using your own RPC as the data source. It supports event handlers in TypeScript, JavaScript, or ReScript, reorg handling, real-time and historical data, and multichain data aggregation, with fully managed hosting on Envio Cloud or self-hosting.
+[Envio](https://envio.dev/?utm_source=flow&utm_medium=partner-docs) is the data layer for blockchain apps. It gives Flow EVM developers the fastest, most flexible way to get real-time and historical onchain data, from a single GraphQL API to raw high-speed access, with managed hosting on Envio Cloud. Envio's HyperIndex natively supports indexing any EVM chain out of the box, so you can index Flow EVM using your own RPC as the data source. It supports event handlers in TypeScript, JavaScript, or ReScript, reorg handling, real-time and historical data, and multichain data aggregation, with fully managed hosting on Envio Cloud or self-hosting.
 
 **Getting Started with Envio**
 
