@@ -89,7 +89,7 @@ All documentation is available in Markdown format for AI agents:
 - [Token Standards](https://developers.flow.com/blockchain-development-tutorials/tokens): Creating fungible and non-fungible tokens.
 - [Native VRF](https://developers.flow.com/blockchain-development-tutorials/native-vrf): Flow's native verifiable random function for onchain randomness.
 - [Gasless Transactions](https://developers.flow.com/blockchain-development-tutorials/gasless-transactions): Sponsored transactions for better UX.
-- [Integrations](https://developers.flow.com/blockchain-development-tutorials/integrations): Integration with external services like Crossmint and Gelato.
+- [Integrations](https://developers.flow.com/blockchain-development-tutorials/integrations): Integration with external services like Crossmint.
 - [128-bit Fixed Point Math](https://developers.flow.com/blockchain-development-tutorials/forte/fixed-point-128-bit-math): Financial precision with 128-bit arithmetic.
 
 ## AI Development Tools

@@ -351,6 +351,11 @@
   ],
   "redirects": [
     {
+      "source": "/blockchain-development-tutorials/integrations/gelato-sw",
+      "destination": "/blockchain-development-tutorials/integrations",
+      "permanent": true
+    },
+    {
       "source": "/ecosystem/defi-liquidity/defi-contracts",
       "destination": "/defi/defi-contracts-mainnet",
       "permanent": true
