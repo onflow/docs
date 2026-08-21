@@ -169,7 +169,6 @@ Integration guides for third-party services and tools that enhance Flow blockcha
   - [Authentication Integration Guide] - Set up user authentication for your Flow application using Crossmint's integrated authentication system with email, social logins, and wallet connections for unified identity management.
   - [Payment Checkout Integration] - Enable fiat and cross-chain payments for Flow assets with credit cards, Apple Pay, Google Pay, and crypto across 40+ chains using hosted, embedded, or headless checkout solutions.
   - [Minting Platform Integration] - Create and distribute tokens at scale on Flow using Crossmint's no-code and API-based minting platform with smart contract deployment and airdrop capabilities.
-- [Gelato Smart Wallet] - Learn how to use Gelato Smart Wallet to enable gasless transactions on Flow EVM through sponsored transactions with EIP-7702 support for enhanced user experience.
 
 ### Building in Web3 has never been easier
 
@@ -248,4 +247,3 @@ Flow will continue to provide quality walkthroughs and tutorials to provide deve
 [Authentication Integration Guide]: ./integrations/crossmint/authentication.md
 [Payment Checkout Integration]: ./integrations/crossmint/payment-checkout.md
 [Minting Platform Integration]: ./integrations/crossmint/minting-platform.md
-[Gelato Smart Wallet]: ./integrations/gelato-sw.md
