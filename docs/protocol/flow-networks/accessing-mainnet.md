@@ -7,6 +7,8 @@ description: Guide to mainnet access
 
 ## Accessing Flow Mainnet
 
+For live latency benchmarks across public Flow access nodes, see [OpenChainBench](https://openchainbench.com/benchmarks/flow-rpc) — p50/p90/p99 measured every 60 seconds from US-East, EU-West and Singapore.
+
 The Flow Mainnet is available for access at this URL:
 
 ```
