@@ -1123,10 +1123,12 @@
     "@babel/helper-string-parser" "^7.27.1"
     "@babel/helper-validator-identifier" "^7.27.1"
 
-"@code-hike/lighter@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@code-hike/lighter/-/lighter-0.7.0.tgz#7bb7d59631237d7d2e82434c3ea6fe1875813cb0"
-  integrity sha512-64O07rIORKQLB+5T/GKAmKcD9sC0N9yHFJXa0Hs+0Aee1G+I4bSXxTccuDFP6c/G/3h5Pk7yv7PoX9/SpzaeiQ==
+"@code-hike/lighter@0.7.0", "@code-hike/lighter@file:./code-hike-lighter-v1.0.3.tgz":
+  version "1.0.3"
+  resolved "file:./code-hike-lighter-v1.0.3.tgz#09d00633881672c2dc2cbc86d9e31425b6ae8a05"
+  dependencies:
+    ansi-sequence-parser "1.1.1"
+    tm-grammars "^1.24.18"
 
 "@code-hike/mdx@^0.9.0":
   version "0.9.0"
@@ -5869,6 +5871,11 @@ ansi-regex@^6.0.1:
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-6.2.2.tgz#60216eea464d864597ce2832000738a0589650c1"
   integrity sha512-Bq3SmSpyFHaWjPk8If9yc6svM8c56dB5BAtW4Qbw5jHTwwXXcTLoRMkpDJp6VL0XzlWaCHTXrkFURMYmD0sLqg==
+
+ansi-sequence-parser@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ansi-sequence-parser/-/ansi-sequence-parser-1.1.1.tgz#e0aa1cdcbc8f8bb0b5bca625aac41f5f056973cf"
+  integrity sha512-vJXt3yiaUL4UU546s3rPXlsry/RnM730G1+HkpKE012AN0sx1eOrxSu95oKDIonskeLTijMgqWZ3uDEe3NFvyg==
 
 ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   version "4.3.0"
@@ -14901,6 +14908,11 @@ tinypool@^1.0.2:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/tinypool/-/tinypool-1.1.1.tgz#059f2d042bd37567fbc017d3d426bdd2a2612591"
   integrity sha512-Zba82s87IFq9A9XmjiX5uZA/ARWDrB03OHlq+Vw1fSdt0I+4/Kutwy8BP4Y/y/aORMo61FQ0vIb5j44vSo5Pkg==
+
+tm-grammars@^1.24.18:
+  version "1.24.18"
+  resolved "https://registry.yarnpkg.com/tm-grammars/-/tm-grammars-1.24.18.tgz#ad516c12156a296a2d12377888eb677b2cca323a"
+  integrity sha512-QGeNrSfWIrxvlYE0ZFOw59V3gifDACk1NCdTcmq0smxzD0XvOS2RSOa5GKuNLaf3pt9PgKV7b85VWGtkd0yTLQ==
 
 tmp@0.0.33:
   version "0.0.33"
