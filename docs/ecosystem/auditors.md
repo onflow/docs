@@ -36,4 +36,7 @@ The following companies provide independent contract auditing services of Cadenc
 
 [Emerald City Academy - Shield](https://docs.ecdao.org/auditing/shield) a Cadence-specialized, community-driven auditing service also offering development support and review for Cadence smart contracts.
 
+## Safe Edges
+[Safe Edges](https://Safeedges.in/) specializing in blockchain security and smart contract auditing including Cadence.
+
 </div>
