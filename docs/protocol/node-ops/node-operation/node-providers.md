@@ -25,3 +25,12 @@ sidebar_custom_props:
 
 - Testnet
 - Mainnet
+
+## Dwellir
+
+[Dwellir](https://www.dwellir.com/networks/flow-evm-gateway) provides Flow EVM JSON-RPC endpoints served by the Flow EVM Gateway, so developers can connect to Flow EVM without running their own gateway. See the [Dwellir docs](https://www.dwellir.com/docs/flow-evm-gateway) for connection details.
+
+### Supported Networks
+
+- Flow EVM Testnet
+- Flow EVM Mainnet
