@@ -118,6 +118,7 @@ For more control over key management:
 - `file`: Read key from a separate file
 - `bip44`: Derive from mnemonic phrase
 - `google-kms`: Use Google Cloud KMS
+- `aws-kms`: Use AWS KMS
 
 **File-Based Keys:**
 For better security, you can store private keys in separate files:
