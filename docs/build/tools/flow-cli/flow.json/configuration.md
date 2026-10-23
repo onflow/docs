@@ -120,6 +120,22 @@ For more control over key management:
 - `google-kms`: Use Google Cloud KMS
 - `aws-kms`: Use AWS KMS
 
+Both KMS key types take a `resourceID` instead of a private key — a crypto key version resource name for `google-kms`, and a key ARN for `aws-kms`:
+
+```json
+"accounts": {
+  "my-account": {
+    "address": "f8d6e0586b0a20c7",
+    "key": {
+      "type": "aws-kms",
+      "resourceID": "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+    }
+  }
+}
+```
+
+AWS KMS signs ECDSA keys with `ECDSA_SHA_256`, so an `aws-kms` key uses `SHA2_256` as its hash algorithm. Pass `--hash-algo SHA2_256` when registering the key with `flow accounts create`.
+
 **File-Based Keys:**
 For better security, you can store private keys in separate files:
 
