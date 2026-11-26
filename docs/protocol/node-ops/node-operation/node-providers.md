@@ -25,3 +25,12 @@ sidebar_custom_props:
 
 - Testnet
 - Mainnet
+
+## Spectrum Nodes
+
+[Spectrum Nodes](https://spectrumnodes.com) serves Flow RPC, including Flow EVM, from its self operated Tier III data centers, with debug and trace methods.
+
+### Supported Networks
+
+- Testnet
+- Mainnet
